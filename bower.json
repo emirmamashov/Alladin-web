@@ -1,0 +1,22 @@
+{
+  "name": "mockup",
+  "authors": [
+    "SolArt <hound2014@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "normalize-css": "^7.0.0",
+    "jquery2": "^2.0.0",
+    "bxslider-4": "bx-slider.js#^4.2.12"
+  }
+}

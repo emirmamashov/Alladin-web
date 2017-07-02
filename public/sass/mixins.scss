@@ -1,0 +1,17 @@
+@mixin border-radius($px) {
+    border-radius: $px;
+    -webkit-border-radius: $px;
+    -moz-border-radius: $px;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@function cw($size) {
+  @return ($size/1220px) * 100%;
+}
