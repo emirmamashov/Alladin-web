@@ -10,10 +10,12 @@ var expressHbs = require('express-handlebars');
 let db = require('../alladin-database/index');
 let config = require('./config');
 
-var app = express();
-
+let app = express();
+let handlebars  = require('./helpers/handlebars.js')(expressHbs);
 // view engine setup
-app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
+//app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
+
+app.engine('.hbs', handlebars.engine);
 app.set('view engine', 'hbs');
 
 let env = process.env.NODE_ENV || 'development';

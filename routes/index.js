@@ -1,10 +1,28 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+
+let categoryService = require('../services/category');
 
 module.exports = (app, db) => {
   /* GET home page. */
-  router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+  router.get('/', (req, res) => {
+    db.Category.find().then(
+      (categories) => {
+        res.render('index', { 
+          title: 'Express123',
+          parentCategories: categoryService.findParentCategory(categories)
+        });
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+        res.render('index', { 
+          title: 'Express123',
+          categories: [],
+          errors: err
+        });
+      }
+    );
   });
 
   app.use('/', router);

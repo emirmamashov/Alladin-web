@@ -80,50 +80,19 @@
 
                         <div class="seller-entrances-wrap">
                             <ul>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">Для дома </a></div>
+                                {{#each parentCategories}}
+                                    <li class="seller-item">
+                                        <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a></div>
 
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> </a>
-                                    </div>
+                                        <div class="entrance-logo">
+                                            <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> </a>
+                                        </div>
 
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png"> </a>
-                                    </div>
-                                </li>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Computers_PC.htm">Компьютеры </a></div>
-
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Computers_PC.htm"><img alt="" src="/images/ali/HTB11hAWQXXXXXcjapXX760XFXXXu.png"> </a>
-                                    </div>
-
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Computers_PC.htm"><img alt="" src="/images/ali/HTB1sqTURpXXXXXQaFXX760XFXXX4.png"> </a>
-                                    </div>
-                                </li>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Electronics_PC.htm">Аксессуары </a></div>
-
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Electronics_PC.htm"><img alt="" src="/images/ali/UT8O7slX2hXXXcUQpbXz.png"> </a>
-                                    </div>
-
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Electronics_PC.htm"><img alt="" src="/images/ali/HTB1spAdRpXXXXbgXVXX760XFXXXp.png"> </a>
-                                    </div>
-                                </li>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Phones_PC.htm">Смартфоны </a></div>
-
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Phones_PC.htm"><img alt="" src="/images/ali/HTB1tCQVQXXXXXbVapXX760XFXXX6.png"> </a>
-                                    </div>
-
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Phones_PC.htm"><img alt="" src="/images/ali/HTB1vLH_RpXXXXaEaXXX760XFXXXW.png"> </a>
-                                    </div>
-                                </li>
+                                        <div class="entrance-pic">
+                                            <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png"> </a>
+                                        </div>
+                                    </li>
+                                {{/each}}
                             </ul>
                         </div>
                     </div>
@@ -150,7 +119,7 @@
                             </div>
                         </div>
 
-                        <div class="seller-entrances-wrap">
+                        <!--<div class="seller-entrances-wrap">
                             <ul>
                                 <li class="seller-item">
                                     <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=5">Для дома </a></div>
@@ -197,7 +166,7 @@
                                     </div>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="brands-list-main">
@@ -307,16 +276,10 @@
         <div class="waterfall-tab">
             <div class="waterfall-tab-list">
                 <a class="item selected" data-role="product-container" href="#">Все</a>
-                <a class="item" data-role="good-container" href="#">Молл</a>
-                <a class="item" data-role="filter" href="#">Для неё</a>
-                <a class="item" data-role="filter" href="#">Для него</a>
-                <a class="item" data-role="filter" href="#">Детям</a>
-                <a class="item" data-role="filter" href="#">Hi-Tech</a>
-                <a class="item" data-role="filter" href="#">Аксессуары</a>
-                <a class="item" data-role="filter" href="#">Компьютеры</a>
-                <a class="item" data-role="filter" href="#">Авто</a>
-                <a class="item" data-role="filter" href="#">Сумки и обувь</a>
-                <a class="item" data-role="filter" href="#">Дом и сад</a>
+                {{#each parentCategories}}
+                    <a class="item" data-role="good-container" href="#">{{ this.name }}</a>
+                {{/each}}
+                <!--<a class="item" data-role="filter" href="#">Для неё</a>-->
             </div>
         </div>
         <div class="waterfall-products-wrap container">
@@ -560,69 +523,14 @@
     <div class="container">
         <div class="category-slider-wrap">
             <ul class="category-slider" id="category-slider">
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
-                <li>
-                    <p class="title"><a href="#">Стройматериалы</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                    <p class="cat"><a href="#">Сумки, смеси, грунтовка</a></p>
-                </li>
+                {{#each parentCategories}}
+                    <li>
+                        <p class="title"><a href="#">{{ this.name }}</a></p>
+                        {{#each this.childCategories}}
+                            <p class="cat"><a href="#">{{ this.name }}</a></p>
+                        {{/each}}
+                    </li>
+                {{/each}}
             </ul>
         </div>
     </div>
@@ -646,6 +554,3 @@
             </div>
         </div>
     </div>
-
-    <script src="/javascripts/index.js"></script>
-    <script src="/javascripts/header.js"></script>
