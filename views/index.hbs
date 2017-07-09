@@ -277,179 +277,62 @@
             <div class="waterfall-tab-list">
                 <a class="item selected" data-role="product-container" href="#">Все</a>
                 {{#each parentCategories}}
-                    <a class="item" data-role="good-container" href="#">{{ this.name }}</a>
+                    <a class="item" data-role="{{ this._id }}" href="#">{{ this.name }}</a>
                 {{/each}}
                 <!--<a class="item" data-role="filter" href="#">Для неё</a>-->
             </div>
         </div>
         <div class="waterfall-products-wrap container">
             <ul class="product-list clearfix related-recommend" data-role="product-container">
-                <li class="good-item" data-role="item" data-productid="32669891457">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Electric-Window-Switch-Control-For-Mitsubishi-Carisma-Front-Right-MR740599/32669891457.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 73</div>
-                                <span class="g-price">858,34 руб.</span>
-                                <del class="g-del-price">903,24 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="32524673244">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Hallux-valgus-correction-daily-spot-a-large-number-of-wholesale-appliance-care-insole-insole-toe/32524673244.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 1287</div>
-                                <span class="g-price">190,10 руб.</span>
-                                <del class="g-del-price">253,07 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="848603934">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Satellite-Finder-Tool-Find-Alignment-Signal-Meter-For-Sat-Dish-TV-LNB-DirecTV-Dish-TV-Alignment/848603934.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 515</div>
-                                <span class="g-price">302,64 руб.</span>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="1681540017">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Giordano-Men-Giordano-Men-Stretch-Slim-Fit-Chino-Khaki-Pants/1681540017.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 25</div>
-                                <span class="g-price">1&nbsp;462,44 руб.</span>
-                                <del class="g-del-price">2&nbsp;215,82 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="1474001296">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Hight-quality-304-Stainless-steel-hose-clamps-size-11-3mm/1474001296.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 4</div>
-                                <span class="g-price">664,75 руб.</span>
-                                <del class="g-del-price">699,74 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="1474001296">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Hight-quality-304-Stainless-steel-hose-clamps-size-11-3mm/1474001296.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 4</div>
-                                <span class="g-price">664,75 руб.</span>
-                                <del class="g-del-price">699,74 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
+                {{#each products}}
+                    <li class="good-item" data-role="item" data-productid="32669891457">
+                        <div class="item-inner">
+                            <h3><b>{{ this.name }}</b></h3>
+                            <a href="//www.aliexpress.com/item/Electric-Window-Switch-Control-For-Mitsubishi-Carisma-Front-Right-MR740599/32669891457.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
+                                target="_blank">
+                                <div class="pro-img">
+                                    {{#if this.image }}
+                                        <img src="http://localhost:3000/{{ this.image }}">
+                                    {{else}}
+                                        <img src="/images/no-photo.png">
+                                    {{/if }}
+                                </div>
+                                <div class="pro-info">
+                                    <!--<div class="g-orders">Заказов: 73</div>-->
+                                    <span class="g-price">{{ this.price }}</span>
+                                    <del class="g-del-price">{{ this.priceStock }}</del>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                {{/each}}
             </ul>
-            <ul class="product-list clearfix related-recommend" data-role="good-container">
-                <li class="good-item" data-role="item" data-productid="32524673244">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Hallux-valgus-correction-daily-spot-a-large-number-of-wholesale-appliance-care-insole-insole-toe/32524673244.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
+            {{#each parentCategories}}
+                <ul class="product-list clearfix related-recommend" data-role="{{ this._id }}">
+                    {{#each this.products}}
+                        <li class="good-item" data-role="item" data-productid="{{ this._id }}">
+                            <h3><b>{{ this.name }}</b></h3>
+                            <div class="item-inner">
+                                <a href="//www.aliexpress.com/item/Hallux-valgus-correction-daily-spot-a-large-number-of-wholesale-appliance-care-insole-insole-toe/32524673244.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
+                                    target="_blank">
+                                    <div class="pro-img">
+                                        {{#if this.image }}
+                                            <img src="http://localhost:3000/{{ this.image }}">
+                                        {{else}}
+                                            <img src="/images/no-photo.png">
+                                        {{/if }}
+                                    </div>
+                                    <div class="pro-info">
+                                        <!--<div class="g-orders">Заказов: 1287</div>-->
+                                        <span class="g-price">{{ this.pridce }}</span>
+                                        <del class="g-del-price">253,07 руб.</del>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 1287</div>
-                                <span class="g-price">190,10 руб.</span>
-                                <del class="g-del-price">253,07 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="848603934">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Satellite-Finder-Tool-Find-Alignment-Signal-Meter-For-Sat-Dish-TV-LNB-DirecTV-Dish-TV-Alignment/848603934.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 515</div>
-                                <span class="g-price">302,64 руб.</span>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="1681540017">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Giordano-Men-Giordano-Men-Stretch-Slim-Fit-Chino-Khaki-Pants/1681540017.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 25</div>
-                                <span class="g-price">1&nbsp;462,44 руб.</span>
-                                <del class="g-del-price">2&nbsp;215,82 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="1474001296">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Hight-quality-304-Stainless-steel-hose-clamps-size-11-3mm/1474001296.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 4</div>
-                                <span class="g-price">664,75 руб.</span>
-                                <del class="g-del-price">699,74 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-                <li class="good-item" data-role="item" data-productid="1474001296">
-                    <div class="item-inner">
-                        <a href="//www.aliexpress.com/item/Hight-quality-304-Stainless-steel-hose-clamps-size-11-3mm/1474001296.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                            target="_blank">
-                            <div class="pro-img"><i></i><img src="/images/ali/test.jpg">
-
-                            </div>
-                            <div class="pro-info">
-                                <div class="g-orders">Заказов: 4</div>
-                                <span class="g-price">664,75 руб.</span>
-                                <del class="g-del-price">699,74 руб.</del>
-                            </div>
-                        </a>
-                    </div>
-                </li>
-            </ul>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/each}}
         </div>
     </div>
 
