@@ -27,9 +27,9 @@
                     </div>
                 </div>
                 <div class="search">
-                    <form action="">
-                        <input type="text" class="search-field" placeholder="Поиск...">
-                        <select name="" id="" class="search-select">
+                    <form action="/products/search" method="post">
+                        <input type="text" class="search-field" placeholder="Поиск..." name="text"/>
+                        <select name="category" id="" class="search-select">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -41,7 +41,7 @@
                             <option value="9">9</option>
                             <option value="101">101</option>
                         </select>
-                        <input type="button" class="search-button" value="Поиск">
+                        <input type="submit" class="search-button" value="Поиск">
                     </form>
                 </div>
             </div>

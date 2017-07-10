@@ -17,33 +17,18 @@
             </div>
             <div class="clear"></div>
             <div class="inaim">
-                <h1 class="nametovar" id="name_1737688"> Колодки тормозные KONSTEIN 5611500 </h1>
+                <h1 class="nametovar" id="name_1737688"> {{ product.name }} </h1>
             </div>
 
             <br>
             <div class="product">
                 <div class="product_left">
                     <style type "text=" " css"="">
-
-
-
-
-
-
-
-
                         .clearfix:after{clear:both;content:".";display:block;font-size:0;height:0;line-height:0;visibility:hidden;} .clearfix{display:block;zoom:1}
                         ul#thumblist{display:block;} ul#thumblist li{float:left;margin-right:2px;list-style:none;} ul#thumblist
                         li a{display:block;border:1px solid #CCC;} ul#thumblist li a.zoomThumbActive{ border:1px solid red;
                         } .jqzoom{ text-decoration:none; float:left; }
-
-
-
-
-
                     </style>
-
-
 
                     <script type="text/javascript">
                         $(document).ready(function () {
@@ -66,25 +51,37 @@
 
                     <div class="clearfix" id="content" style="margin-top:0px;margin-left:0px;">
 
-
                         <div class="clearfix" style="margin-top:0px;margin-left:0px;">
 
-
-
                             <a href="/images/max/700-nw.jpg" class="jqzoom" rel="gal1" title="" style="outline-style: none; text-decoration: none;">
-                                <div class="zoomPad"><img id="img_1737688" class="one_img" src="/images/max/700-nw.jpg" title="Колодки тормозные KONSTEIN 5611500"
+                                <div class="zoomPad">
+                                    {{#if this.image }}
+                                        <img id="img_1737688" class="one_img" src="http://localhost:3000/{{ this.image }}" title="{{product.name}}"
                                         style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
+                                    {{else}}
+                                        <img id="img_1737688" class="one_img" src="/images/no-photo.png" title="{{product.name}}"
+                                        style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
+                                        
+                                    {{/if }}
                                     <div class="zoomPup" style="top: -1px; left: 71px; width: 428px; height: 357px; position: absolute; border-width: 1px; display: none;"></div>
                                     <div class="zoomWindow" style="position: absolute; z-index: 5001; left: 520px; top: 0px; display: none;">
                                         <div class="zoomWrapper" style="width: 600px;">
                                             <div class="zoomWrapperTitle" style="width: 100%; position: absolute; display: block;">zoom</div>
-                                            <div class="zoomWrapperImage" style="width: 100%; height: 500px;"><img src="/images/max/700-nw.jpg" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;"></div>
+                                            <div class="zoomWrapperImage" style="width: 100%; height: 500px;">
+
+                                                {{#if this.image }}
+                                                    <img src="http://localhost:3000/{{ this.image }}" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">
+                                                    
+                                                {{else}}
+                                                    <img src="/images/no-photo.png" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">
+                                                    
+                                                {{/if }}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="zoomPreload" style="visibility: hidden; top: 237.5px; left: 214px; position: absolute;">Loading zoom</div>
                                 </div>
                             </a>
-
 
                         </div>
 
@@ -100,7 +97,15 @@
 
 
 
-                                <li><a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: &#39;gal1&#39;, smallimage: &#39;https://cdn.sima-land.ru/items/1448099/0/700-nw.jpg&#39;,largeimage: &#39;https://cdn.sima-land.ru/items/1448099/0/700-nw.jpg&#39;}"><img title="Колодки тормозные KONSTEIN 5611500" src="/images/max/140.jpg"></a></li>
+                                <li><a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: &#39;gal1&#39;, smallimage: &#39;https://cdn.sima-land.ru/items/1448099/0/700-nw.jpg&#39;,largeimage: &#39;https://cdn.sima-land.ru/items/1448099/0/700-nw.jpg&#39;}">
+
+                                    {{#if this.image }}
+                                        <img  width="100px" src="http://localhost:3000/{{ this.image }}">
+                                    {{else}}
+                                        <img  width="100px" src="/images/no-photo.png">
+                                    {{/if }}
+                                </a>
+                                </li>
 
 
                             </ul>
@@ -113,20 +118,20 @@
 
                     <br><br>
                     <div class="fb-comments fb_iframe_widget" data-href="https://max.kg/item/1737688/kolodki-tormoznye-konstein-5611500" data-numposts="5"
-                        fb-xfbml-state="rendered"><span style="height: 184px; width: 550px;"><iframe id="f2ace100ef533fc" name="f4237c18cdfe54" scrolling="no" title="Facebook Social Plugin" class="fb_ltr" src="/images/max/comments.html" style="border: none; overflow: hidden; height: 184px; width: 550px;"></iframe></span></div>
-
-
-
-
+                        fb-xfbml-state="rendered">
+                        <span style="height: 184px; width: 550px;"></span>
+                    </div>
                 </div>
                 <div class="product_right">
-                    <div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span><span class="product_art2">1737688</span> </div>
+                    <div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span>
+                        <span class="product_art2">{{product._id}}</span> 
+                    </div>
                     <div class="product_izb"><a href="https://max.kg/izb"><span class="izb1" id="iz_1737688" onclick="return izb(this);">В избранное</span></a></div>
                     <div class="table_item">
                         <div class="table_row1_product">
 
                             <div class="cell1">
-                                <span class="cena1_bold"><span class="cena1">Цена:   </span></span><span class="tcena">741.21 с.</span>                                <br>
+                                <span class="cena1_bold"><span class="cena1">Цена:   </span></span><span class="tcena">{{ product.price }} с.</span>                                <br>
                                 <span class="dost_credit">В кредит при заказе от <span class="blue_bold">5000 сом</span></span><br>                                </div>
 
                             <div class="cell2">
@@ -210,20 +215,7 @@
                             <div class="clear"></div>
                         </div>
 
-
-
-
-
-
-
-
-
                         <div class="clear"></div>
-
-
-
-
-
 
                     </div>
 
@@ -261,10 +253,17 @@
 
 
                     <h2>Описание</h2>
-                    <p> Не секрет, что машина давно уже перестала восприниматься как просто средство передвижения, и водители
-                        покупают всё лучшее для своих железных коней. Колодки тормозные KONSTEIN 5611500 — идеальный выбор,
-                        если вы ставите целью и улучшение технических характеристик, и поддержание внешнего вида автомобиля.
-                    </p><br><br><span class="gropis">Страна производства может отличаться в зависимости от партии поставки.</span><br><br>
+                    {{#ifCond product.description '==' true }}
+                    <p> 
+                        {{ product.description }}
+                    </p>
+                    {{/ifCond}}
+                    {{#ifCond product.description '!=' true }}
+                    <p> 
+                        нету описание
+                    </p>
+                    {{/ifCond}}
+                    <br><br><span class="gropis">Страна производства может отличаться в зависимости от партии поставки.</span><br><br>
                     <span class="gropis">Производитель оставляет за собой право изменять внешний вид, комплектацию товара без предупреждения.</span>
                 </div>
             </div>
