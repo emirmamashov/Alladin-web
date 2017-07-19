@@ -16,6 +16,7 @@ module.exports = (app, db) => {
               title: 'Express123',
               parentCategories: categoryService.findParentCategory(categories, products),
               products: products,
+              categoriesViewInMenu: categories.filter(x => x.viewInMenu),
               apiUrl: config.API_URL
             });
           }
