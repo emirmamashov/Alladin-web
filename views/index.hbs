@@ -3,26 +3,20 @@
         <div class="container">
             <div class="main-slider-wrap">
                 <ul id="main-slider" class="main-slider">
-                    <li>
-                        <img src="/images/manta-resort-under-water-room-slider-5-1200x500.jpg" alt="">
-                        <div class="info">
-                            <p>Горячая вода - круглый год</p>
-                            <span>Подберите водонагреватель</span>
-                            <a href="#">Купить</a>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="/images/manta-resort-under-water-room-slider-5-1200x500.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="/images/manta-resort-under-water-room-slider-5-1200x500.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="/images/manta-resort-under-water-room-slider-5-1200x500.jpg" alt="">
-                    </li>
-                    <li>
-                        <img src="/images/manta-resort-under-water-room-slider-5-1200x500.jpg" alt="">
-                    </li>
+                    {{#each banners}}
+                        {{#if this.photo.url }}
+                            <li>
+                                <img height="500" src="http://localhost:3000/{{ this.photo.url}}" alt="">
+                                {{#if this.buttonLink}}
+                                    <div class="info">
+                                        <!--<p>Горячая вода - круглый год</p>
+                                        <span>Подберите водонагреватель</span>-->
+                                        <a href="{{ this.buttonLink }}">{{ this.buttonName }}</a>
+                                    </div>
+                                {{/if }}
+                            </li>
+                        {{/if }}
+                    {{/each}}
                 </ul>
             </div>
             <div class="company-slider-wrap">

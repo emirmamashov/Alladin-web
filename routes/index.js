@@ -12,13 +12,74 @@ module.exports = (app, db) => {
         console.log(config.API_URL);
         db.Product.find().then(
           (products) => {
-            res.render('index', { 
-              title: 'Express123',
-              parentCategories: categoryService.findParentCategory(categories, products),
-              products: products,
-              categoriesViewInMenu: categories.filter(x => x.viewInMenu),
-              apiUrl: config.API_URL
+            let bannerIds = [];
+            let photoIds = [];
+
+            categories.forEach((category) => {
+              if (category.banner) {
+                bannerIds.push(category.banner);
+              }
+              if (category.photo) {
+                photoIds.push(category.photo);
+              }
             });
+
+            db.Banner.find({ _id: {$in: bannerIds} }).then(
+              (banners) => {
+                banners.forEach((banner) => {
+                  if (banner.photo) {
+                    photoIds.push(banner.photo);
+                  }
+                });
+
+                db.Photo.find({ _id: { $in: photoIds } }).then(
+                  (photos) => {
+                    banners.forEach((banner) => {
+                        let bannerPhotoIdString = banner.photo ? banner.photo.toString() : '';
+                        banner.photo = photos.filter(x => x._id.toString() === bannerPhotoIdString)[0] || {};
+                    });
+
+                    categories.forEach((category) => {
+                        let categoryPhotoIdString = category.photo ? category.photo.toString() : '';
+                        let categoryBannerIdString = category.banner ? category.banner.toString() : '';
+                        category.photo = photos.filter(x => x._id.toString() === categoryPhotoIdString)[0] || {};
+                        category.banner = banners.filter(x => x._id.toString() === categoryBannerIdString)[0] || {};
+                    });
+
+                    res.render('index', { 
+                      title: 'Express123',
+                      parentCategories: categoryService.findParentCategory(categories, products),
+                      products: products,
+                      categoriesViewInMenu: categories.filter(x => x.viewInMenu),
+                      apiUrl: config.API_URL,
+                      banners: banners
+                    });
+                  }
+                ).catch(
+                  (err) => {
+                    console.log(err);
+                    res.render('index', { 
+                      title: 'Express123',
+                      parentCategories: categoryService.findParentCategory(categories),
+                      products: [],
+                      errors: err,
+                      apiUrl: config.API_URL
+                    });
+                  }
+                );
+              }
+            ).catch(
+              (err) => {
+                console.log(err);
+                res.render('index', { 
+                  title: 'Express123',
+                  parentCategories: categoryService.findParentCategory(categories),
+                  products: [],
+                  errors: err,
+                  apiUrl: config.API_URL
+                });
+              }
+            );
           }
         ).catch(
           (err) => {

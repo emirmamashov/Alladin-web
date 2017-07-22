@@ -4,6 +4,7 @@ module.exports = {
             return [];
         }
         let parentCategories = categories.filter(x => !x.parentCategory);
+        products = products || [];
         parentCategories.forEach((category) => {
             category['childCategories'] = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
             category['products'] = products.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString()) || [];
