@@ -6,7 +6,7 @@
                     {{#each banners}}
                         {{#if this.photo.url }}
                             <li>
-                                <img height="500" src="http://localhost:3000/{{ this.photo.url}}" alt="">
+                                <img height="500" src="{{this.apiUrl}}/{{ this.photo.url}}" alt="">
                                 {{#if this.buttonLink}}
                                     <div class="info">
                                         <!--<p>Горячая вода - круглый год</p>
@@ -286,7 +286,7 @@
                                 target="_blank">
                                 <div class="pro-img">
                                     {{#if this.image }}
-                                        <img src="http://localhost:3000/{{ this.image }}">
+                                        <img src="{{this.apiUrl}}/{{ this.image }}">
                                     {{else}}
                                         <img src="/images/no-photo.png">
                                     {{/if }}

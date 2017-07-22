@@ -48,6 +48,10 @@ module.exports = (app, db) => {
                         category['apiUrl'] = config.API_URL;
                     });
 
+                    products.forEach((product) => {
+                        product['apiUrl'] = config.API_URL;
+                    });
+
                     res.render('index', { 
                       title: 'Express123',
                       parentCategories: categoryService.findParentCategory(categories, products),

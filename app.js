@@ -8,7 +8,9 @@ let glob = require('glob');
 var expressHbs = require('express-handlebars');
 
 let db = require('../alladin-database/index');
-let config = require('./config');
+
+let env = process.env.NODE_ENV || 'development';
+let config = require('./config')[env];
 
 let app = express();
 let handlebars  = require('./helpers/handlebars.js')(expressHbs);
@@ -18,7 +20,6 @@ let handlebars  = require('./helpers/handlebars.js')(expressHbs);
 app.engine('.hbs', handlebars.engine);
 app.set('view engine', 'hbs');
 
-let env = process.env.NODE_ENV || 'development';
 app.locals.ENV = env;
 app.locals.ENV_DEVELOPMENT = env == 'development';
 
