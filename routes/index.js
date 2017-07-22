@@ -37,6 +37,7 @@ module.exports = (app, db) => {
                     banners.forEach((banner) => {
                         let bannerPhotoIdString = banner.photo ? banner.photo.toString() : '';
                         banner.photo = photos.filter(x => x._id.toString() === bannerPhotoIdString)[0] || {};
+                        banner['apiUrl'] = config.API_URL;
                     });
 
                     categories.forEach((category) => {
@@ -44,6 +45,7 @@ module.exports = (app, db) => {
                         let categoryBannerIdString = category.banner ? category.banner.toString() : '';
                         category.photo = photos.filter(x => x._id.toString() === categoryPhotoIdString)[0] || {};
                         category.banner = banners.filter(x => x._id.toString() === categoryBannerIdString)[0] || {};
+                        category['apiUrl'] = config.API_URL;
                     });
 
                     res.render('index', { 
