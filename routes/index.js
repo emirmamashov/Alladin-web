@@ -1,4 +1,5 @@
 let express = require('express');
+var random = require('mongoose-random');
 let router = express.Router();
 
 let categoryService = require('../services/category');
@@ -34,15 +35,49 @@ module.exports = (app, db) => {
                       producer['apiUrl'] = config.API_URL;
                     });
 
-                    res.render('index', { 
-                      title: 'Express123',
-                      parentCategories: categoryService.findParentCategory(categories, products),
-                      products: products,
-                      categoriesViewInMenu: categories.filter(x => x.viewInMenu),
-                      apiUrl: config.API_URL,
-                      banners: banners,
-                      producers: producers
+                    let categoryIds = [];
+                    let categoriesViewInLikesBlock = categories.filter(x => x.viewInLikeBlock) || [];
+                    categoriesViewInLikesBlock.forEach((category) => {
+                      categoryIds.push(category._id);
                     });
+                    let limitCount = categoryIds.length * 30;
+                    console.log(limitCount);
+                    let n = db.Product.count({ categoryId: { $in: categoryIds } });
+                    let r = Math.floor(Math.random() * n);
+                    db.Product.find({ categoryId: { $in: categoryIds } }).limit(limitCount).skip(r).then(
+                      (rndProducts) => {
+                        console.log(rndProducts);
+                      rndProducts.forEach((product) => {
+                        product['apiUrl'] = config.API_URL;
+                      });
+                        categoriesViewInLikesBlock.forEach((category) => {
+                          category['rndProducts'] = rndProducts.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString());
+                        });
+                        
+                        res.render('index', { 
+                          title: 'Express123',
+                          parentCategories: categoryService.findParentCategory(categories, products),
+                          products: products,
+                          categoriesViewInMenu: categories.filter(x => x.viewInMenu),
+                          apiUrl: config.API_URL,
+                          banners: banners,
+                          producers: producers,
+                          categoriesViewInLikesBlock: categoriesViewInLikesBlock,
+                          rndProducts: rndProducts
+                        });
+                      }
+                    ).catch(
+                      (err) => {
+                        console.log(err);
+                        res.render('index', { 
+                          title: 'Express123',
+                          parentCategories: categoryService.findParentCategory(categories),
+                          products: [],
+                          errors: err,
+                          apiUrl: config.API_URL
+                        });
+                      }
+                    );
                   } 
                 ).catch(
                   (err) => {

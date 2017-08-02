@@ -265,7 +265,7 @@
         <div class="waterfall-tab">
             <div class="waterfall-tab-list">
                 <a class="item selected" data-role="product-container" href="#">Все</a>
-                {{#each parentCategories}}
+                {{#each categoriesViewInLikesBlock}}
                     <a class="item" data-role="{{ this._id }}" href="#">{{ this.name }}</a>
                 {{/each}}
                 <!--<a class="item" data-role="filter" href="#">Для неё</a>-->
@@ -296,9 +296,9 @@
                     </li>
                 {{/each}}
             </ul>
-            {{#each parentCategories}}
+            {{#each categoriesViewInLikesBlock}}
                 <ul class="product-list clearfix related-recommend" data-role="{{ this._id }}">
-                    {{#each this.products}}
+                    {{#each this.rndProducts}}
                         <li class="good-item" data-role="item" data-productid="{{ this._id }}">
                             <h3><b>{{ this.name }}</b></h3>
                             <div class="item-inner">
@@ -306,15 +306,15 @@
                                     target="_blank">
                                     <div class="pro-img">
                                         {{#if this.image }}
-                                            <img src="http://localhost:3000/{{ this.image }}">
+                                            <img src="{{this.apiUrl}}/{{ this.image }}">
                                         {{else}}
                                             <img src="/images/no-photo.png">
                                         {{/if }}
                                     </div>
                                     <div class="pro-info">
                                         <!--<div class="g-orders">Заказов: 1287</div>-->
-                                        <span class="g-price">{{ this.pridce }}</span>
-                                        <del class="g-del-price">253,07 руб.</del>
+                                        <span class="g-price">{{ this.price }}</span>
+                                        <del class="g-del-price">{{ this.price }}</del>
                                     </div>
                                 </a>
                             </div>
