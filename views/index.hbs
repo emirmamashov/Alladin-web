@@ -6,7 +6,7 @@
                     {{#each banners}}
                         {{#if this.image }}
                             <li>
-                                <img height="500" src="{{this.apiUrl}}/{{ this.image}}" alt="">
+                                <img height="500" src="{{ this.apiUrl }}/{{ this.image}}" alt="">
                                 {{#if this.buttonLink}}
                                     <div class="info">
                                         <!--<p>Горячая вода - круглый год</p>
@@ -21,16 +21,11 @@
             </div>
             <div class="company-slider-wrap">
                 <ul class="company-slider" id="company-slider">
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
-                    <li><img src="http://www.parjustlisted.com/wp-content/uploads/2012/02/Logo-2-300x150.png" alt=""></li>
+                    {{#each producers}}
+                        {{#if this.image}}
+                            <li><img src="{{ this.apiUrl }}/{{ this.image }}" alt=""></li>
+                        {{/if}}
+                    {{/each}}
                 </ul>
             </div>
         </div>

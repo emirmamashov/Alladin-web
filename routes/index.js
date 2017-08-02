@@ -28,14 +28,34 @@ module.exports = (app, db) => {
                     banner['apiUrl'] = config.API_URL;
                 });
 
-                res.render('index', { 
-                  title: 'Express123',
-                  parentCategories: categoryService.findParentCategory(categories, products),
-                  products: products,
-                  categoriesViewInMenu: categories.filter(x => x.viewInMenu),
-                  apiUrl: config.API_URL,
-                  banners: banners
-                });
+                db.Producer.find().then(
+                  (producers) => {
+                    producers.forEach((producer) => {
+                      producer['apiUrl'] = config.API_URL;
+                    });
+
+                    res.render('index', { 
+                      title: 'Express123',
+                      parentCategories: categoryService.findParentCategory(categories, products),
+                      products: products,
+                      categoriesViewInMenu: categories.filter(x => x.viewInMenu),
+                      apiUrl: config.API_URL,
+                      banners: banners,
+                      producers: producers
+                    });
+                  } 
+                ).catch(
+                  (err) => {
+                    console.log(err);
+                    res.render('index', { 
+                      title: 'Express123',
+                      parentCategories: categoryService.findParentCategory(categories),
+                      products: [],
+                      errors: err,
+                      apiUrl: config.API_URL
+                    });
+                  }
+                );
               }
             ).catch(
               (err) => {
