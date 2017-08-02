@@ -1,5 +1,4 @@
 let express = require('express');
-var random = require('mongoose-random');
 let router = express.Router();
 
 let categoryService = require('../services/category');
