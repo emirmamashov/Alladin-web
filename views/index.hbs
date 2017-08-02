@@ -4,9 +4,9 @@
             <div class="main-slider-wrap">
                 <ul id="main-slider" class="main-slider">
                     {{#each banners}}
-                        {{#if this.photo.url }}
+                        {{#if this.image }}
                             <li>
-                                <img height="500" src="{{this.apiUrl}}/{{ this.photo.url}}" alt="">
+                                <img height="500" src="{{this.apiUrl}}/{{ this.image}}" alt="">
                                 {{#if this.buttonLink}}
                                     <div class="info">
                                         <!--<p>Горячая вода - круглый год</p>
