@@ -1,35 +1,47 @@
-    <div class="promo">
-        Низкие цены каждый день
+<div class="promo">
+    Низкие цены каждый день
+</div>
+<div class="header-menu">
+    <div class="container">
+        <div class="links">
+            <a href="#" class="advices">Советы</a>
+            <a href="#" class="services">Услуги</a>
+            <a href="#" class="hands">Поставщикам</a>
+            <a href="#" class="faq">FAQ</a>
+            <a href="#" class="enter">Вход</a>
+            <a href="#" class="register">Регистрация</a>
+        </div>
     </div>
-    <div class="header">
-        <div class="container">
-            <div class="flex-container">
-                <div class="logo">
-                    <a class="logo-link" href="/">
+</div>
+<div class="header">
+    <div class="container">
+        <div class="flex-container">
+            <div class="logo">
+                <a class="logo-link" href="/">
                         <img src="/images/logo/logo.png" alt="Logo">
                     </a>
-                    <div class="categories">
-                        <a href="#" class="main-cat-title">Показать все категории</a>
-                        <ul class="categories-2">
-                            {{#each parentCategories}}
+                <div class="categories">
+                    <a href="#" class="main-cat-title">Показать все категории</a>
+                    <ul class="categories-2">
+                        {{#each parentCategories}}
+                        <li>
+                            <a href="#" class="title">{{ this.name }}</a>
+                            <ul class="categories-3">
+                                {{#each this.childCategories}}
                                 <li>
-                                    <a href="#" class="title">{{ this.name }}</a>
-                                    <ul class="categories-3">
-                                        {{#each this.childCategories}}
-                                            <li>
-                                                <a href="#">{{ this.name }}</a>
-                                            </li>
-                                        {{/each}}
-                                    </ul>
+                                    <a href="#">{{ this.name }}</a>
                                 </li>
-                            {{/each}}
-                        </ul>
-                    </div>
+                                {{/each}}
+                            </ul>
+                        </li>
+                        {{/each}}
+                    </ul>
                 </div>
-                <div class="search">
-                    <form action="/products/search" method="post">
-                        <input type="text" class="search-field" placeholder="Поиск..." name="text"/>
-                        <select name="category" id="" class="search-select">
+            </div>
+            <div class="search">
+                <form action="/products/search" method="post">
+                    <input type="text" class="search-field" placeholder="Поиск..." name="text" />
+                    <select name="category" id="" class="search-select">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -41,47 +53,46 @@
                             <option value="9">9</option>
                             <option value="101">101</option>
                         </select>
-                        <input type="submit" class="search-button" value="Поиск">
-                    </form>
-                </div>
+                    <input type="submit" class="search-button" value="Поиск">
+                </form>
             </div>
-            <ul class="menu">
-                {{#each categoriesViewInMenu}}
-                    <li>
-                        <a href="#">{{ this.name }}</a>
-                        <div class="menu-content clearfix">
-                            <div class="left clearfix">
-                                <div class="col">
-                                    <h4>Топ категории</h4>
-                                    <ul>
-                                        {{#each this.childCategories}}
-                                            <li>
-                                                <a href="#"> {{ this.name }} </a>
-                                            </li>
-                                        {{/each}}
-                                    </ul>
-                                </div>
-                                <div class="col">
-                                    <h4>Что лучше?</h4>
-                                    <ul>
-                                        <li><a href="">Нет это 1</a></li>
-                                        <li><a href="">Нет это 2</a></li>
-                                        <li><a href="">Нет это 3</a></li>
-                                        <li><a href="">Нет это 4</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="right">
-                                {{#if this.photo.url }}
-                                    <img height="300" src="{{this.apiUrl}}/{{ this.photo.url}}">
-                                {{/if }}
-                            </div>
-                        </div>
-                    </li>
-                {{/each}}
-            </ul>
         </div>
+        <ul class="menu">
+            {{#each categoriesViewInMenu}}
+            <li>
+                <a href="#">{{ this.name }}</a>
+                <div class="menu-content clearfix">
+                    <div class="left clearfix">
+                        <div class="col">
+                            <h4>Топ категории</h4>
+                            <ul>
+                                {{#each this.childCategories}}
+                                <li>
+                                    <a href="#"> {{ this.name }} </a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h4>Что лучше?</h4>
+                            <ul>
+                                <li><a href="">Нет это 1</a></li>
+                                <li><a href="">Нет это 2</a></li>
+                                <li><a href="">Нет это 3</a></li>
+                                <li><a href="">Нет это 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="right">
+                        {{#if this.photo.url }}
+                        <img height="300" src="{{this.apiUrl}}/{{ this.photo.url}}"> {{/if }}
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
     </div>
+</div>
 
-    <script src="/javascripts/index.js"></script>
-    <script src="/javascripts/header.js"></script>
+<script src="/javascripts/index.js"></script>
+<script src="/javascripts/header.js"></script>

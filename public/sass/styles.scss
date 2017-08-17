@@ -195,17 +195,7 @@ ul li {
         .search-button {
             @include border-radius(5px);
             border: 0;
-            /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0079bc+0,00509d+100 */
-            background: #0079bc;
-            /* Old browsers */
-            background: -moz-linear-gradient(top, #e45d6b 0%, #bd1c2c 100%);
-            /* FF3.6-15 */
-            background: -webkit-linear-gradient(top, #e45d6b 0%, #bd1c2c 100%);
-            /* Chrome10-25,Safari5.1-6 */
-            background: linear-gradient(to bottom, #e45d6b 0%, #bd1c2c 100%);
-            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0079bc', endColorstr='#00509d', GradientType=0);
-            /* IE6-9 */
+            background: #fb722c;
             color: #fff;
             padding: 10px;
             font-size: 1.2rem;
@@ -761,7 +751,7 @@ ul li {
 }
 
 .main-advices-carousel__item .advices-carousel__name a:hover {
-    color: #66c05d
+    color: #fb722c
 }
 
 .main-advices-carousel__item .advices-carousel__pic {
@@ -792,7 +782,7 @@ ul li {
     font-size: 12px;
     color: #fff;
     line-height: 19px;
-    background: #66c05d;
+    background: #fb722c;
     padding: 0 11px 0 10px
 }
 
@@ -838,7 +828,7 @@ ul li {
     display: inline-block;
     position: relative;
     font-size: 11px;
-    color: #66c05d;
+    color: #fb722c;
     font-weight: 700;
     text-transform: uppercase;
     border: none;
@@ -856,7 +846,7 @@ ul li {
     top: 5px;
     right: -13px;
     border: 3px solid transparent;
-    border-left: 5px solid #66c05d
+    border-left: 5px solid #fb722c
 }
 
 .waterfall-tab {
@@ -1502,4 +1492,49 @@ ul.partners-list:before {
     color: #4ba842;
     text-decoration: none;
     border-color: #4ba842
+}
+
+
+
+.header-menu {
+    background: #f0f0f0;
+    min-height: 30px;
+    .links {
+        float: right;
+        padding-top: 2px;
+    }
+    a {
+        float: left;
+        display: inline-block;
+        margin: 0 5px;
+        padding: 5px 10px 5px 20px;
+        background: url("/images/icons/geo.png")left center no-repeat;
+        font-size: 12px;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $text;
+        &.advices {
+            background-image: url("/images/icons/advices.png");
+        }
+        &.services {
+            background-image: url("/images/icons/settings.png");
+        }
+        &.hands {
+            background-image: url("/images/icons/hands.png");
+        }
+        &.faq {
+            background-image: url("/images/icons/faq.png");
+        }
+        &.enter, &.register {
+            background-image: none;
+            margin: 0;
+            background: #fb722c;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 5px 10px;
+        }
+        &.enter {
+            border-right: 2px solid #fff;
+        }
+    }
 }

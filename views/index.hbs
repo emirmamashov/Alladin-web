@@ -1,114 +1,109 @@
-
-    <div class="main-sliders">
-        <div class="container">
-            <div class="main-slider-wrap">
-                <ul id="main-slider" class="main-slider">
-                    {{#each banners}}
-                        {{#if this.image }}
-                            <li>
-                                <img height="500" src="{{ this.apiUrl }}/{{ this.image}}" alt="">
-                                {{#if this.buttonLink}}
-                                    <div class="info">
-                                        <!--<p>Горячая вода - круглый год</p>
+<link rel="stylesheet" href="/stylesheets/aliexpress.css">
+<div class="main-sliders">
+    <div class="container">
+        <div class="main-slider-wrap">
+            <ul id="main-slider" class="main-slider">
+                {{#each banners}} {{#if this.image }}
+                <li>
+                    <img height="500" src="{{ this.apiUrl }}/{{ this.image}}" alt=""> {{#if this.buttonLink}}
+                    <div class="info">
+                        <!--<p>Горячая вода - круглый год</p>
                                         <span>Подберите водонагреватель</span>-->
-                                        <a href="{{ this.buttonLink }}">{{ this.buttonName }}</a>
-                                    </div>
-                                {{/if }}
-                            </li>
-                        {{/if }}
-                    {{/each}}
-                </ul>
-            </div>
-            <div class="company-slider-wrap">
-                <ul class="company-slider" id="company-slider">
-                    {{#each producers}}
-                        {{#if this.image}}
-                            <li><img src="{{ this.apiUrl }}/{{ this.image }}" alt=""></li>
-                        {{/if}}
-                    {{/each}}
-                </ul>
-            </div>
+                        <a href="{{ this.buttonLink }}">{{ this.buttonName }}</a>
+                    </div>
+                    {{/if }}
+                </li>
+                {{/if }} {{/each}}
+            </ul>
+        </div>
+        <div class="company-slider-wrap">
+            <ul class="company-slider" id="company-slider">
+                {{#each producers}} {{#if this.image}}
+                <li><img src="{{ this.apiUrl }}/{{ this.image }}" alt=""></li>
+                {{/if}} {{/each}}
+            </ul>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <div class="new-user-guide util-clearfix">
-            <div class="flex-container">
-                <div class="new-user-guide-item protection-one">
-                    <p class="p-title"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_makeorder#guid-14291660627010">Как сделать заказ</a></p>
-                    <p class="p-desc"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_makeorder#guid-14291660627010">Поиск и выбор товара</a></p>
-                </div>
-                <div class="new-user-guide-item protection-two">
-                    <p class="p-title"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_payment#guid-14291727717950">Как оплатить товар</a></p>
-                    <p class="p-desc"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_payment#guid-14291727717950">Способы оплаты</a></p>
-                </div>
-                <div class="new-user-guide-item protection-three">
-                    <p class="p-title"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_delivery#guid-1429265025153">Доставка</a></p>
-                    <p class="p-desc"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_delivery#guid-1429265025153">Способы и сроки доставки</a></p>
-                </div>
-                <div class="new-user-guide-item protection-four">
-                    <p class="p-title"><a href="http://activities.aliexpress.com/ru/buyerprotection.php?tracelog=mainpageblock_bp">Гарантии Alladin</a></p>
-                    <p class="p-desc"><a href="http://activities.aliexpress.com/ru/buyerprotection.php?tracelog=mainpageblock_bp">Решение спорных ситуаций и возвраты</a></p>
-                </div>
+<div class="container">
+    <div class="new-user-guide util-clearfix">
+        <div class="flex-container">
+            <div class="new-user-guide-item protection-one">
+                <p class="p-title"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_makeorder#guid-14291660627010">Как сделать заказ</a></p>
+                <p class="p-desc"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_makeorder#guid-14291660627010">Поиск и выбор товара</a></p>
+            </div>
+            <div class="new-user-guide-item protection-two">
+                <p class="p-title"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_payment#guid-14291727717950">Как оплатить товар</a></p>
+                <p class="p-desc"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_payment#guid-14291727717950">Способы оплаты</a></p>
+            </div>
+            <div class="new-user-guide-item protection-three">
+                <p class="p-title"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_delivery#guid-1429265025153">Доставка</a></p>
+                <p class="p-desc"><a href="http://activities.aliexpress.com/ru/users_guide.php?tracelog=mainpageblock_delivery#guid-1429265025153">Способы и сроки доставки</a></p>
+            </div>
+            <div class="new-user-guide-item protection-four">
+                <p class="p-title"><a href="http://activities.aliexpress.com/ru/buyerprotection.php?tracelog=mainpageblock_bp">Гарантии Alladin</a></p>
+                <p class="p-desc"><a href="http://activities.aliexpress.com/ru/buyerprotection.php?tracelog=mainpageblock_bp">Решение спорных ситуаций и возвраты</a></p>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="action">
-            <span class="action-delivery">Узнайте о доставке на следующий день</span>
-        </div>
+</div>
+<div class="container">
+    <div class="action">
+        <span class="action-delivery">Узнайте о доставке на следующий день</span>
     </div>
-    <div class="container">
-        <div class="container mall-floor-ru">
-            <div class="mall-container util-clearfix">
-                <div class="brands-event-content col-lg-30 col-md-30 col-sm-30">
-                    <div class="mall-ru-left-top">
-                        <div class="left-banner-wrap">
-                            <div class="banner-img" style="background-image:url('/images/img/ali/HTB18gozQFXXXXbrapXX760XFXXXs.png');"><a href="https://mall.aliexpress.com/molnia">&nbsp; </a></div>
-                        </div>
-
-                        <div class="seller-entrances-wrap">
-                            <ul>
-                                {{#each parentCategories}}
-                                    <li class="seller-item">
-                                        <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a></div>
-
-                                        <div class="entrance-logo">
-                                            <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> </a>
-                                        </div>
-
-                                        <div class="entrance-pic">
-                                            <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png"> </a>
-                                        </div>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                        </div>
+</div>
+<div class="container">
+    <div class="container mall-floor-ru">
+        <div class="mall-container util-clearfix">
+            <div class="brands-event-content col-lg-30 col-md-30 col-sm-30">
+                <div class="mall-ru-left-top">
+                    <div class="left-banner-wrap">
+                        <div class="banner-img" style="background-image:url('/images/ali/HTB18gozQFXXXXbrapXX760XFXXXs.png');"><a href="https://mall.aliexpress.com/molnia">&nbsp; </a></div>
                     </div>
 
-                    <div class="brands-list-main">
-                        <div class="brands-title">
-                            <h5>Мировые бренды</h5>
-                            <a class="brands-more" href="https://mall.aliexpress.com/molnia">Смотреть все &gt; </a></div>
-                        <ul class="brands-list clearfix">
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Apple/2792104_511480245.html"><img alt="" src="/images/ali/HTB1tCQVQXXXXXbVapXX760XFXXX6.png"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Samsung/2792104_511201904.html"><img alt="" src="/images/ali/HTB11hAWQXXXXXcjapXX760XFXXXu.png"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Bosch/2792104_510266012.html"><img alt="" src="/images/ali/HTB1FuoPQXXXXXajaFXX760XFXXX1.png"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/braun/2792104_510603684.html"><img alt="" src="/images/ali/HTB1_9o1QXXXXXcTaXXX760XFXXXN.png"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/SONY/2792104_511090988.html"><img alt="" src="/images/ali/HTB1_gFqQpXXXXaCXpXX760XFXXXj.png"> </a> </span></li>
+                    <div class="seller-entrances-wrap">
+                        <ul>
+                            {{#each parentCategories}}
+                            <li class="seller-item">
+                                <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a></div>
+
+                                <div class="entrance-logo">
+                                    <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> </a>
+                                </div>
+
+                                <div class="entrance-pic">
+                                    <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png"> </a>
+                                </div>
+                            </li>
+                            {{/each}}
                         </ul>
                     </div>
                 </div>
 
-                <div class="hot-brands-content col-lg-30 col-md-30 col-sm-30">
-                    <div class="mall-ru-right-top">
-                        <div class="left-banner-wrap">
-                            <div class="banner-img" style="background-image: url('/images/ali/HTB1eK0dQVXXXXc7XpXX760XFXXXt.png');">
-                                <a href="https://mall.aliexpress.com/">&nbsp; </a>
-                            </div>
-                        </div>
+                <div class="brands-list-main">
+                    <div class="brands-title">
+                        <h5>Мировые бренды</h5>
+                        <a class="brands-more" href="https://mall.aliexpress.com/molnia">Смотреть все &gt; </a></div>
+                    <ul class="brands-list clearfix">
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Apple/2792104_511480245.html"><img alt="" src="/images/ali/HTB1tCQVQXXXXXbVapXX760XFXXX6.png"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Samsung/2792104_511201904.html"><img alt="" src="/images/ali/HTB11hAWQXXXXXcjapXX760XFXXXu.png"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Bosch/2792104_510266012.html"><img alt="" src="/images/ali/HTB1FuoPQXXXXXajaFXX760XFXXX1.png"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/braun/2792104_510603684.html"><img alt="" src="/images/ali/HTB1_9o1QXXXXXcTaXXX760XFXXXN.png"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/SONY/2792104_511090988.html"><img alt="" src="/images/ali/HTB1_gFqQpXXXXaCXpXX760XFXXXj.png"> </a> </span></li>
+                    </ul>
+                </div>
+            </div>
 
-                        <!--<div class="seller-entrances-wrap">
+            <div class="hot-brands-content col-lg-30 col-md-30 col-sm-30">
+                <div class="mall-ru-right-top">
+                    <div class="left-banner-wrap">
+                        <div class="banner-img" style="background-image: url('/images/ali/HTB1eK0dQVXXXXc7XpXX760XFXXXt.png');">
+                            <a href="https://mall.aliexpress.com/">&nbsp; </a>
+                        </div>
+                    </div>
+
+                    <!--<div class="seller-entrances-wrap">
                             <ul>
                                 <li class="seller-item">
                                     <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=5">Для дома </a></div>
@@ -156,273 +151,383 @@
                                 </li>
                             </ul>
                         </div>-->
-                    </div>
+                </div>
 
-                    <div class="brands-list-main">
-                        <div class="brands-title">
-                            <h5>Международные бренды</h5>
-                            <a class="brands-more" href="https://mall.aliexpress.com/">Смотреть все &gt; </a></div>
-                        <ul class="brands-list clearfix">
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Centek/2058016_1000000215027.html"><img alt="" src="/images/ali/4098578410_1387778282.jpg"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Merries/2814018_1000000190072.html"><img alt="" src="/images/ali/UT8CC_wX6pXXXagOFbXE.jpg"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://miegofce.ru.aliexpress.com/store/1846541?spm=2114.11020108.200002.33.61iNs9"><img alt="" src="/images/ali/HTB1lOXiQXXXXXa9XVXXq6xXFXXXd.jpg"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/2340323"><img alt="" src="/images/ali/HTB1AYXxQXXXXXcHXpXXq6xXFXXXK.jpg"> </a> </span></li>
-                            <li class="brand-item"><span><a href="https://doogee.ru.aliexpress.com/store/2795108?spm=2114.11020108.200002.32.61iNs9"><img alt="" src="/images/ali/HTB1234uPVXXXXXkXFXXq6xXFXXXO.jpg"> </a> </span></li>
-                        </ul>
-                    </div>
+                <div class="brands-list-main">
+                    <div class="brands-title">
+                        <h5>Международные бренды</h5>
+                        <a class="brands-more" href="https://mall.aliexpress.com/">Смотреть все &gt; </a></div>
+                    <ul class="brands-list clearfix">
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Centek/2058016_1000000215027.html"><img alt="" src="/images/ali/4098578410_1387778282.jpg"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Merries/2814018_1000000190072.html"><img alt="" src="/images/ali/UT8CC_wX6pXXXagOFbXE.jpg"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://miegofce.ru.aliexpress.com/store/1846541?spm=2114.11020108.200002.33.61iNs9"><img alt="" src="/images/ali/HTB1lOXiQXXXXXa9XVXXq6xXFXXXd.jpg"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/2340323"><img alt="" src="/images/ali/HTB1AYXxQXXXXXcHXpXXq6xXFXXXK.jpg"> </a> </span></li>
+                        <li class="brand-item"><span><a href="https://doogee.ru.aliexpress.com/store/2795108?spm=2114.11020108.200002.32.61iNs9"><img alt="" src="/images/ali/HTB1234uPVXXXXXkXFXXq6xXFXXXO.jpg"> </a> </span></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="action">
-            <span class="action-delivery">Бесплатная конусльтация со специалистом</span>
+</div>
+<div class="container" id="groups-container">
+    <div class="superdeals-header">
+        <h2><a href="//group.aliexpress.com/ru.htm?tracelog=rugroupbuysycp05">Горящие товары</a></h2>
+
+        <div class="service"></div>
+    </div>
+
+    <div class="superdeals-list buy-product-list">
+        <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
+            <div class="sp-product-one">
+                <a href="//group.aliexpress.com?productid=32820045421#rb91e88">
+                    <div class="pro-img-area"><img height="296"
+                                                   src="//ae01.alicdn.com/kf/HTB15mT4SFXXXXc0XFXXq6xXFXXX9.jpg_350x350.jpg"
+                                                   width="296"></div>
+                    <div class="pro-info">
+                        <div class="pro-title">Автокресло Cybex Pallas M-Fix SL</div>
+                        <div class="pro-price"><span class="g-price notranslate"><span class="g-price-n">13&nbsp;510,00 руб.</span></span>
+                            <del class="g-del-price">19&nbsp;300,00 руб.</del>
+                        </div>
+                        <div class="discount"><span class="num">-30%</span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="hidden-xs hidden-sm hidden-md col-md-20 col-lg-15">
+            <div class="sp-product-three util-clearfix">
+                <a href="//group.aliexpress.com?productid=32803282180#x48ac8a">
+                    <div class="pro-img-area"><img height="148"
+                                                   src="//ae01.alicdn.com/kf/HTB1IjwCSFXXXXX3XVXXq6xXFXXXp.jpg_350x350.jpg"
+                                                   width="148"></div>
+                    <div class="pro-info">
+                        <div class="pro-price"><span class="g-price notranslate"><span class="g-price-n">1&nbsp;285,76 руб.</span></span>
+                            <del class="g-del-price">3&nbsp;061,55 руб.</del>
+                        </div>
+                        <div class="discount"><span class="num">-58%</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="sp-product-three util-clearfix">
+                <a href="//group.aliexpress.com?productid=32767614310#hc81f99">
+                    <div class="pro-img-area"><img height="148"
+                                                   src="//ae01.alicdn.com/kf/HTB1VxICSFXXXXXUXVXXq6xXFXXXY.jpg_350x350.jpg"
+                                                   width="148"></div>
+                    <div class="pro-info">
+                        <div class="pro-price"><span class="g-price notranslate"><span
+                                class="g-price-n">841,04 руб.</span></span>
+                            <del class="g-del-price">3&nbsp;116,07 руб.</del>
+                        </div>
+                        <div class="discount"><span class="num">-73%</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="sp-product-three util-clearfix">
+                <a href="//group.aliexpress.com?productid=32807904966#pc89c89">
+                    <div class="pro-img-area"><img height="148"
+                                                   src="//ae01.alicdn.com/kf/HTB1kxWkQVXXXXXeXVXXq6xXFXXXX/BORN-PRETTY-Base-Coat-No-Wipe-Top-Coat-Set-for-UV-LED-Nail-Art-Gel-Polish.jpg"
+                                                   width="148"></div>
+                    <div class="pro-info">
+                        <div class="pro-price"><span class="g-price notranslate"><span
+                                class="g-price-n">366,92 руб.</span></span>
+                            <del class="g-del-price">366,92 руб.</del>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="hidden-xs hidden-sm col-md-20 col-lg-15">
+            <div class="sp-product-one">
+                <a href="//group.aliexpress.com?productid=32787021573#bb9d5ba">
+                    <div class="pro-img-area"><img height="296"
+                                                   src="//ae01.alicdn.com/kf/HTB1317RSFXXXXb0XpXXq6xXFXXX5.jpg_350x350.jpg"
+                                                   width="296"></div>
+                    <div class="pro-info">
+                        <div class="pro-title">ABS филамент для 3D ручки, 1,75 мм, 20 цветов</div>
+                        <div class="pro-price"><span class="g-price notranslate"><span
+                                class="g-price-n">592,34 руб.</span></span>
+                            <del class="g-del-price">925,57 руб.</del>
+                        </div>
+                        <div class="discount"><span class="num">-36%</span></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
+            <div class="sp-product-two util-clearfix">
+                <a href="//group.aliexpress.com?productid=32812323305#l5b6e89">
+                    <div class="pro-img-area"><img height="180"
+                                                   src="//ae01.alicdn.com/kf/HTB1Ero2SFXXXXc.XXXXq6xXFXXX9.jpg_350x350.jpg"
+                                                   width="180"></div>
+                    <div class="pro-info">
+                        <div class="pro-price"><span class="g-price notranslate"><span
+                                class="g-price-n">270,75 руб.</span></span>
+                            <del class="g-del-price">436,76 руб.</del>
+                        </div>
+                        <div class="discount"><span class="num">-38%</span></div>
+                    </div>
+                </a>
+            </div>
+            <div class="sp-product-two util-clearfix">
+                <a href="//group.aliexpress.com?productid=32705462476#q49b3bb">
+                    <div class="pro-img-area"><img height="180"
+                                                   src="//ae01.alicdn.com/kf/HTB1R6kLSFXXXXXJXFXXq6xXFXXXR.jpg_350x350.jpg"
+                                                   width="180"></div>
+                    <div class="pro-info">
+                        <div class="pro-price"><span class="g-price notranslate"><span
+                                class="g-price-n">360,80 руб.</span></span>
+                            <del class="g-del-price">611,95 руб.</del>
+                        </div>
+                        <div class="discount"><span class="num">-41%</span></div>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
-    <div class="container">
-        <div class="main-advices-carousel__stage jcarousel clearfix" data-jcarousel="true">
-            <ul class="catalog catalog_col-4" style="left: 0px; top: 0px;">
-                <li class="main-advices-carousel__item">
-                    <div class="advices-carousel__pic" style="background-image: url(/images/leroy/ok_01_oblozhka_kak_pokryt_krovlyu_metallocherepitsey_280.jpg);">
-                        <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
-                            <div class="advices-carousel__category">
-                                Как сделать </div>
-                            <div class="advices-carousel__type-text">
-                                Статьи </div>
-                        </a>
-                    </div>
+</div>
+<div class="container">
+    <div class="action">
+        <span class="action-delivery">Бесплатная конусльтация со специалистом</span>
+    </div>
+</div>
+<div class="container">
+    <div class="main-advices-carousel__stage jcarousel clearfix" data-jcarousel="true">
+        <ul class="catalog catalog_col-4" style="left: 0px; top: 0px;">
+            <li class="main-advices-carousel__item">
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/ok_01_oblozhka_kak_pokryt_krovlyu_metallocherepitsey_280.jpg);">
+                    <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как сделать </div>
+                        <div class="advices-carousel__type-text">
+                            Статьи </div>
+                    </a>
+                </div>
 
-                    <div class="advices-carousel__name">
-                        <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
                                         Как покрыть кровлю металлочерепицей                                    </a>
-                    </div>
+                </div>
 
-                    <div class="advices-carousel__views">
-                        29 378 Просмотров </div>
-                </li>
-                <li class="main-advices-carousel__item">
+                <div class="advices-carousel__views">
+                    29 378 Просмотров </div>
+            </li>
+            <li class="main-advices-carousel__item">
 
-                    <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11_oblozhka_kak_nanesti_antiseptik_dlya_zashchity_dere_280.jpg);">
-                        <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
-                            <div class="advices-carousel__category">
-                                Как сделать </div>
-                            <div class="advices-carousel__type-text">
-                                Статьи </div>
-                        </a>
-                    </div>
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11_oblozhka_kak_nanesti_antiseptik_dlya_zashchity_dere_280.jpg);">
+                    <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как сделать </div>
+                        <div class="advices-carousel__type-text">
+                            Статьи </div>
+                    </a>
+                </div>
 
-                    <div class="advices-carousel__name">
-                        <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
                                         Как нанести антисептик для защиты деревянных стен дома                                    </a>
-                    </div>
+                </div>
 
-                    <div class="advices-carousel__views">
-                        20 112 Просмотрa </div>
-                </li>
-                <li class="main-advices-carousel__item">
+                <div class="advices-carousel__views">
+                    20 112 Просмотрa </div>
+            </li>
+            <li class="main-advices-carousel__item">
 
-                    <div class="advices-carousel__pic" style="background-image: url(/images/leroy/gazon.png);">
-                        <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
-                            <div class="advices-carousel__category">
-                                Как ухаживать </div>
-                            <div class="advices-carousel__type-video">
-                                Видео </div>
-                        </a>
-                    </div>
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/gazon.png);">
+                    <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как ухаживать </div>
+                        <div class="advices-carousel__type-video">
+                            Видео </div>
+                    </a>
+                </div>
 
-                    <div class="advices-carousel__name">
-                        <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
                                         Как ухаживать за газоном                                    </a>
-                    </div>
+                </div>
 
-                    <div class="advices-carousel__views">
-                        2 488 Просмотров </div>
-                </li>
-                <li class="main-advices-carousel__item">
+                <div class="advices-carousel__views">
+                    2 488 Просмотров </div>
+            </li>
+            <li class="main-advices-carousel__item">
 
-                    <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11.jpg);">
-                        <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
-                            <div class="advices-carousel__category">
-                                Как сделать </div>
-                            <div class="advices-carousel__type-video">
-                                Видео </div>
-                        </a>
-                    </div>
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11.jpg);">
+                    <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как сделать </div>
+                        <div class="advices-carousel__type-video">
+                            Видео </div>
+                    </a>
+                </div>
 
-                    <div class="advices-carousel__name">
-                        <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
                                         Установка электроводонагревателя                                    </a>
-                    </div>
+                </div>
 
-                    <div class="advices-carousel__views">
-                        13 875 Просмотров </div>
-                </li>
-            </ul>
+                <div class="advices-carousel__views">
+                    13 875 Просмотров </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="container">
+    <div class="waterfall-tab">
+        <div class="waterfall-tab-list">
+            <a class="item selected" data-role="product-container" href="#">Все</a> {{#each categoriesViewInLikesBlock}}
+            <a class="item" data-role="{{ this._id }}" href="#">{{ this.name }}</a> {{/each}}
+            <!--<a class="item" data-role="filter" href="#">Для неё</a>-->
         </div>
     </div>
-
-    <div class="container">
-        <div class="waterfall-tab">
-            <div class="waterfall-tab-list">
-                <a class="item selected" data-role="product-container" href="#">Все</a>
-                {{#each categoriesViewInLikesBlock}}
-                    <a class="item" data-role="{{ this._id }}" href="#">{{ this.name }}</a>
-                {{/each}}
-                <!--<a class="item" data-role="filter" href="#">Для неё</a>-->
-            </div>
-        </div>
-        <div class="waterfall-products-wrap container">
-            <ul class="product-list clearfix related-recommend" data-role="product-container">
-                {{#each products}}
-                    <li class="good-item" data-role="item" data-productid="32669891457">
-                        <div class="item-inner">
-                            <h3><b>{{ this.name }}</b></h3>
-                            <a href="//www.aliexpress.com/item/Electric-Window-Switch-Control-For-Mitsubishi-Carisma-Front-Right-MR740599/32669891457.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                                target="_blank">
-                                <div class="pro-img">
-                                    {{#if this.image }}
-                                        <img src="{{this.apiUrl}}/{{ this.image }}">
-                                    {{else}}
-                                        <img src="/images/no-photo.png">
-                                    {{/if }}
-                                </div>
-                                <div class="pro-info">
-                                    <!--<div class="g-orders">Заказов: 73</div>-->
-                                    <span class="g-price">{{ this.price }}</span>
-                                    <del class="g-del-price">{{ this.priceStock }}</del>
-                                </div>
-                            </a>
+    <div class="waterfall-products-wrap container">
+        <ul class="product-list clearfix related-recommend" data-role="product-container">
+            {{#each products}}
+            <li class="good-item" data-role="item" data-productid="32669891457">
+                <div class="item-inner">
+                    <h3><b>{{ this.name }}</b></h3>
+                    <a href="//www.aliexpress.com/item/Electric-Window-Switch-Control-For-Mitsubishi-Carisma-Front-Right-MR740599/32669891457.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
+                        target="_blank">
+                        <div class="pro-img">
+                            {{#if this.image }}
+                            <img src="{{this.apiUrl}}/{{ this.image }}"> {{else}}
+                            <img src="/images/no-photo.png"> {{/if }}
                         </div>
-                    </li>
-                {{/each}}
-            </ul>
-            {{#each categoriesViewInLikesBlock}}
-                <ul class="product-list clearfix related-recommend" data-role="{{ this._id }}">
-                    {{#each this.rndProducts}}
-                        <li class="good-item" data-role="item" data-productid="{{ this._id }}">
-                            <h3><b>{{ this.name }}</b></h3>
-                            <div class="item-inner">
-                                <a href="//www.aliexpress.com/item/Hallux-valgus-correction-daily-spot-a-large-number-of-wholesale-appliance-care-insole-insole-toe/32524673244.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
-                                    target="_blank">
-                                    <div class="pro-img">
-                                        {{#if this.image }}
-                                            <img src="{{this.apiUrl}}/{{ this.image }}">
-                                        {{else}}
-                                            <img src="/images/no-photo.png">
-                                        {{/if }}
-                                    </div>
-                                    <div class="pro-info">
-                                        <!--<div class="g-orders">Заказов: 1287</div>-->
-                                        <span class="g-price">{{ this.price }}</span>
-                                        <del class="g-del-price">{{ this.price }}</del>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-                    {{/each}}
-                </ul>
+                        <div class="pro-info">
+                            <!--<div class="g-orders">Заказов: 73</div>-->
+                            <span class="g-price">{{ this.price }}</span>
+                            <del class="g-del-price">{{ this.priceStock }}</del>
+                        </div>
+                    </a>
+                </div>
+            </li>
             {{/each}}
-        </div>
+        </ul>
+        {{#each categoriesViewInLikesBlock}}
+        <ul class="product-list clearfix related-recommend" data-role="{{ this._id }}">
+            {{#each this.rndProducts}}
+            <li class="good-item" data-role="item" data-productid="{{ this._id }}">
+                <h3><b>{{ this.name }}</b></h3>
+                <div class="item-inner">
+                    <a href="//www.aliexpress.com/item/Hallux-valgus-correction-daily-spot-a-large-number-of-wholesale-appliance-care-insole-insole-toe/32524673244.html?scm=1007.13562.83616.0&amp;pvid=59f2ae56-07d1-47a8-918b-2a863feaf624&amp;tpp=1"
+                        target="_blank">
+                        <div class="pro-img">
+                            {{#if this.image }}
+                            <img src="{{this.apiUrl}}/{{ this.image }}"> {{else}}
+                            <img src="/images/no-photo.png"> {{/if }}
+                        </div>
+                        <div class="pro-info">
+                            <!--<div class="g-orders">Заказов: 1287</div>-->
+                            <span class="g-price">{{ this.price }}</span>
+                            <del class="g-del-price">{{ this.price }}</del>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        {{/each}}
     </div>
+</div>
 
-    <section class="section p0 m0">
-        <div class="container clearfix">
-            <h2 class="section__hl" style="text-transform: none;">#ЯлюблюЛеруаМерлен</h2>
-            <!--<h2 class="section__hl">Мы в социальных сетях <span class="socials__hashtag">#ЯлюблюЛеруаМерлен</span></h2>-->
+<section class="section p0 m0">
+    <div class="container clearfix">
+        <h2 class="section__hl" style="text-transform: none;">#ЯлюблюЛеруаМерлен</h2>
+        <!--<h2 class="section__hl">Мы в социальных сетях <span class="socials__hashtag">#ЯлюблюЛеруаМерлен</span></h2>-->
 
-            <div class="socials" loaded="true">
-                <div class="socials__col">
-                    <div class="socials__title">
-                        <p class="socials__title__name">
-                            <i class="socials__title__name_instagram"></i> leroymerlinrussia
-                        </p>
-                        <a href="https://www.instagram.com/leroymerlinrussia/" target="_blank" class="socials__title__subscribe btn btn_sm btn_grd">Подписаться</a>
-                    </div>
-
-                    <div class="socials__content">
-                        <img src="/images/leroy/cat.jpg" alt="Ремонт — дело тонкое! Даже котику трудно оставаться равнодушным к процессу преображения жилья. #ЛеруаМерлен #LeroyMerlin #leroymerlinrus_hr #ЯЛюблюЛеруаМерлен">
-                    </div>
-                </div>
-                <div class="socials__col">
-                    <div class="socials__title">
-                        <p class="socials__title__name">
-                            <i class="socials__title__name_vk"></i> leroy_merlin
-                        </p>
-                        <a href="https://vk.com/leroy_merlin" target="_blank" class="socials__title__subscribe btn btn_sm btn_grd" onclick="dataLayerSocialClickPush(&#39;VKontakte&#39;, this.href, &#39;subscribe&#39;);">Подписаться</a>
-                    </div>
-
-                    <div class="socials__content">
-                        <div id="vk_groups" style="width: 344px; height: 359.965px; background: none;">
-                            <iframe name="fXD3c5d4" frameborder="0" src="./Леруа Мерлен – товары для строительства и ремонта по низким ценам_files/widget_community.html"
-                                width="344" height="360" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 359.965px;"></iframe>
-                        </div>
-                    </div>
+        <div class="socials" loaded="true">
+            <div class="socials__col">
+                <div class="socials__title">
+                    <p class="socials__title__name">
+                        <i class="socials__title__name_instagram"></i> leroymerlinrussia
+                    </p>
+                    <a href="https://www.instagram.com/leroymerlinrussia/" target="_blank" class="socials__title__subscribe btn btn_sm btn_grd">Подписаться</a>
                 </div>
 
-                <div class="socials__col">
-                    <div class="socials__title">
-                        <p class="socials__title__name">
-                            <i class="socials__title__name_youtube"></i> LeroyMerlinRu
-                        </p>
-                        <a href="https://www.youtube.com/user/LeroyMerlinRu?sub_confirmation=1" target="_blank" class="socials__title__subscribe btn btn_sm btn_grd"
-                            onclick="dataLayerSocialClickPush(&#39;YouTube&#39;, this.href, &#39;subscribe&#39;);">Подписаться</a>
-                    </div>
+                <div class="socials__content">
+                    <img src="/images/leroy/cat.jpg" alt="Ремонт — дело тонкое! Даже котику трудно оставаться равнодушным к процессу преображения жилья. #ЛеруаМерлен #LeroyMerlin #leroymerlinrus_hr #ЯЛюблюЛеруаМерлен">
+                </div>
+            </div>
+            <div class="socials__col">
+                <div class="socials__title">
+                    <p class="socials__title__name">
+                        <i class="socials__title__name_vk"></i> leroy_merlin
+                    </p>
+                    <a href="https://vk.com/leroy_merlin" target="_blank" class="socials__title__subscribe btn btn_sm btn_grd" onclick="dataLayerSocialClickPush(&#39;VKontakte&#39;, this.href, &#39;subscribe&#39;);">Подписаться</a>
+                </div>
 
-                    <div class="socials__content socials__content mCustomScrollbar _mCS_1 mCS-autoHide" data-mcs-theme="minimal" style="position: relative; overflow: visible;">
-                        <div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0">
-                            <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
-                                <div class="youtube" id="https://www.youtube.com/embed/pDGHtNlr4-4" style="width: 100%; height: 200px; background-image: url(&quot;https://i.ytimg.com/vi/pDGHtNlr4-4/sddefault.jpg&quot;);">
-                                    <div class="play"></div>
-                                </div>
-                                <div class="youtube" id="https://www.youtube.com/embed/HcP6jKx9Nk0" style="width: 100%; height: 200px; background-image: url(&quot;https://i.ytimg.com/vi/HcP6jKx9Nk0/sddefault.jpg&quot;);">
-                                    <div class="play"></div>
-                                </div>
+                <div class="socials__content">
+                    <div id="vk_groups" style="width: 344px; height: 359.965px; background: none;">
+                        <iframe name="fXD3c5d4" frameborder="0" src="./Леруа Мерлен – товары для строительства и ремонта по низким ценам_files/widget_community.html"
+                            width="344" height="360" scrolling="no" id="vkwidget1" style="overflow: hidden; height: 359.965px;"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="socials__col">
+                <div class="socials__title">
+                    <p class="socials__title__name">
+                        <i class="socials__title__name_youtube"></i> LeroyMerlinRu
+                    </p>
+                    <a href="https://www.youtube.com/user/LeroyMerlinRu?sub_confirmation=1" target="_blank" class="socials__title__subscribe btn btn_sm btn_grd"
+                        onclick="dataLayerSocialClickPush(&#39;YouTube&#39;, this.href, &#39;subscribe&#39;);">Подписаться</a>
+                </div>
+
+                <div class="socials__content socials__content mCustomScrollbar _mCS_1 mCS-autoHide" data-mcs-theme="minimal" style="position: relative; overflow: visible;">
+                    <div id="mCSB_1" class="mCustomScrollBox mCS-minimal mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0">
+                        <div id="mCSB_1_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+                            <div class="youtube" id="https://www.youtube.com/embed/pDGHtNlr4-4" style="width: 100%; height: 200px; background-image: url(&quot;https://i.ytimg.com/vi/pDGHtNlr4-4/sddefault.jpg&quot;);">
+                                <div class="play"></div>
+                            </div>
+                            <div class="youtube" id="https://www.youtube.com/embed/HcP6jKx9Nk0" style="width: 100%; height: 200px; background-image: url(&quot;https://i.ytimg.com/vi/HcP6jKx9Nk0/sddefault.jpg&quot;);">
+                                <div class="play"></div>
                             </div>
                         </div>
-                        <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: block;">
-                            <div class="mCSB_draggerContainer">
-                                <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; display: block; height: 275px; max-height: 326px; top: 0px;">
-                                    <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
-                                </div>
-                                <div class="mCSB_draggerRail"></div>
+                    </div>
+                    <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal mCSB_scrollTools_vertical" style="display: block;">
+                        <div class="mCSB_draggerContainer">
+                            <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; display: block; height: 275px; max-height: 326px; top: 0px;">
+                                <div class="mCSB_dragger_bar" style="line-height: 50px;"></div>
                             </div>
+                            <div class="mCSB_draggerRail"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <div class="container">
-        <div class="category-slider-wrap">
-            <ul class="category-slider" id="category-slider">
-                {{#each parentCategories}}
-                    <li>
-                        <p class="title"><a href="#">{{ this.name }}</a></p>
-                        {{#each this.childCategories}}
-                            <p class="cat"><a href="#">{{ this.name }}</a></p>
-                        {{/each}}
-                    </li>
+    </div>
+</section>
+<div class="container">
+    <div class="category-slider-wrap">
+        <ul class="category-slider" id="category-slider">
+            {{#each parentCategories}}
+            <li>
+                <p class="title"><a href="#">{{ this.name }}</a></p>
+                {{#each this.childCategories}}
+                <p class="cat"><a href="#">{{ this.name }}</a></p>
                 {{/each}}
+            </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="partners">
+        <div class="partners-main util-clearfix">
+            <ul class="partners-list" title="Нам доверяют:">
+                <li class="p-ups-logo">UPS</li>
+                <li class="p-qiwi-logo">QIWI</li>
+                <li class="p-mastercard-logo">MasterCard</li>
+                <li class="p-western-logo">WESTERN UNION</li>
+                <li class="p-ems-logo">EMS</li>
+                <li class="p-webmoney-logo">Web Money</li>
+                <li class="p-visa-logo">VISA</li>
+                <li class="p-chinabank-logo">CHINABANK</li>
+                <li class="p-fedex-logo">FedEx</li>
+                <li class="p-dhl-logo">DHL</li>
+                <li class="p-yandex-logo">Yandex.Money</li>
+                <li class="p-amax-logo">Amax</li>
             </ul>
         </div>
     </div>
-    <div class="container clearfix">
-        <div class="partners">
-            <div class="partners-main util-clearfix">
-                <ul class="partners-list" title="Нам доверяют:">
-                    <li class="p-ups-logo">UPS</li>
-                    <li class="p-qiwi-logo">QIWI</li>
-                    <li class="p-mastercard-logo">MasterCard</li>
-                    <li class="p-western-logo">WESTERN UNION</li>
-                    <li class="p-ems-logo">EMS</li>
-                    <li class="p-webmoney-logo">Web Money</li>
-                    <li class="p-visa-logo">VISA</li>
-                    <li class="p-chinabank-logo">CHINABANK</li>
-                    <li class="p-fedex-logo">FedEx</li>
-                    <li class="p-dhl-logo">DHL</li>
-                    <li class="p-yandex-logo">Yandex.Money</li>
-                    <li class="p-amax-logo">Amax</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+</div>
