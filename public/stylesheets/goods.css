@@ -1,5 +1,10 @@
 @charset "UTF-8";
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
+
+* {
+    font-weight: 400 !important;
+}
+
 #mneniyapro_feed,
 html {
   -webkit-text-size-adjust: 100%; }
