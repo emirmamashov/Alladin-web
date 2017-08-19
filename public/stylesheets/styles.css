@@ -167,17 +167,7 @@ ul li {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border: 0;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0079bc+0,00509d+100 */
-    background: #0079bc;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #e45d6b 0%, #bd1c2c 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #e45d6b 0%, #bd1c2c 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #e45d6b 0%, #bd1c2c 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0079bc', endColorstr='#00509d', GradientType=0);
-    /* IE6-9 */
+    background: #fb722c;
     color: #fff;
     padding: 10px;
     font-size: 1.2rem;
@@ -649,7 +639,7 @@ ul li {
   border: none; }
 
 .main-advices-carousel__item .advices-carousel__name a:hover {
-  color: #66c05d; }
+  color: #fb722c; }
 
 .main-advices-carousel__item .advices-carousel__pic {
   display: block;
@@ -676,7 +666,7 @@ ul li {
   font-size: 12px;
   color: #fff;
   line-height: 19px;
-  background: #66c05d;
+  background: #fb722c;
   padding: 0 11px 0 10px; }
 
 .main-advices-carousel__item .advices-carousel__type-text:before {
@@ -717,7 +707,7 @@ ul li {
   display: inline-block;
   position: relative;
   font-size: 11px;
-  color: #66c05d;
+  color: #fb722c;
   font-weight: 700;
   text-transform: uppercase;
   border: none;
@@ -734,7 +724,7 @@ ul li {
   top: 5px;
   right: -13px;
   border: 3px solid transparent;
-  border-left: 5px solid #66c05d; }
+  border-left: 5px solid #fb722c; }
 
 .waterfall-tab {
   width: 100%;

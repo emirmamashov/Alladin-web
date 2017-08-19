@@ -4,7 +4,7 @@
 
 .catalog-redesign-wrapper .cr-triangle-green-link {
   padding-left: 14px;
-  color: #66c05d;
+  color: #fb722c;
   font-size: 13px;
   line-height: 20px;
   border-bottom: none;
@@ -15,7 +15,7 @@
   border: solid transparent;
   border-color: rgba(255, 255, 255, 0);
   border-width: 4px;
-  border-left-color: #66c05d;
+  border-left-color: #fb722c;
   display: block;
   width: 0;
   height: 0;
@@ -77,8 +77,8 @@
 .catalog-redesign-wrapper .left-col ul.catalog-left-menu > li > a.active,
 .catalog-redesign-wrapper .left-col ul.catalog-left-menu > li > a:hover {
   color: #fff;
-  background: #66c05d;
-  border-bottom: 1px solid #66c05d; }
+  background: #fb722c;
+  border-bottom: 1px solid #fb722c; }
 
 .catalog-redesign-wrapper .left-col ul.catalog-left-menu > li > a .cs_cnt {
   height: 16px;
@@ -99,7 +99,7 @@
 .catalog-redesign-wrapper .left-col ul.catalog-left-menu > li > a.active .cs_cnt,
 .catalog-redesign-wrapper .left-col ul.catalog-left-menu > li > a:hover .cs_cnt {
   background: #fff;
-  color: #66c05d; }
+  color: #fb722c; }
 
 .catalog-redesign-wrapper .left-col .left-col-title {
   margin: 10px 0 14px;
@@ -338,8 +338,8 @@
   position: absolute;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  color: #66c05d;
-  border: 2px solid #66c05d;
+  color: #fb722c;
+  border: 2px solid #fb722c;
   font-weight: 700;
   font-size: 14px;
   text-align: center;
@@ -353,7 +353,7 @@
   font-weight: 400;
   position: relative;
   text-transform: uppercase;
-  color: #66c05d;
+  color: #fb722c;
   border: none;
   display: block;
   float: left; }
@@ -434,7 +434,7 @@
   font-family: arialnarrow, Arial, Helvetica, 'Helvetica CY', 'Nimbus Sans L', sans-serif; }
 
 .column-left__banner .banner-kitchen__border-block {
-  border-bottom: 2px solid #66c05d;
+  border-bottom: 2px solid #fb722c;
   max-width: 160px; }
 
 .column-left__banner .banner-kitchen__title {
@@ -456,7 +456,7 @@
   line-height: 18px; }
 
 .column-left__banner .banner-kitchen__item span {
-  color: #66c05d; }
+  color: #fb722c; }
 
 .column-left__banner .banner-kitchen .banner-kitchen_buy,
 .column-left__banner .banner-kitchen .banner-kitchen_project {
@@ -473,7 +473,7 @@
   display: inline-block;
   position: relative;
   margin: 0 0 8px 12px;
-  background: #66c05d;
+  background: #fb722c;
   -webkit-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0; }
 
@@ -482,7 +482,7 @@
   display: block;
   content: '';
   border: 14px solid transparent;
-  border-right: 12px solid #66c05d;
+  border-right: 12px solid #fb722c;
   top: 0;
   left: -26px; }
 
@@ -662,7 +662,7 @@
   width: 38px;
   margin: 0 -1px 0 0;
   padding: 0;
-  fill: #66c05d; }
+  fill: #fb722c; }
 
 .sorting__view .btn:first-child {
   -webkit-border-radius: 2px 0 0 2px;
@@ -679,7 +679,7 @@
 .sorting__view .btn.is-hover,
 .sorting__view .btn:focus,
 .sorting__view .btn:hover {
-  fill: #66c05d; }
+  fill: #fb722c; }
 
 .sorting__view .btn.is-focus .icon-view-row,
 .sorting__view .btn.is-hover .icon-view-row,
@@ -709,7 +709,7 @@
   height: 18px; }
 
 .sorting__view .btn.is-active {
-  background: #66c05d;
+  background: #fb722c;
   fill: #fff;
   cursor: default; }
 
