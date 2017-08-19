@@ -1,9 +1,39 @@
 let express = require('express');
 let router = express.Router();
+let mongoose = require('mongoose');
+let ObjectId = mongoose.Types.ObjectId;
 
 module.exports = (app, db) => {
     router.get('/', (req, res) => {
         db.Product.find().then(
+            (products) => {
+                res.render('products/index', {
+                    title: 'Products',
+                    products: products
+                });
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+                res.render('products/index', {
+                    title: 'Products',
+                    products: [],
+                    errors: err
+                });
+            }
+        );
+    });
+
+    router.get('/category/:categoryName/:id', (req, res) => {
+        let categoryId = req.params.id;
+        if (!categoryId || !ObjectId.isValid(categoryId)) {
+            return res.render('products/index', {
+                title: 'Products',
+                products: [],
+                errors: 'параметр неправильно передано'
+            });
+        }
+        db.Product.find({ categoryId: categoryId }).then(
             (products) => {
                 res.render('products/index', {
                     title: 'Products',

@@ -25,11 +25,11 @@
                     <ul class="categories-2">
                         {{#each parentCategories}}
                         <li>
-                            <a href="#" class="title">{{ this.name }}</a>
+                            <a href="/categories/{{this.name}}/{{this.id}}/" class="title">{{ this.name }}</a>
                             <ul class="categories-3">
                                 {{#each this.childCategories}}
                                 <li>
-                                    <a href="#">{{ this.name }}</a>
+                                    <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
                                 </li>
                                 {{/each}}
                             </ul>
@@ -41,7 +41,7 @@
             <div class="search">
                 <form action="/products/search" method="post">
                     <input type="text" class="search-field" placeholder="Поиск..." name="text" />
-                    <select name="category" id="" class="search-select">
+                    <!--<select name="category" id="" class="search-select">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -52,7 +52,7 @@
                             <option value="8">8</option>
                             <option value="9">9</option>
                             <option value="101">101</option>
-                        </select>
+                        </select>-->
                     <input type="submit" class="search-button" value="Поиск">
                 </form>
             </div>
@@ -60,7 +60,7 @@
         <ul class="menu">
             {{#each categoriesViewInMenu}}
             <li>
-                <a href="/categories">{{ this.name }}</a>
+                <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
                 <div class="menu-content clearfix">
                     <div class="left clearfix">
                         <div class="col">
@@ -68,7 +68,7 @@
                             <ul>
                                 {{#each this.childCategories}}
                                 <li>
-                                    <a href="/categories"> {{ this.name }} </a>
+                                    <a href="/categories/{{this.name}}/{{this.id}}/"> {{ this.name }} </a>
                                 </li>
                                 {{/each}}
                             </ul>

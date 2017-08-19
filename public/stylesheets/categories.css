@@ -786,3 +786,9 @@
 .sorting__category .select2-container.select2,
 .sorting__category select {
   width: 300px !important; }
+
+.selectedCategory {
+  color: #fff !important;
+  background: #fb722c !important;
+  border-bottom: 1px solid #fb722c !important;
+}

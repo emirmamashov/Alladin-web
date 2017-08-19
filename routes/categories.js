@@ -9,6 +9,7 @@ let chunk = require('../services/chunk');
 
 module.exports = (app, db) => {
     router.get('/', (req, res) => {
+        console.log('----------categories---------');
         db.Category.find().then(
             (categories) => {
                 db.Product.find().then(
@@ -19,7 +20,7 @@ module.exports = (app, db) => {
                             title: 'Categories', 
                             parentCategories: parentCategories,
                             products: products,
-                            chunkParentCategories: chunk(parentCategories)
+                            chunkCategories: chunk(parentCategories)
                         });
                     }
                 ).catch(
@@ -37,21 +38,29 @@ module.exports = (app, db) => {
         );
     });
 
-    router.get('/:id', (req, res) => {
+    router.get('/:name/:id', (req, res) => {
+        console.log('---------/:name/:id------------');
         let categoryId = req.params.id;
+        console.log(categoryId);
         if (!categoryId || !ObjectId.isValid(categoryId)) {
-            return res.render('categories/index', { title: 'Categories', errors: err });
+            console.log('error in parameters');
+            return res.render('categories/index', { title: 'Categories', errors: 'error in parameters' });
         }
-        db.Category.find({ parentCategory: categoryId}).then(
+        db.Category.find().then(
             (categories) => {
                 db.Product.find().then(
                     (products) => {
                         let parentCategories = categoryService.findParentCategory(categories, products);
-                        res.render('categories/index', { 
+                        let selectedCategory = categories.filter(x => x._id == categoryId)[0];
+                        let selectedChildCategories = categoryService.findChildCategories(categories, selectedCategory.childCategories, products);
+                        selectedCategory['selected'] = true;
+                        console.log(selectedChildCategories);
+                        return res.render('categories/index', { 
                             title: 'Categories', 
                             parentCategories: parentCategories,
                             products: products,
-                            chunkParentCategories: chunk(parentCategories)
+                            selectedCategory: selectedCategory,
+                            chunkCategories: chunk(selectedChildCategories)
                         });
                     }
                 ).catch(

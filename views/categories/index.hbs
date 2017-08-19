@@ -3,16 +3,24 @@
      <div class="container">
         <div class="catalog-redesign-wrapper">
             <h1 class="ttu blk-title">Каталог</h1>
-
             <div class="left-col">
-
                 <ul class="catalog-left-menu">
                     {{#each parentCategories}}
                         <li>
-                            <a href="https://leroymerlin.ru/catalogue/stroymaterialy/">
-                                <div class="cs_name">{{ this.name }}</div>
-                                <div class="cs_cnt">{{ this.products.length }}</div>
-                            </a>
+                            {{#if this.selected}}
+                                <a href="/categories/{{this.name}}/{{this.id}}/" style="
+                                        color: #fff !important;background: #fb722c;
+                                        border-bottom: 1px solid #fb722c;
+                                ">
+                                    <div class="cs_name">{{ this.name }}</div>
+                                    <div class="cs_cnt">{{ this.products.length }}</div>
+                                </a>
+                            {{else}}
+                                <a href="/categories/{{this.name}}/{{this.id}}/">
+                                    <div class="cs_name">{{ this.name }}</div>
+                                    <div class="cs_cnt">{{ this.products.length }}</div>
+                                </a>
+                            {{/if}}
                         </li>
                     {{/each}}
                     <li class="picture">
@@ -22,10 +30,11 @@
                     </li>
                 </ul>
             </div>
+
             <div class="right-col">
                 <table class="catalog-redesign-sections">
                     <tbody>
-                        {{#each chunkParentCategories}}
+                        {{#each chunkCategories}}
                         <tr class="cr-photo-tr">
                             {{#ifCond this.data.length '>' 0}}
                             <td data-section-code="stroymaterialy">
@@ -53,12 +62,12 @@
                                 <td>
                                     <div class="cr-section-desc">
                                         <div class="cr-section-title">
-                                            <a href="https://leroymerlin.ru/catalogue/stroymaterialy/">{{ this.name }}</a>
+                                            {{ this.name }}
                                         </div>
                                         <ul class="cr-section-categories">
                                             {{#each this.childCategories}}
                                             <li>
-                                                <a href="https://leroymerlin.ru/catalogue/stroymaterialy/suhie_smesi_shtukaturki/#suhie_smesi_shtukaturki">
+                                                <a href="/products/category/{{this.name}}/{{this.id}}/">
                                                     <div class="cs_name">{{ this.name }}</div>
                                                     <div class="cs_cnt">{{ this.products.length }}</div>
                                                 </a>
