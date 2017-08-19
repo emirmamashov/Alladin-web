@@ -2,6 +2,7 @@ let express = require('express');
 let router = express.Router();
 
 let categoryService = require('../services/category');
+let chunkService = require('../services/chunk');
 
 module.exports = (app, db) => {
   let config = app.get('config');
@@ -49,15 +50,20 @@ module.exports = (app, db) => {
                     db.Product.find({ categoryId: { $in: categoryIds } }).limit(limitCount).skip(r).then(
                       (rndProducts) => {
                         console.log(rndProducts);
-                      rndProducts.forEach((product) => {
-                        product['apiUrl'] = config.API_URL;
-                      });
+                        rndProducts.forEach((product) => {
+                          product['apiUrl'] = config.API_URL;
+                        });
                         categoriesViewInLikesBlock.forEach((category) => {
                           category['rndProducts'] = rndProducts.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString());
                         });
+
+                        let hotProducts = products.filter(x => x.isHot);
+                        hotProducts.forEach((product) => {
+                          product['apiUrl'] = config.API_URL;
+                        });
                         
                         res.render('index', { 
-                          title: 'Express123',
+                          title: 'Главная страница',
                           parentCategories: parentCategories,
                           products: products,
                           categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
@@ -65,7 +71,8 @@ module.exports = (app, db) => {
                           banners: banners,
                           producers: producers,
                           categoriesViewInLikesBlock: categoriesViewInLikesBlock,
-                          rndProducts: rndProducts
+                          rndProducts: rndProducts,
+                          chunkHotProducts: chunkService(hotProducts, 3)
                         });
                       }
                     ).catch(

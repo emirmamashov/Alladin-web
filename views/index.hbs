@@ -18,9 +18,13 @@
         </div>
         <div class="company-slider-wrap">
             <ul class="company-slider" id="company-slider">
-                {{#each producers}} {{#if this.image}}
-                <li><img src="{{ this.apiUrl }}/{{ this.image }}" alt=""></li>
-                {{/if}} {{/each}}
+                {{#each producers}} 
+                    {{#if this.image}}
+                        <li>
+                            <img src="{{ this.apiUrl }}/{{ this.image }}" alt="">
+                        </li>
+                    {{/if}} 
+                {{/each}}
             </ul>
         </div>
     </div>
@@ -171,12 +175,46 @@
 </div>
 <div class="container" id="groups-container">
     <div class="superdeals-header">
-        <h2><a href="//group.aliexpress.com/ru.htm?tracelog=rugroupbuysycp05">Горящие товары</a></h2>
+        <h2>Горящие товары</h2>
 
         <div class="service"></div>
     </div>
-
     <div class="superdeals-list buy-product-list">
+        {{#each chunkHotProducts}}
+        <div class="hidden-xs hidden-sm hidden-md col-md-20 col-lg-15">
+            {{#each this.data}}
+                <a href="/products/details/{{ this.id }}">
+                    <div class="sp-product-three util-clearfix">
+                        <div class="pro-img-area">
+                            {{#if this.image}}
+                                <img height="146" 
+                                 src="{{ this.apiUrl }}/{{ this.image }}"
+                                 width="146">
+                            {{/if}}
+                        </div>
+                        <div class="pro-info">
+                            <div class="pro-title">{{ this.name }}</div>
+                            <div class="pro-price">
+                                <span class="g-price notranslate">
+                                    {{#if this.priceStock}}
+                                        <span class="g-price-n">{{ this.priceStock }}</span>
+                                    {{/if}}
+                                </span>
+                                {{#if this.price}}
+                                    <del class="g-del-price">{{ this.price }}</del>
+                                {{/if}}
+                            </div>
+                            <!--<div class="discount">
+                                <span class="num">-58%</span>
+                            </div>-->
+                        </div>
+                    </div>
+                </a>
+            {{/each}}
+        </div>
+        {{/each}}
+
+        <!--
         <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
             <div class="sp-product-one">
                 <a href="//group.aliexpress.com?productid=32820045421#rb91e88">
@@ -235,7 +273,6 @@
                 </a>
             </div>
         </div>
-
         <div class="hidden-xs hidden-sm col-md-20 col-lg-15">
             <div class="sp-product-one">
                 <a href="//group.aliexpress.com?productid=32787021573#bb9d5ba">
@@ -282,7 +319,7 @@
                     </div>
                 </a>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <div class="container">
@@ -502,9 +539,9 @@
         <ul class="category-slider" id="category-slider">
             {{#each parentCategories}}
             <li>
-                <p class="title"><a href="#">{{ this.name }}</a></p>
+                <p class="title"><a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a></p>
                 {{#each this.childCategories}}
-                <p class="cat"><a href="#">{{ this.name }}</a></p>
+                <p class="cat"><a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a></p>
                 {{/each}}
             </li>
             {{/each}}
