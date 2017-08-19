@@ -22,6 +22,9 @@ module.exports = (app, db) => {
               }
             });
 
+            let parentCategories = categoryService.findParentCategory(categories, products);
+            console.log(parentCategories);
+
             db.Banner.find({ category: { $in: categoryIds } }).then(
               (banners) => {
                 banners.forEach((banner) => {
@@ -55,9 +58,9 @@ module.exports = (app, db) => {
                         
                         res.render('index', { 
                           title: 'Express123',
-                          parentCategories: categoryService.findParentCategory(categories, products),
+                          parentCategories: parentCategories,
                           products: products,
-                          categoriesViewInMenu: categories.filter(x => x.viewInMenu),
+                          categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                           apiUrl: config.API_URL,
                           banners: banners,
                           producers: producers,

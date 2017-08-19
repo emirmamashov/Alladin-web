@@ -48,7 +48,7 @@
             <ul class="menu">
                 {{#each categoriesViewInMenu}}
                     <li>
-                        <a href="#">{{ this.name }}</a>
+                        <a href="/categories">{{ this.name }}</a>
                         <div class="menu-content clearfix">
                             <div class="left clearfix">
                                 <div class="col">
@@ -56,7 +56,7 @@
                                     <ul>
                                         {{#each this.childCategories}}
                                             <li>
-                                                <a href="#"> {{ this.name }} </a>
+                                                <a href="/categories"> {{ this.name }} </a>
                                             </li>
                                         {{/each}}
                                     </ul>
