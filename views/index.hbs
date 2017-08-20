@@ -3,17 +3,19 @@
     <div class="container">
         <div class="main-slider-wrap">
             <ul id="main-slider" class="main-slider">
-                {{#each banners}} {{#if this.image }}
-                <li>
-                    <img height="500" src="{{ this.apiUrl }}/{{ this.image}}" alt=""> {{#if this.buttonLink}}
-                    <div class="info">
-                        <!--<p>Горячая вода - круглый год</p>
-                                        <span>Подберите водонагреватель</span>-->
-                        <a href="{{ this.buttonLink }}">{{ this.buttonName }}</a>
-                    </div>
-                    {{/if }}
-                </li>
-                {{/if }} {{/each}}
+                {{#each banners}} 
+                    {{#if this.image }}
+                    <li>
+                        <img height="500" src="{{ this.apiUrl }}/{{ this.image}}" alt=""> {{#if this.buttonLink}}
+                        <div class="info">
+                            <!--<p>Горячая вода - круглый год</p>
+                                            <span>Подберите водонагреватель</span>-->
+                            <a href="{{ this.buttonLink }}">{{ this.buttonName }}</a>
+                        </div>
+                        {{/if }}
+                    </li>
+                    {{/if }} 
+                {{/each}}
             </ul>
         </div>
         <div class="company-slider-wrap">
@@ -63,22 +65,29 @@
             <div class="brands-event-content col-lg-30 col-md-30 col-sm-30">
                 <div class="mall-ru-left-top">
                     <div class="left-banner-wrap">
-                        <div class="banner-img" style="background-image:url('/images/ali/HTB18gozQFXXXXbrapXX760XFXXXs.png');"><a href="https://mall.aliexpress.com/molnia">&nbsp; </a></div>
+                        <div class="banner-img" style="background-image:url('{{leftBannerShowInMainPage.apiUrl}}/{{leftBannerShowInMainPage.image}}');">
+                        <a href="{{leftBannerShowInMainPage.buttonLink}}">&nbsp; </a></div>
                     </div>
 
                     <div class="seller-entrances-wrap">
                         <ul>
                             {{#each parentCategories}}
-                            <li class="seller-item">
-                                <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a></div>
+                                <li class="seller-item">
+                                    <div class="entrance-title">
+                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a>
+                                    </div>
 
-                                <div class="entrance-logo">
-                                    <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> </a>
-                                </div>
+                                    <div class="entrance-logo">
+                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
+                                            <img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> 
+                                        </a>
+                                    </div>
 
-                                <div class="entrance-pic">
-                                    <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm"><img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png"> </a>
-                                </div>
+                                    <div class="entrance-pic">
+                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
+                                            <img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png">
+                                        </a>
+                                    </div>
                             </li>
                             {{/each}}
                         </ul>
@@ -102,65 +111,40 @@
             <div class="hot-brands-content col-lg-30 col-md-30 col-sm-30">
                 <div class="mall-ru-right-top">
                     <div class="left-banner-wrap">
-                        <div class="banner-img" style="background-image: url('/images/ali/HTB1eK0dQVXXXXc7XpXX760XFXXXt.png');">
-                            <a href="https://mall.aliexpress.com/">&nbsp; </a>
+                        <div class="banner-img" style="background-image:url('{{rigthBannerShowInMainPage.apiUrl}}/{{rigthBannerShowInMainPage.image}}');">
+                            <a href="{{rigthBannerShowInMainPage.buttonLink}}">&nbsp; </a>
                         </div>
                     </div>
-
-                    <!--<div class="seller-entrances-wrap">
-                            <ul>
+                    <div class="seller-entrances-wrap">
+                        <ul>
+                            {{#each parentCategories}}
                                 <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=5">Для дома </a></div>
+                                    <div class="entrance-title">
+                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a>
+                                    </div>
 
                                     <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=5"><img alt="" src="/images/ali/UTB8RmjTXdnJXKJkSaiyq6AhwXXam.jpg"> </a>
+                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
+                                            <img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> 
+                                        </a>
                                     </div>
 
                                     <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=5"><img alt="" src="/images/ali/HTB1b8NYRFXXXXXUXXXXq6xXFXXXw.jpg"> </a>
+                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
+                                            <img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png">
+                                        </a>
                                     </div>
-                                </li>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=1"> Одежда </a></div>
-
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=1"><img alt="" src="/images/ali/TB1cIXYLpXXXXX6XpXXXXXXXXXX-120-60.png"> </a>
-                                    </div>
-
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=1"><img alt="" src="/images/ali/HTB1UBFcRFXXXXXkapXXq6xXFXXXc.jpg"> </a>
-                                    </div>
-                                </li>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=0">Электроника  </a></div>
-
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=0"><img alt="" src="/images/ali/HTB1LTVCQXXXXXa2XpXX760XFXXXx.png"> </a>
-                                    </div>
-
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=0"><img alt="" src="/images/ali/HTB1LZhaRFXXXXb9aXXXq6xXFXXX4.jpg"> </a>
-                                    </div>
-                                </li>
-                                <li class="seller-item">
-                                    <div class="entrance-title"><a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=3">Быт.техника </a></div>
-
-                                    <div class="entrance-logo">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=3"><img alt="" src="/images/ali/HTB1BYpVRXXXXXcKXFXXq6xXFXXXS.jpg"> </a>
-                                    </div>
-
-                                    <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/mall-discount.htm?storelist=3"><img alt="" src="/images/ali/HTB1BEXARFXXXXcDXFXXq6xXFXXXX.jpg"> </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>-->
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="brands-list-main">
                     <div class="brands-title">
                         <h5>Международные бренды</h5>
-                        <a class="brands-more" href="https://mall.aliexpress.com/">Смотреть все &gt; </a></div>
+                        <a class="brands-more" href="https://mall.aliexpress.com/">Смотреть все &gt; </a>
+                    </div>
                     <ul class="brands-list clearfix">
                         <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Centek/2058016_1000000215027.html"><img alt="" src="/images/ali/4098578410_1387778282.jpg"> </a> </span></li>
                         <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Merries/2814018_1000000190072.html"><img alt="" src="/images/ali/UT8CC_wX6pXXXagOFbXE.jpg"> </a> </span></li>
@@ -173,6 +157,94 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="action">
+        <span class="action-delivery">Бесплатная конусльтация со специалистом</span>
+    </div>
+</div>
+<div class="container">
+    <div class="main-advices-carousel__stage jcarousel clearfix" data-jcarousel="true">
+        <ul class="catalog catalog_col-4" style="left: 0px; top: 0px;">
+            <li class="main-advices-carousel__item">
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/ok_01_oblozhka_kak_pokryt_krovlyu_metallocherepitsey_280.jpg);">
+                    <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как сделать </div>
+                        <div class="advices-carousel__type-text">
+                            Статьи </div>
+                    </a>
+                </div>
+
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
+                                        Как покрыть кровлю металлочерепицей                                    </a>
+                </div>
+
+                <div class="advices-carousel__views">
+                    29 378 Просмотров </div>
+            </li>
+            <li class="main-advices-carousel__item">
+
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11_oblozhka_kak_nanesti_antiseptik_dlya_zashchity_dere_280.jpg);">
+                    <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как сделать </div>
+                        <div class="advices-carousel__type-text">
+                            Статьи </div>
+                    </a>
+                </div>
+
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
+                                        Как нанести антисептик для защиты деревянных стен дома                                    </a>
+                </div>
+
+                <div class="advices-carousel__views">
+                    20 112 Просмотрa </div>
+            </li>
+            <li class="main-advices-carousel__item">
+
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/gazon.png);">
+                    <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как ухаживать </div>
+                        <div class="advices-carousel__type-video">
+                            Видео </div>
+                    </a>
+                </div>
+
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
+                                        Как ухаживать за газоном                                    </a>
+                </div>
+
+                <div class="advices-carousel__views">
+                    2 488 Просмотров </div>
+            </li>
+            <li class="main-advices-carousel__item">
+
+                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11.jpg);">
+                    <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
+                        <div class="advices-carousel__category">
+                            Как сделать </div>
+                        <div class="advices-carousel__type-video">
+                            Видео </div>
+                    </a>
+                </div>
+
+                <div class="advices-carousel__name">
+                    <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
+                                        Установка электроводонагревателя                                    </a>
+                </div>
+
+                <div class="advices-carousel__views">
+                    13 875 Просмотров </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
 <div class="container" id="groups-container">
     <div class="superdeals-header">
         <h2>Горящие товары</h2>
@@ -320,92 +392,6 @@
                 </a>
             </div>
         </div>-->
-    </div>
-</div>
-<div class="container">
-    <div class="action">
-        <span class="action-delivery">Бесплатная конусльтация со специалистом</span>
-    </div>
-</div>
-<div class="container">
-    <div class="main-advices-carousel__stage jcarousel clearfix" data-jcarousel="true">
-        <ul class="catalog catalog_col-4" style="left: 0px; top: 0px;">
-            <li class="main-advices-carousel__item">
-                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/ok_01_oblozhka_kak_pokryt_krovlyu_metallocherepitsey_280.jpg);">
-                    <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
-                        <div class="advices-carousel__category">
-                            Как сделать </div>
-                        <div class="advices-carousel__type-text">
-                            Статьи </div>
-                    </a>
-                </div>
-
-                <div class="advices-carousel__name">
-                    <a href="https://leroymerlin.ru/advice/stroymaterialy/kak-pokryt-krovlyu-metallocherepitsey/" target="_blank">
-                                        Как покрыть кровлю металлочерепицей                                    </a>
-                </div>
-
-                <div class="advices-carousel__views">
-                    29 378 Просмотров </div>
-            </li>
-            <li class="main-advices-carousel__item">
-
-                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11_oblozhka_kak_nanesti_antiseptik_dlya_zashchity_dere_280.jpg);">
-                    <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
-                        <div class="advices-carousel__category">
-                            Как сделать </div>
-                        <div class="advices-carousel__type-text">
-                            Статьи </div>
-                    </a>
-                </div>
-
-                <div class="advices-carousel__name">
-                    <a href="https://leroymerlin.ru/advice/kraski/kak-nanesti-antiseptik-dlya-zashchity-derevyannykh-sten-doma/" target="_blank">
-                                        Как нанести антисептик для защиты деревянных стен дома                                    </a>
-                </div>
-
-                <div class="advices-carousel__views">
-                    20 112 Просмотрa </div>
-            </li>
-            <li class="main-advices-carousel__item">
-
-                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/gazon.png);">
-                    <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
-                        <div class="advices-carousel__category">
-                            Как ухаживать </div>
-                        <div class="advices-carousel__type-video">
-                            Видео </div>
-                    </a>
-                </div>
-
-                <div class="advices-carousel__name">
-                    <a href="https://leroymerlin.ru/advice/sad/kak-ukhazhivat-za-gazonom/" target="_blank">
-                                        Как ухаживать за газоном                                    </a>
-                </div>
-
-                <div class="advices-carousel__views">
-                    2 488 Просмотров </div>
-            </li>
-            <li class="main-advices-carousel__item">
-
-                <div class="advices-carousel__pic" style="background-image: url(/images/leroy/11.jpg);">
-                    <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
-                        <div class="advices-carousel__category">
-                            Как сделать </div>
-                        <div class="advices-carousel__type-video">
-                            Видео </div>
-                    </a>
-                </div>
-
-                <div class="advices-carousel__name">
-                    <a href="https://leroymerlin.ru/advice/vodosnabzhenie/ustanovka-elektrovodonagrevatelya/" target="_blank">
-                                        Установка электроводонагревателя                                    </a>
-                </div>
-
-                <div class="advices-carousel__views">
-                    13 875 Просмотров </div>
-            </li>
-        </ul>
     </div>
 </div>
 

@@ -26,7 +26,7 @@ module.exports = (app, db) => {
             let parentCategories = categoryService.findParentCategory(categories, products);
             console.log(parentCategories);
 
-            db.Banner.find({ category: { $in: categoryIds } }).then(
+            db.Banner.find().then(
               (banners) => {
                 banners.forEach((banner) => {
                     banner['apiUrl'] = config.API_URL;
@@ -61,6 +61,11 @@ module.exports = (app, db) => {
                         hotProducts.forEach((product) => {
                           product['apiUrl'] = config.API_URL;
                         });
+                        let findBanners = banners.filter(x => x.isShowInMainPage);
+                        leftBannerShowInMainPage = {};
+                        rigthBannerShowInMainPage = {};
+                        if (findBanners[0]) leftBannerShowInMainPage = findBanners[0];
+                        if (findBanners[1]) rigthBannerShowInMainPage = findBanners[1];
                         
                         res.render('index', { 
                           title: 'Главная страница',
@@ -69,6 +74,8 @@ module.exports = (app, db) => {
                           categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                           apiUrl: config.API_URL,
                           banners: banners,
+                          leftBannerShowInMainPage: leftBannerShowInMainPage,
+                          rigthBannerShowInMainPage: rigthBannerShowInMainPage,
                           producers: producers,
                           categoriesViewInLikesBlock: categoriesViewInLikesBlock,
                           rndProducts: rndProducts,

@@ -67,13 +67,13 @@
                             <h4>Топ категории</h4>
                             <ul>
                                 {{#each this.childCategories}}
-                                <li>
-                                    <a href="/categories/{{this.name}}/{{this.id}}/"> {{ this.name }} </a>
-                                </li>
+                                    <li>
+                                        <a href="/categories/{{this.name}}/{{this.id}}/"> {{ this.name }} </a>
+                                    </li>
                                 {{/each}}
                             </ul>
                         </div>
-                        <div class="col">
+                        <!--<div class="col">
                             <h4>Что лучше?</h4>
                             <ul>
                                 <li><a href="">Нет это 1</a></li>
@@ -81,7 +81,7 @@
                                 <li><a href="">Нет это 3</a></li>
                                 <li><a href="">Нет это 4</a></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                     <div class="right">
                         {{#if this.photo.url }}
