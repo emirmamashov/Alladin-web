@@ -99,11 +99,17 @@
                         <h5>Мировые бренды</h5>
                         <a class="brands-more" href="https://mall.aliexpress.com/molnia">Смотреть все &gt; </a></div>
                     <ul class="brands-list clearfix">
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Apple/2792104_511480245.html"><img alt="" src="/images/ali/HTB1tCQVQXXXXXbVapXX760XFXXX6.png"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Samsung/2792104_511201904.html"><img alt="" src="/images/ali/HTB11hAWQXXXXXcjapXX760XFXXXu.png"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Bosch/2792104_510266012.html"><img alt="" src="/images/ali/HTB1FuoPQXXXXXajaFXX760XFXXX1.png"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/braun/2792104_510603684.html"><img alt="" src="/images/ali/HTB1_9o1QXXXXXcTaXXX760XFXXXN.png"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/SONY/2792104_511090988.html"><img alt="" src="/images/ali/HTB1_gFqQpXXXXaCXpXX760XFXXXj.png"> </a> </span></li>
+                        {{#each producersLeft}}
+                            {{#if this.image}}
+                            <li class="brand-item">
+                                <span>
+                                    <a href="#">
+                                        <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
+                                    </a>
+                                </span>
+                            </li>
+                            {{/if}}
+                        {{/each}}
                     </ul>
                 </div>
             </div>
@@ -146,11 +152,17 @@
                         <a class="brands-more" href="https://mall.aliexpress.com/">Смотреть все &gt; </a>
                     </div>
                     <ul class="brands-list clearfix">
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Centek/2058016_1000000215027.html"><img alt="" src="/images/ali/4098578410_1387778282.jpg"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/group/Merries/2814018_1000000190072.html"><img alt="" src="/images/ali/UT8CC_wX6pXXXagOFbXE.jpg"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://miegofce.ru.aliexpress.com/store/1846541?spm=2114.11020108.200002.33.61iNs9"><img alt="" src="/images/ali/HTB1lOXiQXXXXXa9XVXXq6xXFXXXd.jpg"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://ru.aliexpress.com/store/2340323"><img alt="" src="/images/ali/HTB1AYXxQXXXXXcHXpXXq6xXFXXXK.jpg"> </a> </span></li>
-                        <li class="brand-item"><span><a href="https://doogee.ru.aliexpress.com/store/2795108?spm=2114.11020108.200002.32.61iNs9"><img alt="" src="/images/ali/HTB1234uPVXXXXXkXFXXq6xXFXXXO.jpg"> </a> </span></li>
+                        {{#each producersRight}}
+                            {{#if this.image}}
+                            <li class="brand-item">
+                                <span>
+                                    <a href="#">
+                                        <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
+                                    </a>
+                                </span>
+                            </li>
+                            {{/if}}
+                        {{/each}}
                     </ul>
                 </div>
             </div>

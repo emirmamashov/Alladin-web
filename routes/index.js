@@ -66,7 +66,13 @@ module.exports = (app, db) => {
                         rigthBannerShowInMainPage = {};
                         if (findBanners[0]) leftBannerShowInMainPage = findBanners[0];
                         if (findBanners[1]) rigthBannerShowInMainPage = findBanners[1];
-                        
+
+                        let chunkProducers = chunkService(producers, 5);
+                        let producersLeft = {};
+                        let producersRight = {};
+                        if (chunkProducers[0] && chunkProducers[0].data) producersLeft = chunkProducers[0].data;
+                        if (chunkProducers[1] && chunkProducers[1].data) producersRight = chunkProducers[1].data;
+                        console.log(chunkProducers);
                         res.render('index', { 
                           title: 'Главная страница',
                           parentCategories: parentCategories,
@@ -77,6 +83,8 @@ module.exports = (app, db) => {
                           leftBannerShowInMainPage: leftBannerShowInMainPage,
                           rigthBannerShowInMainPage: rigthBannerShowInMainPage,
                           producers: producers,
+                          producersLeft: producersLeft,
+                          producersRight: producersRight,
                           categoriesViewInLikesBlock: categoriesViewInLikesBlock,
                           rndProducts: rndProducts,
                           chunkHotProducts: chunkService(hotProducts, 3)
