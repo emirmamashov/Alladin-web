@@ -36,23 +36,11 @@
                     <tbody>
                         {{#each chunkCategories}}
                         <tr class="cr-photo-tr">
-                            {{#ifCond this.data.length '>' 0}}
+                            {{#each this.data}}
                             <td data-section-code="stroymaterialy">
-                                <img src="/images/leroy/pic27l1c.jpg" alt="Стройматериалы">
+                                <img src="{{this.apiUrl}}/{{this.image}}"/>
                             </td>
-                            {{/ifCond}}
-
-                            {{#ifCond this.data.length '>' 1}}
-                            <td data-section-code="stolyarnye_izdeliya">
-                                <img src="/images/leroy/pic28p1v.jpg" alt="Столярные изделия">
-                            </td>
-                            {{/ifCond}}
-
-                            {{#ifCond this.data.length '>' 2}}
-                            <td data-section-code="elektrotovary">
-                                <img src="/images/leroy/pic29b1p.jpg" alt="Электротовары">
-                            </td>
-                            {{/ifCond}}
+                            {{/each}}
                         </tr>
                         <tr class="cr-middle-space-tr">
                             <td colspan="3"></td>

@@ -8,6 +8,7 @@ let categoryService = require('../services/category');
 let chunk = require('../services/chunk');
 
 module.exports = (app, db) => {
+    let config = app.get('config');
     router.get('/', (req, res) => {
         console.log('----------categories---------');
         db.Category.find().then(
@@ -20,7 +21,7 @@ module.exports = (app, db) => {
                             title: 'Categories', 
                             parentCategories: parentCategories,
                             products: products,
-                            chunkCategories: chunk(parentCategories)
+                            chunkCategories: chunk(parentCategories, 3)
                         });
                     }
                 ).catch(
@@ -48,6 +49,9 @@ module.exports = (app, db) => {
         }
         db.Category.find().then(
             (categories) => {
+                categories.forEach((category) => {
+                    category['apiUrl'] = config.API_URL;
+                });
                 db.Product.find().then(
                     (products) => {
                         let parentCategories = categoryService.findParentCategory(categories, products);
@@ -60,7 +64,7 @@ module.exports = (app, db) => {
                             parentCategories: parentCategories,
                             products: products,
                             selectedCategory: selectedCategory,
-                            chunkCategories: chunk(selectedChildCategories)
+                            chunkCategories: chunk(selectedChildCategories, 3)
                         });
                     }
                 ).catch(
