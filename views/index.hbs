@@ -23,7 +23,7 @@
                 {{#each producers}} 
                     {{#if this.image}}
                         <li>
-                            <img src="{{ this.apiUrl }}/{{ this.image }}" alt="">
+                            <img width="100" height="100"  src="{{ this.apiUrl }}/{{ this.image }}" alt="">
                         </li>
                     {{/if}} 
                 {{/each}}
@@ -71,21 +71,21 @@
 
                     <div class="seller-entrances-wrap">
                         <ul>
-                            {{#each parentCategories}}
+                            {{#each categoriesLeft}}
                                 <li class="seller-item">
                                     <div class="entrance-title">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a>
+                                        <a href="/categories/{{this.name}}/{{this.id}}">{{ this.name }}</a>
                                     </div>
 
-                                    <div class="entrance-logo">
+                                    <!--<div class="entrance-logo">
                                         <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
-                                            <img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> 
+                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
                                         </a>
-                                    </div>
+                                    </div>-->
 
                                     <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
-                                            <img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png">
+                                        <a href="/categories/{{this.name}}/{{this.id}}">
+                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
                                         </a>
                                     </div>
                             </li>
@@ -123,21 +123,21 @@
                     </div>
                     <div class="seller-entrances-wrap">
                         <ul>
-                            {{#each parentCategories}}
+                            {{#each categoriesRight}}
                                 <li class="seller-item">
                                     <div class="entrance-title">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">{{ this.name }}</a>
+                                        <a href="/categories/{{this.name}}/{{this.id}}">{{ this.name }}</a>
                                     </div>
 
-                                    <div class="entrance-logo">
+                                    <!--<div class="entrance-logo">
                                         <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
-                                            <img alt="" src="/images/ali/UTB8SirOXODEXKJk43Oq763z3XXaV.png"> 
+                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
                                         </a>
-                                    </div>
+                                    </div>-->
 
                                     <div class="entrance-pic">
-                                        <a href="https://sale.aliexpress.com/ru/Molnia_Home_PC.htm">
-                                            <img alt="" src="/images/ali/HTB1eLLVRpXXXXXsaFXX760XFXXXB.png">
+                                        <a href="/categories/{{this.name}}/{{this.id}}">
+                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
                                         </a>
                                     </div>
                             </li>

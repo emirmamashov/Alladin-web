@@ -72,7 +72,14 @@ module.exports = (app, db) => {
                         let producersRight = {};
                         if (chunkProducers[0] && chunkProducers[0].data) producersLeft = chunkProducers[0].data;
                         if (chunkProducers[1] && chunkProducers[1].data) producersRight = chunkProducers[1].data;
-                        console.log(chunkProducers);
+
+
+                        let chunkCategories = chunkService(categories.filter(x => x.image), 4);
+                        let categoriesLeft = {};
+                        let categoriesRight = {};
+                        if (chunkCategories[0] && chunkCategories[0].data) categoriesLeft = chunkCategories[0].data;
+                        if (chunkCategories[1] && chunkCategories[1].data) categoriesRight = chunkCategories[1].data;
+
                         res.render('index', { 
                           title: 'Главная страница',
                           parentCategories: parentCategories,
@@ -86,6 +93,8 @@ module.exports = (app, db) => {
                           producersLeft: producersLeft,
                           producersRight: producersRight,
                           categoriesViewInLikesBlock: categoriesViewInLikesBlock,
+                          categoriesLeft: categoriesLeft,
+                          categoriesRight: categoriesRight,
                           rndProducts: rndProducts,
                           chunkHotProducts: chunkService(hotProducts, 3)
                         });
