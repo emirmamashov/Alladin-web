@@ -2,13 +2,13 @@
     <link rel="stylesheet" href="/sass/item.css">
        <div class="mmain">
         <div class="container">
-            <ul class="breadcrumb">
+            <!--<ul class="breadcrumb">
                 <li><a href="https://max.kg/">Главная</a></li>
                 <li><a href="https://max.kg/catalog/avto">Авто</a></li>
                 <li><a href="https://max.kg/catalog/avto/avtozapchasti">Автозапчасти</a></li>
                 <li><a href="https://max.kg/catalog/avto/avtozapchasti/tormoznaya-sistema">Тормозная система</a></li>
                 <li><a href="https://max.kg/catalog/avto/avtozapchasti/tormoznaya-sistema/tormoznye-kolodki">Тормозные колодки</a></li>
-            </ul>
+            </ul>-->
             <div class="window_flow_center" id="window_box1">
                 <div class="closer" onclick="return window_boxoff(this);"></div>
                 <div id="window_box_text1">
@@ -47,34 +47,33 @@
                         });
                     </script>
 
-
-
                     <div class="clearfix" id="content" style="margin-top:0px;margin-left:0px;">
 
                         <div class="clearfix" style="margin-top:0px;margin-left:0px;">
 
-                            <a href="/images/max/700-nw.jpg" class="jqzoom" rel="gal1" title="" style="outline-style: none; text-decoration: none;">
+                            <a href="{{ product.apiUrl }}/{{ product.image }}" class="jqzoom" rel="gal1" title="" style="outline-style: none; text-decoration: none;">
                                 <div class="zoomPad">
-                                    {{#if this.image }}
-                                        <img id="img_1737688" class="one_img" src="http://localhost:3000/{{ this.image }}" title="{{product.name}}"
-                                        style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
+                                    {{#if product.image }}
+                                            <img id="img_1737688" class="one_img" src="{{ product.apiUrl }}/{{ product.image }}" 
+                                            title="{{ product.name }}"
+                                            style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
                                     {{else}}
-                                        <img id="img_1737688" class="one_img" src="/images/no-photo.png" title="{{product.name}}"
+                                        <img id="img_1737688" class="one_img" src="/images/no-photo.png" title="{{ product.name }}"
                                         style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
-                                        
                                     {{/if }}
                                     <div class="zoomPup" style="top: -1px; left: 71px; width: 428px; height: 357px; position: absolute; border-width: 1px; display: none;"></div>
                                     <div class="zoomWindow" style="position: absolute; z-index: 5001; left: 520px; top: 0px; display: none;">
                                         <div class="zoomWrapper" style="width: 600px;">
                                             <div class="zoomWrapperTitle" style="width: 100%; position: absolute; display: block;">zoom</div>
                                             <div class="zoomWrapperImage" style="width: 100%; height: 500px;">
-
-                                                {{#if this.image }}
-                                                    <img src="http://localhost:3000/{{ this.image }}" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">
-                                                    
+                                                {{#if images }}
+                                                    {{#each images}}
+                                                        <img src="{{ this.apiUrl }}/{{ this.image }}" 
+                                                        style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">
+                                                    {{/each}}
                                                 {{else}}
-                                                    <img src="/images/no-photo.png" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">
-                                                    
+                                                    <img src="/images/no-photo.png" 
+                                                    style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">
                                                 {{/if }}
                                             </div>
                                         </div>
@@ -88,34 +87,24 @@
                         <br>
                         <br>
 
-
-
-
-
                         <div class="clearfix" style="margin-top:0px;margin-left:0px;">
                             <ul id="thumblist" class="clearfix" style="padding:0px;">
-
-
-
-                                <li><a class="zoomThumbActive" href="javascript:void(0);" rel="{gallery: &#39;gal1&#39;, smallimage: &#39;https://cdn.sima-land.ru/items/1448099/0/700-nw.jpg&#39;,largeimage: &#39;https://cdn.sima-land.ru/items/1448099/0/700-nw.jpg&#39;}">
-
-                                    {{#if this.image }}
-                                        <img  width="100px" src="http://localhost:3000/{{ this.image }}">
+                                <li>
+                                    <a class="zoomThumbActive">
+                                    {{#if images }}
+                                        {{#each images}}
+                                            <img  width="100px" src="{{ this.apiUrl }}/{{ this.image }}">
+                                        {{/each}}
                                     {{else}}
                                         <img  width="100px" src="/images/no-photo.png">
                                     {{/if }}
                                 </a>
                                 </li>
-
-
                             </ul>
                             <div class="clear"></div>
                         </div>
-
-
                     </div>
                     <div class="clear"></div>
-
                     <br><br>
                     <div class="fb-comments fb_iframe_widget" data-href="https://max.kg/item/1737688/kolodki-tormoznye-konstein-5611500" data-numposts="5"
                         fb-xfbml-state="rendered">
@@ -123,23 +112,30 @@
                     </div>
                 </div>
                 <div class="product_right">
-                    <div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span>
+                    <!--<div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span>
                         <span class="product_art2">{{product._id}}</span> 
-                    </div>
+                    </div>-->
                     <div class="product_izb"><a href="https://max.kg/izb"><span class="izb1" id="iz_1737688" onclick="return izb(this);">В избранное</span></a></div>
                     <div class="table_item">
                         <div class="table_row1_product">
 
                             <div class="cell1">
-                                <span class="cena1_bold"><span class="cena1">Цена:   </span></span><span class="tcena">{{ product.price }} с.</span>                                <br>
-                                <span class="dost_credit">В кредит при заказе от <span class="blue_bold">5000 сом</span></span><br>                                </div>
+                                <span class="cena1_bold">
+                                    <span class="cena1">Цена:</span>
+                                </span>
+                                {{#if product.price}}
+                                    <span class="tcena">{{ product.price }} с.</span>
+                                {{/if}}
+                                <br>
+                                <span class="dost_credit">В кредит при заказе от 
+                                    <span class="blue_bold">5000 сом</span>
+                                </span><br>                                
+                            </div>
 
                             <div class="cell2">
                                 <span class="uch_dos">Цена указана с учетом доставки до склада в г.Бишкек, ул. Байтик Баатыра, 3/2</span>
                             </div>
                             <div class="clear"></div>
-
-
 
                             <div class="box_row">
                                 <div class="box1_one">Минимальное
@@ -149,14 +145,13 @@
                                 <div class="vall"><input value="" data-sum="741.21" data-pack="1" data-sklad="1" data-kol="1" onblur="valid(this);"
                                         id="i_1737688" type="text"></div>
                                 <div onclick="kol(this);" id="p_1737688" class="plus1"></div>
-                                <div class="kolbox"><a href="https://max.kg/"><span class="kolbox1_product" id="1737688" onclick="return box(this);">В корзину</span></a></div>
+                                <div class="kolbox">
+                                    <!--<a href="https://max.kg/">
+                                        <span class="kolbox1_product" id="1737688" onclick="return box(this);">В корзину</span>
+                                    </a>-->
+                                </div>
                                 <div class="clear"></div>
                             </div>
-
-
-
-
-
                         </div>
 
                         <div class="table_row1">
@@ -165,32 +160,16 @@
                                 Наличие:
                                 <span class="art_blue">под заказ, </span><span class="art_black">доставим: 5 - 10 июля</span>
                             </div>
-
-                            <!--<div class="cell3 cell3_2">-->
-                            <!--</div>-->
-
-                            <!--<div class="cell3 cell3_3">-->
-
-                            <!--</div>-->
                             <div class="clear"></div>
                         </div>
 
-
-
-                        <!--<div class="cell4">-->
-
-                        <!--</div>-->
-
                         <div class="cell5">
-                            <a href="https://max.kg/opl">Оплата: наличными, перечислением, elsom, mobilnik.kg</a>
+                            <a href="#">Оплата: наличными, перечислением, elsom, mobilnik.kg</a>
                         </div>
 
                         <div class="cell6">
                             Предоплата: 370.60 сом, оплата при получении: 370.60 сом.
                         </div>
-
-
-
 
                         <div class="table_row1">
                             <div class="cell7 cell7_1">
@@ -198,18 +177,17 @@
                             </div>
 
                             <div class="cell7 cell7_22 ">
-                                <a href="https://max.kg/dost"><span onclick="return window_pogorodu(this);" class="pogorodu">по городу бесплатно*</span></a>
+                                <a href="#">
+                                    <span onclick="return window_pogorodu(this);" class="pogorodu">по городу бесплатно*</span>
+                                </a>
                             </div>
 
                             <div class="cell7 cell7_2">
-                                <a href="https://max.kg/dost"><span class="per">по регионам</span></a>
-
+                                <a href="#"><span class="per">по регионам</span></a>
                             </div>
 
-
                             <div class="cell7 cell7_3">
-                                <a href="https://max.kg/dost"><span class="per">самовывоз</span></a>
-
+                                <a href="#"><span class="per">самовывоз</span></a>
                             </div>
 
                             <div class="clear"></div>
@@ -219,36 +197,27 @@
 
                     </div>
 
-
                     <div class="clear"></div>
-
-
                     <br><br>
-                    <div class="right_like">
 
-
-                        <div class="fb-like fb_iframe_widget" data-href="https://max.kg/item/1737688/kolodki-tormoznye-konstein-5611500" data-layout="standard"
-                            data-action="like" data-show-faces="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="action=like&amp;app_id=686351424874204&amp;container_width=589&amp;href=https%3A%2F%2Fmax.kg%2Fitem%2F1737688%2Fkolodki-tormoznye-konstein-5611500&amp;layout=standard&amp;locale=ru_RU&amp;sdk=joey&amp;show_faces=true"><span style="vertical-align: bottom; width: 450px; height: 20px;"><iframe name="f1a45b164c15c18" width="1000px" height="1000px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:like Facebook Social Plugin" src="/images/max/like.html" style="border: none; visibility: visible; width: 450px; height: 20px;" class=""></iframe></span></div>
-                    </div>
-
-                    <h2>Характеристики</h2><span class="naim1"><span class="naim2">Торговая марка </span></span>Konstein<br>
+                    <!--<h2>Характеристики</h2><span class="naim1"><span class="naim2">Торговая марка </span></span>Konstein<br>
                     <span class="naim1"><span class="naim2">Страна </span></span>Китай<br>
                     <span class="naim1"><span class="naim2">Размер </span></span>17 см × 9 см × 9 см<br><span class="naim1"><span class="naim2">Вес </span></span>1.35
                     кг.
                     <br><span class="naim1"><span class="naim2">Количество </span></span>В России <span class="per">1</span><br>
                     <span class="naim1"><span class="naim2">Сертификат </span></span>ЕАС<br>
-                    <br>
+                    <br>-->
                     <div class="clear"></div>
-
+                    <!--
                     <div class="gr">
                         Поделись с друзьями.
                         <br>
-                        <!-- Go to www.addthis.com/dashboard to customize your tools 
-                        <script type="text/javascript" src="img/max/addthis_widget.js"></script>-->
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                         Go to www.addthis.com/dashboard to customize your tools 
+                        <script type="text/javascript" src="img/max/addthis_widget.js"></script>
+                     Go to www.addthis.com/dashboard to customize your tools
                         <div class="addthis_inline_share_toolbox"></div>
 
-                    </div>
+                    </div>-->
                     <div class="clear"></div>
 
 

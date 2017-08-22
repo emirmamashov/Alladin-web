@@ -10,7 +10,6 @@ module.exports = (app, db) => {
   router.get('/', (req, res) => {
     db.Category.find().then(
       (categories) => {
-        console.log(config.API_URL);
         db.Product.find().then(
           (products) => {
             let categoryIds = [];
@@ -24,7 +23,6 @@ module.exports = (app, db) => {
             });
 
             let parentCategories = categoryService.findParentCategory(categories, products);
-            console.log(parentCategories);
 
             db.Banner.find().then(
               (banners) => {
