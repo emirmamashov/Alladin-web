@@ -41,6 +41,14 @@ module.exports = (Handlebars) => {
                     default:
                         return options.inverse(this);
                 }
+            },
+            operation: (a, operator, b, options) => {
+                switch (operator) {
+                    case '-':
+                        return options.fn(a-b);
+                    default:
+                        return options.inverse(this);
+                }
             }
         }
     });

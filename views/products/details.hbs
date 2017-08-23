@@ -112,14 +112,23 @@
                     </div>
                 </div>
                 <div class="product_right">
-                    <!--<div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span>
+                    <div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span>
                         <span class="product_art2">{{product._id}}</span> 
-                    </div>-->
-                    <div class="product_izb"><a href="https://max.kg/izb"><span class="izb1" id="iz_1737688" onclick="return izb(this);">В избранное</span></a></div>
+                    </div>
+                    <div class="product_izb">
+                        <a href="https://max.kg/izb">
+                            <span class="izb1" id="iz_1737688" onclick="return izb(this);">В избранное</span>
+                        </a>
+                    </div>
                     <div class="table_item">
                         <div class="table_row1_product">
-
                             <div class="cell1">
+                                {{#if product.priceStock}}
+                                    Старая цена: {{product.priceStock}} сом.<br/>
+                                    <!--{{#if product.price}}
+                                        Ваша экономия: {{#operation product.price '-' product.priceStock}}{{/operation}}<br/>
+                                    {{/if}}-->
+                                {{/if}}
                                 <span class="cena1_bold">
                                     <span class="cena1">Цена:</span>
                                 </span>
@@ -129,7 +138,7 @@
                                 <br>
                                 <span class="dost_credit">В кредит при заказе от 
                                     <span class="blue_bold">5000 сом</span>
-                                </span><br>                                
+                                </span><br>
                             </div>
 
                             <div class="cell2">
@@ -141,14 +150,14 @@
                                 <div class="box1_one">Минимальное
                                     <div class="">количество: по 1</div>
                                 </div>
-                                <div onclick="kol(this);" id="m_1737688" class="minus1"></div>
+                                <div onclick="kol(this);" id="m_1737688" class="minus1">-</div>
                                 <div class="vall"><input value="" data-sum="741.21" data-pack="1" data-sklad="1" data-kol="1" onblur="valid(this);"
                                         id="i_1737688" type="text"></div>
-                                <div onclick="kol(this);" id="p_1737688" class="plus1"></div>
+                                <div onclick="kol(this);" id="p_1737688" class="plus1">+</div>
                                 <div class="kolbox">
-                                    <!--<a href="https://max.kg/">
+                                    <a href="#">
                                         <span class="kolbox1_product" id="1737688" onclick="return box(this);">В корзину</span>
-                                    </a>-->
+                                    </a>
                                 </div>
                                 <div class="clear"></div>
                             </div>
