@@ -30,6 +30,13 @@
                                 {{#each this.childCategories}}
                                 <li>
                                     <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                    <ul class="categories-4">
+                                        {{#each this.childCategories}}
+                                        <li>
+                                            <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                        </li>
+                                        {{/each}}
+                                    </ul>
                                 </li>
                                 {{/each}}
                             </ul>

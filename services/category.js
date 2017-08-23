@@ -7,6 +7,7 @@ module.exports = {
         products = products || [];
         parentCategories.forEach((category) => {
             category['childCategories'] = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
+            this.findChildCategories(categories, category['childCategories'], []);
             category['products'] = products.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString()) || [];
         });
         // console.log(parentCategories);
