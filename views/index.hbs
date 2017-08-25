@@ -65,8 +65,9 @@
             <div class="brands-event-content col-lg-30 col-md-30 col-sm-30">
                 <div class="mall-ru-left-top">
                     <div class="left-banner-wrap">
-                        <div class="banner-img" style="background-image:url('{{leftBannerShowInMainPage.apiUrl}}/{{leftBannerShowInMainPage.image}}');">
-                        <a href="{{leftBannerShowInMainPage.buttonLink}}">&nbsp; </a></div>
+                        <div class="banner-img" 
+                            style="background-image:url('{{ leftBannerShowInMainPage.apiUrl }}/{{ leftBannerShowInMainPage.image }}');">
+                        <a href="{{ leftBannerShowInMainPage.buttonLink }}">&nbsp; </a></div>
                     </div>
 
                     <div class="seller-entrances-wrap">
@@ -546,23 +547,18 @@
         </ul>
     </div>
 </div>
-<div class="container clearfix">
+<!--<div class="container clearfix">
     <div class="partners">
         <div class="partners-main util-clearfix">
             <ul class="partners-list" title="Нам доверяют:">
-                <li class="p-ups-logo">UPS</li>
-                <li class="p-qiwi-logo">QIWI</li>
-                <li class="p-mastercard-logo">MasterCard</li>
-                <li class="p-western-logo">WESTERN UNION</li>
-                <li class="p-ems-logo">EMS</li>
-                <li class="p-webmoney-logo">Web Money</li>
-                <li class="p-visa-logo">VISA</li>
-                <li class="p-chinabank-logo">CHINABANK</li>
-                <li class="p-fedex-logo">FedEx</li>
-                <li class="p-dhl-logo">DHL</li>
-                <li class="p-yandex-logo">Yandex.Money</li>
-                <li class="p-amax-logo">Amax</li>
+                {{#each producers}} 
+                    {{#if this.image}}
+                        <li>
+                            <img width="100" height="100"  src="{{ this.apiUrl }}/{{ this.image }}" alt="">
+                        </li>
+                    {{/if}} 
+                {{/each}}
             </ul>
         </div>
     </div>
-</div>
+</div>-->

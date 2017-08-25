@@ -59,11 +59,8 @@ module.exports = (app, db) => {
                         hotProducts.forEach((product) => {
                           product['apiUrl'] = config.API_URL;
                         });
-                        let findBanners = banners.filter(x => x.isShowInMainPage);
-                        leftBannerShowInMainPage = {};
-                        rigthBannerShowInMainPage = {};
-                        if (findBanners[0]) leftBannerShowInMainPage = findBanners[0];
-                        if (findBanners[1]) rigthBannerShowInMainPage = findBanners[1];
+                        let leftBannerShowInMainPage = banners.filter(x => x.showInMainPageLeft)[0];
+                        let rigthBannerShowInMainPage = banners.filter(x => x.showInMainPageRight)[0];
 
                         let chunkProducers = chunkService(producers, 5);
                         let producersLeft = {};
