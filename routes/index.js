@@ -70,10 +70,9 @@ module.exports = (app, db) => {
 
 
                         let chunkCategories = chunkService(categories.filter(x => x.image), 4);
-                        let categoriesLeft = {};
-                        let categoriesRight = {};
-                        if (chunkCategories[0] && chunkCategories[0].data) categoriesLeft = chunkCategories[0].data;
-                        if (chunkCategories[1] && chunkCategories[1].data) categoriesRight = chunkCategories[1].data;
+                        
+                        let categoriesLeft = categories.filter(x => x.showInMainPageLeft);
+                        let categoriesRight = categories.filter(x => x.showInMainPageRight);
 
                         res.render('index', { 
                           title: 'Главная страница',
