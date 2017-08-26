@@ -260,99 +260,116 @@
 
 <div class="container" id="groups-container">
     <div class="superdeals-header">
-        <h2>Горящие товары</h2>
+        <h2>Горячие товары</h2>
 
         <div class="service"></div>
     </div>
     <div class="superdeals-list buy-product-list">
-        {{#each chunkHotProducts}}
-        <div class="hidden-xs hidden-sm hidden-md col-md-20 col-lg-15">
-            {{#each this.data}}
-                <a href="/products/details/{{ this.id }}">
-                    <div class="sp-product-three util-clearfix">
-                        <div class="pro-img-area">
-                            {{#if this.image}}
-                                <img height="146" 
-                                 src="{{ this.apiUrl }}/{{ this.image }}"
-                                 width="146">
-                            {{/if}}
-                        </div>
-                        <div class="pro-info">
-                            <div class="pro-title">{{ this.name }}</div>
-                            <div class="pro-price">
-                                <span class="g-price notranslate">
-                                    {{#if this.priceStock}}
-                                        <span class="g-price-n">{{ this.priceStock }}</span>
-                                    {{/if}}
-                                </span>
-                                {{#if this.price}}
-                                    <del class="g-del-price">{{ this.price }}</del>
-                                {{/if}}
-                            </div>
-                            <!--<div class="discount">
-                                <span class="num">-58%</span>
-                            </div>-->
-                        </div>
-                    </div>
-                </a>
-            {{/each}}
-        </div>
-        {{/each}}
-
-        <!--
         <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
             <div class="sp-product-one">
-                <a href="//group.aliexpress.com?productid=32820045421#rb91e88">
-                    <div class="pro-img-area"><img height="296"
-                                                   src="//ae01.alicdn.com/kf/HTB15mT4SFXXXXc0XFXXq6xXFXXX9.jpg_350x350.jpg"
-                                                   width="296"></div>
+                <a href="/products/details/{{ hotProducts.0.id }}">
+                    <div class="pro-img-area">
+                        <img height="296"
+                            src="{{hotProducts.0.apiUrl}}/{{hotProducts.0.image}}"
+                            width="296">
+                    </div>
                     <div class="pro-info">
-                        <div class="pro-title">Автокресло Cybex Pallas M-Fix SL</div>
-                        <div class="pro-price"><span class="g-price notranslate"><span class="g-price-n">13&nbsp;510,00 руб.</span></span>
-                            <del class="g-del-price">19&nbsp;300,00 руб.</del>
+                        <div class="pro-title">{{hotProducts.0.name}}</div>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.0.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.0.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                            {{#if hotProducts.0.price}}
+                                <del class="g-del-price">{{hotProducts.0.price}} сом.</del>
+                            {{/if}}
                         </div>
-                        <div class="discount"><span class="num">-30%</span></div>
+                        <div class="discount">
+                            {{#if hotProducts.0.percent}}
+                                <span class="num">-{{hotProducts.0.percent}}%</span>
+                            {{/if}}
+                        </div>
                     </div>
                 </a>
             </div>
         </div>
+
         <div class="hidden-xs hidden-sm hidden-md col-md-20 col-lg-15">
             <div class="sp-product-three util-clearfix">
-                <a href="//group.aliexpress.com?productid=32803282180#x48ac8a">
-                    <div class="pro-img-area"><img height="148"
-                                                   src="//ae01.alicdn.com/kf/HTB1IjwCSFXXXXX3XVXXq6xXFXXXp.jpg_350x350.jpg"
-                                                   width="148"></div>
+                <a href="/products/details/{{ hotProducts.1.id }}">
+                    <div class="pro-img-area">
+                        <img height="148"
+                            src="{{hotProducts.1.apiUrl}}/{{hotProducts.1.image}}"
+                            width="148">
+                    </div>
                     <div class="pro-info">
-                        <div class="pro-price"><span class="g-price notranslate"><span class="g-price-n">1&nbsp;285,76 руб.</span></span>
-                            <del class="g-del-price">3&nbsp;061,55 руб.</del>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.1.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.1.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                            {{#if hotProducts.1.price}}
+                                <del class="g-del-price">{{hotProducts.1.price}} сом.</del>
+                            {{/if}}
                         </div>
-                        <div class="discount"><span class="num">-58%</span></div>
+                        <div class="discount">
+                            {{#if hotProducts.1.percent}}
+                                <span class="num">-{{hotProducts.1.percent}}%</span>
+                            {{/if}}
+                        </div>
                     </div>
                 </a>
             </div>
             <div class="sp-product-three util-clearfix">
-                <a href="//group.aliexpress.com?productid=32767614310#hc81f99">
-                    <div class="pro-img-area"><img height="148"
-                                                   src="//ae01.alicdn.com/kf/HTB1VxICSFXXXXXUXVXXq6xXFXXXY.jpg_350x350.jpg"
-                                                   width="148"></div>
+                <a href="/products/details/{{ hotProducts.2.id }}">
+                    <div class="pro-img-area">
+                        <img height="148"
+                            src="{{hotProducts.2.apiUrl}}/{{hotProducts.2.image}}"
+                            width="148"></div>
                     <div class="pro-info">
-                        <div class="pro-price"><span class="g-price notranslate"><span
-                                class="g-price-n">841,04 руб.</span></span>
-                            <del class="g-del-price">3&nbsp;116,07 руб.</del>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.2.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.2.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                            {{#if hotProducts.2.price}}
+                                <del class="g-del-price">{{hotProducts.2.price}} сом.</del>
+                            {{/if}}
                         </div>
-                        <div class="discount"><span class="num">-73%</span></div>
+                        <div class="discount">
+                            {{#if hotProducts.2.percent}}
+                                <span class="num">-{{hotProducts.2.percent}}%</span>
+                            {{/if}}
+                        </div>
                     </div>
                 </a>
             </div>
             <div class="sp-product-three util-clearfix">
-                <a href="//group.aliexpress.com?productid=32807904966#pc89c89">
-                    <div class="pro-img-area"><img height="148"
-                                                   src="//ae01.alicdn.com/kf/HTB1kxWkQVXXXXXeXVXXq6xXFXXXX/BORN-PRETTY-Base-Coat-No-Wipe-Top-Coat-Set-for-UV-LED-Nail-Art-Gel-Polish.jpg"
-                                                   width="148"></div>
+                <a href="/products/details/{{ hotProducts.3.id }}">
+                    <div class="pro-img-area">
+                        <img height="148"
+                            src="{{hotProducts.3.apiUrl}}/{{hotProducts.3.image}}"
+                            width="148"></div>
                     <div class="pro-info">
-                        <div class="pro-price"><span class="g-price notranslate"><span
-                                class="g-price-n">366,92 руб.</span></span>
-                            <del class="g-del-price">366,92 руб.</del>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.3.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.3.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                                
+                            {{#if hotProducts.3.price}}
+                                <del class="g-del-price">{{hotProducts.3.price}} сом.</del>
+                            {{/if}}
+                        </div>
+
+                        <div class="discount">
+                            {{#if hotProducts.3.percent}}
+                                <span class="num">-{{hotProducts.3.percent}}%</span>
+                            {{/if}}
                         </div>
                     </div>
                 </a>
@@ -360,51 +377,84 @@
         </div>
         <div class="hidden-xs hidden-sm col-md-20 col-lg-15">
             <div class="sp-product-one">
-                <a href="//group.aliexpress.com?productid=32787021573#bb9d5ba">
-                    <div class="pro-img-area"><img height="296"
-                                                   src="//ae01.alicdn.com/kf/HTB1317RSFXXXXb0XpXXq6xXFXXX5.jpg_350x350.jpg"
-                                                   width="296"></div>
+                <a href="/products/details/{{ hotProducts.4.id }}">
+                    <div class="pro-img-area">
+                        <img height="296"
+                            src="{{hotProducts.4.apiUrl}}/{{hotProducts.4.image}}"
+                            width="296"></div>
                     <div class="pro-info">
-                        <div class="pro-title">ABS филамент для 3D ручки, 1,75 мм, 20 цветов</div>
-                        <div class="pro-price"><span class="g-price notranslate"><span
-                                class="g-price-n">592,34 руб.</span></span>
-                            <del class="g-del-price">925,57 руб.</del>
+                        <div class="pro-title">{{ hotProducts.4.name }}</div>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.4.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.4.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                            {{#if hotProducts.4.price}}
+                                <del class="g-del-price">{{hotProducts.4.price}} сом.</del>
+                            {{/if}}
                         </div>
-                        <div class="discount"><span class="num">-36%</span></div>
+                        <div class="discount">
+                            {{#if hotProducts.3.percent}}
+                                <span class="num">-{{hotProducts.3.percent}}%</span>
+                            {{/if}}
+                        </div>
                     </div>
                 </a>
             </div>
         </div>
         <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
             <div class="sp-product-two util-clearfix">
-                <a href="//group.aliexpress.com?productid=32812323305#l5b6e89">
-                    <div class="pro-img-area"><img height="180"
-                                                   src="//ae01.alicdn.com/kf/HTB1Ero2SFXXXXc.XXXXq6xXFXXX9.jpg_350x350.jpg"
-                                                   width="180"></div>
+                <a href="/products/details/{{ hotProducts.5.id }}">
+                    <div class="pro-img-area">
+                        <img height="180"
+                            src="{{hotProducts.5.apiUrl}}/{{hotProducts.5.image}}"
+                            width="180"></div>
                     <div class="pro-info">
-                        <div class="pro-price"><span class="g-price notranslate"><span
-                                class="g-price-n">270,75 руб.</span></span>
-                            <del class="g-del-price">436,76 руб.</del>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.5.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.5.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                            
+                            {{#if hotProducts.5.price}}
+                                <del class="g-del-price">{{hotProducts.5.price}} сом.</del>
+                            {{/if}}
                         </div>
-                        <div class="discount"><span class="num">-38%</span></div>
+                        <div class="discount">
+                            {{#if hotProducts.3.percent}}
+                                <span class="num">-{{hotProducts.3.percent}}%</span>
+                            {{/if}}
+                        </div>
                     </div>
                 </a>
             </div>
             <div class="sp-product-two util-clearfix">
-                <a href="//group.aliexpress.com?productid=32705462476#q49b3bb">
+                <a href="/products/details/{{ hotProducts.6.id }}">
                     <div class="pro-img-area"><img height="180"
                                                    src="//ae01.alicdn.com/kf/HTB1R6kLSFXXXXXJXFXXq6xXFXXXR.jpg_350x350.jpg"
                                                    width="180"></div>
                     <div class="pro-info">
-                        <div class="pro-price"><span class="g-price notranslate"><span
-                                class="g-price-n">360,80 руб.</span></span>
-                            <del class="g-del-price">611,95 руб.</del>
+                        <div class="pro-price">
+                            <span class="g-price notranslate">
+                                {{#if hotProducts.5.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.5.priceStock}} сом.</span>
+                                {{/if}}
+                            </span>
+                            {{#if hotProducts.6.price}}
+                                <del class="g-del-price">{{hotProducts.6.price}} сом.</del>
+                            {{/if}}
                         </div>
-                        <div class="discount"><span class="num">-41%</span></div>
+                        <div class="discount">
+                            {{#if hotProducts.6.percent}}
+                                <span class="num">-{{hotProducts.6.percent}}%</span>
+                            {{/if}}
+                        </div>
                     </div>
                 </a>
             </div>
-        </div>-->
+        </div>
     </div>
 </div>
 

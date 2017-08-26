@@ -56,9 +56,14 @@ module.exports = (app, db) => {
                         });
 
                         let hotProducts = products.filter(x => x.isHot);
-                        hotProducts.forEach((product) => {
-                          product['apiUrl'] = config.API_URL;
-                        });
+                        for(let i = 0; i < hotProducts.length > 0; i++) {
+                          hotProducts[i]['apiUrl'] = config.API_URL;
+                          if (hotProducts[i].price && hotProducts[i].priceStock &&
+                            hotProducts[i].price > 0 && hotProducts[i].priceStock > 0) {
+                            let differencePercent = (hotProducts[i].priceStock / hotProducts[i].price)*100; // процент от числа 
+                            hotProducts[i]['percent'] = Math.round(100 - differencePercent);
+                          }
+                        }
                         let leftBannerShowInMainPage = banners.filter(x => x.showInMainPageLeft)[0];
                         let rigthBannerShowInMainPage = banners.filter(x => x.showInMainPageRight)[0];
 
@@ -90,7 +95,7 @@ module.exports = (app, db) => {
                           categoriesLeft: categoriesLeft,
                           categoriesRight: categoriesRight,
                           rndProducts: rndProducts,
-                          chunkHotProducts: chunkService(hotProducts, 3)
+                          hotProducts: hotProducts
                         });
                       }
                     ).catch(
