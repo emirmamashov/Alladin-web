@@ -16,12 +16,14 @@ module.exports = (app, db) => {
                 let categoryIds = [];
                 let photoIds = [];
     
-                categories.forEach((category) => {
-                  if (category) {
-                    category['apiUrl'] = config.API_URL;
-                    categoryIds.push(category._id);
-                  }
-                });
+                if (categories && categories.length > 0) {
+                    categories.forEach((category) => {
+                        if (category) {
+                          category['apiUrl'] = config.API_URL;
+                          categoryIds.push(category._id);
+                        }
+                      });
+                }
     
                 db.Product.find().then(
                     (products) => {
@@ -72,14 +74,27 @@ module.exports = (app, db) => {
                     category['apiUrl'] = config.API_URL;
                   }
                 });
+                let categoryIds = [];
+                let currentCategory = categories.filter(x => x.id == categoryId);
+                console.log(currentCategory[0]);
+                if (currentCategory[0]) {
+                    categoryIds.push(categoryId);
+                    let childsCategories = categoryService.findChildCategories(categories, currentCategory, []);
+                    if (childsCategories && childsCategories.length > 0) {
+                        childsCategories.forEach((category) => {
+                            categoryIds.push(category.id);
+                        });
+                    }
+                }
     
-                db.Product.find({ categoryId: categoryId }).then(
+                db.Product.find({ categoryId: {$in: categoryIds } }).then(
                     (products) => {
                         let parentCategories = categoryService.findParentCategory(categories, products);
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories
+                            parentCategories: parentCategories,
+                            category: currentCategory[0]
                         });
                     }
                 ).catch(
