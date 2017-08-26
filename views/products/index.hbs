@@ -989,7 +989,7 @@
                         </p>
 
                         <!-- ngIf: !products.IS_BASE_PRODUCT -->
-                        <div ng-if="!products.IS_BASE_PRODUCT" class="sp-inline-rating-14465976" ng-bind-html="to_trusted(products.RATING_HTML)">
+                        <div class="sp-inline-rating-14465976" >
                             <div class="sp-listing-inline-rating-widget">
                                 <div class="sp-inline-rating-stars">
                                     <div class="sp-star-on"></div>
@@ -1003,28 +1003,23 @@
                         <!-- end ngIf: !products.IS_BASE_PRODUCT -->
 
                         <!-- ngRepeat: price in products.DISPLAY_PRICES -->
-                        <p ng-repeat="price in products.DISPLAY_PRICES" 
-                        class="catalog__price ng-scope ng-binding" 
-                        ng-class="{&#39;catalog__price_second&#39;: $index &gt; 0}">
-                            {{ this.price }}
-                            <span class="price-kop">,00</span> 
-                            <span class="catalog__price__qt">
-                                <span class="rub">сом.</span>/шт.
-                            </span>
+                        <p class="catalog__price ng-scope ng-binding">
+                            {{#if this.price }}
+                                <span> {{ this.price }} </span>
+                                <!--<span class="price-kop">,00</span>-->
+                                <span class="catalog__price__qt">
+                                    <span class="rub">сом.</span>/шт.
+                                </span>
+                            {{/if}}
                         </p>
-                        <!-- end ngRepeat: price in products.DISPLAY_PRICES -->
                         <br>
-
-                        <button ng-if="products.UF_BUTTON_BUY &amp;&amp; basket[products.UF_ARTICUL] == undifined" 
-                            ng-click="add2basket($event, $index);"
-                            onclick="dataLayer.push({&#39;event&#39;: &#39;LeroyMerlin&#39;,&#39;eventCategory&#39;: &#39;В корзину&#39;,&#39;eventAction&#39;:&#39;Клик по кнопке&#39;,&#39;eventLabel&#39;:&#39;Добавил в корзину&#39;});"
-                            class="catalog__buy btn btn_red ab_add_to_cart ng-scope" type="button">
+                        <button type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}')">
                             <span class="icon icon-buy"></span>
                             В корзину
                         </button>
                     </div>
 
-                    <!-- ngIf: !products.IS_BASE_PRODUCT -->
+                    <!-- 
                     <div ng-if="!products.IS_BASE_PRODUCT" class="catalog__info ng-scope">
                         <table>
                             <tbody>
@@ -1039,16 +1034,11 @@
                             </tbody>
                         </table>
 
-                        <!-- ngIf: products.UF_UDA20 == '2' -->
                         <div ng-if="products.UF_UDA20 == &#39;2&#39;" class="catalog__best-price ng-scope">
                             <img src="/images/leroy/cabel.jpg">
                         </div>
-                        <!-- end ngIf: products.UF_UDA20 == '2' -->
-
-                        <!-- ngIf: products.UF_UDA20 == '3' -->
 
                         <div class="catalog__avalible">
-                            <!-- ngIf: products.FAV_SHOP -->
                             <p class="mb0">Цена и наличие на 22 Июня 2017 18:30</p>
                         </div>
                         <div class="product__avalible-list">
@@ -1061,7 +1051,6 @@
                             <div class="product__avalible-drop"></div>
                         </div>
                     </div>
-                    <!-- end ngIf: !products.IS_BASE_PRODUCT -->
                     <div class="catalog__bt">
                         <button ng-if="shopList[products.UF_ARTICUL] == undifined" class="catalog__to-list btn btn_multi-line ng-scope"
                             type="button" 
@@ -1070,8 +1059,6 @@
                                 <span class="icon icon-list-add"></span>
                                 <span class="btn__text">В список <br>покупок</span>
                             </button>
-                        <!-- end ngIf: shopList[products.UF_ARTICUL] == undifined -->
-                        <!-- ngIf: shopList[products.UF_ARTICUL] -->
 
                         <label class="compare-14465976 compare-check custom-check custom-check_type_checkbox" ng-class="{&#39;is-active&#39;:checkCompare(products)}">
                         <input name="compare1" type="checkbox" value="1" data-custom="check" ng-model="compareProduct[products.UF_ARTICUL]" ng-change="compare(products, $index)" class="ng-pristine ng-valid">
@@ -1079,18 +1066,12 @@
                         <a href="https://leroymerlin.ru/catalogue/compare.php">Перейти
                             к <br>сравнению</a>
                     </label>
-
-                        <!-- ngIf: products.UF_BUTTON_BUY && basket[products.UF_ARTICUL] == undifined --><button ng-if="products.UF_BUTTON_BUY &amp;&amp; basket[products.UF_ARTICUL] == undifined" ng-click="add2basket($event, $index);"
+                        <button ng-if="products.UF_BUTTON_BUY &amp;&amp; basket[products.UF_ARTICUL] == undifined" ng-click="add2basket($event, $index);"
                             onclick="dataLayer.push({&#39;event&#39;: &#39;LeroyMerlin&#39;,&#39;eventCategory&#39;: &#39;В корзину&#39;, &#39;eventAction&#39;:&#39;Клик по кнопке&#39;,&#39;eventLabel&#39;:&#39;Добавил в корзину&#39;, &#39;eventValue&#39;:null});"
                             class="catalog__buy btn btn_red btn_block ab_add_to_cart ng-scope" type="button">
                         <span class="icon icon-buy"></span>В корзину
                     </button>
-                        <!-- end ngIf: products.UF_BUTTON_BUY && basket[products.UF_ARTICUL] == undifined -->
-
-                        <!-- ngIf: products.UF_BUTTON_BUY && basket[products.UF_ARTICUL] -->
-
-                        <!-- ngIf: !products.UF_BUTTON_BUY -->
-                    </div>
+                    </div>-->
 
                 </li>
                 <li ng-hide="true" ng-repeat-end="" class="ng-scope ng-hide"></li>
@@ -1816,3 +1797,6 @@
             </div>
         </div>
     </div>
+
+
+<script src="/javascripts/bucket.js"></script>
