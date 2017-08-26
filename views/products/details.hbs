@@ -1,5 +1,6 @@
     <link rel="stylesheet" href="/stylesheets/jquery.jqzoom.css">
     <link rel="stylesheet" href="/sass/item.css">
+    <input type="hidden" id="page" value="details"/>
        <div class="mmain">
         <div class="container">
             <!--<ul class="breadcrumb">
@@ -29,23 +30,6 @@
                         li a{display:block;border:1px solid #CCC;} ul#thumblist li a.zoomThumbActive{ border:1px solid red;
                         } .jqzoom{ text-decoration:none; float:left; }
                     </style>
-
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('.jqzoom').jqzoom({
-                                zoomType: 'standard',
-                                lens: true,
-                                preloadImages: false,
-                                alwaysOn: false,
-                                zoomWidth: 600,
-                                zoomHeight: 500,
-                                xOffset: 20,
-                                yOffset: 0,
-                                position: 'right',
-                            });
-
-                        });
-                    </script>
 
                     <div class="clearfix" id="content" style="margin-top:0px;margin-left:0px;">
 
@@ -155,8 +139,8 @@
                                         id="i_1737688" type="text"></div>
                                 <div onclick="kol(this);" id="p_1737688" class="plus1">+</div>
                                 <div class="kolbox">
-                                    <a href="#">
-                                        <span class="kolbox1_product" id="1737688" onclick="return box(this);">В корзину</span>
+                                    <a href="#" id="buttonInBucket_{{product.id}}" onclick="productToBucket('{{product.id}}', 'details')">
+                                        <span class="kolbox1_product">В корзину</span>
                                     </a>
                                 </div>
                                 <div class="clear"></div>
@@ -247,3 +231,5 @@
             </div>
         </div>
     </div>
+
+<script src="/javascripts/bucket.js"></script>

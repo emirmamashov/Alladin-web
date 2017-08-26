@@ -1,17 +1,20 @@
-function productToBucket(productId) {
+function productToBucket(productId, page) {
     console.log(productId);
     let productIdsInLocalStorage = window.localStorage.getItem('inBucket') || '';
     let productsInBucket = productIdsInLocalStorage.split(',') || [];
-
+    let buttonVal = '<span class="icon icon-buy"></span>:word';
+    if (page === 'details') {
+        buttonVal = '<span class="kolbox1_product">:word</span>';
+    }
     const productElem = document.getElementById('buttonInBucket_' + productId);
     if (productElem) {
-        productElem.innerHTML = '<span class="icon icon-buy"></span>Добавлено'
+        productElem.innerHTML = buttonVal.replace(':word', 'Добавлено');
     }
-    if (productsInBucket.filter(x => x === productId).length > 0) {
+    if (productsInBucket.filter(x => x && x === productId).length > 0) {
         const productElem = document.getElementById('buttonInBucket_' + productId);
         if (productElem) {
             console.dir(productElem);
-            productElem.innerHTML = '<span class="icon icon-buy"></span>В корзину'
+            productElem.innerHTML = buttonVal.replace(':word', 'В корзину');
         }
         console.log('данный товар уже добавлено в корзину');
     }
@@ -34,10 +37,15 @@ function productToBucket(productId) {
 
 }
 
-function checkProductsInBucket() {
+function checkProductsInBucket(page) {
     console.log('checkProductsInBucket');
     let productIdsInLocalStorage = window.localStorage.getItem('inBucket') || '';
     let productsInBucket = productIdsInLocalStorage.split(',') || [];
+
+    let buttonVal = '<span class="icon icon-buy"></span>:word';
+    if (page === 'details') {
+        buttonVal = '<span class="kolbox1_product">:word</span>';
+    }
 
     if (!productsInBucket || productsInBucket.length === 0) {
         return console.log('корзина пуст');
@@ -47,12 +55,13 @@ function checkProductsInBucket() {
         console.dir(productElem);
         if (productElem) {
             console.dir(productElem);
-            productElem.innerHTML = '<span class="icon icon-buy"></span>Добавлено'
+            productElem.innerHTML = buttonVal.replace(':word', 'Добавлено');
         }
     });
 }
 
 $(document).ready(function () {
     console.log('ready');
-    checkProductsInBucket();
+    const page = document.getElementById('page');
+    checkProductsInBucket(page.value);
 });

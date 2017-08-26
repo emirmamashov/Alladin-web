@@ -1,5 +1,7 @@
 
 <link rel="stylesheet" href="/sass/goods.css">
+
+    <input type="hidden" id="page" value="index"/>
 <div class="container">
         <div class="catalog__partition_title">
             <span style="display: inline-block;margin-bottom: 30px;">
@@ -1013,8 +1015,8 @@
                             {{/if}}
                         </p>
                         <br>
-                        <button type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}')">
-                            <span class="icon icon-buy"></span>
+                        <button type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}', 'index')">
+                            <span class="icon icon-buy"> </span>
                             В корзину
                         </button>
                     </div>
