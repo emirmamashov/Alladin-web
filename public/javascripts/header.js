@@ -10,4 +10,9 @@ $(document).ready(function () {
     }, function () {
         $(this).children(".categories-3").hide();
     });
+    $(".categories-3 li").hover(function () {
+        $(this).children(".categories-4").fadeIn('fast');
+    }, function () {
+        $(this).children(".categories-4").hide();
+    });
 })

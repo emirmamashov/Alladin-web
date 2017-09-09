@@ -91,8 +91,8 @@ ul li {
         }
     }
     .categories {
-        width: 30%;
-        padding-left: 3%;
+        width: auto;
+        padding-left: 10px;
         display: inline-block;
         vertical-align: top;
         position: relative;
@@ -118,7 +118,7 @@ ul li {
         }
         .categories-2 {
             display: none;
-            width: 200%;
+            width: auto;
             position: absolute;
             margin: 0;
             background: #fff;
@@ -146,6 +146,17 @@ ul li {
             }
         }
         .categories-3 {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            width: 150%;
+            min-height: 100%;
+            background: #fff;
+            border: 1px solid #2a2a2a;
+            padding: 0;
+        }
+        .categories-4 {
             display: none;
             position: absolute;
             left: 100%;
@@ -1494,8 +1505,6 @@ ul.partners-list:before {
     border-color: #4ba842
 }
 
-
-
 .header-menu {
     background: #f0f0f0;
     min-height: 30px;
@@ -1525,7 +1534,8 @@ ul.partners-list:before {
         &.faq {
             background-image: url("/images/icons/faq.png");
         }
-        &.enter, &.register {
+        &.enter,
+        &.register {
             background-image: none;
             margin: 0;
             background: #fb722c;
