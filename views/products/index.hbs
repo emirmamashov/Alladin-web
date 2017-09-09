@@ -2,22 +2,19 @@
 <link rel="stylesheet" href="/sass/goods.css">
 
     <input type="hidden" id="page" value="index"/>
-<div class="container">
+    <div class="container">
         <div class="catalog__partition_title">
             <span style="display: inline-block;margin-bottom: 30px;">
             <h1 style="display: inline;">{{ category.name }}</h1>
-                            <!--(<span data-ng-hide="loading == true" class="ng-binding">98</span>)-->
             </span>
 
         </div>
 
-
-        <div class="filters search-filters" data-ng-init="presetFilters();gtmSendProductsFromFirstPage();">
+        <div class="filters search-filters">
             <div class="filters__block filters__block_applied">
                 <p class="filters__name">Ваш выбор:</p>
                 <p class="fz-11 mb0 ng-binding">Найдено 98 товаров</p>
-                <!-- ngRepeat: item in checkVals -->
-                <button data-ng-show="countVals(checkVals) &gt; 0" class="btn btn_sm btn_link mb0 ng-hide" type="button" data-ng-click="undoFilterAll(); discardPrevSetings();">Сбросить фильтры
+                <button class="btn btn_sm btn_link mb0 ng-hide" type="button">Сбросить фильтры
             </button>
             </div>
             <!-- ngRepeat: filter in filters -->
@@ -30,15 +27,6 @@
                     Цена
                     <!-- ngIf: propDesc[filter.prop] -->
                 </p>
-                <!-- end ngIf: filter.prop !='20' -->
-
-                <!-- ngIf: filter.prop == '20' && (countVals(filter.vals) > 1 || (countVals(filter.vals) ==1 && filter.vals[0].val != 'Обычная цена')) -->
-
-                <!-- ngIf: !filter.slider && filter.prop != 20 -->
-
-                <!-- ngIf: !filter.slider && filter.prop == 20 && (countVals(filter.vals) > 1 || (countVals(filter.vals) ==1 && filter.vals[0].val != 'Обычная цена')) -->
-
-                <!-- ngIf: filter.slider -->
                 <div id="block-0" data-ng-if="filter.slider" data-ng-hide="productsLenght &gt;= 0" class="ng-scope">
                     <div class="slider ng-isolate-scope ng-pristine ng-valid" slider-range="" data-vals="[{&quot;val&quot;:108,&quot;count&quot;:1,&quot;ft_val&quot;:108},{&quot;val&quot;:12,&quot;count&quot;:3,&quot;ft_val&quot;:12},{&quot;val&quot;:688,&quot;count&quot;:1,&quot;ft_val&quot;:688},{&quot;val&quot;:698,&quot;count&quot;:1,&quot;ft_val&quot;:698},{&quot;val&quot;:34,&quot;count&quot;:2,&quot;ft_val&quot;:34},{&quot;val&quot;:313,&quot;count&quot;:1,&quot;ft_val&quot;:313},{&quot;val&quot;:44,&quot;count&quot;:3,&quot;ft_val&quot;:44},{&quot;val&quot;:218,&quot;count&quot;:2,&quot;ft_val&quot;:218},{&quot;val&quot;:33,&quot;count&quot;:1,&quot;ft_val&quot;:33},{&quot;val&quot;:67,&quot;count&quot;:1,&quot;ft_val&quot;:67},{&quot;val&quot;:158,&quot;count&quot;:3,&quot;ft_val&quot;:158},{&quot;val&quot;:4,&quot;count&quot;:1,&quot;ft_val&quot;:4},{&quot;val&quot;:7,&quot;count&quot;:1,&quot;ft_val&quot;:7},{&quot;val&quot;:16,&quot;count&quot;:1,&quot;ft_val&quot;:16},{&quot;val&quot;:11,&quot;count&quot;:1,&quot;ft_val&quot;:11},{&quot;val&quot;:21,&quot;count&quot;:3,&quot;ft_val&quot;:21},{&quot;val&quot;:318,&quot;count&quot;:3,&quot;ft_val&quot;:318},{&quot;val&quot;:498,&quot;count&quot;:1,&quot;ft_val&quot;:498},{&quot;val&quot;:894,&quot;count&quot;:1,&quot;ft_val&quot;:894},{&quot;val&quot;:383,&quot;count&quot;:1,&quot;ft_val&quot;:383},{&quot;val&quot;:113,&quot;count&quot;:3,&quot;ft_val&quot;:113},{&quot;val&quot;:168,&quot;count&quot;:1,&quot;ft_val&quot;:168},{&quot;val&quot;:828,&quot;count&quot;:1,&quot;ft_val&quot;:828},{&quot;val&quot;:72,&quot;count&quot;:2,&quot;ft_val&quot;:72},{&quot;val&quot;:112,&quot;count&quot;:1,&quot;ft_val&quot;:112},{&quot;val&quot;:182,&quot;count&quot;:2,&quot;ft_val&quot;:182},{&quot;val&quot;:296,&quot;count&quot;:3,&quot;ft_val&quot;:296},{&quot;val&quot;:97,&quot;count&quot;:2,&quot;ft_val&quot;:97},{&quot;val&quot;:258,&quot;count&quot;:1,&quot;ft_val&quot;:258},{&quot;val&quot;:768,&quot;count&quot;:1,&quot;ft_val&quot;:768},{&quot;val&quot;:551,&quot;count&quot;:1,&quot;ft_val&quot;:551},{&quot;val&quot;:315,&quot;count&quot;:1,&quot;ft_val&quot;:315},{&quot;val&quot;:2878,&quot;count&quot;:1,&quot;ft_val&quot;:2878},{&quot;val&quot;:598,&quot;count&quot;:1,&quot;ft_val&quot;:598},{&quot;val&quot;:2498,&quot;count&quot;:1,&quot;ft_val&quot;:2498},{&quot;val&quot;:484,&quot;count&quot;:1,&quot;ft_val&quot;:484},{&quot;val&quot;:998,&quot;count&quot;:2,&quot;ft_val&quot;:998},{&quot;val&quot;:412,&quot;count&quot;:1,&quot;ft_val&quot;:412},{&quot;val&quot;:82,&quot;count&quot;:1,&quot;ft_val&quot;:82},{&quot;val&quot;:248,&quot;count&quot;:1,&quot;ft_val&quot;:248},{&quot;val&quot;:42,&quot;count&quot;:2,&quot;ft_val&quot;:42},{&quot;val&quot;:132,&quot;count&quot;:1,&quot;ft_val&quot;:132},{&quot;val&quot;:1267,&quot;count&quot;:1,&quot;ft_val&quot;:1267},{&quot;val&quot;:1543,&quot;count&quot;:1,&quot;ft_val&quot;:1543},{&quot;val&quot;:101,&quot;count&quot;:1,&quot;ft_val&quot;:101},{&quot;val&quot;:1898,&quot;count&quot;:1,&quot;ft_val&quot;:1898},{&quot;val&quot;:1152,&quot;count&quot;:1,&quot;ft_val&quot;:1152},{&quot;val&quot;:603,&quot;count&quot;:1,&quot;ft_val&quot;:603},{&quot;val&quot;:84,&quot;count&quot;:1,&quot;ft_val&quot;:84},{&quot;val&quot;:1098,&quot;count&quot;:1,&quot;ft_val&quot;:1098},{&quot;val&quot;:285,&quot;count&quot;:1,&quot;ft_val&quot;:285},{&quot;val&quot;:1148,&quot;count&quot;:1,&quot;ft_val&quot;:1148},{&quot;val&quot;:298,&quot;count&quot;:4,&quot;ft_val&quot;:298},{&quot;val&quot;:2578,&quot;count&quot;:1,&quot;ft_val&quot;:2578},{&quot;val&quot;:388,&quot;count&quot;:1,&quot;ft_val&quot;:388},{&quot;val&quot;:51,&quot;count&quot;:1,&quot;ft_val&quot;:51},{&quot;val&quot;:31,&quot;count&quot;:1,&quot;ft_val&quot;:31},{&quot;val&quot;:1348,&quot;count&quot;:1,&quot;ft_val&quot;:1348},{&quot;val&quot;:445,&quot;count&quot;:1,&quot;ft_val&quot;:445},{&quot;val&quot;:48,&quot;count&quot;:1,&quot;ft_val&quot;:48},{&quot;val&quot;:204,&quot;count&quot;:1,&quot;ft_val&quot;:204},{&quot;val&quot;:118,&quot;count&quot;:1,&quot;ft_val&quot;:118},{&quot;val&quot;:221,&quot;count&quot;:1,&quot;ft_val&quot;:221},{&quot;val&quot;:178,&quot;count&quot;:1,&quot;ft_val&quot;:178},{&quot;val&quot;:88,&quot;count&quot;:1,&quot;ft_val&quot;:88},{&quot;val&quot;:220,&quot;count&quot;:1,&quot;ft_val&quot;:220},{&quot;val&quot;:47,&quot;count&quot;:1,&quot;ft_val&quot;:47},{&quot;val&quot;:162,&quot;count&quot;:1,&quot;ft_val&quot;:162},{&quot;val&quot;:398,&quot;count&quot;:1,&quot;ft_val&quot;:398},{&quot;val&quot;:77,&quot;count&quot;:1,&quot;ft_val&quot;:77},{&quot;val&quot;:61,&quot;count&quot;:1,&quot;ft_val&quot;:61},{&quot;val&quot;:618,&quot;count&quot;:1,&quot;ft_val&quot;:618},{&quot;val&quot;:862,&quot;count&quot;:1,&quot;ft_val&quot;:862},{&quot;val&quot;:78,&quot;count&quot;:1,&quot;ft_val&quot;:78}]"
                         data-prop="9999999999" data-propname="Цена" ng-model="checked[filter.prop][&#39;slider&#39;]" data-checked="checked[filter.prop]">
@@ -835,7 +823,6 @@
             <!-- ngIf: (filter.vals.length > 0 && filter.prop != 'UF_SPEC_PRICE' && filter.prop != 'UF_SPEC_OFFER' && hiddenFilters.indexOf(filter.prop) < 0 && filter.prop != '20') || (filter.prop == '20' && (countVals(filter.vals) > 1 || (countVals(filter.vals) ==1 && filter.vals[0].val != 'Обычная цена'))) -->
             <!-- end ngRepeat: filter in filters -->
         </div>
-
 
         <div class="catalog-cnt">
             <div class="myshop">

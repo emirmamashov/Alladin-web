@@ -15,6 +15,10 @@ module.exports = (app, db) => {
             let categoryIds = [];
             let photoIds = [];
 
+            products.forEach((product) => {
+              product['apiUrl'] = config.API_URL;
+            });
+
             categories.forEach((category) => {
               if (category) {
                 category['apiUrl'] = config.API_URL;
