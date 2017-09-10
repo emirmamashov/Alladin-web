@@ -81,6 +81,7 @@ ul li {
         display: flex;
         align-items: center;
         width: 30%;
+        padding-top: 0 !important;
         .logo-link {
             display: inline-block;
             width: 50%;
@@ -92,10 +93,12 @@ ul li {
     }
     .categories {
         width: auto;
-        padding-left: 10px;
+        padding: 10px 40px 10px 15px;
+        background: #FB722C;
         display: inline-block;
         vertical-align: top;
         position: relative;
+        margin-left: 20px;
         .main-cat-title {
             font-size: 1rem;
             text-decoration: none;
@@ -103,27 +106,29 @@ ul li {
             position: relative;
             display: inline-block;
             text-align: center;
+            color: #fff;
             &:after {
                 display: block;
-                width: 10px;
-                height: 10px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 5px 5px 0 5px;
+                border-color: #ffffff transparent transparent transparent;                
                 content: '';
-                background: url('../img/sort-down.png')center no-repeat;
-                background-size: contain;
                 position: absolute;
-                top: 50%;
-                margin-top: -5px;
-                right: -15%;
+                top: 64%;
+                right: -39%;
             }
         }
         .categories-2 {
             display: none;
+            min-width: 200px;
             width: auto;
             position: absolute;
             margin: 0;
             background: #fff;
-            z-index: 100;
-            border: 1px solid #2a2a2a;
+            z-index: 1000000;
+            border: 2px solid #FB722C;
             top: 105%;
             left: 0;
             padding: 0;
@@ -131,7 +136,7 @@ ul li {
                 list-style: none;
                 margin: 0;
                 &:hover {
-                    background: #ddd;
+                    background: #FB722C;
                     @include transition(.2s ease-in);
                 }
                 @include transition(.2s ease-in);
@@ -141,7 +146,7 @@ ul li {
                     font-size: 14px;
                     text-decoration: none;
                     color: #2a2a2a;
-                    border-bottom: 1px solid #2a2a2a;
+                    border: 0;
                 }
             }
         }
@@ -149,68 +154,78 @@ ul li {
             display: none;
             position: absolute;
             left: 100%;
-            top: 0;
-            width: 150%;
-            min-height: 100%;
+            top: -2px;
+            min-width: 200px;
+            width: auto;
+            min-height: calc(100% + 4px);
             background: #fff;
-            border: 1px solid #2a2a2a;
+            border: 2px solid #FB722C;
             padding: 0;
+            z-index: 1000000;
         }
         .categories-4 {
             display: none;
             position: absolute;
             left: 100%;
-            top: 0;
-            width: 150%;
-            min-height: 100%;
+            top: -2px;
+            min-width: 200px;
+            width: auto;
+            min-height: calc(100% + 4px);
             background: #fff;
-            border: 1px solid #2a2a2a;
+            border: 2px solid #FB722C;
             padding: 0;
+            z-index: 1000000;
         }
     }
-    .search {
+    .search-main {
         width: 70%;
         display: flex;
         align-items: center;
+        margin: 0;
         form {
-            display: block;
-            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            width: 80%;
+            border: 2px solid #FB722C;
         }
         .search-field {
             display: inline-block;
-            width: 60%;
+            width: 90%;
             font-size: 16px;
             color: #000;
             padding: 10px;
-            @include border-radius(5px);
-            box-shadow: 0 0 0 0;
-            -webkit-box-shadow: 0 0 0 0;
-            -moz-box-shadow: 0 0 0 0;
-            box-shadow: 0 0 0 0;
-            border: 1px solid $text;
+            border: 0;
             outline: none;
-        }
-        .search-select {
-            display: inline-block;
-            width: 25%;
-            padding: 9px;
-            font-size: 1rem;
-            font-family: $light;
-            background: #fff;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background: url('../img/sort-down.png') 95% center no-repeat;
-            background-size: 10px 10px;
+            border-radius: 0;
+            background: transparent;
         }
         .search-button {
-            @include border-radius(5px);
+            display: inline-block;
+            width: 10%;
             border: 0;
+            border-radius: 0;
             background: #fb722c;
             color: #fff;
             padding: 10px;
             font-size: 1.2rem;
             font-family: $light;
+            background: #FB722C url("../images/icons/search.svg") center no-repeat;
+            background-size: 20px 20px;
+        }
+        .basket {
+            padding-left: 15px;
+            a {
+                display: block;
+                width: auto;
+                height: auto;
+                background: #FB722C url("../images/icons/basket.svg") 10px center no-repeat;
+                background-size: 20px 20px;
+                padding: 10px 15px 10px 40px;
+                color: #fff;
+                font-family: $light;
+                text-decoration: none;
+                font-size: 16px;
+            }
         }
     }
     .menu {
@@ -249,7 +264,7 @@ ul li {
             background: #f7f5f5;
             width: 100%;
             min-height: 300px;
-            z-index: 2000;
+            z-index: 20000;
         }
         .left {
             float: left;
@@ -257,7 +272,7 @@ ul li {
             min-height: inherit;
         }
         .col {
-            width: 50%;
+            width: 100%;
             float: left;
             padding: 30px;
             h4 {
@@ -265,12 +280,27 @@ ul li {
                 font-family: $bold;
                 padding: 5px 0;
                 margin: 0;
+                text-transform: none;
             }
             ul {
                 padding: 0;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
             }
             li {
                 padding: 5px 0;
+                width: 49%;
+                &:hover {
+                    border: 0;
+                }
+                a {
+                    font-size: 14px;
+                    &:hover {
+                        text-decoration: none;
+
+                    }
+                }
             }
         }
         .right {
