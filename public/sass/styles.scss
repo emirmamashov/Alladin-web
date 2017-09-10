@@ -272,7 +272,7 @@ ul li {
             min-height: inherit;
         }
         .col {
-            width: 50%;
+            width: 100%;
             float: left;
             padding: 30px;
             h4 {
@@ -280,12 +280,27 @@ ul li {
                 font-family: $bold;
                 padding: 5px 0;
                 margin: 0;
+                text-transform: none;
             }
             ul {
                 padding: 0;
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
             }
             li {
                 padding: 5px 0;
+                width: 49%;
+                &:hover {
+                    border: 0;
+                }
+                a {
+                    font-size: 14px;
+                    &:hover {
+                        text-decoration: none;
+
+                    }
+                }
             }
         }
         .right {

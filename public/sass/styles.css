@@ -289,7 +289,7 @@ ul li {
 }
 
 .header .menu .col {
-  width: 50%;
+  width: 100%;
   float: left;
   padding: 30px;
 }
@@ -299,14 +299,31 @@ ul li {
   font-family: "helveticaneuecyrbold", sans-serif;
   padding: 5px 0;
   margin: 0;
+  text-transform: none;
 }
 
 .header .menu .col ul {
   padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .header .menu .col li {
   padding: 5px 0;
+  width: 49%;
+}
+
+.header .menu .col li:hover {
+  border: 0;
+}
+
+.header .menu .col li a {
+  font-size: 14px;
+}
+
+.header .menu .col li a:hover {
+  text-decoration: none;
 }
 
 .header .menu .right {
