@@ -279,9 +279,11 @@
                             <span class="g-price notranslate">
                                 {{#if hotProducts.0.priceStock}}
                                     <span class="g-price-n">{{hotProducts.0.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.0.price}} сом.</span>
                                 {{/if}}
                             </span>
-                            {{#if hotProducts.0.price}}
+                            {{#if hotProducts.0.priceStock}}
                                 <del class="g-del-price">{{hotProducts.0.price}} сом.</del>
                             {{/if}}
                         </div>
@@ -308,9 +310,11 @@
                             <span class="g-price notranslate">
                                 {{#if hotProducts.1.priceStock}}
                                     <span class="g-price-n">{{hotProducts.1.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.1.price}} сом.</span>
                                 {{/if}}
                             </span>
-                            {{#if hotProducts.1.price}}
+                            {{#if hotProducts.1.priceStock}}
                                 <del class="g-del-price">{{hotProducts.1.price}} сом.</del>
                             {{/if}}
                         </div>
@@ -333,9 +337,11 @@
                             <span class="g-price notranslate">
                                 {{#if hotProducts.2.priceStock}}
                                     <span class="g-price-n">{{hotProducts.2.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.2.price}} сом.</span>
                                 {{/if}}
                             </span>
-                            {{#if hotProducts.2.price}}
+                            {{#if hotProducts.2.priceStock}}
                                 <del class="g-del-price">{{hotProducts.2.price}} сом.</del>
                             {{/if}}
                         </div>
@@ -358,10 +364,11 @@
                             <span class="g-price notranslate">
                                 {{#if hotProducts.3.priceStock}}
                                     <span class="g-price-n">{{hotProducts.3.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.3.price}} сом.</span>
                                 {{/if}}
                             </span>
-                                
-                            {{#if hotProducts.3.price}}
+                            {{#if hotProducts.3.priceStock}}
                                 <del class="g-del-price">{{hotProducts.3.price}} сом.</del>
                             {{/if}}
                         </div>
@@ -388,15 +395,17 @@
                             <span class="g-price notranslate">
                                 {{#if hotProducts.4.priceStock}}
                                     <span class="g-price-n">{{hotProducts.4.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.4.price}} сом.</span>
                                 {{/if}}
                             </span>
-                            {{#if hotProducts.4.price}}
+                            {{#if hotProducts.4.priceStock}}
                                 <del class="g-del-price">{{hotProducts.4.price}} сом.</del>
                             {{/if}}
                         </div>
                         <div class="discount">
-                            {{#if hotProducts.3.percent}}
-                                <span class="num">-{{hotProducts.3.percent}}%</span>
+                            {{#if hotProducts.4.percent}}
+                                <span class="num">-{{hotProducts.4.percent}}%</span>
                             {{/if}}
                         </div>
                     </div>
@@ -415,16 +424,17 @@
                             <span class="g-price notranslate">
                                 {{#if hotProducts.5.priceStock}}
                                     <span class="g-price-n">{{hotProducts.5.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.5.price}} сом.</span>
                                 {{/if}}
                             </span>
-                            
-                            {{#if hotProducts.5.price}}
+                            {{#if hotProducts.5.priceStock}}
                                 <del class="g-del-price">{{hotProducts.5.price}} сом.</del>
                             {{/if}}
                         </div>
                         <div class="discount">
-                            {{#if hotProducts.3.percent}}
-                                <span class="num">-{{hotProducts.3.percent}}%</span>
+                            {{#if hotProducts.5.percent}}
+                                <span class="num">-{{hotProducts.5.percent}}%</span>
                             {{/if}}
                         </div>
                     </div>
@@ -440,11 +450,13 @@
                     <div class="pro-info">
                         <div class="pro-price">
                             <span class="g-price notranslate">
-                                {{#if hotProducts.5.priceStock}}
-                                    <span class="g-price-n">{{hotProducts.5.priceStock}} сом.</span>
+                                {{#if hotProducts.6.priceStock}}
+                                    <span class="g-price-n">{{hotProducts.6.priceStock}} сом.</span>
+                                {{else}}
+                                    <span class="g-price-n">{{hotProducts.6.price}} сом.</span>
                                 {{/if}}
                             </span>
-                            {{#if hotProducts.6.price}}
+                            {{#if hotProducts.6.priceStock}}
                                 <del class="g-del-price">{{hotProducts.6.price}} сом.</del>
                             {{/if}}
                         </div>
@@ -589,6 +601,7 @@
         </div>
     </div>
 </section>
+
 <div class="container">
     <div class="category-slider-wrap">
         <ul class="category-slider" id="category-slider">
