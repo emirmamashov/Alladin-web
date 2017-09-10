@@ -215,16 +215,15 @@
 
 
                     <h2>Описание</h2>
-                    {{#ifCond product.description '==' true }}
-                    <p> 
-                        {{ product.description }}
-                    </p>
-                    {{/ifCond}}
-                    {{#ifCond product.description '!=' true }}
-                    <p> 
-                        нету описание
-                    </p>
-                    {{/ifCond}}
+                    {{#if product.description}}
+                        <p> 
+                            {{{ product.description }}}
+                        </p>
+                    {{else}}
+                        <p> 
+                            нету описание
+                        </p>
+                    {{/if}}
                     <br><br><span class="gropis">Страна производства может отличаться в зависимости от партии поставки.</span><br><br>
                     <span class="gropis">Производитель оставляет за собой право изменять внешний вид, комплектацию товара без предупреждения.</span>
                 </div>
