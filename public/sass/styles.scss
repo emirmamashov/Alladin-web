@@ -289,8 +289,9 @@ ul li {
                 flex-wrap: wrap;
             }
             li {
-                padding: 5px 0;
+                padding: 5px;
                 width: 49%;
+                margin: 0;
                 &:hover {
                     border: 0;
                 }
@@ -1577,4 +1578,26 @@ ul.partners-list:before {
             border-right: 2px solid #fff;
         }
     }
+}
+
+.modal-popup-wrap {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000000000;
+}
+.modal-popup {
+    width: 900px;
+    height: 800px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -400px;
+    margin-left: -450px;
+    background: #fff;
+    z-index: 1000000100000000000000;
+    padding: 20px;
 }
