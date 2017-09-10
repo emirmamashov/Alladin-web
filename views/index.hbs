@@ -432,9 +432,11 @@
             </div>
             <div class="sp-product-two util-clearfix">
                 <a href="/products/details/{{ hotProducts.6.id }}">
-                    <div class="pro-img-area"><img height="180"
-                                                   src="//ae01.alicdn.com/kf/HTB1R6kLSFXXXXXJXFXXq6xXFXXXR.jpg_350x350.jpg"
-                                                   width="180"></div>
+                    <div class="pro-img-area">
+                        <img height="180"
+                            src="//ae01.alicdn.com/kf/HTB1R6kLSFXXXXXJXFXXq6xXFXXXR.jpg_350x350.jpg"
+                            width="180"/>
+                    </div>
                     <div class="pro-info">
                         <div class="pro-price">
                             <span class="g-price notranslate">
@@ -461,14 +463,16 @@
 <div class="container">
     <div class="waterfall-tab">
         <div class="waterfall-tab-list">
-            <a class="item selected" data-role="product-container" href="#">Все</a> {{#each categoriesViewInLikesBlock}}
-            <a class="item" data-role="{{ this._id }}" href="#">{{ this.name }}</a> {{/each}}
+            <a class="item selected" data-role="product-container" href="#">Все</a>
+            {{#each categoriesViewInLikesBlock}}
+                <a class="item" data-role="{{ this._id }}" href="#">{{ this.name }}</a>
+            {{/each}}
             <!--<a class="item" data-role="filter" href="#">Для неё</a>-->
         </div>
     </div>
     <div class="waterfall-products-wrap container">
         <ul class="product-list clearfix related-recommend" data-role="product-container">
-            {{#each products}}
+            {{#each rndProducts}}
             <li class="good-item" data-role="item" data-productid="32669891457">
                 <div class="item-inner">
                     <h3><b>{{ this.name }}</b></h3>
@@ -476,8 +480,10 @@
                         target="_blank">
                         <div class="pro-img">
                             {{#if this.image }}
-                            <img src="{{ this.apiUrl }}/{{ this.image }}"> {{else}}
-                            <img src="/images/no-photo.png"> {{/if }}
+                                <img src="{{ this.apiUrl }}/{{ this.image }}" />
+                            {{else}}
+                                <img src="/images/no-photo.png" />
+                            {{/if }}
                         </div>
                         <div class="pro-info">
                             <!--<div class="g-orders">Заказов: 73</div>-->
