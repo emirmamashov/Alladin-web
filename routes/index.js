@@ -56,11 +56,8 @@ module.exports = (app, db) => {
                         categoriesViewInLikesBlock.forEach((category) => {
                           categoryIds.push(category._id);
                         });
-                        let limitCount = categoryIds.length * 30;
-                        console.log(limitCount);
-                        let n = db.Product.count({ categoryId: { $in: categoryIds } });
-                        let r = Math.floor(Math.random() * n);
-                        db.Product.find({ categoryId: { $in: categoryIds } }).limit(limitCount).skip(r).then(
+
+                        db.Product.find().limit(30).then(
                           (rndProducts) => {
                             console.log(rndProducts);
                             rndProducts.forEach((product) => {

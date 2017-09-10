@@ -6,7 +6,11 @@ module.exports = {
         let parentCategories = categories.filter(x => !x.parentCategory);
         products = products || [];
         parentCategories.forEach((category) => {
-            category['childCategories'] = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
+            let childCategories = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
+            if (childCategories.length > 10) {
+                childCategories = childCategories.slice(0, 10);
+            }
+            category['childCategories'] = childCategories;
             this.findChildCategories(categories, category['childCategories'], []);
             category['products'] = products.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString()) || [];
         });
