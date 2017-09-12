@@ -3,8 +3,8 @@ var router = express.Router();
 
 module.exports = (app, db) => {
   /* GET users listing. */
-  router.get('/', function(req, res, next) {
-    res.send('respond with a resource');
+  router.get('/register', function(req, res, next) {
+    res.render('users/register');
   });
 
   app.use('/users', router);

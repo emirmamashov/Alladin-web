@@ -1322,6 +1322,46 @@ ul.partners-list:before {
     .header-menu a.enter {
       border-right: 2px solid #fff; }
 
+.register h1 {
+  font-size: 24px; }
+.register .form {
+  padding: 0 0 30px;
+  min-height: 70vh; }
+  .register .form form {
+    display: block;
+    width: 100%; }
+  .register .form div {
+    padding: 10px 10px 10px 0;
+    width: 50%;
+    float: left; }
+    .register .form div.submit {
+      float: none;
+      padding-top: 20px;
+      max-width: 400px; }
+  .register .form input {
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    outline: none; }
+  .register .form label {
+    display: block;
+    font-size: 14px;
+    padding-bottom: 5px; }
+  .register .form input[type=submit] {
+    display: inline-block;
+    width: auto;
+    border: 0;
+    padding: 10px 15px;
+    text-align: center;
+    background: #fb722c;
+    color: #ffffff;
+    font-size: 14px; }
+  .register .form .error {
+    font-size: 16px;
+    color: #e00000;
+    padding-top: 15px; }
+
 .modal-popup-wrap {
   display: none;
   width: 100%;
@@ -1355,7 +1395,7 @@ ul.partners-list:before {
     font-weight: 500; }
   .modal-popup label {
     font-size: 14px; }
-  .modal-popup input[type=text] {
+  .modal-popup input[type=text], .modal-popup input[type=password] {
     display: block;
     width: 100%;
     padding: 5px;
@@ -1369,6 +1409,11 @@ ul.partners-list:before {
     background: #FB722C;
     border: 0;
     color: #fff; }
+  .modal-popup .error {
+    font-size: 14px;
+    padding: 5px 0;
+    color: #e00000;
+    text-align: center; }
   .modal-popup .help {
     position: absolute;
     width: 100%;

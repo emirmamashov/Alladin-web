@@ -1580,6 +1580,57 @@ ul.partners-list:before {
     }
 }
 
+.register {
+    h1 {
+        font-size: 24px;
+    }
+    .form {
+        padding: 0 0 30px;
+        min-height: 70vh;
+        form {
+            display: block;
+            width: 100%;
+        }
+        div {
+            padding: 10px 10px 10px 0;
+            width: 50%;
+            float: left;
+            &.submit {
+                float: none;
+                padding-top: 20px;
+                max-width: 400px;
+            }
+        }
+        input {
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            padding: 5px;
+            outline: none;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            padding-bottom: 5px;
+        }
+        input[type=submit] {
+            display: inline-block;
+            width: auto;
+            border: 0;
+            padding: 10px 15px;
+            text-align: center;
+            background: #fb722c;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        .error {
+            font-size: 16px;
+            color: #e00000;
+            padding-top: 15px;
+        }
+    }
+}
+
 .modal-popup-wrap {
     display: none;
     width: 100%;
@@ -1617,7 +1668,7 @@ ul.partners-list:before {
     label {
         font-size: 14px;
     }
-    input[type=text] {
+    input[type=text], input[type=password] {
         display: block;
         width: 100%;
         padding: 5px;
@@ -1632,6 +1683,12 @@ ul.partners-list:before {
         background: #FB722C;
         border: 0;
         color: #fff;
+    }
+    .error {
+        font-size: 14px;
+        padding: 5px 0;
+        color: #e00000;
+        text-align: center;
     }
     .help {
         position: absolute;
