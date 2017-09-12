@@ -3,7 +3,7 @@
     <div class="container">
         <div class="main-slider-wrap">
             <ul id="main-slider" class="main-slider">
-                {{#each banners}} 
+                {{#each banners}}
                     {{#if this.image }}
                     <li>
                         <img height="500" src="{{ this.apiUrl }}/{{ this.image}}" alt=""> {{#if this.buttonLink}}
@@ -14,18 +14,18 @@
                         </div>
                         {{/if }}
                     </li>
-                    {{/if }} 
+                    {{/if }}
                 {{/each}}
             </ul>
         </div>
         <div class="company-slider-wrap">
             <ul class="company-slider" id="company-slider">
-                {{#each producers}} 
+                {{#each producers}}
                     {{#if this.image}}
                         <li>
                             <img width="100" height="100"  src="{{ this.apiUrl }}/{{ this.image }}" alt="">
                         </li>
-                    {{/if}} 
+                    {{/if}}
                 {{/each}}
             </ul>
         </div>
@@ -65,7 +65,7 @@
             <div class="brands-event-content col-lg-30 col-md-30 col-sm-30">
                 <div class="mall-ru-left-top">
                     <div class="left-banner-wrap">
-                        <div class="banner-img" 
+                        <div class="banner-img"
                             style="background-image:url('{{ leftBannerShowInMainPage.apiUrl }}/{{ leftBannerShowInMainPage.image }}');">
                         <a href="{{ leftBannerShowInMainPage.buttonLink }}">&nbsp; </a></div>
                     </div>
@@ -86,7 +86,7 @@
 
                                     <div class="entrance-pic">
                                         <a href="/categories/{{this.name}}/{{this.id}}">
-                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
+                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}">
                                         </a>
                                     </div>
                             </li>
@@ -138,7 +138,7 @@
 
                                     <div class="entrance-pic">
                                         <a href="/categories/{{this.name}}/{{this.id}}">
-                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}"> 
+                                            <img alt="" src="{{this.apiUrl}}/{{this.image}}">
                                         </a>
                                     </div>
                             </li>
@@ -620,15 +620,53 @@
     <div class="partners">
         <div class="partners-main util-clearfix">
             <ul class="partners-list" title="Нам доверяют:">
-                {{#each producers}} 
+                {{#each producers}}
                     {{#if this.image}}
                         <li>
                             <img width="100" height="100"  src="{{ this.apiUrl }}/{{ this.image }}" alt="">
                         </li>
-                    {{/if}} 
+                    {{/if}}
                 {{/each}}
             </ul>
         </div>
     </div>
 </div>-->
 
+<div class="modal-popup-wrap">
+    <div class="modal-popup modal-popup-small">
+        <div class="auth-modal">
+            <h4>Войти в личный кабинет</h4>
+            <div class="input-wrap">
+                <label for="">E-mail</label>
+                <input type="text">
+            </div>
+            <div class="input-wrap">
+                <label for="">Пароль</label>
+                <input type="text">
+            </div>
+            <div class="input-wrap">
+                <input type="submit" value="Войти">
+            </div>
+            <div class="help">
+                <div>
+                    <a href="#">Забыли пароль?</a>
+                </div>
+                <span>Если у вас нет аккаунта, пожалуйста <br> <a href="#">зарегистрируйтесь</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $("a.enter").click(function () {
+       $(".modal-popup-wrap").fadeIn("fast");
+        $(".modal-popup").fadeIn("fast");
+    });
+    $(".modal-popup-wrap").click(function(e){
+        if (e.target.classList.contains("modal-popup-wrap")) {
+            $(".modal-popup").fadeOut('fast');
+            $(this).fadeOut('fast');
+        }
+    });
+</script>
