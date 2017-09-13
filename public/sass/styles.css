@@ -122,6 +122,7 @@ ul li {
         border: 0; }
   .header .categories .categories-3 {
     display: none;
+    margin: 0;
     position: absolute;
     left: 100%;
     top: -2px;
@@ -134,6 +135,7 @@ ul li {
     z-index: 1000000; }
   .header .categories .categories-4 {
     display: none;
+    margin: 0;
     position: absolute;
     left: 100%;
     top: -2px;
