@@ -1799,6 +1799,11 @@ ul.partners-list:before {
   text-align: center;
   font-size: 14px;
 }
+
+.catalog__item img {
+  width: 100%;
+  height: 100%;
+}
  
 
  /*# sourceMappingURL= styles.css.map */
