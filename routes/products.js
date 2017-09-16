@@ -7,10 +7,7 @@ let ObjectId = mongoose.Types.ObjectId;
 let categoryService = require('../services/category');
 let chunkService = require('../services/chunk');
 
-let apiUrl = 'http://176.126.167.128:3000';
-
 module.exports = (app, db) => {
-
     let config = app.get('config');
     router.get('/', (req, res) => {
         db.Category.find().then(
@@ -33,8 +30,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories,
-                            apiUrl: apiUrl
+                            parentCategories: parentCategories
                         });
                     }
                 ).catch(
@@ -43,8 +39,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: [],
-                            errors: err,
-                            apiUrl: apiUrl
+                            errors: err
                         });
                     }
                 );
@@ -55,8 +50,7 @@ module.exports = (app, db) => {
                 res.render('products/index', {
                     title: 'Products',
                     products: [],
-                    errors: err,
-                    apiUrl: apiUrl
+                    errors: err
                 });
             }
         );
@@ -68,8 +62,7 @@ module.exports = (app, db) => {
             return res.render('products/index', {
                 title: 'Products',
                 products: [],
-                errors: 'параметр неправильно передано',
-                apiUrl: apiUrl
+                errors: 'параметр неправильно передано'
             });
         }
 
@@ -100,8 +93,7 @@ module.exports = (app, db) => {
                             title: 'Products',
                             products: products,
                             parentCategories: parentCategories,
-                            category: currentCategory[0],
-                            apiUrl: apiUrl
+                            category: currentCategory[0]
                         });
                     }
                 ).catch(
@@ -110,8 +102,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: [],
-                            errors: err,
-                            apiUrl: apiUrl
+                            errors: err
                         });
                     }
                 );
@@ -123,7 +114,6 @@ module.exports = (app, db) => {
                     title: 'Products',
                     products: [],
                     errors: err,
-                    apiUrl: apiUrl
                 });
             }
         );
@@ -197,8 +187,7 @@ module.exports = (app, db) => {
                 console.log(products);
                 res.render('products/index', {
                     title: 'Products',
-                    products: products,
-                    apiUrl: apiUrl
+                    products: products
                 });
             }
         ).catch(
@@ -207,8 +196,7 @@ module.exports = (app, db) => {
                 res.render('products/index', {
                     title: 'Products',
                     products: [],
-                    errors: err,
-                    apiUrl: apiUrl
+                    errors: err
                 });
             }
         );
