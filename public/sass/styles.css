@@ -1853,6 +1853,21 @@ ul.partners-list:before {
   padding: 0;
   border: 0;
 }
+
+.super-mega-filter-for-categories .blk-title {
+  margin: 0 0 10px;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.super-mega-filter-for-categories .left-col {
+  width: 180px !important;
+}
+
+.super-mega-filter-for-categories .left-col a {
+  font-size: 10px !important;
+}
  
 
  /*# sourceMappingURL= styles.css.map */
