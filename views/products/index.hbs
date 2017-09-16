@@ -939,7 +939,7 @@
             <li class="catalog__item inner ng-scope" ng-class="listTemplate" ng-repeat-start="products in productsPages[currentPage]"
                 data-art="14465976" data-name="Кабель HDMI Oxion «Эконом» 1 м, ПВХ/медь, цвет чёрный">
                 <div class="catalog__pic">
-                    <a href="/products/details/{{this._id}}">
+                    <a href="{{apiUrl}}/{{this._id}}">
                             {{#if this.image }}
                                 <img src="{{ this.apiUrl }}/{{ this.image }}">
                             {{else}}

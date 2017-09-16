@@ -7,6 +7,8 @@ let ObjectId = mongoose.Types.ObjectId;
 let categoryService = require('../services/category');
 let chunkService = require('../services/chunk');
 
+let apiUrl = 'http://176.126.167.128:3000';
+
 module.exports = (app, db) => {
 
     let config = app.get('config');
@@ -31,7 +33,8 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories
+                            parentCategories: parentCategories,
+                            apiUrl: apiUrl
                         });
                     }
                 ).catch(
@@ -40,7 +43,8 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: [],
-                            errors: err
+                            errors: err,
+                            apiUrl: apiUrl
                         });
                     }
                 );
@@ -51,7 +55,8 @@ module.exports = (app, db) => {
                 res.render('products/index', {
                     title: 'Products',
                     products: [],
-                    errors: err
+                    errors: err,
+                    apiUrl: apiUrl
                 });
             }
         );
@@ -63,7 +68,8 @@ module.exports = (app, db) => {
             return res.render('products/index', {
                 title: 'Products',
                 products: [],
-                errors: 'параметр неправильно передано'
+                errors: 'параметр неправильно передано',
+                apiUrl: apiUrl
             });
         }
 
@@ -94,7 +100,8 @@ module.exports = (app, db) => {
                             title: 'Products',
                             products: products,
                             parentCategories: parentCategories,
-                            category: currentCategory[0]
+                            category: currentCategory[0],
+                            apiUrl: apiUrl
                         });
                     }
                 ).catch(
@@ -103,7 +110,8 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: [],
-                            errors: err
+                            errors: err,
+                            apiUrl: apiUrl
                         });
                     }
                 );
@@ -114,7 +122,8 @@ module.exports = (app, db) => {
                 res.render('products/index', {
                     title: 'Products',
                     products: [],
-                    errors: err
+                    errors: err,
+                    apiUrl: apiUrl
                 });
             }
         );
@@ -185,9 +194,11 @@ module.exports = (app, db) => {
         console.dir(req.body);
         db.Product.find({ name: regex }).then(
             (products) => {
+                console.log(products);
                 res.render('products/index', {
                     title: 'Products',
-                    products: products
+                    products: products,
+                    apiUrl: apiUrl
                 });
             }
         ).catch(
@@ -196,7 +207,8 @@ module.exports = (app, db) => {
                 res.render('products/index', {
                     title: 'Products',
                     products: [],
-                    errors: err
+                    errors: err,
+                    apiUrl: apiUrl
                 });
             }
         );
