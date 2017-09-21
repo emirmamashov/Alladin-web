@@ -1884,5 +1884,6 @@ ul.partners-list:before {
 }
 
 .product_description td {
-  width: 50%;
+  width: 49%;
+  display: inline-block;
 }

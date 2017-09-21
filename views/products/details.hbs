@@ -38,11 +38,11 @@
                             <a href="{{ product.apiUrl }}/{{ product.image }}" class="jqzoom" rel="gal1" title="" style="outline-style: none; text-decoration: none;">
                                 <div class="zoomPad">
                                     {{#if product.image }}
-                                            <img id="img_1737688" class="one_img" src="{{ product.apiUrl }}/{{ product.image }}" 
+                                            <img id="big_image" class="one_img" src="{{ product.apiUrl }}/{{ product.image }}" 
                                             title="{{ product.name }}"
                                             style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
                                     {{else}}
-                                        <img id="img_1737688" class="one_img" src="/images/no-photo.png" title="{{ product.name }}"
+                                        <img id="big_image" class="one_img" src="/images/no-photo.png" title="{{ product.name }}"
                                         style="border: 0px solid rgb(102, 102, 102); opacity: 1;">
                                     {{/if }}
                                     <div class="zoomPup" style="top: -1px; left: 71px; width: 428px; height: 357px; position: absolute; border-width: 1px; display: none;"></div>
@@ -74,15 +74,16 @@
                         <div class="clearfix" style="margin-top:0px;margin-left:0px;">
                             <ul id="thumblist" class="clearfix" style="padding:0px;">
                                 <li>
-                                    <a class="zoomThumbActive">
                                     {{#if images }}
                                         {{#each images}}
-                                            <img  width="100px" src="{{ this.apiUrl }}/{{ this.image }}">
+                                            <a class="zoomThumbActive" href="#"> 
+                                                <img  width="100px" src="{{ this.apiUrl }}/{{ this.image }}">
+                                            </a>
+                                            
                                         {{/each}}
                                     {{else}}
                                         <img  width="100px" src="/images/no-photo.png">
                                     {{/if }}
-                                </a>
                                 </li>
                             </ul>
                             <div class="clear"></div>
@@ -232,3 +233,12 @@
     </div>
 
 <script src="/javascripts/bucket.js"></script>
+
+<script>
+    $("#thumblist img").click(function(){
+        var img = $(this).attr('src');
+        $("#big_image").attr('src', img);
+        $("#thumblist a").removeClass("zoomThumbActive");
+        $(this).parent().addClass("zoomThumbActive");
+    });
+</script>
