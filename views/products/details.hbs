@@ -73,18 +73,21 @@
 
                         <div class="clearfix" style="margin-top:0px;margin-left:0px;">
                             <ul id="thumblist" class="clearfix" style="padding:0px;">
-                                <li>
-                                    {{#if images }}
-                                        {{#each images}}
+                                {{#if images }}
+                                    {{#each images}}
+                                        <li>
                                             <a class="zoomThumbActive"> 
                                                 <img  width="100px" src="{{ this.apiUrl }}/{{ this.image }}">
                                             </a>
-                                            
-                                        {{/each}}
-                                    {{else}}
-                                        <img  width="100px" src="/images/no-photo.png">
-                                    {{/if }}
-                                </li>
+                                        </li>
+                                    {{/each}}
+                                {{else}}
+                                        <li>
+                                            <a>
+                                                <img  width="100px" src="/images/no-photo.png">
+                                            </a>
+                                        </li>
+                                {{/if }}
                             </ul>
                             <div class="clear"></div>
                         </div>
