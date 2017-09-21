@@ -215,10 +215,6 @@ span.kolbox111:active {
   border-right: 1px solid #c7d2d9;
 }
 
-.product_left .one_img {
-  width: 100%;
-}
-
 .product_right {
   width: 50%;
   position: relative;
@@ -1011,6 +1007,3 @@ div.kolbox {
   background-color: #da251b;
   color: white;
 }
- 
-
- /*# sourceMappingURL= item.css.map */
