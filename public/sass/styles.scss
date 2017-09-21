@@ -1817,3 +1817,76 @@ a.jqzoom {
     max-width: 100%;
     max-height: 100%;
 }
+
+.minus1, .plus1 {
+    text-align: center;
+    line-height: 25px;
+    user-select: none;
+}
+
+.order-buttons {
+    padding: 10px;
+    text-align: center;
+    a {
+        display: inline-block;
+        vertical-align: top;
+        span {
+            width: auto;
+            display: inline-block;
+            padding: 15px 50px;
+            color: #fff;
+            font-size: 21px;
+        }
+    }
+    .buy-now {
+        background: #FB722C;
+        text-decoration: none;
+    }
+}
+
+.order-phone-consult {
+    padding-left: 12px;
+    h4 {
+        font-size: 10px;
+        color: #A3A2A2;
+        font-weight: 300;
+    }
+    .half {
+        width: 50%;
+        float: left;
+        &:first-child {
+            padding-right: 5px;
+        }
+        &:last-child {
+            padding-left: 10px;
+        }
+        a {
+            background-position-x: 25px;
+        }
+    }
+    form {
+        overflow: hidden;
+        border-radius: 100px;
+        background: #e2e2e2;
+        input {
+            padding: 15px 10px;
+            width: 60%;
+            background: transparent;
+            border: 0;
+            outline: none;
+            &[type=submit] {
+                width: 40%;
+                border-radius: 100px;
+                color: #fff;
+                background: #18a65c;
+                font-weight: 300;
+                transition: .2s ease-in;
+                &:hover {
+                    cursor: pointer;
+                    background: #1BBF65;
+                    transition: .2s ease-in;
+                }
+            }
+        }
+    }
+}
