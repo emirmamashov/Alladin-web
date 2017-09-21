@@ -1875,3 +1875,10 @@ ul.partners-list:before {
   float: left;
   font-size: 14px;
 }
+
+.product_description tr {
+  display: inline-block;
+  width: 48%;
+  margin: 0.5%;
+  vertical-align: top;
+}
