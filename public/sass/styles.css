@@ -1868,6 +1868,10 @@ ul.partners-list:before {
 .super-mega-filter-for-categories .left-col a {
   font-size: 10px !important;
 }
- 
 
- /*# sourceMappingURL= styles.css.map */
+.product_description {
+  width: 100%;
+  padding: 20px 0;
+  float: left;
+  font-size: 14px;
+}
