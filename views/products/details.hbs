@@ -76,7 +76,7 @@
                                 {{#if images }}
                                     {{#each images}}
                                         <li>
-                                            <a class="zoomThumbActive"> 
+                                            <a class="{{#if images.1}}zoomThumbActive{{/if}}"> 
                                                 <img  width="100px" src="{{ this.apiUrl }}/{{ this.image }}">
                                             </a>
                                         </li>
