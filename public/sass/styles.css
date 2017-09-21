@@ -1887,3 +1887,17 @@ ul.partners-list:before {
   width: 49%;
   display: inline-block;
 }
+
+a.jqzoom {
+  text-align: center;
+}
+
+.zoomPad {
+  width: 500px;
+  height: 500px;
+}
+
+.zoomPad img {
+  max-width: 100%;
+  max-height: 100%;
+}

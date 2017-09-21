@@ -1805,3 +1805,15 @@ ul.partners-list:before {
         display: inline-block;
     }
 }
+
+a.jqzoom {
+    text-align: center;
+}
+.zoomPad {
+    width: 500px;
+    height: 500px;
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
