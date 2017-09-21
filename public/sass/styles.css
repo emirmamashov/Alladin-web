@@ -1882,3 +1882,7 @@ ul.partners-list:before {
   margin: 0.5%;
   vertical-align: top;
 }
+
+.product_description td {
+  width: 50%;
+}
