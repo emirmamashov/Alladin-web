@@ -1838,20 +1838,36 @@ ul.partners-list:before {
   width: 100%;
 }
 
-.get-phone-info input {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 16px;
-  width: 70%;
+.get-phone-info form {
+  overflow: hidden;
+  border-radius: 100px;
+  background: #e2e2e2;
 }
 
-.get-phone-info input[type=submit] {
-  display: inline-block;
-  font-size: 16px;
-  width: 30%;
-  padding: 0;
+.get-phone-info form input {
+  padding: 10px 10px;
+  width: 60%;
+  background: transparent;
   border: 0;
+  outline: none;
+  font-size: 16px;
+}
+
+.get-phone-info form input[type=submit] {
+  width: 40%;
+  height: auto;
+  border-radius: 100px;
+  color: #fff;
+  background: #18a65c;
+  font-weight: 300;
+  transition: .2s ease-in;
+  padding: 0;
+}
+
+.get-phone-info form input[type=submit]:hover {
+  cursor: pointer;
+  background: #1BBF65;
+  transition: .2s ease-in;
 }
 
 .super-mega-filter-for-categories .blk-title {
