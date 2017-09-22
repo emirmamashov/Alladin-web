@@ -1,0 +1,43 @@
+#oauth-iframe-dialog-loader {
+    width: 100px;
+    height: 100px;
+    background: url(img/saw-loader.svg) 50% 50% no-repeat;
+    -webkit-animation: animate-loader 3.5s linear 0s infinite normal;
+    animation: animate-loader 3.5s linear 0s infinite normal;
+    position:absolute;
+    z-index: 1;
+    left: 110px;
+    top:100px;
+
+}
+
+#oauth-iframe-dialog-error {
+    display: none;
+    width: 100%;
+    height: 200px;
+    color: red;
+    font-size: 16px;
+    line-height: 22px;
+    padding-top: 65px;
+    background: #fff;
+}
+
+#oauth-iframe-dialog-block {
+    display: none;
+}
+
+#oauth-iframe-dialog {
+    width: 100%;
+    border: none;
+    position: relative;
+    z-index: 20;
+    height:285px;
+}
+
+.personal-cabinet .pane {
+    width: 30% !important;
+    margin-left: 35% !important;
+}
+#popup-auth {
+    min-height: 464px;
+}

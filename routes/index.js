@@ -203,5 +203,9 @@ module.exports = (app, db) => {
     );
   });
 
+  router.get('/advices', (req, res) => {
+      res.render('advices')
+  })
+
   app.use('/', router);
 };
