@@ -14,102 +14,14 @@
             <h1 class="ttu blk-title">Каталог</h1>
             <div class="left-col">
                 <ul class="catalog-left-menu">
+                    {{#each parentCategories}}
                         <li>
-                                <a href="/categories/СТРОЙМАТЕРИАЛЫ/59784e8f48395743116cf15a/">
-                                    <div class="cs_name">СТРОЙМАТЕРИАЛЫ</div>
-                                    <div class="cs_cnt">1</div>
-                                </a>
+                            <a href="/categories/{{ this.name }}/{{ this.id }}/">
+                                <div class="cs_name">{{ this.name }}</div>
+                                <div class="cs_cnt">{{ productsCount }}</div>
+                            </a>
                         </li>
-                        <li>
-                                <a href="/categories/СТОЛЯРНЫЕ ИЗДЕЛИЯ/5979d722dc198a0e6d1b7c5f/">
-                                    <div class="cs_name">СТОЛЯРНЫЕ ИЗДЕЛИЯ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/САД/5989892d56224f121af5e719/">
-                                    <div class="cs_name">САД</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/КУХНИ/598998d856224f121af5e784/">
-                                    <div class="cs_name">КУХНИ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/НАПОЛЬНЫЕ ПОКРЫТИЯ/59899b0956224f121af5e7a0/">
-                                    <div class="cs_name">НАПОЛЬНЫЕ ПОКРЫТИЯ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/САНТЕХНИКА/5989a18456224f121af5e7b2/">
-                                    <div class="cs_name">САНТЕХНИКА</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/ВОДОСНАБЖЕНИЕ/5989a41156224f121af5e7d3/">
-                                    <div class="cs_name">ВОДОСНАБЖЕНИЕ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/ТЕХНИКА/5989a52956224f121af5e7e5/">
-                                    <div class="cs_name">ТЕХНИКА</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/ПЛИТКА/5989a60756224f121af5e7f6/">
-                                    <div class="cs_name">ПЛИТКА</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/Затирки цементные/5989a9c756224f121af5e814/">
-                                    <div class="cs_name">Затирки цементные</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/СКОБЯНЫЕ ИЗДЕЛИЯ/598ac34256224f121af5e822/">
-                                    <div class="cs_name">СКОБЯНЫЕ ИЗДЕЛИЯ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/ЭЛЕКТРОТОВАРЫ/598d85da3d58692e01cdd1d7/">
-                                    <div class="cs_name">ЭЛЕКТРОТОВАРЫ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/Увлажнители воздуха/598d8fce3d58692e01cdd227/">
-                                    <div class="cs_name">Увлажнители воздуха</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/ОСВЕЩЕНИЕ/598d91f33d58692e01cdd236/">
-                                    <div class="cs_name">ОСВЕЩЕНИЕ</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/ДЕКОР/599ac7888cdd8c710a9c9e39/">
-                                    <div class="cs_name">ДЕКОР</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
-                        <li>
-                                <a href="/categories/КОМПЬЮТЕРНАЯ ТЕХНИКА/599eb3fad2514450e7cad0f0/">
-                                    <div class="cs_name">КОМПЬЮТЕРНАЯ ТЕХНИКА</div>
-                                    <div class="cs_cnt">0</div>
-                                </a>
-                        </li>
+                    {{/each}}
                     <li class="picture">
                         <a href="https://leroymerlin.ru/catalogue/predlozenie_ogranicheno/" style="padding: 10px 0 0 0;">
 						<img src="/images/leroy/pl_newcatalog2.png">

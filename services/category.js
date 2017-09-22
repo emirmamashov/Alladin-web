@@ -18,7 +18,6 @@ module.exports = {
         return parentCategories;
     },
     findChildCategories(allCategories, categories, products) {
-        console.log('-------------findChildCategories----------');
         if (!categories || categories.length === 0 || !allCategories || allCategories.length === 0) {
             return [];
         }
@@ -27,7 +26,6 @@ module.exports = {
             category['childCategories'] = allCategories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
             category['products'] = products.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString()) || [];
         });
-        console.log(categories);
         return categories;
     },
 

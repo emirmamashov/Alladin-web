@@ -6,6 +6,7 @@ let ObjectId = mongoose.Types.ObjectId;
 // services
 let categoryService = require('../services/category');
 let chunkService = require('../services/chunk');
+let productService = require('../services/product');
 
 module.exports = (app, db) => {
     let config = app.get('config');
@@ -71,11 +72,11 @@ module.exports = (app, db) => {
                 categories.forEach((category) => {
                   if (category) {
                     category['apiUrl'] = config.API_URL;
+                    productService.getCountProductsByCategoryId(db, categories, category);
                   }
                 });
                 let categoryIds = [];
                 let currentCategory = categories.filter(x => x.id == categoryId);
-                console.log(currentCategory[0]);
                 if (currentCategory[0]) {
                     categoryIds.push(categoryId);
                     let childsCategories = categoryService.findChildCategories(categories, currentCategory, []);
