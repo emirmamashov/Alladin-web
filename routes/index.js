@@ -204,11 +204,15 @@ module.exports = (app, db) => {
     });
 
     router.get('/advices', (req, res) => {
-        res.render('advices')
+        res.render('advices');
     });
 
     router.get('/advice', (req, res) => {
-        res.render('advice')
+        res.render('advice');
+    });
+
+    router.get('/services', (req, res) => {
+        res.render('services');
     });
 
     app.use('/', router);
