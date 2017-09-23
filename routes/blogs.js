@@ -74,7 +74,7 @@ module.exports = (app, db) => {
                                 console.log(blogs);
                                 res.render('blogs/index', { 
                                     title: 'Главная страница',
-                                    parentCategories: parentCategories.slice(0, 10),
+                                    parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
                                     products: products,
                                     categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                                     apiUrl: config.API_URL,
@@ -240,7 +240,7 @@ module.exports = (app, db) => {
                                 console.log(blog);
                                 res.render('blogs/details', { 
                                     title: 'Главная страница',
-                                    parentCategories: parentCategories.slice(0, 10),
+                                    parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
                                     products: products,
                                     categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                                     apiUrl: config.API_URL,

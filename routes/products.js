@@ -31,7 +31,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories.slice(0, 10)
+                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage)
                         });
                     }
                 ).catch(
@@ -98,7 +98,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories.slice(0, 10),
+                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
                             category: currentCategory[0]
                         });
                     }
@@ -156,7 +156,7 @@ module.exports = (app, db) => {
                         res.render('products/details', { 
                             title: 'details', 
                             product: product,
-                            parentCategories: parentCategories.slice(0, 10),
+                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
                             images: images
                         });
                     }
@@ -206,7 +206,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories.slice(0, 10)
+                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage)
                         });
                     }
                 ).catch(
