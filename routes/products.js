@@ -31,7 +31,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories
+                            parentCategories: parentCategories.slice(0, 10)
                         });
                     }
                 ).catch(
@@ -98,7 +98,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories,
+                            parentCategories: parentCategories.slice(0, 10),
                             category: currentCategory[0]
                         });
                     }
@@ -156,7 +156,7 @@ module.exports = (app, db) => {
                         res.render('products/details', { 
                             title: 'details', 
                             product: product,
-                            parentCategories: parentCategories,
+                            parentCategories: parentCategories.slice(0, 10),
                             images: images
                         });
                     }
@@ -188,24 +188,49 @@ module.exports = (app, db) => {
     router.post('/search', (req, res) => {
         let regex = new RegExp(req.body.text, 'i');
         console.dir(req.body);
-        db.Product.find({ name: regex }).then(
-            (products) => {
-                console.log(products);
-                res.render('products/index', {
-                    title: 'Products',
-                    products: products
+        db.Category.find().then(
+            (categories) => {
+                let categoryIds = [];
+                let photoIds = [];
+    
+                categories.forEach((category) => {
+                  if (category) {
+                    category['apiUrl'] = config.API_URL;
+                    categoryIds.push(category._id);
+                  }
                 });
-            }
-        ).catch(
-            (err) => {
-                console.log(err);
-                res.render('products/index', {
-                    title: 'Products',
-                    products: [],
-                    errors: err
-                });
-            }
-        );
+                db.Product.find({ name: regex }).then(
+                    (products) => {
+                        let parentCategories = categoryService.findParentCategory(categories, products);
+                        console.log(products);
+                        res.render('products/index', {
+                            title: 'Products',
+                            products: products,
+                            parentCategories: parentCategories.slice(0, 10)
+                        });
+                    }
+                ).catch(
+                    (err) => {
+                        console.log(err);
+                        res.render('products/index', {
+                            title: 'Products',
+                            products: [],
+                            errors: err
+                        });
+                    }
+                );
+
+            }).catch(
+                (err) => {
+                    console.log(err);
+                    res.render('products/index', {
+                        title: 'Products',
+                        products: [],
+                        errors: err
+                    });
+                }
+            )
+        
     });
 
     app.use('/products', router);

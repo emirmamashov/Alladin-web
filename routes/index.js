@@ -108,7 +108,7 @@ module.exports = (app, db) => {
 
                                                         res.render('index', {
                                                             title: 'Главная страница',
-                                                            parentCategories: parentCategories,
+                                                            parentCategories: parentCategories.slice(0, 10),
                                                             products: products,
                                                             categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                                                             apiUrl: config.API_URL,

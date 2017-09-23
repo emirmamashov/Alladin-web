@@ -19,7 +19,7 @@ module.exports = (app, db) => {
                         console.log(parentCategories);
                         res.render('categories/index', { 
                             title: 'Categories', 
-                            parentCategories: parentCategories,
+                            parentCategories: parentCategories.slice(0, 10),
                             products: products,
                             chunkCategories: chunk(parentCategories, 3)
                         });
@@ -61,7 +61,7 @@ module.exports = (app, db) => {
                         console.log(selectedChildCategories);
                         return res.render('categories/index', { 
                             title: 'Categories', 
-                            parentCategories: parentCategories,
+                            parentCategories: parentCategories.slice(0, 10),
                             products: products,
                             selectedCategory: selectedCategory,
                             chunkCategories: chunk(selectedChildCategories, 3)
