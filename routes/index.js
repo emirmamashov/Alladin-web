@@ -219,5 +219,9 @@ module.exports = (app, db) => {
         res.render('confirm');
     });
 
+    router.get('/landing', (req, res) => {
+        res.render('landing');
+    });
+
     app.use('/', router);
 };
