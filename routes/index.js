@@ -215,5 +215,9 @@ module.exports = (app, db) => {
         res.render('services');
     });
 
+    router.get('/confirm', (req, res) => {
+        res.render('confirm');
+    });
+
     app.use('/', router);
 };

@@ -1671,4 +1671,102 @@ a.jqzoom {
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent; }
 
+.confirm-order h1 {
+  text-transform: uppercase;
+  font-size: 30px; }
+.confirm-order .confirm {
+  width: 70%;
+  float: left; }
+  .confirm-order .confirm .in {
+    margin-right: 10px;
+    background: #f0f0f0; }
+  .confirm-order .confirm form {
+    display: block;
+    padding: 30px; }
+  .confirm-order .confirm .form-item {
+    display: flex;
+    justify-content: center; }
+    .confirm-order .confirm .form-item p {
+      width: 50%; }
+      .confirm-order .confirm .form-item p label {
+        font-size: 14px;
+        text-transform: uppercase; }
+      .confirm-order .confirm .form-item p input {
+        display: block;
+        width: 100%;
+        font-size: 14px;
+        padding: 5px;
+        outline: none; }
+      .confirm-order .confirm .form-item p.required label {
+        font-weight: 600; }
+  .confirm-order .confirm .form-submit {
+    padding-top: 30px;
+    text-align: center; }
+    .confirm-order .confirm .form-submit input {
+      display: inline-block;
+      padding: 10px 40px;
+      background: #fb722c;
+      color: #fff;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 300;
+      border: 0; }
+      .confirm-order .confirm .form-submit input:hover {
+        cursor: pointer; }
+.confirm-order .order {
+  width: 30%;
+  float: left; }
+  .confirm-order .order .in {
+    margin-left: 10px;
+    padding: 20px;
+    background: #f0f0f0; }
+  .confirm-order .order h2 {
+    font-size: 21px;
+    margin-top: 0; }
+  .confirm-order .order .good {
+    padding: 10px 0;
+    margin: 0 10px;
+    border-bottom: 1px solid #ccc; }
+  .confirm-order .order .title {
+    font-size: 14px;
+    padding: 0 0 10px 0; }
+  .confirm-order .order .desc {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+  .confirm-order .order .img {
+    width: 120px; }
+    .confirm-order .order .img img {
+      width: 100%; }
+  .confirm-order .order .amount {
+    padding-left: 10px; }
+    .confirm-order .order .amount span {
+      display: block;
+      font-size: 16px;
+      padding-bottom: 10px; }
+      .confirm-order .order .amount span.bold {
+        font-weight: 600; }
+  .confirm-order .order .total {
+    padding: 20px 0 10px;
+    margin: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+    .confirm-order .order .total p {
+      font-size: 12px;
+      margin: 0;
+      text-transform: uppercase;
+      text-align: right; }
+      .confirm-order .order .total p.amount {
+        font-size: 18px;
+        text-align: left;
+        font-weight: 600; }
+  .confirm-order .order .return {
+    padding: 5px 0 5px;
+    margin: 0 10px; }
+    .confirm-order .order .return a {
+      text-decoration: none;
+      color: #fb722c;
+      font-size: 12px; }
+
 /*# sourceMappingURL=styles.css.map */

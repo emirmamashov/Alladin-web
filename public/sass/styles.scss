@@ -2001,3 +2001,134 @@ a.jqzoom {
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent
 }
+
+.confirm-order {
+  h1 {
+    text-transform: uppercase;
+    font-size: 30px;
+  }
+  .confirm {
+    width: 70%;
+    float: left;
+    .in {
+      margin-right: 10px;
+      background: #f0f0f0;
+    }
+    form {
+      display: block;
+      padding: 30px;
+    }
+    .form-item {
+      display: flex;
+      justify-content: center;
+      p {
+        width: 50%;
+        label {
+          font-size: 14px;
+          text-transform: uppercase;
+        }
+        input {
+          display: block;
+          width: 100%;
+          font-size: 14px;
+          padding: 5px;
+          outline: none;
+        }
+        &.required {
+          label {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+    .form-submit {
+      padding-top: 30px;
+      text-align: center;
+      input {
+        display: inline-block;
+        padding: 10px 40px;
+          background: #fb722c;
+        color: #fff;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 300;
+        border: 0;
+        &:hover {
+          cursor: pointer;
+
+        }
+      }
+    }
+  }
+  .order {
+    width: 30%;
+    float: left;
+    .in {
+      margin-left: 10px;
+      padding: 20px;;
+      background: #f0f0f0;
+    }
+    h2 {
+      font-size: 21px;
+      margin-top: 0;
+    }
+    .good {
+      padding: 10px 0;
+      margin: 0 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .title {
+      font-size: 14px;
+      padding: 0 0 10px 0;
+    }
+    .desc {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .img {
+      width: 120px;
+      img {
+        width: 100%;
+      }
+    }
+    .amount {
+      padding-left: 10px;
+      span {
+        display: block;
+        font-size: 16px;
+        padding-bottom: 10px;
+        &.bold {
+          font-weight: 600;
+        }
+      }
+    }
+    .total {
+      padding: 20px 0 10px;
+      margin: 0 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      p {
+        font-size: 12px;
+        margin: 0;
+        text-transform: uppercase;
+        text-align: right;
+        &.amount {
+          font-size: 18px;
+          text-align: left;
+          font-weight: 600;
+        }
+      }
+    }
+    .return {
+      padding: 5px 0;
+      margin: 0 10px;
+      a {
+        text-decoration: none;
+        color: #fb722c;
+        font-size: 12px;
+      }
+    }
+  }
+}
