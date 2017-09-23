@@ -139,7 +139,7 @@
                         </a>
 
                         <button class="catalog__fast-view btn btn_sm btn_lc" type="button"
-                            onclick="openModulProductDetails({ 
+                            onclick="openModulProductDetails({
                                 id: '{{ this.id }}',
                                 name: '{{ this.name }}',
                                 price: '{{ this.price }}',
@@ -161,7 +161,7 @@
                         <p class="catalog__name">
                             <a class="ng-binding" href="/products/details/{{this._id}}">
                                 {{ this.name }}
-                                
+
                                 {{#ifCond this.description '==' true}}
                                     <span>, {{ this.description }}</span>
                                 {{/ifCond}}
@@ -193,7 +193,7 @@
                             {{/if}}
                         </p>
                         <br>
-                        <button type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}', 'index')">
+                        <button class="show-modal-2" type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}', 'index')">
                                 <span class="icon icon-buy"> </span>
                                 В корзину
                             </button>
@@ -851,7 +851,7 @@
                         </button>
                     <br>
                 </div>
-                
+
 
                 <div class="get-phone-info">
                     <h4>Проконсультируйтесь со специалистом</h4>
@@ -878,22 +878,248 @@
     </div>
 </div>
 
+<div class="modal-popup-wrap-2">
+    <div class="modal-popup-2">
+        <div class="cart-item">
+            <h2 class="titl">Товар добавлен в корзину</h2>
+
+            <div class="cart-item-wrap">
+                <div class="cart-item__pic">
+                    <a href="/product/perchatki-sadovye-s-poliuretanovym-pokrytiem-18473252/"
+                       onclick="gtmEventsProductAjaxClick(18473252, 0, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                        <img src="https://s.leroymerlin.ru/upload/catalog/img/6/6/18473252/800x800/18473252.jpg?v=506"
+                             alt="Перчатки садовые с полиуретановым покрытием"
+                             title="Перчатки садовые с полиуретановым покрытием">
+                    </a>
+                </div>
+                <!-- pic -->
+
+                <div class="cart-item__desc">
+                    <p class="cart-item__name"><a href="/product/perchatki-sadovye-s-poliuretanovym-pokrytiem-18473252/"
+                                                  onclick="gtmEventsProductAjaxClick(18473252, 0, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">Перчатки
+                        садовые с полиуретановым покрытием</a></p>
+                    <p class="cart-item__article">Артикул: 18473252&nbsp;&nbsp;&nbsp;&nbsp;Вес товара: 0.31 кг</p>
+
+
+                    <p class="cart-item__price    ">
+                        57<span class="price-kop">,00</span> <span class="cart-item__price__qt"><span
+                            class="rub">руб.</span>/шт.</span>
+                    </p>
+
+                    <div class="cart-item__total">
+                        <span class="ui-spinner ui-widget ui-widget-content ui-corner-all">
+                            <input type="text" name="spinnerInput1" value="1.00" id="" class="spinner spinner-cart ui-spinner-input">
+                            <a
+                                class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"
+                                tabindex="-1" role="button"><span class="ui-button-text"><span
+                                class="ui-icon ui-icon-triangle-1-n">▲</span></span></a><a
+                                class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"
+                                tabindex="-1" role="button"><span class="ui-button-text"><span
+                                class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
+                        <div class="cart-item__sum">
+                            <p class="cart-item__sum__title">Сумма:</p>
+                            <p class="cart-item__sum-price">
+                                <span id="cart-item__sum-price">57,00</span> <span
+                                    class="cart-item__sum-price__qt"><span class="rub">руб.</span>/шт.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- total -->
+
+                </div>
+                <!-- desc -->
+                <div class="cart-info">
+                    <a href="javascript:void(0);" data-url="/basket/" class="more-items btn_popup_bsk">В Вашей корзине еще 1
+                        товаров</a>
+
+                    <p class="cart-total__qt">
+                    <span class="cart-total__qt__item">ВСЕГО ТОВАРОВ: <span class="numb"
+                                                                            id="cnt-bsk">2</span></span><br>
+                        <span class="cart-total__qt__item">НА СУММУ: <span class="numb" id="sum-bsk">198,00</span> <span
+                                class="cart-item__price__qt"><span class="rub">руб.</span>/шт.</span></span>
+                    </p>
+
+                    <a href="javascript:void(0);" data-url="/basket/delivery.php" class="btn btn_block btn_popup_bsk">Перейти
+                        к оплате</a>
+
+                    <a href="javascript:void(0);" data-url="/basket/" class="btn btn_red btn_block btn_popup_bsk">Перейти в
+                        корзину</a>
+                </div>
+                <!-- cart-info -->
+            </div>
+            <!-- wrap -->
+        </div>
+        <div class="cart-same" id="complement-wrap-popup" style="">
+            <div class="products-section">
+                <h2 class="subtitl">С этим товаром покупают</h2>
+                <div class="catalog-carousel jcarousel-wrapper added-popup">
+                    <div class="catalog-carousel__stage jcarousel" data-jcarousel="true">
+                        <ul class="catalog catalog_col-5" style="left: 0px; top: 0px;">
+                            <li class="catalog__item" style="width: 178.8px;">
+                                <div class="catalog__pic">
+
+                                    <a href="/product/perchatki-hozyaystvennye-18473244/" onclick="gtmEventsProductAjaxClick(18473244, 1, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                                        <img src="https://s.leroymerlin.ru/upload/catalog/img/3/f/18473244/128x128/18473244.jpg?v=506" alt="Перчатки хозяйственные">
+                                    </a>
+
+
+                                </div>
+
+                                <div class="catalog__desc">
+                                    <p class="catalog__name">
+                                        <a href="/product/perchatki-hozyaystvennye-18473244/" onclick="gtmEventsProductAjaxClick(18473244, 1, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                                            Перчатки хозяйственные            </a>
+                                    </p>
+
+
+                                    <div class="sp-inline-rating-18473244">
+                                    </div>
+                                    <p class="catalog__price    ">
+                                        30<span class="price-kop">,00</span> <span class="catalog__price__qt"><span class="rub">руб.</span>/шт.</span>
+                                    </p>
+                                </div>
+
+                                <div class="catalog__info">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td>Артикул:</td>
+                                            <td>18473244</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Вес,кг:</td>
+                                            <td>0.4</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="catalog__avalible">
+                                        <p class="mb0">Цена и наличие на 18 Января 2016 09:30</p>
+                                        <a href="" class="btn btn_link btn_sm mb0"><svg class="icon icon-tick"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-tick"></use></svg>Смотреть наличие в других магазинах</a>
+                                    </div>
+                                </div>
+
+                                <div class="catalog__bt" data-nopopup="Y" data-basket-popup="Y">
+                                    <button class="catalog__buy btn btn_red btn_block ab_add_to_cart" onclick="add2basketInput(event, 18473244, 1, false, 'AddToCartPopup');">
+                                        <span class="icon icon-buy"></span>В корзину 1            </button>
+                                </div>
+                            </li>                                                        <li class="catalog__item" style="width: 178.8px;">
+                            <div class="catalog__pic">
+
+                                <a href="/product/udobrenie-superfosfat-dvoynoy-1-kg-18463951/" onclick="gtmEventsProductAjaxClick(18463951, 2, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                                    <img src="https://s.leroymerlin.ru/upload/catalog/img/8/b/18463951/128x128/18463951.jpg?v=506" alt="Удобрение Суперфосфат двойной 1 кг">
+                                </a>
+
+
+                            </div>
+
+                            <div class="catalog__desc">
+                                <p class="catalog__name">
+                                    <a href="/product/udobrenie-superfosfat-dvoynoy-1-kg-18463951/" onclick="gtmEventsProductAjaxClick(18463951, 2, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                                        Удобрение Суперфосфат двойной 1 кг            </a>
+                                </p>
+
+
+                                <div class="sp-inline-rating-18463951">
+                                </div>
+                                <p class="catalog__price    ">
+                                    56<span class="price-kop">,00</span> <span class="catalog__price__qt"><span class="rub">руб.</span>/шт.</span>
+                                </p>
+                            </div>
+
+                            <div class="catalog__info">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>Артикул:</td>
+                                        <td>18463951</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вес,кг:</td>
+                                        <td>0.5</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="catalog__avalible">
+                                    <p class="mb0">Цена и наличие на 18 Января 2016 09:30</p>
+                                    <a href="" class="btn btn_link btn_sm mb0"><svg class="icon icon-tick"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-tick"></use></svg>Смотреть наличие в других магазинах</a>
+                                </div>
+                            </div>
+
+                            <div class="catalog__bt" data-nopopup="Y" data-basket-popup="Y">
+                                <button class="catalog__buy btn btn_red btn_block ab_add_to_cart" onclick="add2basketInput(event, 18463951, 1, false, 'AddToCartPopup');">
+                                    <span class="icon icon-buy"></span>В корзину 1            </button>
+                            </div>
+                        </li>                                                        <li class="catalog__item" style="width: 178.8px;">
+                            <div class="catalog__pic">
+
+                                <a href="/product/udobrenie-karbamid-1-kg-18463935/" onclick="gtmEventsProductAjaxClick(18463935, 3, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                                    <img src="https://s.leroymerlin.ru/upload/catalog/img/1/3/18463935/128x128/18463935.jpg?v=506" alt="Удобрение Карбамид 1 кг">
+                                </a>
+
+
+                            </div>
+
+                            <div class="catalog__desc">
+                                <p class="catalog__name">
+                                    <a href="/product/udobrenie-karbamid-1-kg-18463935/" onclick="gtmEventsProductAjaxClick(18463935, 3, null, 'AddToCartPopup', 'Interactions', 'open', 'productPage');">
+                                        Удобрение Карбамид 1 кг            </a>
+                                </p>
+
+
+                                <div class="sp-inline-rating-18463935">
+                                </div>
+                                <p class="catalog__price    ">
+                                    40<span class="price-kop">,00</span> <span class="catalog__price__qt"><span class="rub">руб.</span>/шт.</span>
+                                </p>
+                            </div>
+
+                            <div class="catalog__info">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td>Артикул:</td>
+                                        <td>18463935</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вес,кг:</td>
+                                        <td>0.5</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="catalog__avalible">
+                                    <p class="mb0">Цена и наличие на 18 Января 2016 09:30</p>
+                                    <a href="" class="btn btn_link btn_sm mb0"><svg class="icon icon-tick"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-tick"></use></svg>Смотреть наличие в других магазинах</a>
+                                </div>
+                            </div>
+
+                            <div class="catalog__bt" data-nopopup="Y" data-basket-popup="Y">
+                                <button class="catalog__buy btn btn_red btn_block ab_add_to_cart" onclick="add2basketInput(event, 18463935, 1, false, 'AddToCartPopup');">
+                                    <span class="icon icon-buy"></span>В корзину 1            </button>
+                            </div>
+                        </li>                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="/javascripts/bucket.js"></script>
 <script>
-
     $(".catalog__fast-view").click(function(){
         $(".modal-popup-wrap").fadeIn('fast');
         $(".modal-popup").fadeIn('fast');
     });
-
     $(".modal-popup-wrap").click(function(e){
         if (e.target.classList.contains("modal-popup-wrap")) {
             $(".modal-popup").fadeOut('fast');
             $(this).fadeOut('fast');
         }
     });
-
     function openModulProductDetails(product) {
         console.log(product);
         if (product.name) {
@@ -913,5 +1139,15 @@
             $('#productImageGallery')[0].src = product.image;
         }
     }
+
+    $(".show-modal-2").click(function () {
+        $(".modal-popup-wrap-2").fadeIn('fast');
+        $(".modal-popup-2").fadeIn('fast');
+    });
+
+    $(".modal-popup-wrap-2").click(function () {
+        $(".modal-popup-wrap-2").fadeOut('fast');
+        $(".modal-popup-2").fadeOut('fast');
+    });
 
 </script>
