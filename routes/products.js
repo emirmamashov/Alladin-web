@@ -90,6 +90,11 @@ module.exports = (app, db) => {
                 db.Product.find({ categoryId: {$in: categoryIds } }).then(
                     (products) => {
                         let parentCategories = categoryService.findParentCategory(categories, products);
+                        products.forEach((product) => {
+                            if (product) {
+                                product['apiUrl'] = config.API_URL;
+                            }
+                          });
                         res.render('products/index', {
                             title: 'Products',
                             products: products,

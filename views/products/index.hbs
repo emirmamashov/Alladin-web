@@ -124,137 +124,141 @@
 
         <ul class="catalog">
             {{#each products}}
-            <li class="catalog__item inner ng-scope" ng-class="listTemplate" ng-repeat-start="products in productsPages[currentPage]"
-                data-art="14465976" data-name="Кабель HDMI Oxion «Эконом» 1 м, ПВХ/медь, цвет чёрный">
-                <div class="catalog__pic">
-                    <a href="/products/details/{{this._id}}">
-                            {{#if this.image }}
-                                <img src="http://176.126.167.128:3000/{{ this.image }}">
-                            {{else}}
-                                <img src="/images/no-photo.png">
-                            {{/if }}
-                        </a>
+                <li class="catalog__item inner ng-scope">
+                    <div class="catalog__pic">
+                        <a href="/products/details/{{this._id}}">
+                                {{#if this.image }}
+                                    <img src="{{ this.apiUrl }}/{{ this.image }}">
+                                {{else}}
+                                    <img src="/images/no-photo.png">
+                                {{/if }}
+                            </a>
 
-                    <a ng-href="/brands/" class="catalog__brand ng-scope" ng-if="products.BRAND_PIC != &#39;&#39;" href="https://leroymerlin.ru/brands/">
+                        <a class="catalog__brand ng-scope" href="#">
                             <img ng-src="" alt="">
                         </a>
 
-                    <button class="catalog__fast-view btn btn_sm btn_lc" type="button" ng-click="fastView(products, $index)">Быстрый просмотр</button>
+                        <button class="catalog__fast-view btn btn_sm btn_lc" type="button"
+                            onclick="openModulProductDetails({ 
+                                id: '{{ this.id }}',
+                                name: '{{ this.name }}',
+                                price: '{{ this.price }}',
+                                image: '{{ this.apiUrl }}/{{ this.image }}'
+                            })">Быстрый просмотр</button>
 
-                    <div ng-if="products.UF_UDA20 == &#39;2&#39;" class="catalog__best-price ng-scope" style="background: url(/bitrix/templates/lm2016/build/img/best_price.png) no-repeat;">
+                        <div class="catalog__best-price ng-scope"
+                            style="background: url(/bitrix/templates/lm2016/build/img/best_price.png) no-repeat;">
+                        </div>
                     </div>
-                </div>
 
-                <div class="catalog__desc">
-                    <div class="catalog__model-placeholder">
-                    </div>
+                    <div class="catalog__desc">
+                        <div class="catalog__model-placeholder">
+                        </div>
 
-                    <div class="catalog__collection-placeholder">
-                    </div>
+                        <div class="catalog__collection-placeholder">
+                        </div>
 
-                    <p class="catalog__name">
-                        <a class="ng-binding" href="/products/details/{{this._id}}">
-                            {{ this.name }}
-                            
-                            {{#ifCond this.description '==' true}}
-                                <span>, {{ this.description }}</span>
-                            {{/ifCond}}
-                        </a>
-                    </p>
+                        <p class="catalog__name">
+                            <a class="ng-binding" href="/products/details/{{this._id}}">
+                                {{ this.name }}
+                                
+                                {{#ifCond this.description '==' true}}
+                                    <span>, {{ this.description }}</span>
+                                {{/ifCond}}
+                            </a>
+                        </p>
 
-                    <!-- ngIf: !products.IS_BASE_PRODUCT -->
-                    <div class="sp-inline-rating-14465976">
-                        <div class="sp-listing-inline-rating-widget">
-                            <div class="sp-inline-rating-stars">
-                                <div class="sp-star-on"></div>
-                                <div class="sp-star-on"></div>
-                                <div class="sp-star-on"></div>
-                                <div class="sp-star-on"></div>
-                                <div class="sp-star-on"></div>
+                        <!-- ngIf: !products.IS_BASE_PRODUCT -->
+                        <div class="sp-inline-rating-14465976">
+                            <div class="sp-listing-inline-rating-widget">
+                                <div class="sp-inline-rating-stars">
+                                    <div class="sp-star-on"></div>
+                                    <div class="sp-star-on"></div>
+                                    <div class="sp-star-on"></div>
+                                    <div class="sp-star-on"></div>
+                                    <div class="sp-star-on"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- end ngIf: !products.IS_BASE_PRODUCT -->
+                        <!-- end ngIf: !products.IS_BASE_PRODUCT -->
 
-                    <!-- ngRepeat: price in products.DISPLAY_PRICES -->
-                    <p class="catalog__price ng-scope ng-binding">
-                        {{#if this.price }}
-                        <span> {{ this.price }} </span>
-                        <!--<span class="price-kop">,00</span>-->
-                        <span class="catalog__price__qt">
-                                    <span class="rub">сом.</span>/шт.
-                        </span>
-                        {{/if}}
-                    </p>
-                    <br>
-                    <button type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}', 'index')">
-                            <span class="icon icon-buy"> </span>
-                            В корзину
-                        </button>
-                </div>
-
-                <!-- 
-                    <div ng-if="!products.IS_BASE_PRODUCT" class="catalog__info ng-scope">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>Артикул:</td>
-                                    <td class="ng-binding">14465976</td>
-                                </tr>
-                                <tr>
-                                    <td>Вес,кг:</td>
-                                    <td class="ng-binding">0.05</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div ng-if="products.UF_UDA20 == &#39;2&#39;" class="catalog__best-price ng-scope">
-                            <img src="/images/leroy/cabel.jpg">
-                        </div>
-
-                        <div class="catalog__avalible">
-                            <p class="mb0">Цена и наличие на 22 Июня 2017 18:30</p>
-                        </div>
-                        <div class="product__avalible-list">
-                            <button class="btn btn_link btn_sm mb0 js-avalible-toggle" type="button" data-art="14465976">
-                            <svg class="icon icon-tick">
-                                <use xlink:href="#icon-tick"></use>
-                            </svg>
-                            Смотреть наличие в других магазинах
-                        </button>
-                            <div class="product__avalible-drop"></div>
-                        </div>
-                    </div>
-                    <div class="catalog__bt">
-                        <button ng-if="shopList[products.UF_ARTICUL] == undifined" class="catalog__to-list btn btn_multi-line ng-scope"
-                            type="button" 
-                            onclick="dataLayer.push({&#39;event&#39;: &#39;LeroyMerlin&#39;,&#39;eventCategory&#39;: &#39;Список покупок&#39;, &#39;eventAction&#39;:&#39;Добавить в список&#39;,&#39;eventLabel&#39;:&#39;Добавил в список покупок&#39;, &#39;eventValue&#39;:null});"
-                            ng-click="add2list($event, $index);">
-                                <span class="icon icon-list-add"></span>
-                                <span class="btn__text">В список <br>покупок</span>
+                        <!-- ngRepeat: price in products.DISPLAY_PRICES -->
+                        <p class="catalog__price ng-scope ng-binding">
+                            {{#if this.price }}
+                            <span> {{ this.price }} </span>
+                            <!--<span class="price-kop">,00</span>-->
+                            <span class="catalog__price__qt">
+                                        <span class="rub">сом.</span>/шт.
+                            </span>
+                            {{/if}}
+                        </p>
+                        <br>
+                        <button type="button" id="buttonInBucket_{{this.id}}" onclick="productToBucket('{{this.id}}', 'index')">
+                                <span class="icon icon-buy"> </span>
+                                В корзину
                             </button>
+                    </div>
 
-                        <label class="compare-14465976 compare-check custom-check custom-check_type_checkbox" ng-class="{&#39;is-active&#39;:checkCompare(products)}">
-                        <input name="compare1" type="checkbox" value="1" data-custom="check" ng-model="compareProduct[products.UF_ARTICUL]" ng-change="compare(products, $index)" class="ng-pristine ng-valid">
-                        <span>Сравнить</span>
-                        <a href="https://leroymerlin.ru/catalogue/compare.php">Перейти
-                            к <br>сравнению</a>
-                    </label>
-                        <button ng-if="products.UF_BUTTON_BUY &amp;&amp; basket[products.UF_ARTICUL] == undifined" ng-click="add2basket($event, $index);"
-                            onclick="dataLayer.push({&#39;event&#39;: &#39;LeroyMerlin&#39;,&#39;eventCategory&#39;: &#39;В корзину&#39;, &#39;eventAction&#39;:&#39;Клик по кнопке&#39;,&#39;eventLabel&#39;:&#39;Добавил в корзину&#39;, &#39;eventValue&#39;:null});"
-                            class="catalog__buy btn btn_red btn_block ab_add_to_cart ng-scope" type="button">
-                        <span class="icon icon-buy"></span>В корзину
-                    </button>
-                    </div>-->
+                    <!-- 
+                        <div ng-if="!products.IS_BASE_PRODUCT" class="catalog__info ng-scope">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Артикул:</td>
+                                        <td class="ng-binding">14465976</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Вес,кг:</td>
+                                        <td class="ng-binding">0.05</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-            </li>
-            <li ng-hide="true" ng-repeat-end="" class="ng-scope ng-hide"></li>
+                            <div ng-if="products.UF_UDA20 == &#39;2&#39;" class="catalog__best-price ng-scope">
+                                <img src="/images/leroy/cabel.jpg">
+                            </div>
+
+                            <div class="catalog__avalible">
+                                <p class="mb0">Цена и наличие на 22 Июня 2017 18:30</p>
+                            </div>
+                            <div class="product__avalible-list">
+                                <button class="btn btn_link btn_sm mb0 js-avalible-toggle" type="button" data-art="14465976">
+                                <svg class="icon icon-tick">
+                                    <use xlink:href="#icon-tick"></use>
+                                </svg>
+                                Смотреть наличие в других магазинах
+                            </button>
+                                <div class="product__avalible-drop"></div>
+                            </div>
+                        </div>
+                        <div class="catalog__bt">
+                            <button ng-if="shopList[products.UF_ARTICUL] == undifined" class="catalog__to-list btn btn_multi-line ng-scope"
+                                type="button" 
+                                onclick="dataLayer.push({&#39;event&#39;: &#39;LeroyMerlin&#39;,&#39;eventCategory&#39;: &#39;Список покупок&#39;, &#39;eventAction&#39;:&#39;Добавить в список&#39;,&#39;eventLabel&#39;:&#39;Добавил в список покупок&#39;, &#39;eventValue&#39;:null});"
+                                ng-click="add2list($event, $index);">
+                                    <span class="icon icon-list-add"></span>
+                                    <span class="btn__text">В список <br>покупок</span>
+                                </button>
+
+                            <label class="compare-14465976 compare-check custom-check custom-check_type_checkbox" ng-class="{&#39;is-active&#39;:checkCompare(products)}">
+                            <input name="compare1" type="checkbox" value="1" data-custom="check" ng-model="compareProduct[products.UF_ARTICUL]" ng-change="compare(products, $index)" class="ng-pristine ng-valid">
+                            <span>Сравнить</span>
+                            <a href="https://leroymerlin.ru/catalogue/compare.php">Перейти
+                                к <br>сравнению</a>
+                        </label>
+                            <button ng-if="products.UF_BUTTON_BUY &amp;&amp; basket[products.UF_ARTICUL] == undifined" ng-click="add2basket($event, $index);"
+                                onclick="dataLayer.push({&#39;event&#39;: &#39;LeroyMerlin&#39;,&#39;eventCategory&#39;: &#39;В корзину&#39;, &#39;eventAction&#39;:&#39;Клик по кнопке&#39;,&#39;eventLabel&#39;:&#39;Добавил в корзину&#39;, &#39;eventValue&#39;:null});"
+                                class="catalog__buy btn btn_red btn_block ab_add_to_cart ng-scope" type="button">
+                            <span class="icon icon-buy"></span>В корзину
+                        </button>
+                        </div>-->
+
+                </li>
+                <li class="ng-scope ng-hide"></li>
             {{/each}}
         </ul>
 
-
-
-        <div class="sorting_catalog" ng-show="products.length &gt; 5">
+        <div class="sorting_catalog">
             <div>
                 <div class="sorting__order_catalog">
                     <label for="sorting-order2">Сортировать:</label>
@@ -344,202 +348,13 @@
 
     <div class="seo-block-container"></div>
 
-
-    <script type="text/javascript">
-        var shops = {
-            "30": {
-                "ID": "42",
-                "CODE": "lefortovo",
-                "XML_ID": "30",
-                "PROPERTY_ADDRESS_VALUE": "\u0448\u043e\u0441\u0441\u0435 \u042d\u043d\u0442\u0443\u0437\u0438\u0430\u0441\u0442\u043e\u0432, 12\u043a2",
-                "PROPERTY_PHONE_VALUE": "+7(495)775-8621",
-                "PROPERTY_WORK_TIME_VALUE": "8:30 - 23:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041b\u0435\u0444\u043e\u0440\u0442\u043e\u0432\u043e",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "2": {
-                "ID": "26",
-                "CODE": "mytishchi",
-                "XML_ID": "2",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u041c\u044b\u0442\u0438\u0449\u0438, 91 \u043a\u043c \u041c\u041a\u0410\u0414",
-                "PROPERTY_PHONE_VALUE": "+7 (499) 929-84-02",
-                "PROPERTY_WORK_TIME_VALUE": "7:00 - 24:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041c\u044b\u0442\u0438\u0449\u0438",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "38": {
-                "ID": "124002",
-                "CODE": "noginsk",
-                "XML_ID": "38",
-                "PROPERTY_ADDRESS_VALUE": "\u041d\u043e\u0433\u0438\u043d\u0441\u043a \u0433., \u0413\u043e\u0440\u044c\u043a\u043e\u0432\u0441\u043a\u043e\u0435 \u0448., 52-\u0439 \u043a\u043c",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 995-2474",
-                "PROPERTY_WORK_TIME_VALUE": "\u0412\u0441-\u0421\u0440 07:00 - 22:30; \u0427\u0442-\u0421\u0431 07:00 - 00:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041d\u043e\u0433\u0438\u043d\u0441\u043a",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "66": {
-                "ID": "1119535",
-                "CODE": "yudino",
-                "XML_ID": "66",
-                "PROPERTY_ADDRESS_VALUE": "\u041c\u043e\u0441\u043a\u0432\u0430, \u0441\u0435\u043b\u043e \u042e\u0434\u0438\u043d\u043e, \u0434. 55\u0434",
-                "PROPERTY_PHONE_VALUE": "8-495-139-24-10",
-                "PROPERTY_WORK_TIME_VALUE": "08:00 - 22:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u042e\u0434\u0438\u043d\u043e",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "16": {
-                "ID": "30",
-                "CODE": "sokolniki",
-                "XML_ID": "16",
-                "PROPERTY_ADDRESS_VALUE": "\u0443\u043b. \u0412\u0435\u0440\u0445\u043d\u044f\u044f \u041a\u0440\u0430\u0441\u043d\u043e\u0441\u0435\u043b\u044c\u0441\u043a\u0430\u044f, \u0432\u043b. 3\u0430",
-                "PROPERTY_PHONE_VALUE": "+7(495)660-9670",
-                "PROPERTY_WORK_TIME_VALUE": "8:00 - 23:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u0422\u0426 \u0422\u0440\u043e\u0439\u043a\u0430 (\u041a\u0440\u0430\u0441\u043d\u043e\u0441\u0435\u043b\u044c\u0441\u043a\u0430\u044f)",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "14": {
-                "ID": "28",
-                "CODE": "altufyevo",
-                "XML_ID": "14",
-                "PROPERTY_ADDRESS_VALUE": "\u041c\u041a\u0410\u0414 84 \u043a\u043c (\u0432\u043d\u0435\u0448\u043d.)",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 641-25-40",
-                "PROPERTY_WORK_TIME_VALUE": "07:00 - 24:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u0410\u043b\u0442\u0443\u0444\u044c\u0435\u0432\u043e",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "45": {
-                "ID": "836097",
-                "CODE": "zelenograd",
-                "XML_ID": "45",
-                "PROPERTY_ADDRESS_VALUE": "141552, \u041c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u0430\u044f \u043e\u0431\u043b., \u0421\u043e\u043b\u043d\u0435\u0447\u043d\u043e\u0433\u043e\u0440\u0441\u043a\u0438\u0439 \u0440-\u043d, \u0440-\u043f \u0420\u0436\u0430\u0432\u043a\u0438 \u043c\u043a. 2.  18 \u043a\u043c \u041b\u0435\u043d\u0438\u043d\u0433\u0440\u0430\u0434\u0441\u043a\u043e\u0433\u043e \u0448\u043e\u0441\u0441\u0435 \u043e\u0442 \u041c\u041a\u0410\u0414 \u0433. \u0417\u0435\u043b\u0435\u043d\u043e\u0433\u0440\u0430\u0434",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 937-52-92",
-                "PROPERTY_WORK_TIME_VALUE": "07:30 - 23:30",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u0417\u0435\u043b\u0435\u043d\u043e\u0433\u0440\u0430\u0434",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "36": {
-                "ID": "63388",
-                "CODE": "ryazanskiy-prospekt",
-                "XML_ID": "36",
-                "PROPERTY_ADDRESS_VALUE": "\u0420\u044f\u0437\u0430\u043d\u0441\u043a\u0438\u0439 \u043f\u0440., 2, \u043a\u043e\u0440\u043f. 3 ",
-                "PROPERTY_PHONE_VALUE": "+7(495)664-8889",
-                "PROPERTY_WORK_TIME_VALUE": "8:30 - 22:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u0420\u044f\u0437\u0430\u043d\u0441\u043a\u0438\u0439 \u043f\u0440\u043e\u0441\u043f\u0435\u043a\u0442",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "32": {
-                "ID": "44",
-                "CODE": "klimovsk",
-                "XML_ID": "32",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u041a\u043b\u0438\u043c\u043e\u0432\u0441\u043a, \u0443\u043b. \u041c\u043e\u043b\u043e\u0434\u0435\u0436\u043d\u0430\u044f, \u0434. 15",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 544-57-80",
-                "PROPERTY_WORK_TIME_VALUE": "08:00 - 23:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041a\u043b\u0438\u043c\u043e\u0432\u0441\u043a",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "15": {
-                "ID": "29",
-                "CODE": "himki",
-                "XML_ID": "15",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u0425\u0438\u043c\u043a\u0438 9 \u041c\u0430\u044f \u0443\u043b., \u0432\u043b. 20 \u0441.1,",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 660-01-30",
-                "PROPERTY_WORK_TIME_VALUE": "00:00-24:00; 03:30-04:30 \u043f\u0435\u0440\u0435\u0440\u044b\u0432 \u0432 \u0440\u0430\u0431\u043e\u0442\u0435 \u043a\u0430\u0441\u0441; 21.05 \u0434\u043e 22:00; 22.05 \u0441 08:00       ",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u0425\u0438\u043c\u043a\u0438",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "10": {
-                "ID": "27",
-                "CODE": "krasnogorsk",
-                "XML_ID": "10",
-                "PROPERTY_ADDRESS_VALUE": "\u041c\u041a\u0410\u0414 66 \u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440 (\u0432\u043d\u0435\u0448\u043d.)",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 961-02-20",
-                "PROPERTY_WORK_TIME_VALUE": "7:00 - 24:00; 14.05 \u0441 07:00 - 21:00; 15.05 \u0441 09:00 - 24:00  ",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041a\u0440\u0430\u0441\u043d\u043e\u0433\u043e\u0440\u0441\u043a",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "55": {
-                "ID": "1119540",
-                "CODE": "kosino",
-                "XML_ID": "55",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u041c\u043e\u0441\u043a\u0432\u0430, \u0443\u043b. \u0421\u0432\u044f\u0442\u043e\u043e\u0437\u0451\u0440\u0441\u043a\u0430\u044f, \u0434.1\u0410",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 139 25 95",
-                "PROPERTY_WORK_TIME_VALUE": "8:30 - 23:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041a\u043e\u0441\u0438\u043d\u043e",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "75": {
-                "ID": "1206765",
-                "CODE": "pushkino",
-                "XML_ID": "75",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u041f\u0443\u0448\u043a\u0438\u043d\u043e, \u042f\u0440\u043e\u0441\u043b\u0430\u0432\u0441\u043a\u043e\u0435 \u0448\u043e\u0441\u0441\u0435, 19 \u043a\u043c \u043e\u0442 \u041c\u041a\u0410\u0414, \u0440\u044f\u0434\u043e\u043c \u0441 \u0413\u043b\u043e\u0431\u0443\u0441",
-                "PROPERTY_PHONE_VALUE": "8-(495)-139-06-56",
-                "PROPERTY_WORK_TIME_VALUE": "\u0412\u0441-\u0421\u0440 07:00 - 22:00; \u0427\u0442-\u0421\u0431 07:00 - 23:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041f\u0443\u0448\u043a\u0438\u043d\u043e",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "50": {
-                "ID": "1118549",
-                "CODE": "sholokhovo",
-                "XML_ID": "50",
-                "PROPERTY_ADDRESS_VALUE": "\u041c\u044b\u0442\u0438\u0449\u0438\u043d\u0441\u043a\u0438\u0439 \u0440\u0430\u0439\u043e\u043d, \u0434\u0435\u0440\u0435\u0432\u043d\u044f \u0428\u043e\u043b\u043e\u0445\u043e\u0432\u043e",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 933-85-44",
-                "PROPERTY_WORK_TIME_VALUE": "07:00 - 22:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u0428\u043e\u043b\u043e\u0445\u043e\u0432\u043e",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "42": {
-                "ID": "828457",
-                "CODE": "novaya-riga",
-                "XML_ID": "42",
-                "PROPERTY_ADDRESS_VALUE": "\u041d\u043e\u0432\u043e\u0440\u0438\u0436\u0441\u043a\u043e\u0435 \u0448\u043e\u0441\u0441\u0435, 22 \u043a\u043c, \u0432\u043b. 1, \u0441\u0442\u0440. 5 ",
-                "PROPERTY_PHONE_VALUE": "+7(495)775-19-50",
-                "PROPERTY_WORK_TIME_VALUE": "7:00 - 24:00. \u0421\u0430\u0434\u043e\u0432\u044b\u0439 \u0446\u0435\u043d\u0442\u0440: 08:00 - 23:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041d\u043e\u0432\u0430\u044f \u0420\u0438\u0433\u0430",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "59": {
-                "ID": "1155840",
-                "CODE": "lyubertsy",
-                "XML_ID": "59",
-                "PROPERTY_ADDRESS_VALUE": "\u041d\u043e\u0432\u043e\u0440\u044f\u0437\u0430\u043d\u0441\u043a\u043e\u0435 \u0448\u043e\u0441\u0441\u0435, \u0434. 5\/2",
-                "PROPERTY_PHONE_VALUE": "8-(495)-139-06-97",
-                "PROPERTY_WORK_TIME_VALUE": "08:00 - 24:00; 25.06 \u0441 08:00 - 22:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041b\u044e\u0431\u0435\u0440\u0446\u044b",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "53": {
-                "ID": "1194653",
-                "CODE": "kashirskoe-shosse",
-                "XML_ID": "53",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u041c\u043e\u0441\u043a\u0432\u0430, \u041c\u041a\u0410\u0414 24 \u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440 (\u0432\u043d\u0435\u0448\u043d.)",
-                "PROPERTY_PHONE_VALUE": "+7 (495) 139-25-26",
-                "PROPERTY_WORK_TIME_VALUE": "8:00 - 24:00. 20 \u0438\u044e\u043d\u044f \u0441 8:00 \u0434\u043e 22:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041a\u0430\u0448\u0438\u0440\u0441\u043a\u043e\u0435 \u0448\u043e\u0441\u0441\u0435",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            },
-            "61": {
-                "ID": "3895480",
-                "CODE": "kievskoe_shosse",
-                "XML_ID": "61",
-                "PROPERTY_ADDRESS_VALUE": "\u0433. \u041c\u043e\u0441\u043a\u0432\u0430, \u043f. \u041c\u043e\u0441\u043a\u043e\u0432\u0441\u043a\u0438\u0439, \u041a\u0438\u0435\u0432\u0441\u043a\u043e\u0435 \u0448\u043e\u0441\u0441\u0435, 24-\u0439 \u043a\u043c",
-                "PROPERTY_PHONE_VALUE": "8 (495)-139-43-23",
-                "PROPERTY_WORK_TIME_VALUE": "08:00 - 22:00",
-                "PROPERTY_NAME_VALUE": "\u041b\u0435\u0440\u0443\u0430 \u041c\u0435\u0440\u043b\u0435\u043d \u041a\u0438\u0435\u0432\u0441\u043a\u043e\u0435 \u0428\u043e\u0441\u0441\u0435",
-                "PROPERTY_STATUS_ENUM_ID": "693"
-            }
-        };
-        var fav_shop = false;;;
-    </script>
-
     <div id="popup-myshop" class="popup" style="display: none;">
         <div class="myshop-popup__title myshop-popup__bold popup__hl ng-binding">Выберите Ваш магазин</div>
         <div class="myshop-popup__block">
-            <!-- ngIf: fav_shop -->
-            <!-- ngIf: fav_shop -->
             <div class="myshop-popup__form">
                 <div class="col-xs-8">
                     <form class="ng-pristine ng-valid">
-                        <input type="text" ng-model="shop_srch" class="ng-pristine ng-valid">
+                        <input type="text" class="ng-pristine ng-valid">
                         <button type="submit" class="btn btn_grd">
                             <span class="icon icon-search"></span>
                         </button>
@@ -549,24 +364,21 @@
                     <span class="vertical-align">или</span>
                 </div>
                 <div class="col-xs-3">
-                    <a href="https://leroymerlin.ru/shop/" class="myshop-popup__near">Выбрать на карте</a>
+                    <a href="#" class="myshop-popup__near">Выбрать на карте</a>
                 </div>
             </div>
             <b class="fz-13">18 магазина рядом с Вами</b>
         </div>
         <div class="myshop-popup__block pb0 pt0">
-            <!-- ngRepeat: shop in shops -->
-            <div class="myshop-popup__item ng-scope" ng-repeat="shop in shops" ng-hide="shop_srch.length &gt; 2 &amp;&amp; shop.PROPERTY_NAME_VALUE.toLowerCase().indexOf(shop_srch.toLowerCase()) &lt; 0 &amp;&amp; shop.PROPERTY_ADDRESS_VALUE.toLowerCase().indexOf(shop_srch.toLowerCase()) &lt; 0">
+            <div class="myshop-popup__item ng-scope">
                 <div class="col col-xs-6 fz-13">
                     <span class="myshop-popup__bold fz-13 cl-black ng-binding">Леруа Мерлен Красногорск</span>
                     <p class="mb- ng-binding">МКАД 66 километр (внешн.)</p>
                 </div>
                 <div class="col col-xs-1"></div>
                 <div class="col col-xs-5">
-                    <!-- ngIf: shop.PROPERTY_NAME_VALUE!=fav_shop.PROPERTY_NAME_VALUE --><button ng-click="setFav(shop)" ng-if="shop.PROPERTY_NAME_VALUE!=fav_shop.PROPERTY_NAME_VALUE" class="btn btn_block set-fav ng-scope"
+                    <button class="btn btn_block set-fav ng-scope"
                         type="button">Сделать моим любимым магазином</button>
-                    <!-- end ngIf: shop.PROPERTY_NAME_VALUE!=fav_shop.PROPERTY_NAME_VALUE -->
-                    <!-- ngIf: shop.PROPERTY_NAME_VALUE==fav_shop.PROPERTY_NAME_VALUE -->
                 </div>
                 <div class="col col-xs-3 fz-13">
                     <b>Телефон</b>
@@ -968,9 +780,9 @@
                         <div class="product-gallery__stage jcarousel" data-jcarousel="true">
                             <ul style="left: 0px; top: 0px;">
                                 <li style="width: 377.778px;" class="is-active">
-                                    <img src="https://s.leroymerlin.ru/upload/catalog/img/a/1/18530851/800x800/18530851.jpg?v=487" data-large="https://s.leroymerlin.ru/upload/catalog/img/a/1/18530851/800x800/18530851.jpg?v=487"
-                                        alt="Фигура садовая «Гном с табличкой «Привет» высота 60 см" class="zoomed" style="visibility: visible;">
-                                    <meta itemprop="image" content="https://s.leroymerlin.ru/upload/catalog/img/a/1/18530851/800x800/18530851.jpg?v=487">
+                                    <img id="productImage" src="" class="zoomed" style="visibility: visible;"/>
+                                    <meta id="productImage" class="productImage" itemprop="image"
+                                        content="">
                                 </li>
                             </ul>
                         </div>
@@ -980,39 +792,20 @@
                     <div class="product-gallery__nav jcarousel" data-jcarousel="true">
                         <ul style="left: 0px; top: 0px;">
                             <li data-jcarouselcontrol="true" class="is-active">
-                                <img src="https://s.leroymerlin.ru/upload/catalog/img/a/1/18530851/800x800/18530851.jpg?v=487" data-large="https://s.leroymerlin.ru/upload/catalog/img/a/1/18530851/800x800/18530851.jpg?v=487"
-                                    alt="Фигура садовая «Гном с табличкой «Привет» высота 60 см">
+                                <img id="productImageGallery" src="">
                             </li>
                         </ul>
                     </div>
                 </div>
-                <p class="product__title">Характеристики</p>
-                <table class="table" border="1">
-                    <tbody>
-                        <tr class="">
-                            <td>Артикул:</td>
-                            <td>18530851</td>
-                        </tr>
-                        <tr class="">
-                            <td>Вес, кг:</td>
-                            <td>3.7</td>
-                        </tr>
-                        <tr class="">
-                            <td>Страна-производитель:</td>
-                            <td>Россия</td>
-                        </tr>
-                        <tr class="hide">
-                            <td>Высота, см:</td>
-                            <td>60</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="/product/figura-sadovaya-gnom-s-tablichkoy-privet-vysota-60-sm-18530851/#characteristics" onclick="TabsClick('specifications');"
-                    class="btn btn_link btn_sm btn_uc btn_more">Полные
-                    характеристики</a>
+                <p class="product__title"></p>
+                <div id="description"></div>
+                <a href="#" class="btn btn_link btn_sm btn_uc btn_more">Полное
+                    описание</a>
             </div>
             <div class="fast-view__col">
-                <h2 class="product__hl" itemprop="name">Фигура садовая «Гном с табличкой «Привет» высота 60 см</h2>
+                <h2 class="product__hl" id="name">
+                    Нету названия
+                </h2>
                 <div id="sp-inline-rating-container">
                     <div class="sp-product-inline-rating-widget">
                         <div class="sp-product-inline-rating-widget">
@@ -1022,20 +815,38 @@
                                 <div class="sp-star-off"></div>
                                 <div class="sp-star-off"></div>
                                 <div class="sp-star-off"></div>
-                            </div><a href="/product/figura-sadovaya-gnom-s-tablichkoy-privet-vysota-60-sm-18530851/#reviews" class="sp-inline-rating-label">Отзывы</a></div>
+                            </div>
+                            <a href="#" class="sp-inline-rating-label">Отзывы</a>
+                        </div>
                     </div>
                 </div>
-                <p class="product__article">(Артикул: 18530851)</p>
-                <p class="product__price    ">
-                    1 698<span class="price-kop">,00</span> <span class="product__price__qt"><span class="rub">руб.</span>/шт.</span>
+                <p class="product__article">
+                    (Артикл: )
+                </p>
+                <p class="product__price">
+                    нету цены
                 </p>
                 <br>
-                <span class="ui-spinner ui-widget ui-widget-content ui-corner-all"><input type="text" name="productQt" id="productQt" value="1" class="spinner product_qty-18530851 ui-spinner-input" data-spinner-min="1" data-spinner-max="100" aria-valuemin="1" aria-valuemax="100" aria-valuenow="1" autocomplete="off" role="spinbutton"><a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only" tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-n">▲</span></span>
-                </a><a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"
-                    tabindex="-1" role="button"><span class="ui-button-text"><span class="ui-icon ui-icon-triangle-1-s">▼</span></span></a></span>
+                <span class="ui-spinner ui-widget ui-widget-content ui-corner-all">
+                    <input type="text" name="productQt" id="productQt"
+                        value="1"
+                        class="spinner product_qty-18530851 ui-spinner-input"/>
+                    <a class="ui-spinner-button ui-spinner-up ui-corner-tr ui-button ui-widget ui-state-default ui-button-text-only"
+                        tabindex="-1" role="button">
+                        <span class="ui-button-text">
+                            <span class="ui-icon ui-icon-triangle-1-n">▲</span>
+                        </span>
+                    </a>
+                    <a class="ui-spinner-button ui-spinner-down ui-corner-br ui-button ui-widget ui-state-default ui-button-text-only"
+                        tabindex="-1" role="button">
+                        <span class="ui-button-text">
+                            <span class="ui-icon ui-icon-triangle-1-s">▼</span>
+                        </span>
+                    </a>
+                </span>
 
                 <div class="product__buy">
-                    <button class="btn btn_red btn_lg btn_block ab_add_to_cart" type="button" data-art="18530851" disabled="">
+                    <button class="btn btn_red btn_lg btn_block ab_add_to_cart" type="button">
                             В корзину
                         </button>
                     <br>
@@ -1068,7 +879,6 @@
 </div>
 
 
-
 <script src="/javascripts/bucket.js"></script>
 <script>
 
@@ -1083,5 +893,25 @@
             $(this).fadeOut('fast');
         }
     });
+
+    function openModulProductDetails(product) {
+        console.log(product);
+        if (product.name) {
+            $('#name')[0].innerText = product.name;
+        }
+        if (product.description) {
+            $('#description')[0].innerHTML = product.description;
+        }
+        if (product.price) {
+            $('.product__price')[0].innerText = product.price;
+        }
+        if (product.id) {
+            $('.product__article')[0].innerText = '(Артикл: ' + product.id + ')';
+        }
+        if (product.image) {
+            $('#productImage')[0].src = product.image;
+            $('#productImageGallery')[0].src = product.image;
+        }
+    }
 
 </script>
