@@ -16,23 +16,19 @@ module.exports = (app, db) => {
                     categoryIds.push(category._id);
                 });
 
-                db.Product.find().limit(30).then(
-                    (products) => {
-                        let categoryIds = [];
-                        let photoIds = [];
-
+                db.Product.find({ isHot: true }).then(
+                    (hotProducts) => {
                         db.Exchange.findOne().then(
                             (exchange) => {
-                                console.log(exchange);
-                                
-                                categories.forEach((category) => {
-                                    if (category) {
-                                        category['apiUrl'] = config.API_URL;
-                                        categoryIds.push(category._id);
-                                    }
-                                });
-
                                 let parentCategories = categoryService.findParentCategory(categories, []);
+                                for (let i = 0; i < hotProducts.length > 0; i++) {
+                                    hotProducts[i]['apiUrl'] = config.API_URL;
+                                    if (hotProducts[i].price && hotProducts[i].priceStock &&
+                                        hotProducts[i].price > 0 && hotProducts[i].priceStock > 0) {
+                                        let differencePercent = (hotProducts[i].priceStock / hotProducts[i].price) * 100; // процент от числа
+                                        hotProducts[i]['percent'] = Math.round(100 - differencePercent);
+                                    }
+                                }
 
                                 db.Banner.find().then(
                                     (banners) => {
@@ -48,7 +44,6 @@ module.exports = (app, db) => {
 
                                                 db.Product.find().limit(30).then(
                                                     (rndProducts) => {
-                                                        console.log(rndProducts);
                                                         rndProducts.forEach((product) => {
                                                             product['apiUrl'] = config.API_URL;
                                                             if (exchange && exchange.usd) {
@@ -63,16 +58,6 @@ module.exports = (app, db) => {
                                                         categoriesViewInLikesBlock.forEach((category) => {
                                                             category['rndProducts'] = rndProducts.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString());
                                                         });
-
-                                                        let hotProducts = products.filter(x => x.isHot);
-                                                        for (let i = 0; i < hotProducts.length > 0; i++) {
-                                                            hotProducts[i]['apiUrl'] = config.API_URL;
-                                                            if (hotProducts[i].price && hotProducts[i].priceStock &&
-                                                                hotProducts[i].price > 0 && hotProducts[i].priceStock > 0) {
-                                                                let differencePercent = (hotProducts[i].priceStock / hotProducts[i].price) * 100; // процент от числа
-                                                                hotProducts[i]['percent'] = Math.round(100 - differencePercent);
-                                                            }
-                                                        }
                                                         let leftBannerShowInMainPage = banners.filter(x => x.showInMainPageLeft)[0];
                                                         let rigthBannerShowInMainPage = banners.filter(x => x.showInMainPageRight)[0];
 

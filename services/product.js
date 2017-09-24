@@ -21,7 +21,7 @@ module.exports = {
     
             db.Product.count({ categoryId: { $in: categoryIds } }).then(
                 (count) => {
-                    console.log(count);
+                    // sconsole.log(count);
                     category['productsCount'] = count || 0;
                     resolve(count);
                 }

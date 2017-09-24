@@ -58,7 +58,7 @@ module.exports = (app, db) => {
                   });*/
                 db.Product.find().then(
                     (products) => {
-                        let parentCategories = categoryService.findParentCategory(categories, products);
+                        let parentCategories = categoryService.findParentCategory(categories, []);
                         parentCategories.forEach((category) => {
                             if (category) {
                               category['apiUrl'] = config.API_URL;

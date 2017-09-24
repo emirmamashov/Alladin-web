@@ -27,7 +27,7 @@ module.exports = (app, db) => {
     
                 db.Product.find().then(
                     (products) => {
-                        let parentCategories = categoryService.findParentCategory(categories, products);
+                        let parentCategories = categoryService.findParentCategory(categories, []);
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
