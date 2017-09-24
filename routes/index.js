@@ -93,7 +93,6 @@ module.exports = (app, db) => {
                                                 res.render('index', {
                                                     title: 'Главная страница',
                                                     parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
-                                                    products: products,
                                                     categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                                                     apiUrl: config.API_URL,
                                                     banners: banners,
