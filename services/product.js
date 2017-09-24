@@ -8,15 +8,20 @@ module.exports = {
             // return resolve();
         }
         let categoryIds = [];
-        let childsCategories = categoryService.findChildCategories(categories, [category], []);
-        if (childsCategories && childsCategories.length > 0) {
-            childsCategories.forEach((childCategory) => {
+        categoryIds.push(category.id);
+
+        categoryService.findChildCategories(categories, [category], []);
+
+        if (category && category.childCategories) {
+            // console.log('category.childCategories = ' + category.childCategories.length);
+            category.childCategories.forEach((childCategory) => {
                 categoryIds.push(childCategory.id);
             });
         }
-        console.log(categoryIds);
-        db.Product.count({ categoryId: {$in: categoryIds} }).then(
+
+        db.Product.count({ categoryId: { $in: categoryIds } }).then(
             (count) => {
+                // console.log(count);
                 category['productsCount'] = count;
             }
         ).catch(
