@@ -69,12 +69,12 @@ module.exports = (app, db) => {
 
         db.Category.find().then(
             (categories) => {
-                categories.forEach((category) => {
+                /*categories.forEach((category) => {
                   if (category) {
                     category['apiUrl'] = config.API_URL;
                     productService.getCountProductsByCategoryId(db, categories, category);
                   }
-                });
+                });*/
                 let categoryIds = [];
                 let currentCategory = categories.filter(x => x.id == categoryId);
                 if (currentCategory[0]) {
@@ -90,6 +90,12 @@ module.exports = (app, db) => {
                 db.Product.find({ categoryId: {$in: categoryIds } }).then(
                     (products) => {
                         let parentCategories = categoryService.findParentCategory(categories, products);
+                        parentCategories.forEach((category) => {
+                            if (category) {
+                                category['apiUrl'] = config.API_URL;
+                                productService.getCountProductsByCategoryId(db, categories, category);
+                            }
+                        });
                         products.forEach((product) => {
                             if (product) {
                                 product['apiUrl'] = config.API_URL;
@@ -98,7 +104,7 @@ module.exports = (app, db) => {
                         res.render('products/index', {
                             title: 'Products',
                             products: products,
-                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
+                            parentCategories: parentCategories,
                             category: currentCategory[0]
                         });
                     }

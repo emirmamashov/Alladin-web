@@ -1,5 +1,6 @@
 
     <link rel="stylesheet" href="/sass/categories.css">
+    
      <div class="container">
         <div class="catalog-redesign-wrapper">
             <h1 class="ttu blk-title">Каталог</h1>
@@ -8,23 +9,22 @@
                     {{#each parentCategories}}
                         <li>
                             {{#if this.selected}}
-                                <a href="/categories/{{this.name}}/{{this.id}}/" style="
-                                        color: #fff !important;background: #fb722c;
-                                        border-bottom: 1px solid #fb722c;
-                                ">
+                                <a href="/categories/{{ this.name }}/{{ this.id }}/"
+                                style=" color: #fff !important;background: #fb722c;
+                                        border-bottom: 1px solid #fb722c;">
                                     <div class="cs_name">{{ this.name }}</div>
-                                    <div class="cs_cnt">{{ this.products.length }}</div>
+                                    <div class="cs_cnt">{{ this.productsCount }}</div>
                                 </a>
                             {{else}}
-                                <a href="/categories/{{this.name}}/{{this.id}}/">
+                                <a href="/categories/{{ this.name }}/{{ this.id }}/">
                                     <div class="cs_name">{{ this.name }}</div>
-                                    <div class="cs_cnt">{{ this.products.length }}</div>
+                                    <div class="cs_cnt">{{ this.productsCount }}</div>
                                 </a>
                             {{/if}}
                         </li>
                     {{/each}}
                     <li class="picture">
-                        <a href="https://leroymerlin.ru/catalogue/predlozenie_ogranicheno/" style="padding: 10px 0 0 0;">
+                        <a href="#" style="padding: 10px 0 0 0;">
 						<img src="/images/leroy/pl_newcatalog2.png">
 					</a>
                     </li>
@@ -38,7 +38,7 @@
                         <tr class="cr-photo-tr">
                             {{#each this.data}}
                             <td data-section-code="stroymaterialy">
-                                <img src="{{this.apiUrl}}/{{this.image}}"/>
+                                <img src="{{ this.apiUrl }}/{{ this.image }}"/>
                             </td>
                             {{/each}}
                         </tr>

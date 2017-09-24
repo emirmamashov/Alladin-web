@@ -5,6 +5,7 @@ let ObjectId = mongoose.Types.ObjectId;
 
 // services
 let categoryService = require('../services/category');
+let productService = require('../services/product');
 let chunk = require('../services/chunk');
 
 module.exports = (app, db) => {
@@ -49,19 +50,29 @@ module.exports = (app, db) => {
         }
         db.Category.find().then(
             (categories) => {
-                categories.forEach((category) => {
-                    category['apiUrl'] = config.API_URL;
-                });
+                /*categories.forEach((category) => {
+                    if (category) {
+                      category['apiUrl'] = config.API_URL;
+                      productService.getCountProductsByCategoryId(db, categories, category);
+                    }
+                  });*/
                 db.Product.find().then(
                     (products) => {
                         let parentCategories = categoryService.findParentCategory(categories, products);
-                        let selectedCategory = categories.filter(x => x._id == categoryId)[0];
+                        parentCategories.forEach((category) => {
+                            if (category) {
+                              category['apiUrl'] = config.API_URL;
+                              productService.getCountProductsByCategoryId(db, categories, category);
+                            }
+                        });
+                        console.log(parentCategories.length);
+                        let selectedCategory = categories.filter(x => x.id === categoryId)[0];
                         let selectedChildCategories = categoryService.findChildCategories(categories, selectedCategory.childCategories, products);
                         selectedCategory['selected'] = true;
-                        console.log(selectedChildCategories);
+
                         return res.render('categories/index', { 
                             title: 'Categories', 
-                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
+                            parentCategories: parentCategories,
                             products: products,
                             selectedCategory: selectedCategory,
                             chunkCategories: chunk(selectedChildCategories, 3)
