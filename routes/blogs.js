@@ -61,30 +61,28 @@ module.exports = (app, db) => {
 
     db.Category.find().then(
       (categories) => {
-        console.log(config.API_URL);
-        let parentCategories = categoryService.findParentCategory(categories, []);
-        db.Blog.findById(id).then(
-          (blog) => {
-              console.log(blog);
-              res.render('blogs/details', {
-                  parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
-                  categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
-                  apiUrl: config.API_URL,
-                  blog: blog
-              });
-          }
-        ).catch(
-            (err) => {
-                console.log(err);
-                res.render('blogs/details', { 
-                  title: 'Express123',
-                  parentCategories: categoryService.findParentCategory(categories),
-                  products: [],
-                  errors: err,
-                  apiUrl: config.API_URL
+          let parentCategories = categoryService.findParentCategory(categories, []);
+          db.Blog.findById(id).then(
+            (blog) => {
+                res.render('blogs/details', {
+                    parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
+                    categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
+                    apiUrl: config.API_URL,
+                    blog: blog
                 });
             }
-        );
+          ).catch(
+              (err) => {
+                  console.log(err);
+                  res.render('blogs/details', { 
+                    title: 'Express123',
+                    parentCategories: categoryService.findParentCategory(categories),
+                    products: [],
+                    errors: err,
+                    apiUrl: config.API_URL
+                  });
+              }
+          );
       }
     ).catch(
       (err) => {
