@@ -50,6 +50,17 @@ module.exports = (app, db) => {
                 
                 db.Category.find({ level: category.level }).limit(50).then(
                     (categories) => {
+
+                        if (!categories || categories.length === 0) {
+                            return res.render('categories/index', {
+                                title: 'Categories',
+                                categories: categories,
+                                parentCategories: categories,
+                                selectedCategory: selectedCategory,
+                                chunkCategories: []
+                            });
+                        }
+
                         categories.forEach((category) => {
                             if (category) {
                               category['apiUrl'] = config.API_URL;
@@ -61,6 +72,16 @@ module.exports = (app, db) => {
         
                         db.Category.find({ parentCategory: category.id }).then(
                             (childCategories) => {
+
+                                if (!childCategories || childCategories.length === 0) {
+                                    return res.render('categories/index', {
+                                        title: 'Categories',
+                                        categories: categories,
+                                        parentCategories: categories,
+                                        selectedCategory: selectedCategory,
+                                        chunkCategories: []
+                                    });
+                                }
                                 categories.forEach((parentCategory) => {
                                     parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
                                 });
@@ -72,10 +93,13 @@ module.exports = (app, db) => {
 
                                 db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
                                     (secondChildCategories) => {
-                                        childCategories.forEach((childCategory) => {
-                                            childCategory['childCategories'] = secondChildCategories.filter(x => x.parentCategory == childCategory.id) || [];
-                                        });
-
+                                        if (secondChildCategories && secondChildCategories.length > 0) {
+                                            childCategories.forEach((childCategory) => {
+                                                childCategory['childCategories'] = secondChildCategories.filter(x => x.parentCategory == childCategory.id) || [];
+                                            });
+    
+                                        }
+                                        
                                         res.render('categories/index', {
                                             title: 'Categories',
                                             categories: categories,
