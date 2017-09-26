@@ -48,7 +48,7 @@ module.exports = (app, db) => {
                     }
                 }
                 
-                db.Category.find({ level: category.level }).then(
+                db.Category.find({ level: category.level }).limit(50).then(
                     (categories) => {
                         categories.forEach((category) => {
                             if (category) {
