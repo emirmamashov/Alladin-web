@@ -60,12 +60,34 @@ module.exports = (app, db) => {
         
                         db.Category.find({ parentCategory: category.id }).then(
                             (childCategories) => {
-                                res.render('categories/index', {
-                                    title: 'Categories',
-                                    categories: categories,
-                                    selectedCategory: selectedCategory,
-                                    chunkCategories: chunk(childCategories, 3)
+                                categories.forEach((parentCategory) => {
+                                    parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
                                 });
+
+                                let childCategoryIds = [];
+                                childCategories.forEach((childCategory) => {
+                                    childCategoryIds.push(childCategory.id);
+                                });
+
+                                db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
+                                    (secondChildCategories) => {
+                                        childCategories.forEach((childCategory) => {
+                                            childCategory['childCategories'] = secondChildCategories.filter(x => x.parentCategory == childCategory.id) || [];
+                                        });
+
+                                        res.render('categories/index', {
+                                            title: 'Categories',
+                                            categories: categories,
+                                            selectedCategory: selectedCategory,
+                                            chunkCategories: chunk(childCategories, 3)
+                                        });
+                                    }
+                                ).catch(
+                                    (err) => {
+                                        console.log(err);
+                                        res.render('categories/index', { title: 'Categories', errors: err });
+                                    }
+                                );
                             }
                         ).catch(
                             (err) => {
