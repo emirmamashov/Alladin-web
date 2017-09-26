@@ -90,7 +90,7 @@ module.exports = (app, db) => {
                         
                                                                                 res.render('index', {
                                                                                     title: 'Главная страница',
-                                                                                    categories: parentCategories,
+                                                                                    parentCategories: parentCategories,
                                                                                     categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
                                                                                     apiUrl: config.API_URL,
                                                                                     banners: banners,

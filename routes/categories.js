@@ -17,6 +17,7 @@ module.exports = (app, db) => {
                 res.render('categories/index', {
                     title: 'Categories',
                     parentCategories: categories,
+                    categories: categories,
                     chunkCategories: chunk(categories, 3)
                 });
             }
@@ -78,6 +79,7 @@ module.exports = (app, db) => {
                                         res.render('categories/index', {
                                             title: 'Categories',
                                             categories: categories,
+                                            parentCategories: categories,
                                             selectedCategory: selectedCategory,
                                             chunkCategories: chunk(childCategories, 3)
                                         });
