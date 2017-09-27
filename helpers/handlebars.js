@@ -4,7 +4,6 @@ module.exports = (Handlebars) => {
         extname: '.hbs',
         helpers: { // This was missing
             inc: function(value, options) {
-                console.log('reading it');
                 return parseInt(value) + 1;
             },
             list: function(items, options) {

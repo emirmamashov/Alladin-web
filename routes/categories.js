@@ -5,31 +5,21 @@ let ObjectId = mongoose.Types.ObjectId;
 
 // services
 let categoryService = require('../services/category');
+let productService = require('../services/product');
 let chunk = require('../services/chunk');
 
 module.exports = (app, db) => {
     let config = app.get('config');
+
     router.get('/', (req, res) => {
-        console.log('----------categories---------');
-        db.Category.find().then(
+        db.Category.find({ parentCategory:  null }).then(
             (categories) => {
-                db.Product.find().then(
-                    (products) => {
-                        let parentCategories = categoryService.findParentCategory(categories, products);
-                        console.log(parentCategories);
-                        res.render('categories/index', { 
-                            title: 'Categories', 
-                            parentCategories: parentCategories,
-                            products: products,
-                            chunkCategories: chunk(parentCategories, 3)
-                        });
-                    }
-                ).catch(
-                    (err) => {
-                        console.log(err);
-                        res.render('categories/index', { title: 'Categories', errors: err });
-                    }
-                );
+                res.render('categories/index', {
+                    title: 'Categories',
+                    parentCategories: categories,
+                    categories: categories,
+                    chunkCategories: chunk(categories, 3)
+                });
             }
         ).catch(
             (err) => {
@@ -42,30 +32,95 @@ module.exports = (app, db) => {
     router.get('/:name/:id', (req, res) => {
         console.log('---------/:name/:id------------');
         let categoryId = req.params.id;
-        console.log(categoryId);
         if (!categoryId || !ObjectId.isValid(categoryId)) {
             console.log('error in parameters');
-            return res.render('categories/index', { title: 'Categories', errors: 'error in parameters' });
+            return res.render('categories/index', {
+                title: 'Categories', errors: 'error in parameters'
+            });
         }
-        db.Category.find().then(
-            (categories) => {
-                categories.forEach((category) => {
-                    category['apiUrl'] = config.API_URL;
-                });
-                db.Product.find().then(
-                    (products) => {
-                        let parentCategories = categoryService.findParentCategory(categories, products);
-                        let selectedCategory = categories.filter(x => x._id == categoryId)[0];
-                        let selectedChildCategories = categoryService.findChildCategories(categories, selectedCategory.childCategories, products);
-                        selectedCategory['selected'] = true;
-                        console.log(selectedChildCategories);
-                        return res.render('categories/index', { 
-                            title: 'Categories', 
-                            parentCategories: parentCategories,
-                            products: products,
-                            selectedCategory: selectedCategory,
-                            chunkCategories: chunk(selectedChildCategories, 3)
+
+        db.Category.findById(categoryId).then(
+            (category) => {
+                if (!category) {
+                    (err) => {
+                        console.log(err);
+                        res.render('categories/index', { title: 'Categories', errors: 'Категоря не найдено' });
+                    }
+                }
+                
+                db.Category.find({ level: category.level }).limit(50).then(
+                    (categories) => {
+
+                        if (!categories || categories.length === 0) {
+                            return res.render('categories/index', {
+                                title: 'Categories',
+                                categories: categories,
+                                parentCategories: categories,
+                                selectedCategory: selectedCategory,
+                                chunkCategories: []
+                            });
+                        }
+
+                        categories.forEach((category) => {
+                            if (category) {
+                              category['apiUrl'] = config.API_URL;
+                              productService.getCountProductsByCategoryId(db, categories, category);
+                            }
                         });
+                        let selectedCategory = categories.filter(x => x.id === categoryId)[0];
+                        selectedCategory['selected'] = true;
+        
+                        db.Category.find({ parentCategory: category.id }).then(
+                            (childCategories) => {
+
+                                if (!childCategories || childCategories.length === 0) {
+                                    return res.render('categories/index', {
+                                        title: 'Categories',
+                                        categories: categories,
+                                        parentCategories: categories,
+                                        selectedCategory: selectedCategory,
+                                        chunkCategories: []
+                                    });
+                                }
+                                categories.forEach((parentCategory) => {
+                                    parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
+                                });
+
+                                let childCategoryIds = [];
+                                childCategories.forEach((childCategory) => {
+                                    childCategoryIds.push(childCategory.id);
+                                });
+
+                                db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
+                                    (secondChildCategories) => {
+                                        if (secondChildCategories && secondChildCategories.length > 0) {
+                                            childCategories.forEach((childCategory) => {
+                                                childCategory['childCategories'] = secondChildCategories.filter(x => x.parentCategory == childCategory.id) || [];
+                                            });
+    
+                                        }
+                                        
+                                        res.render('categories/index', {
+                                            title: 'Categories',
+                                            categories: categories,
+                                            parentCategories: categories,
+                                            selectedCategory: selectedCategory,
+                                            chunkCategories: chunk(childCategories, 3)
+                                        });
+                                    }
+                                ).catch(
+                                    (err) => {
+                                        console.log(err);
+                                        res.render('categories/index', { title: 'Categories', errors: err });
+                                    }
+                                );
+                            }
+                        ).catch(
+                            (err) => {
+                                console.log(err);
+                                res.render('categories/index', { title: 'Categories', errors: err });
+                            }
+                        );
                     }
                 ).catch(
                     (err) => {
