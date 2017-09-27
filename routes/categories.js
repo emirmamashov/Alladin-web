@@ -48,7 +48,7 @@ module.exports = (app, db) => {
                     }
                 }
                 
-                db.Category.find({ level: category.level }).limit(50).then(
+                db.Category.find({ level: category.level }).then(
                     (categories) => {
 
                         if (!categories || categories.length === 0) {
@@ -67,20 +67,16 @@ module.exports = (app, db) => {
                               productService.getCountProductsByCategoryId(db, categories, category);
                             }
                         });
-                        let selectedCategory = categories.filter(x => x.id === categoryId)[0];
-                        selectedCategory['selected'] = true;
+                        let selectedCategory = categories.filter(x => x.id == categoryId)[0];
+                        if (selectedCategory) {
+                            selectedCategory['selected'] = true;
+                        }
         
                         db.Category.find({ parentCategory: category.id }).then(
                             (childCategories) => {
 
-                                if (!childCategories || childCategories.length === 0) {
-                                    return res.render('categories/index', {
-                                        title: 'Categories',
-                                        categories: categories,
-                                        parentCategories: categories,
-                                        selectedCategory: selectedCategory,
-                                        chunkCategories: []
-                                    });
+                                if (!childCategories || childCategories.length < 1) {
+                                    return res.redirect('/products/category/' + category.name +'/' + category.id);
                                 }
                                 categories.forEach((parentCategory) => {
                                     parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
