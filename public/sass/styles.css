@@ -1932,4 +1932,280 @@ a.jqzoom {
 .cart-same {
   padding: 20px; }
 
+.good-detail__in {
+  display: flex;
+  width: 100%;
+  justify-content: center; }
+.good-detail .big-image {
+  width: 50%;
+  min-height: 500px;
+  border: 2px solid #ebeded; }
+  .good-detail .big-image .item {
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .good-detail .big-image .item img {
+      max-height: 100%;
+      max-width: 100%; }
+  .good-detail .big-image .thumbnails {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 10px; }
+  .good-detail .big-image .thumbnail {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px; }
+    .good-detail .big-image .thumbnail.active {
+      outline: 1px solid #fc646a; }
+    .good-detail .big-image .thumbnail img {
+      max-height: 100%;
+      max-width: 100%; }
+.good-detail .good-info {
+  width: 50%;
+  min-height: 500px;
+  border: 2px solid #ebeded;
+  border-left: 0; }
+  .good-detail .good-info .price-block {
+    padding: 10px;
+    margin: 10px;
+    border: 3px solid #cc231d; }
+  .good-detail .good-info .block-1 {
+    display: flex;
+    padding: 0 25px;
+    justify-content: space-between; }
+    .good-detail .good-info .block-1 span {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 18px;
+      color: #b1b0ae; }
+  .good-detail .good-info .block-2 {
+    padding: 10px 20px; }
+    .good-detail .good-info .block-2 span {
+      font-size: 20px;
+      font-weight: bolder; }
+  .good-detail .good-info .block-3 {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; }
+    .good-detail .good-info .block-3 .amount-block {
+      display: flex;
+      align-items: center;
+      margin-right: 40px; }
+      .good-detail .good-info .block-3 .amount-block.total-block {
+        align-items: flex-start; }
+      .good-detail .good-info .block-3 .amount-block span {
+        font-size: 14px;
+        color: #a6a5a3; }
+      .good-detail .good-info .block-3 .amount-block .counter {
+        margin: 0 5px;
+        border: 1px solid #dedede;
+        border-radius: 1px;
+        background: #ffffff; }
+      .good-detail .good-info .block-3 .amount-block input {
+        border: 0;
+        width: 30px;
+        outline: none;
+        font-size: 20px;
+        text-align: center; }
+      .good-detail .good-info .block-3 .amount-block button {
+        background: transparent;
+        font-size: 20px;
+        line-height: 25px;
+        border: 0;
+        outline: none; }
+        .good-detail .good-info .block-3 .amount-block button:hover {
+          background: #dee1e1;
+          cursor: pointer; }
+      .good-detail .good-info .block-3 .amount-block .total-text {
+        text-align: left; }
+      .good-detail .good-info .block-3 .amount-block b {
+        display: inline-block;
+        padding-left: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        padding-left: 5px; }
+  .good-detail .good-info .buttons-block {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .good-detail .good-info .buttons-block a {
+      display: block;
+      width: 45%;
+      padding: 15px;
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+      text-decoration: none; }
+      .good-detail .good-info .buttons-block a.buy-now {
+        background: #ff9900; }
+      .good-detail .good-info .buttons-block a.add-to-basket {
+        background: #ff5300; }
+  .good-detail .good-info .phones-block {
+    padding: 5px 15px 15px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .good-detail .good-info .phones-block .super-block {
+      padding: 0 5px;
+      width: 45%; }
+      .good-detail .good-info .phones-block .super-block span {
+        text-align: center;
+        display: block;
+        color: #9ea0a0;
+        font-size: 10px; }
+      .good-detail .good-info .phones-block .super-block .phone {
+        margin-top: 10px;
+        display: inline-block;
+        padding: 10px 20px 10px 75px;
+        border: 2px solid #39c2dc;
+        font-size: 25px;
+        color: #39c2dc;
+        position: relative;
+        text-decoration: none; }
+        .good-detail .good-info .phones-block .super-block .phone:after {
+          display: block;
+          content: '';
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          top: 12px;
+          left: 5px;
+          background: url("/images/logo/whatsapp.png") center no-repeat;
+          background-size: contain; }
+        .good-detail .good-info .phones-block .super-block .phone:before {
+          display: block;
+          content: '';
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          top: 12px;
+          left: 40px;
+          background: url("/images/logo/call.svg") center no-repeat;
+          background-size: contain; }
+    .good-detail .good-info .phones-block .super-i {
+      width: 8%;
+      padding: 0 5px;
+      display: inline-block;
+      font-style: normal;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding-top: 20px; }
+    .good-detail .good-info .phones-block .insert-phone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      border-radius: 50px;
+      overflow: hidden;
+      background: #929292; }
+      .good-detail .good-info .phones-block .insert-phone input {
+        border: 0;
+        outline: 0;
+        display: block;
+        font-size: 14px;
+        padding: 15px;
+        color: #ffffff;
+        background: transparent; }
+        .good-detail .good-info .phones-block .insert-phone input[type=text] {
+          width: 55%;
+          /* Firefox 19+ */
+          /* Firefox 18- */ }
+          .good-detail .good-info .phones-block .insert-phone input[type=text]::-webkit-input-placeholder {
+            color: #ffffff; }
+          .good-detail .good-info .phones-block .insert-phone input[type=text]::-moz-placeholder {
+            color: #ffffff; }
+          .good-detail .good-info .phones-block .insert-phone input[type=text]:-moz-placeholder {
+            color: #ffffff; }
+          .good-detail .good-info .phones-block .insert-phone input[type=text]:-ms-input-placeholder {
+            color: #ffffff; }
+        .good-detail .good-info .phones-block .insert-phone input[type=submit] {
+          width: 45%;
+          background: #00b3f8;
+          border-radius: 50px; }
+  .good-detail .good-info .payment-block {
+    padding: 5px 15px 15px 15px; }
+    .good-detail .good-info .payment-block span {
+      display: inline-block;
+      padding: 5px 5px 5px 35px;
+      font-size: 16px;
+      color: #448aa4;
+      background: url("/images/logo/wallet.svg") left center no-repeat;
+      background-size: contain; }
+  .good-detail .good-info .delivery-block {
+    padding: 5px 15px 15px 15px; }
+    .good-detail .good-info .delivery-block span, .good-detail .good-info .delivery-block a {
+      font-size: 14px; }
+    .good-detail .good-info .delivery-block span {
+      display: inline-block;
+      padding: 5px 5px 5px 35px;
+      background: url("/images/logo/delivery.svg") left center no-repeat;
+      background-size: contain;
+      font-size: 16px; }
+    .good-detail .good-info .delivery-block a {
+      display: inline-block;
+      text-decoration: underline;
+      color: #2c7493;
+      padding: 0 5px; }
+      .good-detail .good-info .delivery-block a.free {
+        color: #ff4c58; }
+  .good-detail .good-info .social-block {
+    padding: 5px 15px 15px 15px; }
+    .good-detail .good-info .social-block span {
+      display: block;
+      font-size: 14px;
+      color: 9698a5;
+      padding-bottom: 10px; }
+    .good-detail .good-info .social-block a {
+      text-decoration: none;
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 25px; }
+      .good-detail .good-info .social-block a img {
+        width: 20px;
+        height: 20px; }
+.good-detail .good-description {
+  width: 100%;
+  border: 2px solid #ebeded;
+  border-top: 0;
+  min-height: 300px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px; }
+  .good-detail .good-description ul {
+    padding-left: 5px; }
+.good-detail .similar-goods {
+  padding: 20px 0; }
+  .good-detail .similar-goods h3 {
+    font-size: 18px; }
+  .good-detail .similar-goods .good-item {
+    height: 250px; }
+    .good-detail .similar-goods .good-item .img {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .good-detail .similar-goods .good-item .img img {
+        max-width: 100%;
+        max-height: 100%; }
+    .good-detail .similar-goods .good-item span.name {
+      display: block;
+      padding-top: 5px;
+      text-align: center;
+      font-size: 14px;
+      color: #000; }
+    .good-detail .similar-goods .good-item span.price {
+      display: block;
+      padding-top: 5px;
+      text-align: center;
+      font-size: 14px;
+      color: red; }
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,270 +1,205 @@
-<link rel="stylesheet" href="/stylesheets/jquery.jqzoom.css">
-<link rel="stylesheet" href="/sass/item.css">
-<input type="hidden" id="page" value="details" />
-
-<div class="container">
-    <div class="breadscrumbs">
-        <div class="breadscrumbs">
-            <a class="breadscrumbs__item" href="https://leroymerlin.ru/">Главная</a>
-            <a class="breadscrumbs__item" href="https://leroymerlin.ru/advice/">Советы Алладин</a>
-        </div>
-    </div>
-</div>
-
-<div class="mmain">
+<div class="good-detail">
     <div class="container">
-        <!--<ul class="breadcrumb">
-                <li><a href="https://max.kg/">Главная</a></li>
-                <li><a href="https://max.kg/catalog/avto">Авто</a></li>
-                <li><a href="https://max.kg/catalog/avto/avtozapchasti">Автозапчасти</a></li>
-                <li><a href="https://max.kg/catalog/avto/avtozapchasti/tormoznaya-sistema">Тормозная система</a></li>
-                <li><a href="https://max.kg/catalog/avto/avtozapchasti/tormoznaya-sistema/tormoznye-kolodki">Тормозные колодки</a></li>
-            </ul>-->
-        <div class="window_flow_center" id="window_box1">
-            <div class="closer" onclick="return window_boxoff(this);"></div>
-            <div id="window_box_text1">
-
+        <div class="good-detail__in">
+            <div class="big-image">
+                <div class="item">
+                    <img id="big-image-img" src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                </div>
+                <div class="thumbnails">
+                    <div class="thumbnail active"><img src="https://www.w3schools.com/css/img_fjords.jpg" alt=""></div>
+                    <div class="thumbnail"><img
+                            src="https://www.smashingmagazine.com/wp-content/uploads/2015/06/10-dithering-opt.jpg"
+                            alt=""></div>
+                    <div class="thumbnail"><img src="https://www.reduceimages.com/img/image-after.jpg" alt=""></div>
+                </div>
+            </div>
+            <div class="good-info">
+                <div class="price-block">
+                    <div class="block-1">
+                        <span>Старая цена: <br> 4500 сом</span>
+                        <span>Ваша экономия: <br> 2555 сом</span>
+                    </div>
+                    <div class="block-2">
+                        <span>Цена:_____________ 2500 сом</span>
+                    </div>
+                    <div class="block-3">
+                        <div class="amount-block">
+                            <span>Количество:</span>
+                            <div class="counter">
+                                <button id="minus-one">-</button>
+                                <input id="total-amount" type="text" value="1" min="1">
+                                <button id="plus-one">+</button>
+                            </div>
+                        </div>
+                        <div class="amount-block total-block">
+                            <span class="total-text">Общая<br>стоимость:</span>
+                            <b>279 сом</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-block">
+                    <a href="#" class="buy-now">Купить сейчас</a>
+                    <a href="#" class="add-to-basket">Добавить в корзину</a>
+                </div>
+                <div class="phones-block">
+                    <div class="super-block">
+                        <span>Проконсультируйтесь со специалистом</span>
+                        <a class="phone" href="#">0551 173838</a>
+                    </div>
+                    <i class="super-i">ИЛИ</i>
+                    <div class="super-block">
+                        <span>Введите номер и наш специалист перезвонит Вам</span>
+                        <form action="">
+                            <div class="insert-phone">
+                                <input type="text" placeholder="+996(___)___-___">
+                                <input type="submit" value="Жду звонка">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="payment-block">
+                    <span>Оплата: наличными, перечислением, elsom, mobilnik.kg</span>
+                </div>
+                <div class="delivery-block">
+                    <span>Доставка:</span>
+                    <a href="#" class="free">по гоорду бесплатно*</a>
+                    <a href="#">по регионам</a>
+                    <a href="#">самовывоз</a>
+                </div>
+                <div class="social-block">
+                    <span>Поделись с друзьями:</span>
+                    <a href="#">
+                        <img src="/images/logo/social/facebook.png" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="/images/logo/social/whatsapp.png" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="/images/logo/social/instagram.png" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="/images/logo/social/email.png" alt="">
+                    </a>
+                    <a href="#">
+                        <img src="/images/logo/social/arroba.png" alt="">
+                    </a>
+                </div>
             </div>
         </div>
-        <div class="clear"></div>
-        <div class="inaim">
-            <h1 class="nametovar" id="name_1737688"> {{ product.name }} </h1>
+        <div class="good-detail__in">
+            <div class="good-description">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad amet animi cum debitis,
+                    dolorem, doloremque doloribus ea et illum labore, minus nam neque quos recusandae sequi tempora
+                    tempore unde.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto asperiores
+                    assumenda consectetur consequatur cum earum et fugiat illum ipsa ipsam iusto minus nemo nobis non
+                    nulla officia quidem rem repellat reprehenderit repudiandae sed sit sunt suscipit temporibus unde
+                    veniam voluptate, voluptatem voluptatibus! Optio.</p>
+                <ul>
+                    <li>Lorem</li>
+                    <li>Lorem</li>
+                    <li>Lorem</li>
+                    <li>Lorem</li>
+                    <li>Lorem</li>
+                </ul>
+            </div>
         </div>
-
-        <br>
-        <div class="product">
-            <div class="product_left">
-                <style type "text=" " css"="">
-                    .clearfix:after{clear:both;content:".";display:block;font-size:0;height:0;line-height:0;visibility:hidden;} .clearfix{display:block;zoom:1}
-                    ul#thumblist{display:block;} ul#thumblist li{float:left;margin-right:2px;list-style:none;} ul#thumblist
-                    li a{display:block;border:1px solid #CCC;} ul#thumblist li a.zoomThumbActive{ border:1px solid red; }
-                    .jqzoom{ text-decoration:none; float:left; }
-                </style>
-
-                <div class="clearfix" id="content" style="margin-top:0px;margin-left:0px;">
-
-                    <div class="clearfix" style="margin-top:0px;margin-left:0px;">
-
-                        <a href="{{ product.apiUrl }}/{{ product.image }}" class="jqzoom" rel="gal1" title="" style="outline-style: none; text-decoration: none;">
-                            <div class="zoomPad">
-                                {{#if product.image }}
-                                <img id="big_image" class="one_img" src="{{ product.apiUrl }}/{{ product.image }}" title="{{ product.name }}" style="border: 0px solid rgb(102, 102, 102); opacity: 1;">                                {{else}}
-                                <img id="big_image" class="one_img" src="/images/no-photo.png" title="{{ product.name }}" style="border: 0px solid rgb(102, 102, 102); opacity: 1;">                                {{/if }}
-                                <div class="zoomPup" style="top: -1px; left: 71px; width: 428px; height: 357px; position: absolute; border-width: 1px; display: none;"></div>
-                                <div class="zoomWindow" style="position: absolute; z-index: 5001; left: 520px; top: 0px; display: none;">
-                                    <div class="zoomWrapper" style="width: 600px;">
-                                        <div class="zoomWrapperTitle" style="width: 100%; position: absolute; display: block;">zoom</div>
-                                        <div class="zoomWrapperImage" style="width: 100%; height: 500px;">
-                                            {{#if images }} {{#each images}}
-                                            <img src="{{ this.apiUrl }}/{{ this.image }}" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">                                            {{/each}} {{else}}
-                                            <img src="/images/no-photo.png" style="position: absolute; border: 0px; display: block; left: -100.8px; top: 0px;">                                            {{/if }}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="zoomPreload" style="visibility: hidden; top: 237.5px; left: 214px; position: absolute;">Loading zoom</div>
-                            </div>
-                        </a>
-
-                    </div>
-
-                    <br>
-                    <br>
-
-                    <div class="clearfix" style="margin-top:0px;margin-left:0px;">
-                        <ul id="thumblist" class="clearfix" style="padding:0px;">
-                            {{#if images }} {{#each images}}
-                            <li>
-                                <a class="{{#if @first}}zoomThumbActive{{/if}}"> 
-                                                <img src="{{ this.apiUrl }}/{{ this.image }}">
-                                            </a>
-                            </li>
-                            {{/each}} {{else}}
-                            <li>
-                                <a>
-                                                <img  width="100px" src="/images/no-photo.png">
-                                            </a>
-                            </li>
-                            {{/if }}
-                        </ul>
-                        <div class="clear"></div>
-                    </div>
+        <div class="similar-goods">
+            <h3>Похожие товары</h3>
+            <div class="good-items">
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
                 </div>
-                <div class="clear"></div>
-                <br><br>
-                <div class="fb-comments fb_iframe_widget" data-href="https://max.kg/item/1737688/kolodki-tormoznye-konstein-5611500" data-numposts="5"
-                    fb-xfbml-state="rendered">
-                    <span style="height: 184px; width: 550px;"></span>
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
                 </div>
-            </div>
-            <div class="product_right">
-                <div id="art_1737688" class="product_art"><span class="product_art1">Код товара: </span>
-                    <span class="product_art2">{{product._id}}</span>
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
                 </div>
-                <div class="product_izb">
-                    <a href="https://max.kg/izb">
-                            <span class="izb1" id="iz_1737688" onclick="return izb(this);">В избранное</span>
-                        </a>
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
                 </div>
-                <div class="table_item">
-                    <div class="table_row1_product clearfix">
-                        <div class="cell1">
-                            {{#if product.priceStock}} Старая цена: {{ product.priceStock }} сом.<br/>
-                            <!--{{#if product.price}}
-                                        Ваша экономия: {{#operation product.price '-' product.priceStock}}{{/operation}}<br/>
-                                    {{/if}}-->
-                            {{/if}}
-                            <span class="cena1_bold">
-                                    <span class="cena1">Цена:</span>
-                            </span>
-                            {{#if product.price}}
-                            <span class="tcena">{{ product.price }} с.</span> {{/if}}
-                            <br>
-                            <span class="dost_credit">В кредит при заказе от 
-                                    <span class="blue_bold">5000 сом</span>
-                            </span><br>
-                        </div>
-
-                        <div class="cell2">
-                            <span class="uch_dos">Цена указана с учетом доставки до склада в г.Бишкек, ул. Байтик Баатыра, 3/2</span>
-                        </div>
-                        <div class="clear"></div>
-
-                        <div class="box_row">
-                            <div class="box1_one">Минимальное
-                                <div class="">количество: по 1</div>
-                            </div>
-                            <div class="minus1">-</div>
-                            <div class="vall"><input type="number" id="sumValue" value="1"></div>
-                            <div class="plus1">+</div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                    <div class="order-buttons">
-                        <a href="#" id="buttonInBucket_{{product.id}}" onclick="productToBucket('{{product.id}}', 'details')">
-                            <span class="kolbox1_product">В корзину</span>
-                        </a>
-                        <a href="#" class="buy-now">
-                            <span>Купить сейчас</span>
-                        </a>
-                    </div>
-                    <div class="get-phone-info order-phone-consult clearfix">
-                        <div class="half clearfix">
-                            <h4>Проконсультируйтесь со специалистом</h4>
-                            <a href="#">
-                                <span>0551 173 838</span>
-                            </a>
-                        </div>
-                        <div class="half clearfix">
-                            <h4>Введите ваш телефон и наш специалист перезвонит Вам</h4>
-                            <div>
-                                <form action="">
-                                    <input type="phone" placeholder="+996(___)______">
-                                    <input type="submit" value="Жду звонка">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="table_row1">
-
-                        <div class="cell3 cell3_1">
-                            Наличие:
-                            <span class="art_blue">под заказ, </span><span class="art_black">доставим: 5 - 10 июля</span>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="cell5">
-                        <a href="#">Оплата: наличными, перечислением, elsom, mobilnik.kg</a>
-                    </div>
-
-                    <div class="cell6">
-                        Предоплата: 370.60 сом, оплата при получении: 370.60 сом.
-                    </div>
-
-                    <div class="table_row1">
-                        <div class="cell7 cell7_1">
-                            Доставка:
-                        </div>
-
-                        <div class="cell7 cell7_22 ">
-                            <a href="#">
-                                    <span onclick="return window_pogorodu(this);" class="pogorodu">по городу бесплатно*</span>
-                                </a>
-                        </div>
-
-                        <div class="cell7 cell7_2">
-                            <a href="#"><span class="per">по регионам</span></a>
-                        </div>
-
-                        <div class="cell7 cell7_3">
-                            <a href="#"><span class="per">самовывоз</span></a>
-                        </div>
-
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="clear"></div>
-
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
                 </div>
-
-                <div class="clear"></div>
-                <br><br>
-
-                <!--<h2>Характеристики</h2><span class="naim1"><span class="naim2">Торговая марка </span></span>Konstein<br>
-                    <span class="naim1"><span class="naim2">Страна </span></span>Китай<br>
-                    <span class="naim1"><span class="naim2">Размер </span></span>17 см × 9 см × 9 см<br><span class="naim1"><span class="naim2">Вес </span></span>1.35
-                    кг.
-                    <br><span class="naim1"><span class="naim2">Количество </span></span>В России <span class="per">1</span><br>
-                    <span class="naim1"><span class="naim2">Сертификат </span></span>ЕАС<br>
-                    <br>-->
-                <div class="clear"></div>
-                <!--
-                    <div class="gr">
-                        Поделись с друзьями.
-                        <br>
-                         Go to www.addthis.com/dashboard to customize your tools 
-                        <script type="text/javascript" src="img/max/addthis_widget.js"></script>
-                     Go to www.addthis.com/dashboard to customize your tools
-                        <div class="addthis_inline_share_toolbox"></div>
-
-                    </div>-->
-                <div class="clear"></div>
-            </div>
-            <div class="product_description">
-                <h2>Описание</h2>
-                {{#if product.description}}
-                <p>
-                    {{{ product.description }}}
-                </p>
-                {{else}}
-                <p>
-                    нету описание
-                </p>
-                {{/if}}
-                <br><br><span class="gropis">Страна производства может отличаться в зависимости от партии поставки.</span><br><br>
-                <span class="gropis">Производитель оставляет за собой право изменять внешний вид, комплектацию товара без предупреждения.</span>
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
+                </div>
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
+                </div>
+                <div class="good-item">
+                     <div class="img">
+                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                     </div>
+                     <span class="name">Hello its beautiful name of good</span>
+                     <span class="price">125 сом</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="/javascripts/bucket.js"></script>
+<style>
+    .header .container {
+        border-bottom: 0;
+    }
+</style>
 <script>
-    $("#thumblist img").click(function () {
-        var img = $(this).attr('src');
-        $("#big_image").attr('src', img);
-        $("#thumblist a").removeClass("zoomThumbActive");
-        $(this).parent().addClass("zoomThumbActive");
+    $(".thumbnail").click(function () {
+        var path = $(this).find("img").attr('src');
+        $("#big-image-img").attr('src', path);
+        $(".thumbnail").removeClass("active");
+        $(this).addClass("active");
+    })
+    var total$ = $("#total-amount");
+    $("#plus-one").click(function(){
+        total$.val(parseInt(total$.val()) + 1);
     });
-
-    var amount = $("#sumValue");
-
-    $(".plus1").click(function () {
-        amount.val(parseInt(amount.val()) + 1);
-    });
-    $(".minus1").click(function () {
-        if (amount.val() > 1) {
-            amount.val(parseInt(amount.val()) - 1);
+    $("#minus-one").click(function(){
+        if (total$.val() > 1) {
+            total$.val(total$.val() - 1);
         }
     });
+
+    $(".good-items").bxSlider({
+        width: 80,
+        auto: true,
+        slideMargin: 60,
+        infiniteLoop: true,
+        pager: false,
+        minSlides: 4,
+        maxSlides: 5,
+        slideWidth: 200,
+        moveSlides: 1
+    });
+
 </script>
