@@ -1,3 +1,4 @@
+let categoryIds = [];
 module.exports = {
     findParentCategory(categories, products) {
         if (!categories || categories.length === 0) {
@@ -38,5 +39,27 @@ module.exports = {
         });
 
         return categories;
+    },
+    getAllChildrenCategoriesId(db, parentCategoryIds) {
+        return new Promise((resolve, reject) => {
+            db.Category.find({ parentCategory: { $in: parentCategoryIds } }).then(
+                (childCategories) => {
+                    if (!childCategories || childCategories.length < 1) {
+                        return resolve(categoryIds);
+                    }
+                    let newParentCategoryIds = [];
+                    childCategories.forEach((childCategory) => {
+                        categoryIds.push(childCategory.id);
+                        newParentCategoryIds.push(childCategory.id);
+                    });
+                    return this.getAllChildrenCategoriesId(db, newParentCategoryIds, categoryIds);
+                }
+            ).catch(
+                (err) => {
+                    console.log(err);
+                    resolve(categoryIds);
+                }
+            );
+        });
     }
 }

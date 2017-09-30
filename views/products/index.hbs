@@ -16,10 +16,20 @@
                 <ul class="catalog-left-menu">
                     {{#each categories}}
                         <li>
-                            <a href="/products/category/{{this.name}}/{{this.id}}">
-                                <div class="cs_name">{{ this.name }}</div>
-                                <div class="cs_cnt">{{ productsCount }}</div>
-                            </a>
+                            {{#if this.selected}}
+                                <a href="/products/category/{{this.name}}/{{this.id}}"
+                                    style=" color: #fff !important;
+                                            background: #fb722c;
+                                            border-bottom: 1px solid #fb722c;">
+                                    <div class="cs_name">{{ this.name }}</div>
+                                    <div class="cs_cnt">{{ this.productsCount }}</div>
+                                </a>
+                            {{else}}
+                                <a href="/products/category/{{this.name}}/{{this.id}}">
+                                    <div class="cs_name">{{ this.name }}</div>
+                                    <div class="cs_cnt">{{ this.productsCount }}</div>
+                                </a>
+                            {{/if}}
                         </li>
                     {{/each}}
                     <li class="picture">

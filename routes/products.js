@@ -94,7 +94,11 @@ module.exports = (app, db) => {
                         categories.forEach((category) => {
                           if (category) {
                             category['apiUrl'] = config.API_URL;
-                            productService.getCountProductsByCategoryId(db, categories, category);
+                            productService.getCountProductsByCategoryId(db, categories, category).then(
+                                (count) => {
+                                    // console.log(count);
+                                }
+                            );
                           }
                         });
                         let currentCategory = categories.filter(x => x.id == category.id)[0] || {};
@@ -142,7 +146,7 @@ module.exports = (app, db) => {
                                                             products: products,
                                                             parentCategories: parentCategories,
                                                             categories: categories,
-                                                            category: category
+                                                            category: currentCategory
                                                         });
                                                     }
                                                 ).catch(
