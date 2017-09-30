@@ -41,3 +41,11 @@
 #popup-auth {
     min-height: 464px;
 }
+
+/*custom styles for landing here*/
+
+
+.map-block__ing {
+    right: 230px !important;
+    bottom: 230px !important;
+}
