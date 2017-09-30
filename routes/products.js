@@ -94,11 +94,10 @@ module.exports = (app, db) => {
                         categories.forEach((category) => {
                           if (category) {
                             category['apiUrl'] = config.API_URL;
-                            productService.getCountProductsByCategoryId(db, categories, category).then(
+                            /*productService.getCountProductsByCategoryId(db, categories, category).then(
                                 (count) => {
-                                    // console.log(count);
                                 }
-                            );
+                            );*/
                           }
                         });
                         let currentCategory = categories.filter(x => x.id == category.id)[0] || {};
@@ -235,18 +234,35 @@ module.exports = (app, db) => {
                             });
                         }
                         console.log(product);
-                        res.render('products/details', { 
-                            title: 'details', 
-                            product: product,
-                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
-                            images: images
-                        });
+                        db.Exchange.findOne().then(
+                            (exchange) => {
+                                if (exchange && exchange.usd) {
+                                    if (product.price) product.price = (parseFloat(product.price) * parseFloat(exchange.usd)).toFixed(2);
+                                    if (product.priceTrad) product.priceTrade = (parseFloat(product.priceTrade) * parseFloat(exchange.usd)).toFixed(2);
+                                    if (product.priceStock) product.priceStock = (parseFloat(product.priceStock) * parseFloat(exchange.usd)).toFixed(2);
+                                }
+                                
+                                res.render('products/details', { 
+                                    title: 'details', 
+                                    product: product,
+                                    parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
+                                    images: images
+                                });
+                            }
+                        ).catch(
+                            (err) => {
+                                console.log(err);
+                                res.render('products/details', {
+                                    title: 'Products',
+                                    errors: err
+                                });
+                            }
+                        );
                     }
                 ).catch(
                     (err) => {
                         res.render('products/details', {
                             title: 'Products',
-                            products: [],
                             errors: err
                         });
                         // res.redirect('/products');
@@ -258,11 +274,8 @@ module.exports = (app, db) => {
                 console.log(err);
                 res.render('products/details', {
                     title: 'Products',
-                    products: [],
                     errors: err
                 });
-
-                //res.redirect('/products');
             }
         );
     });
