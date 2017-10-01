@@ -240,13 +240,18 @@ module.exports = (app, db) => {
                                     if (product.price) product.price = (parseFloat(product.price) * parseFloat(exchange.usd)).toFixed(2);
                                     if (product.priceTrad) product.priceTrade = (parseFloat(product.priceTrade) * parseFloat(exchange.usd)).toFixed(2);
                                     if (product.priceStock) product.priceStock = (parseFloat(product.priceStock) * parseFloat(exchange.usd)).toFixed(2);
+                                    /*if (product.price && product.priceStock &&
+                                        product.price > 0 && product.priceStock > 0) {
+                                        let differencePercent = (product.priceStock / product.price) * 100; // процент от числа
+                                        product['percent'] = Math.round(100 - differencePercent);
+                                    }*/
                                 }
                                 
                                 res.render('products/details', { 
                                     title: 'details', 
                                     product: product,
                                     parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
-                                    images: images
+                                    images: images.filter(x => x.image != product.image)
                                 });
                             }
                         ).catch(

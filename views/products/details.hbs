@@ -4,14 +4,17 @@
         <div class="good-detail__in">
             <div class="big-image">
                 <div class="item">
-                    <img id="big-image-img" src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                    <img id="big-image-img" src="{{ product.apiUrl }}/{{ product.image }}" alt="">
                 </div>
                 <div class="thumbnails">
-                    <div class="thumbnail active"><img src="https://www.w3schools.com/css/img_fjords.jpg" alt=""></div>
-                    <div class="thumbnail"><img
-                            src="https://www.smashingmagazine.com/wp-content/uploads/2015/06/10-dithering-opt.jpg"
-                            alt=""></div>
-                    <div class="thumbnail"><img src="https://www.reduceimages.com/img/image-after.jpg" alt=""></div>
+                    <div class="thumbnail active">
+                        <img src="{{ product.apiUrl }}/{{ product.image }}" alt="" />
+                    </div>
+                    {{#each images }}
+                        <div class="thumbnail">
+                            <img src="{{ this.apiUrl }}/{{ this.image }}" alt="" />
+                        </div>
+                    {{/each }}
                 </div>
             </div>
             <div class="good-info">
