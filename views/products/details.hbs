@@ -1,16 +1,20 @@
 <div class="good-detail">
     <div class="container">
+        <h2>{{ product.name }}</h2>
         <div class="good-detail__in">
             <div class="big-image">
                 <div class="item">
-                    <img id="big-image-img" src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
+                    <img id="big-image-img" src="{{ product.apiUrl }}/{{ product.image }}" alt="">
                 </div>
                 <div class="thumbnails">
-                    <div class="thumbnail active"><img src="https://www.w3schools.com/css/img_fjords.jpg" alt=""></div>
-                    <div class="thumbnail"><img
-                            src="https://www.smashingmagazine.com/wp-content/uploads/2015/06/10-dithering-opt.jpg"
-                            alt=""></div>
-                    <div class="thumbnail"><img src="https://www.reduceimages.com/img/image-after.jpg" alt=""></div>
+                    <div class="thumbnail active">
+                        <img src="{{ product.apiUrl }}/{{ product.image }}" alt="" />
+                    </div>
+                    {{#each images }}
+                        <div class="thumbnail">
+                            <img src="{{ this.apiUrl }}/{{ this.image }}" alt="" />
+                        </div>
+                    {{/each }}
                 </div>
             </div>
             <div class="good-info">
@@ -20,7 +24,7 @@
                         <span>Ваша экономия: <br> 2555 сом</span>
                     </div>
                     <div class="block-2">
-                        <span>Цена:_____________ 2500 сом</span>
+                        <span>Цена:_____________ {{ product.price }} сом</span>
                     </div>
                     <div class="block-3">
                         <div class="amount-block">
@@ -33,7 +37,7 @@
                         </div>
                         <div class="amount-block total-block">
                             <span class="total-text">Общая<br>стоимость:</span>
-                            <b>279 сом</b>
+                            <b>{{ product.price }} сом</b>
                         </div>
                     </div>
                 </div>
@@ -88,20 +92,7 @@
         </div>
         <div class="good-detail__in">
             <div class="good-description">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad amet animi cum debitis,
-                    dolorem, doloremque doloribus ea et illum labore, minus nam neque quos recusandae sequi tempora
-                    tempore unde.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aperiam architecto asperiores
-                    assumenda consectetur consequatur cum earum et fugiat illum ipsa ipsam iusto minus nemo nobis non
-                    nulla officia quidem rem repellat reprehenderit repudiandae sed sit sunt suscipit temporibus unde
-                    veniam voluptate, voluptatem voluptatibus! Optio.</p>
-                <ul>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                    <li>Lorem</li>
-                </ul>
+                {{{ product.description }}}
             </div>
         </div>
         <div class="similar-goods">

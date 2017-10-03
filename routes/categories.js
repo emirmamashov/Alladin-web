@@ -64,11 +64,11 @@ module.exports = (app, db) => {
                         categories.forEach((category) => {
                             if (category) {
                               category['apiUrl'] = config.API_URL;
-                              productService.getCountProductsByCategoryId(db, category).then(
+                              /*productService.getCountProductsByCategoryId(db, category).then(
                                   (count) => {
                                     console.log(count);
                                   }
-                              );
+                              );*/
                             }
                         });
                         let selectedCategory = categories.filter(x => x.id == categoryId)[0];
