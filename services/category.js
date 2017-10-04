@@ -1,4 +1,5 @@
 let categoryIds = [];
+let config = require('../config')['development'];
 module.exports = {
     findParentCategory(categories, products) {
         if (!categories || categories.length === 0) {
@@ -87,10 +88,12 @@ module.exports = {
                             let childCategoryIds = [];
                             parentCategories.forEach((parentCategory) => {
                                 parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
+                                parentCategory['apiUrl'] = config.API_URL;
                             });
     
                             childCategories.forEach((childCategory) => {
                                 childCategoryIds.push(childCategory.id);
+                                childCategory['apiUrl'] = config.API_URL;
                             });
     
                             db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
