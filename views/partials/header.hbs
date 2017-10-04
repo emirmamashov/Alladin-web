@@ -29,11 +29,11 @@
                             <ul class="categories-3">
                                 {{#each this.childCategories}}
                                 <li>
-                                    <a href="/products/category/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                    <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
                                     <ul class="categories-4">
                                         {{#each this.childCategories}}
                                         <li>
-                                            <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                            <a href="/products/category/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
                                         </li>
                                         {{/each}}
                                     </ul>
