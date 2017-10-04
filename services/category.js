@@ -61,5 +61,82 @@ module.exports = {
                 }
             );
         });
+    },
+    getCategoriesWithChilds(db) {
+        return new Promise((resolve, reject) => {
+            db.Category.find({ parentCategory: null }).limit(20).then(
+                (parentCategories) => {
+                    if (!parentCategories || parentCategories.length < 1) {
+                        return resolve();
+                    }
+
+                    let parentCategoryIds = [];
+                    parentCategories.forEach((parentCategory) => {
+                        parentCategoryIds.push(parentCategory.id);
+                    });
+    
+                    db.Category.find({ parentCategory: { $in: parentCategoryIds } }).then(
+                        (childCategories) => {
+                            if (!childCategories || childCategories.length < 1) {
+                                return resolve({
+                                    parentCategories: parentCategories,
+                                    childCategories: [],
+                                    secondCategories: []
+                                });
+                            }
+                            let childCategoryIds = [];
+                            parentCategories.forEach((parentCategory) => {
+                                parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
+                            });
+    
+                            childCategories.forEach((childCategory) => {
+                                childCategoryIds.push(childCategory.id);
+                            });
+    
+                            db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
+                                (secondCategories) => {
+                                    if (!secondCategories || secondCategories.length < 1) {
+                                        return resolve({
+                                            parentCategories: parentCategories,
+                                            childCategories: childCategories,
+                                            secondCategories: []
+                                        });
+                                    }
+                                    childCategories.forEach((parentCategory) => {
+                                        parentCategory['childCategories'] = secondCategories.filter(x => x.parentCategory == parentCategory.id) || [];
+                                    });
+
+                                    resolve({
+                                        parentCategories: parentCategories,
+                                        childCategories: childCategories,
+                                        secondCategories: secondCategories
+                                    });
+                                }
+                            ).catch(
+                                (err) => {
+                                    console.log(err);
+                                    resolve({
+                                        parentCategories: parentCategories,
+                                        childCategories: childCategories
+                                    });
+                                }
+                            );
+                        }
+                    ).catch(
+                        (err) => {
+                            console.log(err);
+                            resolve({
+                                parentCategories: parentCategories
+                            });
+                        }
+                    );
+                }
+            ).catch(
+                (err) => {
+                    console.log(err);
+                    resolve();
+                }
+            );
+        });
     }
 }

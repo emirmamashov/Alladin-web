@@ -12,13 +12,13 @@ module.exports = (app, db) => {
     let config = app.get('config');
 
     router.get('/', (req, res) => {
-        db.Category.find({ parentCategory:  null }).then(
+        categoryService.getCategoriesWithChilds(db).then(
             (categories) => {
                 res.render('categories/index', {
                     title: 'Categories',
-                    parentCategories: categories,
-                    categories: categories,
-                    chunkCategories: chunk(categories, 3)
+                    parentCategories: data.parentCategories,
+                    categories: data.categories,
+                    chunkCategories: chunk(data.childCategories, 3)
                 });
             }
         ).catch(
@@ -51,69 +51,34 @@ module.exports = (app, db) => {
                 db.Category.find({ level: category.level }).then(
                     (categories) => {
 
-                        if (!categories || categories.length === 0) {
-                            return res.render('categories/index', {
-                                title: 'Categories',
-                                categories: categories,
-                                parentCategories: categories,
-                                selectedCategory: selectedCategory,
-                                chunkCategories: []
-                            });
-                        }
-
-                        categories.forEach((category) => {
-                            if (category) {
-                              category['apiUrl'] = config.API_URL;
-                              /*productService.getCountProductsByCategoryId(db, category).then(
-                                  (count) => {
-                                    console.log(count);
-                                  }
-                              );*/
-                            }
-                        });
-                        let selectedCategory = categories.filter(x => x.id == categoryId)[0];
-                        if (selectedCategory) {
-                            selectedCategory['selected'] = true;
-                        }
-        
-                        db.Category.find({ parentCategory: category.id }).then(
-                            (childCategories) => {
-
-                                if (!childCategories || childCategories.length < 1) {
-                                    return res.redirect('/products/category/' + category.name +'/' + category.id);
+                        categoryService.getCategoriesWithChilds(db).then(
+                            (data) => {
+                                if (!categories || categories.length === 0) {
+                                    return res.render('categories/index', {
+                                        title: 'Categories',
+                                        categories: categories,
+                                        parentCategories: data.parentCategories || [],
+                                        selectedCategory: selectedCategory,
+                                        chunkCategories: []
+                                    });
                                 }
-                                categories.forEach((parentCategory) => {
-                                    parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id) || [];
-                                });
 
-                                let childCategoryIds = [];
-                                childCategories.forEach((childCategory) => {
-                                    childCategoryIds.push(childCategory.id);
+                                categories.forEach((category) => {
+                                    if (category) {
+                                        category['apiUrl'] = config.API_URL;
+                                    }
                                 });
-
-                                db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
-                                    (secondChildCategories) => {
-                                        if (secondChildCategories && secondChildCategories.length > 0) {
-                                            childCategories.forEach((childCategory) => {
-                                                childCategory['childCategories'] = secondChildCategories.filter(x => x.parentCategory == childCategory.id) || [];
-                                            });
-    
-                                        }
-                                        
-                                        res.render('categories/index', {
-                                            title: 'Categories',
-                                            categories: categories,
-                                            parentCategories: categories,
-                                            selectedCategory: selectedCategory,
-                                            chunkCategories: chunk(childCategories, 3)
-                                        });
-                                    }
-                                ).catch(
-                                    (err) => {
-                                        console.log(err);
-                                        res.render('categories/index', { title: 'Categories', errors: err });
-                                    }
-                                );
+                                let selectedCategory = categories.filter(x => x.id == categoryId)[0];
+                                if (selectedCategory) {
+                                    selectedCategory['selected'] = true;
+                                }
+                                res.render('categories/index', {
+                                    title: 'Categories',
+                                    categories: categories,
+                                    parentCategories: data.parentCategories || [],
+                                    selectedCategory: selectedCategory,
+                                    chunkCategories: chunk(data.childCategories, 3)
+                                });
                             }
                         ).catch(
                             (err) => {

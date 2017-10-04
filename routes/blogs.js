@@ -10,30 +10,27 @@ module.exports = (app, db) => {
   let config = app.get('config');
   /* GET home page. */
   router.get('/', (req, res) => {
-    db.Category.find().then(
-      (categories) => {
-        let parentCategories = categoryService.findParentCategory(categories, []);
-        db.Blog.find().then(
-          (blogs) => {
-              res.render('blogs/index', {
-                  parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
-                  categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
-                  apiUrl: config.API_URL,
-                  blogs: blogs
-              });
-          }
-        ).catch(
-            (err) => {
-                console.log(err);
-                res.render('blogs/index', { 
-                  title: 'Express123',
-                  parentCategories: categoryService.findParentCategory(categories),
-                  products: [],
-                  errors: err,
-                  apiUrl: config.API_URL
+    categoryService.getCategoriesWithChilds(db).then(
+      (data) => {
+          db.Blog.find().then(
+            (blogs) => {
+                res.render('blogs/index', {
+                    parentCategories: data.parentCategories || [],
+                    categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu) || [],
+                    blogs: blogs
                 });
             }
-        );
+          ).catch(
+              (err) => {
+                  console.log(err);
+                  res.render('blogs/index', { 
+                    title: 'Express123',
+                    parentCategories: data.parentCategories || [],
+                    products: [],
+                    errors: err
+                  });
+              }
+          );
       }
     ).catch(
       (err) => {
@@ -59,14 +56,14 @@ module.exports = (app, db) => {
           });
     }
 
-    db.Category.find().then(
-      (categories) => {
-          let parentCategories = categoryService.findParentCategory(categories, []);
+    
+    categoryService.getCategoriesWithChilds(db).then(
+      (data) => {
           db.Blog.findById(id).then(
             (blog) => {
                 res.render('blogs/details', {
-                    parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
-                    categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu),
+                    parentCategories: data.parentCategories || [],
+                    categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu) || [],
                     apiUrl: config.API_URL,
                     blog: blog
                 });

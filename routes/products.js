@@ -11,59 +11,16 @@ let productService = require('../services/product');
 module.exports = (app, db) => {
     let config = app.get('config');
     router.get('/', (req, res) => {
-        db.Category.find({ parentCategory: null }).limit(20).then(
-            (parentCategories) => {
-                let parentCategoryIds = [];
+        categoryService.getCategoriesWithChilds(db).then(
+            (data) => {
+                let parentCategories = data.parentCategories;
                 parentCategories.forEach((parentCategory) => {
                     parentCategory['apiUrl'] = config.API_URL;
-                    parentCategoryIds.push(parentCategory.id);
                 });
-
-                db.Category.find({ parentCategory: { $in: parentCategoryIds } }).then(
-                    (childCategories) => {
-                        let childCategoryIds = [];
-                        childCategories.forEach((parentCategory) => {
-                            parentCategory['apiUrl'] = config.API_URL;
-                            childCategoryIds.push(parentCategory.id);
-                        });
-
-                        parentCategories.forEach((parentCategory) => {
-                            parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id);
-                        });
-
-                        db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
-                            (secondCategories) => {
-
-                                childCategories.forEach((parentCategory) => {
-                                    parentCategory['childCategories'] = secondCategories.filter(x => x.parentCategory == parentCategory.id);
-                                });
-
-                                res.render('products/index', {
-                                    title: 'Products',
-                                    categories: parentCategories
-                                });
-                            }
-                        ).catch(
-                            (err) => {
-                                console.log(err);
-                                res.render('products/index', {
-                                    title: 'Products',
-                                    products: [],
-                                    errors: err
-                                });
-                            }
-                        );
-                    }
-                ).catch(
-                    (err) => {
-                        console.log(err);
-                        res.render('products/index', {
-                            title: 'Products',
-                            products: [],
-                            errors: err
-                        });
-                    }
-                );
+                res.render('products/index', {
+                    title: 'Products',
+                    categories: parentCategories
+                });
             }
         ).catch(
             (err) => {
@@ -113,62 +70,15 @@ module.exports = (app, db) => {
                                         product['apiUrl'] = config.API_URL;
                                     }
                                 });
-                                db.Category.find({ parentCategory: null }).limit(20).then(
-                                    (parentCategories) => {
-                                        let parentCategoryIds = [];
-                                        parentCategories.forEach((parentCategory) => {
-                                            parentCategory['apiUrl'] = config.API_URL;
-                                            parentCategoryIds.push(parentCategory.id);
+                                categoryService.getCategoriesWithChilds(db).then(
+                                    (data) => {
+                                        res.render('products/index', {
+                                            title: 'Products',
+                                            products: products,
+                                            parentCategories: data.parentCategories,
+                                            categories: categories,
+                                            category: currentCategory
                                         });
-                        
-                                        db.Category.find({ parentCategory: { $in: parentCategoryIds } }).then(
-                                            (childCategories) => {
-                                                let childCategoryIds = [];
-                                                childCategories.forEach((parentCategory) => {
-                                                    parentCategory['apiUrl'] = config.API_URL;
-                                                    childCategoryIds.push(parentCategory.id);
-                                                });
-                        
-                                                parentCategories.forEach((parentCategory) => {
-                                                    parentCategory['childCategories'] = childCategories.filter(x => x.parentCategory == parentCategory.id);
-                                                });
-                        
-                                                db.Category.find({ parentCategory: { $in: childCategoryIds } }).then(
-                                                    (secondCategories) => {
-                        
-                                                        childCategories.forEach((parentCategory) => {
-                                                            parentCategory['childCategories'] = secondCategories.filter(x => x.parentCategory == parentCategory.id);
-                                                        });
-
-                                                        res.render('products/index', {
-                                                            title: 'Products',
-                                                            products: products,
-                                                            parentCategories: parentCategories,
-                                                            categories: categories,
-                                                            category: currentCategory
-                                                        });
-                                                    }
-                                                ).catch(
-                                                    (err) => {
-                                                        console.log(err);
-                                                        res.render('products/index', {
-                                                            title: 'Products',
-                                                            products: [],
-                                                            errors: err
-                                                        });
-                                                    }
-                                                );
-                                            }
-                                        ).catch(
-                                            (err) => {
-                                                console.log(err);
-                                                res.render('products/index', {
-                                                    title: 'Products',
-                                                    products: [],
-                                                    errors: err
-                                                });
-                                            }
-                                        );
                                     }
                                 ).catch(
                                     (err) => {
@@ -208,21 +118,10 @@ module.exports = (app, db) => {
 
     router.get('/details/:id', (req, res) => {
         let id = req.params.id;
-        db.Category.find().then(
-            (categories) => {
-                let categoryIds = [];
-                let photoIds = [];
-    
-                categories.forEach((category) => {
-                  if (category) {
-                    category['apiUrl'] = config.API_URL;
-                    categoryIds.push(category._id);
-                  }
-                });
-
+        categoryService.getCategoriesWithChilds(db).then(
+            (data) => {
                 db.Product.findById(req.params.id).then(
                     (product) => {
-                        let parentCategories = categoryService.findParentCategory(categories, []);
                         product['apiUrl'] = config.API_URL;
                         let images = [];
                         if (product.images && product.images.length > 0) {
@@ -250,7 +149,7 @@ module.exports = (app, db) => {
                                 res.render('products/details', { 
                                     title: 'details', 
                                     product: product,
-                                    parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage),
+                                    parentCategories: data.parentCategories,
                                     images: images.filter(x => x.image != product.image)
                                 });
                             }
@@ -288,39 +187,17 @@ module.exports = (app, db) => {
     router.post('/search', (req, res) => {
         let regex = new RegExp(req.body.text, 'i');
         console.dir(req.body);
-        db.Category.find().then(
-            (categories) => {
-                let categoryIds = [];
-                let photoIds = [];
-    
-                categories.forEach((category) => {
-                  if (category) {
-                    category['apiUrl'] = config.API_URL;
-                    categoryIds.push(category._id);
-                  }
-                });
-                db.Product.find({ name: regex }).then(
-                    (products) => {
-                        let parentCategories = categoryService.findParentCategory(categories, products);
-                        console.log(products);
-                        res.render('products/index', {
-                            title: 'Products',
-                            products: products,
-                            parentCategories: parentCategories.slice(0, config.CountViewsCategoriesInMainPage)
-                        });
-                    }
-                ).catch(
-                    (err) => {
-                        console.log(err);
-                        res.render('products/index', {
-                            title: 'Products',
-                            products: [],
-                            errors: err
-                        });
-                    }
-                );
-
-            }).catch(
+        categoryService.getCategoriesWithChilds(db).then(
+        (data) => {
+            db.Product.find({ name: regex }).then(
+                (products) => {
+                    res.render('products/index', {
+                        title: 'Products',
+                        products: products,
+                        parentCategories: data.parentCategories
+                    });
+                }
+            ).catch(
                 (err) => {
                     console.log(err);
                     res.render('products/index', {
@@ -329,7 +206,16 @@ module.exports = (app, db) => {
                         errors: err
                     });
                 }
-            )
+            );
+        }).catch(
+                (err) => {
+                    console.log(err);
+                    res.render('products/index', {
+                        title: 'Products',
+                        products: [],
+                        errors: err
+                });
+            })
         
     });
 
