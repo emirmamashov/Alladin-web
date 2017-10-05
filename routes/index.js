@@ -89,7 +89,7 @@ module.exports = (app, db) => {
                                                                 console.log(err);
                                                                 res.render('index', {
                                                                     title: 'Express123',
-                                                                    parentCategories: categoryService.findParentCategory(categories),
+                                                                    parentCategories: [],
                                                                     errors: err,
                                                                     apiUrl: config.API_URL
                                                                 });
@@ -101,7 +101,7 @@ module.exports = (app, db) => {
                                                         console.log(err);
                                                         res.render('index', {
                                                             title: 'Express123',
-                                                            parentCategories: categoryService.findParentCategory(categories),
+                                                            parentCategories: [],
                                                             errors: err,
                                                             apiUrl: config.API_URL
                                                         });
@@ -113,7 +113,7 @@ module.exports = (app, db) => {
                                                 console.log(err);
                                                 res.render('index', {
                                                     title: 'Express123',
-                                                    parentCategories: categoryService.findParentCategory(categories),
+                                                    parentCategories: [],
                                                     products: [],
                                                     errors: err,
                                                     apiUrl: config.API_URL
@@ -126,7 +126,7 @@ module.exports = (app, db) => {
                                         console.log(err);
                                         res.render('index', {
                                             title: 'Express123',
-                                            parentCategories: categoryService.findParentCategory(categories),
+                                            parentCategories: [],
                                             errors: err,
                                             apiUrl: config.API_URL
                                         });
@@ -140,7 +140,7 @@ module.exports = (app, db) => {
                         console.log(err);
                         res.render('index', {
                             title: 'Express123',
-                            parentCategories: categoryService.findParentCategory(categories),
+                            parentCategories: [],
                             errors: err,
                             apiUrl: config.API_URL
                         });

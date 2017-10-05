@@ -1,34 +1,25 @@
 let categoryIds = [];
 let config = require('../config')['development'];
 module.exports = {
-    findParentCategory(categories, products) {
-        if (!categories || categories.length === 0) {
+    findChildCategoriesForParent(parentCategories, categories) {
+        if (!parentCategories || parentCategories.length < 1) {
             return [];
         }
-        let parentCategories = categories.filter(x => !x.parentCategory);
-        products = products || [];
         parentCategories.forEach((category) => {
-            let childCategories = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
-            if (childCategories.length > 10) {
-                childCategories = childCategories.slice(0, 10);
-            }
-            category['childCategories'] = childCategories;
-            this.findChildCategories(categories, category['childCategories'], []);
-            category['products'] = products.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString()) || [];
+            category['childCategories'] = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
+            this.findChildCategories(categories, category['childCategories']);
         });
         // console.log(parentCategories);
         return parentCategories;
     },
-    findChildCategories(allCategories, categories, products) {
+    findChildCategories(allCategories, categories) {
         if (!categories || categories.length === 0 || !allCategories || allCategories.length === 0) {
             return [];
         }
-        products = products || [];
         categories.forEach((category) => {
             category['childCategories'] = allCategories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
-            category['products'] = products.filter(x => x.categoryId && x.categoryId.toString() === category._id.toString()) || [];
+            this.findChildCategories(categories, category['childCategories']);
         });
-        return categories;
     },
 
     findProductsForCategories(categories, products) {
@@ -138,6 +129,39 @@ module.exports = {
                 (err) => {
                     console.log(err);
                     resolve();
+                }
+            );
+        });
+    },
+    getChildCategoriesByCategoryId(db, parentCategoryIds, resultCategories) {
+        return new Promise((resolve, reject) => {
+            if (!db || !parentCategoryIds || parentCategoryIds.length < 1) {
+                return resolve();
+            }
+            db.Category.find({ parentCategory: { $in: parentCategoryIds} }).then(
+                (categories) => {
+                    let categoryIds = [];
+                    if (categories.length < 1) {
+                        return resolve(resultCategories);
+                    }
+
+                    categories.forEach((category) => {
+                        categoryIds.push(category.id);
+                    });
+                    if (!resultCategories) {
+                        resultCategories = {
+                            parentCategories: categories,
+                            categories: categories
+                        };
+                        return resolve(this.getChildCategoriesByCategoryId(db, categoryIds, resultCategories));
+                    }
+                    resultCategories.categories = resultCategories.categories.concat(categories);
+                    return resolve(this.getChildCategoriesByCategoryId(db, categoryIds, resultCategories));
+                }
+            ).catch(
+                (err) => {
+                    console.log(err);
+                    resolve(resultCategories);
                 }
             );
         });

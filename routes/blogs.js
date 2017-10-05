@@ -73,7 +73,7 @@ module.exports = (app, db) => {
                   console.log(err);
                   res.render('blogs/details', { 
                     title: 'Express123',
-                    parentCategories: categoryService.findParentCategory(categories),
+                    parentCategories: [],
                     products: [],
                     errors: err,
                     apiUrl: config.API_URL

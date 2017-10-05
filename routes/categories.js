@@ -41,43 +41,19 @@ module.exports = (app, db) => {
 
         db.Category.findById(categoryId).then(
             (category) => {
-                if (!category) {
-                    (err) => {
-                        console.log(err);
-                        res.render('categories/index', { title: 'Categories', errors: 'Категоря не найдено' });
-                    }
-                }
-                
-                db.Category.find({ level: category.level }).then(
-                    (categories) => {
-
+                categoryService.getChildCategoriesByCategoryId(db, [categoryId]).then(
+                    (resultCategories) => {
+                        let categories = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
                         categoryService.getCategoriesWithChilds(db).then(
                             (data) => {
-                                if (!categories || categories.length === 0) {
-                                    return res.render('categories/index', {
-                                        title: 'Categories',
-                                        categories: categories,
-                                        parentCategories: data.parentCategories || [],
-                                        selectedCategory: selectedCategory,
-                                        chunkCategories: []
-                                    });
-                                }
-
-                                categories.forEach((category) => {
-                                    if (category) {
-                                        category['apiUrl'] = config.API_URL;
-                                    }
-                                });
-                                let selectedCategory = categories.filter(x => x.id == categoryId)[0];
-                                if (selectedCategory) {
-                                    selectedCategory['selected'] = true;
-                                }
+        
+                                let selectedCategory = categories[0];
                                 res.render('categories/index', {
                                     title: 'Categories',
                                     categories: categories,
                                     parentCategories: data.parentCategories || [],
                                     selectedCategory: selectedCategory,
-                                    chunkCategories: chunk(data.childCategories, 3)
+                                    chunkCategories: chunk(resultCategories.parentCategories || [], 3)
                                 });
                             }
                         ).catch(
