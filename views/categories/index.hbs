@@ -39,7 +39,15 @@
                         <tr class="cr-photo-tr">
                             {{#each this.data}}
                             <td data-section-code="stroymaterialy">
-                                <img src="{{ this.apiUrl }}/{{ this.image }}"/>
+                                {{#if this.childCategories}}
+                                    <a href="/categories/{{ this.name }}/{{ this.id }}/">
+                                        <img src="{{ this.apiUrl }}/{{ this.image }}"/>
+                                    </a>
+                                {{else}}
+                                    <a href="/products/category/{{this.name}}/{{this.id}}/">
+                                        <img src="{{ this.apiUrl }}/{{ this.image }}"/>
+                                    </a>
+                                {{/if}}
                             </td>
                             {{/each}}
                         </tr>
@@ -51,15 +59,28 @@
                                 <td>
                                     <div class="cr-section-desc">
                                         <div class="cr-section-title">
-                                            {{ this.name }}
+                                            {{#if this.childCategories}}
+                                                <a href="/categories/{{ this.name }}/{{ this.id }}/">
+                                                    {{ this.name }}
+                                                </a>
+                                            {{else}}
+                                                <a href="/products/category/{{this.name}}/{{this.id}}/">
+                                                    {{ this.name }}
+                                                </a>
+                                            {{/if}}
                                         </div>
                                         <ul class="cr-section-categories">
                                             {{#each this.childCategories}}
                                             <li>
-                                                <a href="/products/category/{{this.name}}/{{this.id}}/">
+                                                {{#if this.childCategories}}
                                                     <div class="cs_name">{{ this.name }}</div>
                                                     <div class="cs_cnt">{{ this.productsCount }}</div>
-                                                </a>
+                                                {{else}}
+                                                    <a href="/products/category/{{this.name}}/{{this.id}}/">
+                                                        <div class="cs_name">{{ this.name }}</div>
+                                                        <div class="cs_cnt">{{ this.productsCount }}</div>
+                                                    </a>
+                                                {{/if}}
                                             </li>
                                             {{/each }}
                                         </ul>
