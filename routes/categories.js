@@ -34,27 +34,44 @@ module.exports = (app, db) => {
         let categoryId = req.params.id;
         if (!categoryId || !ObjectId.isValid(categoryId)) {
             console.log('error in parameters');
-            return res.render('categories/index', {
-                title: 'Categories', errors: 'error in parameters'
-            });
+            return res.redirect('/categories');
         }
 
         db.Category.findById(categoryId).then(
             (category) => {
-                categoryService.getChildCategoriesByCategoryId(db, [categoryId]).then(
-                    (resultCategories) => {
-                        let categories = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
-                        categoryService.getCategoriesWithChilds(db).then(
-                            (data) => {
-        
-                                let selectedCategory = categories[0];
-                                res.render('categories/index', {
-                                    title: 'Categories',
-                                    categories: categories,
-                                    parentCategories: data.parentCategories || [],
-                                    selectedCategory: selectedCategory,
-                                    chunkCategories: chunk(resultCategories.parentCategories || [], 3)
-                                });
+                if (!category) {
+                    return res.redirect('/categories');
+                    // res.render('categories/index', { title: 'Categories', errors: 'category not found' });
+                }
+                db.Category.find({ level: category.level }).then(
+                    (categories) => {
+                        let categoryIds = [];
+                        categories.forEach((category) => {
+                            categoryIds.push(category.id);
+                        });
+                        categoryService.getChildCategoriesByCategoryId(db, categoryIds).then(
+                            (resultCategories) => {
+                                let categoriesWithChild = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
+                                categoryService.getCategoriesWithChilds(db).then(
+                                    (data) => {
+                                        let selectedCategory = categories.filter(x => x.id == categoryId)[0];
+                                        if (selectedCategory) {
+                                            selectedCategory['selected'] = true;
+                                        }
+                                        res.render('categories/index', {
+                                            title: 'Categories',
+                                            categories: categories,
+                                            parentCategories: data.parentCategories || [],
+                                            selectedCategory: selectedCategory,
+                                            chunkCategories: chunk(resultCategories.parentCategories || [], 3)
+                                        });
+                                    }
+                                ).catch(
+                                    (err) => {
+                                        console.log(err);
+                                        res.render('categories/index', { title: 'Categories', errors: err });
+                                    }
+                                );
                             }
                         ).catch(
                             (err) => {
