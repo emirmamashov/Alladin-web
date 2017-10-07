@@ -73,8 +73,10 @@
                                             {{#each this.childCategories}}
                                             <li>
                                                 {{#if this.childCategories}}
-                                                    <div class="cs_name">{{ this.name }}</div>
-                                                    <div class="cs_cnt">{{ this.productsCount }}</div>
+                                                    <a href="/categories/{{this.name}}/{{this.id}}/">
+                                                        <div class="cs_name">{{ this.name }}</div>
+                                                        <div class="cs_cnt">{{ this.productsCount }}</div>
+                                                    </a>
                                                 {{else}}
                                                     <a href="/products/category/{{this.name}}/{{this.id}}/">
                                                         <div class="cs_name">{{ this.name }}</div>
