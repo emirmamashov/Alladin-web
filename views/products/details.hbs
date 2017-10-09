@@ -19,13 +19,19 @@
             </div>
             <div class="good-info">
                 <div class="price-block">
-                    <div class="block-1">
-                        <span>Старая цена: <br> 4500 сом</span>
-                        <span>Ваша экономия: <br> 2555 сом</span>
-                    </div>
-                    <div class="block-2">
-                        <span>Цена:_____________ {{ product.price }} сом</span>
-                    </div>
+                    {{#if product.economPrice}}
+                        <div class="block-1">
+                            <span>Старая цена: <br> {{ product.price }} сом</span>
+                            <span>Ваша экономия: <br> {{ product.economPrice }} сом</span>
+                        </div>
+                        <div class="block-2">
+                            <span>Цена: {{ product.priceStock }} сом</span>
+                        </div>
+                    {{else}}
+                        <div class="block-2">
+                            <span>Цена: {{ product.price }} сом</span>
+                        </div>
+                    {{/if}}
                     <div class="block-3">
                         <div class="amount-block">
                             <span>Количество:</span>

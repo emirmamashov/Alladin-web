@@ -197,15 +197,11 @@ module.exports = (app, db) => {
                             (exchange) => {
                                 if (exchange && exchange.usd) {
                                     if (product.price) product.price = (parseFloat(product.price) * parseFloat(exchange.usd)).toFixed(2);
-                                    if (product.priceTrad) product.priceTrade = (parseFloat(product.priceTrade) * parseFloat(exchange.usd)).toFixed(2);
+                                    if (product.priceTrade) product.priceTrade = (parseFloat(product.priceTrade) * parseFloat(exchange.usd)).toFixed(2);
                                     if (product.priceStock) product.priceStock = (parseFloat(product.priceStock) * parseFloat(exchange.usd)).toFixed(2);
-                                    /*if (product.price && product.priceStock &&
-                                        product.price > 0 && product.priceStock > 0) {
-                                        let differencePercent = (product.priceStock / product.price) * 100; // процент от числа
-                                        product['percent'] = Math.round(100 - differencePercent);
-                                    }*/
+                                    if (product.price && product.priceStock) product['economPrice'] = (product.price - product.priceStock).toFixed(2);
                                 }
-                                
+
                                 res.render('products/details', { 
                                     title: 'details', 
                                     product: product,
