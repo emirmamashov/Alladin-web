@@ -3,7 +3,11 @@
     
      <div class="container">
         <div class="catalog-redesign-wrapper">
-            <h1 class="ttu blk-title">Каталог</h1>
+            {{#if parentCategory}}
+                <h1 class="ttu blk-title">{{ parentCategory.name }}</h1>
+            {{else}}
+                <h1 class="ttu blk-title">Каталог</h1>
+            {{/if}}
             <div class="left-col">
                 <ul class="catalog-left-menu">
                     {{#each categories}}

@@ -43,28 +43,38 @@ module.exports = (app, db) => {
                     return res.redirect('/categories');
                     // res.render('categories/index', { title: 'Categories', errors: 'category not found' });
                 }
-                db.Category.find({ level: category.level, parentCategory: category.parentCategory }).then(
-                    (categories) => {
-                        let categoryIds = [];
-                        categories.forEach((category) => {
-                            categoryIds.push(category.id);
-                        });
-                        categoryService.getChildCategoriesByCategoryId(db, [categoryId]).then(
-                            (resultCategories) => {
-                                let categoriesWithChild = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
-                                categoryService.getCategoriesWithChilds(db).then(
-                                    (data) => {
-                                        let selectedCategory = categories.filter(x => x.id == categoryId)[0];
-                                        if (selectedCategory) {
-                                            selectedCategory['selected'] = true;
-                                        }
-                                        res.render('categories/index', {
-                                            title: 'Categories',
-                                            categories: categories,
-                                            parentCategories: data.parentCategories || [],
-                                            selectedCategory: selectedCategory,
-                                            chunkCategories: chunk(resultCategories.categories || [], 3)
-                                        });
+                db.Category.findById(category.parentCategory).then(
+                    (parentCategory) => {
+                        db.Category.find({ level: category.level, parentCategory: category.parentCategory }).then(
+                            (categories) => {
+                                let categoryIds = [];
+                                categories.forEach((category) => {
+                                    categoryIds.push(category.id);
+                                });
+                                categoryService.getChildCategoriesByCategoryId(db, [categoryId]).then(
+                                    (resultCategories) => {
+                                        let categoriesWithChild = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
+                                        categoryService.getCategoriesWithChilds(db).then(
+                                            (data) => {
+                                                let selectedCategory = categories.filter(x => x.id == categoryId)[0];
+                                                if (selectedCategory) {
+                                                    selectedCategory['selected'] = true;
+                                                }
+                                                res.render('categories/index', {
+                                                    title: 'Categories',
+                                                    categories: categories,
+                                                    parentCategories: data.parentCategories || [],
+                                                    selectedCategory: selectedCategory,
+                                                    chunkCategories: chunk(resultCategories.categories || [], 3),
+                                                    parentCategory: parentCategory
+                                                });
+                                            }
+                                        ).catch(
+                                            (err) => {
+                                                console.log(err);
+                                                res.render('categories/index', { title: 'Categories', errors: err });
+                                            }
+                                        );
                                     }
                                 ).catch(
                                     (err) => {
