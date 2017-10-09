@@ -17,7 +17,7 @@
                     {{#each categories}}
                         <li>
                             {{#if this.selected}}
-                                <a href="/products/category/{{this.name}}/{{this.id}}"
+                                <a href="/products/category/{{this.name}}/{{this.id}}/{{ this.parentCategory }}"
                                     style=" color: #fff !important;
                                             background: #fb722c;
                                             border-bottom: 1px solid #fb722c;">
@@ -25,7 +25,7 @@
                                     <div class="cs_cnt">{{ this.productsCount }}</div>
                                 </a>
                             {{else}}
-                                <a href="/products/category/{{this.name}}/{{this.id}}">
+                                <a href="/products/category/{{this.name}}/{{this.id}}/{{ this.parentCategory }}">
                                     <div class="cs_name">{{ this.name }}</div>
                                     <div class="cs_cnt">{{ this.productsCount }}</div>
                                 </a>

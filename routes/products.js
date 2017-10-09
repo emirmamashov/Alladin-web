@@ -34,8 +34,9 @@ module.exports = (app, db) => {
         );
     });
 
-    router.get('/category/:categoryName/:id', (req, res) => {
+    router.get('/category/:categoryName/:id/:parentCategoryId', (req, res) => {
         let categoryId = req.params.id;
+        let parentCategoryId = req.params.parentCategoryId;
         if (!categoryId || !ObjectId.isValid(categoryId)) {
             return res.render('products/index', {
                 title: 'Products',
@@ -46,7 +47,7 @@ module.exports = (app, db) => {
 
         db.Category.findById(categoryId).then(
             (category) => {
-                db.Category.find({ level: category.level }).then(
+                db.Category.find({ level: category.level, parentCategory: parentCategoryId }).then(
                     (categories) => {
                         categories.forEach((category) => {
                           if (category) {
