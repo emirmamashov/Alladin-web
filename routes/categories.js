@@ -43,7 +43,7 @@ module.exports = (app, db) => {
                     return res.redirect('/categories');
                     // res.render('categories/index', { title: 'Categories', errors: 'category not found' });
                 }
-                db.Category.find({ level: category.level }).then(
+                db.Category.find({ level: category.level, parentCategory: category.parentCategory }).then(
                     (categories) => {
                         let categoryIds = [];
                         categories.forEach((category) => {
