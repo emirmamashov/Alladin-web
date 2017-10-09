@@ -49,7 +49,7 @@ module.exports = (app, db) => {
                         categories.forEach((category) => {
                             categoryIds.push(category.id);
                         });
-                        categoryService.getChildCategoriesByCategoryId(db, categoryIds).then(
+                        categoryService.getChildCategoriesByCategoryId(db, [categoryId]).then(
                             (resultCategories) => {
                                 let categoriesWithChild = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
                                 categoryService.getCategoriesWithChilds(db).then(
@@ -63,7 +63,7 @@ module.exports = (app, db) => {
                                             categories: categories,
                                             parentCategories: data.parentCategories || [],
                                             selectedCategory: selectedCategory,
-                                            chunkCategories: chunk(resultCategories.parentCategories || [], 3)
+                                            chunkCategories: chunk(resultCategories.categories || [], 3)
                                         });
                                     }
                                 ).catch(
