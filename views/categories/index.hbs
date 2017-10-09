@@ -14,12 +14,18 @@
                                             background: #fb722c;
                                             border-bottom: 1px solid #fb722c;">
                                     <div class="cs_name">{{ this.name }}</div>
-                                    <div class="cs_cnt">{{ this.productsCount }}</div>
+                                    <div class="cs_cnt" id="countProductsOfCategory_{{ this.id }}">
+                                        {{ this.productsCount }}
+                                    </div>
+                                    <input type="hidden" class="categoryIds" value="{{ this.id }}"/>
                                 </a>
                             {{else}}
                                 <a href="/categories/{{ this.name }}/{{ this.id }}/">
                                     <div class="cs_name">{{ this.name }}</div>
-                                    <div class="cs_cnt">{{ this.productsCount }}</div>
+                                    <div class="cs_cnt" id="countProductsOfCategory_{{ this.id }}">
+                                        {{ this.productsCount }}
+                                        <input type="hidden" class="categoryIds" value="{{ this.id }}"/>
+                                    </div>
                                 </a>
                             {{/if}}
                         </li>
@@ -75,12 +81,20 @@
                                                 {{#if this.childCategories}}
                                                     <a href="/categories/{{this.name}}/{{this.id}}/">
                                                         <div class="cs_name">{{ this.name }}</div>
-                                                        <div class="cs_cnt">{{ this.productsCount }}</div>
+                                                        <div class="cs_cnt" id="countProductsOfCategory_{{ this.id }}">
+                                                            {{ this.productsCount }}
+                                                        </div>
+
+                                                        <input type="hidden" class="categoryIds" value="{{ this.id }}"/>
                                                     </a>
                                                 {{else}}
                                                     <a href="/products/category/{{this.name}}/{{this.id}}/">
                                                         <div class="cs_name">{{ this.name }}</div>
-                                                        <div class="cs_cnt">{{ this.productsCount }}</div>
+                                                        <div class="cs_cnt" id="countProductsOfCategory_{{ this.id }}">
+                                                            {{ this.productsCount }}
+                                                        </div>
+
+                                                        <input type="hidden" class="categoryIds" value="{{ this.id }}"/>
                                                     </a>
                                                 {{/if}}
                                             </li>

@@ -8,6 +8,7 @@ module.exports = {
         parentCategories.forEach((category) => {
             category['childCategories'] = categories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
             this.findChildCategories(categories, category['childCategories']);
+            category['apiUrl'] = config.API_URL;
         });
         // console.log(parentCategories);
         return parentCategories;
@@ -18,6 +19,7 @@ module.exports = {
         }
         categories.forEach((category) => {
             category['childCategories'] = allCategories.filter(x => x.parentCategory && x.parentCategory.toString() === category._id.toString()) || [];
+            category['apiUrl'] = config.API_URL;
             this.findChildCategories(categories, category['childCategories']);
         });
     },
@@ -28,6 +30,7 @@ module.exports = {
         }
         categories.forEach((category) => {
             category['products'] = products.filter(x => x.categoryId.toString() === category._id.toString()) || [];
+            category['apiUrl'] = config.API_URL;
         });
 
         return categories;
@@ -43,6 +46,7 @@ module.exports = {
                     childCategories.forEach((childCategory) => {
                         categoryIds.push(childCategory.id);
                         newParentCategoryIds.push(childCategory.id);
+                        childCategory['apiUrl'] = config.API_URL;
                     });
                     return this.getAllChildrenCategoriesId(db, newParentCategoryIds, categoryIds);
                 }

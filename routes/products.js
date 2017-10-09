@@ -113,7 +113,16 @@ module.exports = (app, db) => {
                     }
                 );
             }
-        ).catch();
+        ).catch(
+            (err) => {
+                console.log(err);
+                res.render('products/index', {
+                    title: 'Products',
+                    products: [],
+                    errors: err,
+                });
+            }
+        );
     });
 
     router.get('/details/:id', (req, res) => {
@@ -217,6 +226,34 @@ module.exports = (app, db) => {
                 });
             })
         
+    });
+
+    router.get('/countByCategoryId/:id', (req, res) => {
+        let categoryId = req.params.id;
+        if (!categoryId || !ObjectId.isValid(categoryId)) {
+            return res.status(200).json({
+                success: false,
+                code: 404
+            });
+        }
+        productService.getCountProductsByCategoryId(db, categoryId).then(
+            (count) => {
+                console.log(count);
+                return res.status(200).json({
+                    success: true,
+                    code: 200,
+                    data: count
+                });
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+                return res.status(200).json({
+                    success: false,
+                    code: 500
+                });
+            }
+        );
     });
 
     app.use('/products', router);
