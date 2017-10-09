@@ -51,11 +51,13 @@ module.exports = (app, db) => {
                                 categories.forEach((category) => {
                                     categoryIds.push(category.id);
                                 });
-                                categoryService.getChildCategoriesByCategoryId(db, [categoryId]).then(
+                                categoryService.getChildCategoriesByCategoryId(db, categoryIds).then(
                                     (resultCategories) => {
-                                        let categoriesWithChild = categoryService.findChildCategoriesForParent(resultCategories.parentCategories, resultCategories.categories);
                                         categoryService.getCategoriesWithChilds(db).then(
                                             (data) => {
+                                                categories.forEach((category) => {
+                                                    category.childCategories = resultCategories.categories.filter(x => x.parentCategory == category.id);
+                                                });
                                                 let selectedCategory = categories.filter(x => x.id == categoryId)[0];
                                                 if (selectedCategory) {
                                                     selectedCategory['selected'] = true;
@@ -65,7 +67,7 @@ module.exports = (app, db) => {
                                                     categories: categories,
                                                     parentCategories: data.parentCategories || [],
                                                     selectedCategory: selectedCategory,
-                                                    chunkCategories: chunk(resultCategories.categories || [], 3),
+                                                    chunkCategories: chunk(selectedCategory.childCategories || [], 3),
                                                     parentCategory: parentCategory
                                                 });
                                             }

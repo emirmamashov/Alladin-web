@@ -25,16 +25,30 @@
                     <ul class="categories-2">
                         {{#each parentCategories}}
                         <li>
-                            <a href="/categories/{{this.name}}/{{this.id}}/" class="title">{{ this.name }}</a>
+                            {{#if this.childCategories}}
+                                <a href="/categories/{{this.name}}/{{this.id}}/" class="title">{{ this.name }}</a>
+                            {{else}}
+                                <a href="/categories/{{this.name}}/{{this.id}}/" class="title">{{ this.name }}</a>
+                            {{/if}}
                             <ul class="categories-3">
                                 {{#each this.childCategories}}
                                 <li>
-                                    <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                    {{#if this.childCategories}}
+                                        <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                    {{else}}
+                                        <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                    {{/if}}
                                     <ul class="categories-4">
                                         {{#each this.childCategories}}
-                                        <li>
-                                            <a href="/products/category/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
-                                        </li>
+                                            {{#if this.childCategories}}
+                                                <li><a href="/categories/{{ this.name }}/{{ this.id }}/">
+                                                    {{ this.name }}
+                                                </a></li>
+                                            {{else}}
+                                                <li><a href="/products/category/{{this.name}}/{{this.id}}/">
+                                                    {{ this.name }}
+                                                </a></li>
+                                            {{/if}}
                                         {{/each}}
                                     </ul>
                                 </li>
