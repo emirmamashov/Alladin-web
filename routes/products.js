@@ -64,51 +64,80 @@ module.exports = (app, db) => {
                         categoryIds.push(category.id);
                         db.Exchange.findOne().then(
                             (exchange) => {
-                                db.Product.find({ categoryId: { $in: categoryIds } }).then(
-                                    (products) => {
-                                        products.forEach((product) => {
-                                            if (product) {
-                                                product['apiUrl'] = config.API_URL;
-                                            }
-
-                                            if (exchange && exchange.usd) {
-                                                let price = parseFloat(product.price) || 0;
-                                                let priceTrade = parseFloat(product.priceTrade) || 0;
-                                                let priceStock = parseFloat(product.priceStock) || 0;
-                                                product.price = (price * exchange.usd).toFixed(2);
-                                                product.priceTrade = (priceTrade * exchange.usd).toFixed(2);
-                                                product.priceStock = (priceStock * exchange.usd).toFixed(2);
-                                            }
-                                        });
-                                        categoryService.getCategoriesWithChilds(db).then(
-                                            (data) => {
-                                                res.render('products/index', {
-                                                    title: 'Products',
-                                                    products: products,
-                                                    parentCategories: data.parentCategories,
-                                                    categories: categories,
-                                                    category: currentCategory
-                                                });
-                                            }
-                                        ).catch(
-                                            (err) => {
+                                db.Product.count({ categoryId: { $in: categoryIds } }).then(
+                                    (count) => {
+                                        console.log(count);
+                                        let page = parseInt(req.query.page) || 1;
+                                        let limit = parseInt(req.query.limit) || 30;
+                                        console.log(page, limit);
+                                        db.Product.paginate({ categoryId: { $in: categoryIds } }, { page: page, limit: limit }, (err, result) => {
+                                            if (err) {
                                                 console.log(err);
-                                                res.render('products/index', {
-                                                    title: 'Products',
-                                                    products: [],
-                                                    errors: err
-                                                });
+                                                return (err) => {
+                                                    console.log(err);
+                                                    res.render('products/index', {
+                                                        title: 'Products',
+                                                        products: [],
+                                                        errors: err
+                                                    });
+                                                }
                                             }
-                                        );
+                                            let products = result.docs;
+                                            products.forEach((product) => {
+                                                if (product) {
+                                                    product['apiUrl'] = config.API_URL;
+                                                }
+
+                                                if (exchange && exchange.usd) {
+                                                    let price = parseFloat(product.price) || 0;
+                                                    let priceTrade = parseFloat(product.priceTrade) || 0;
+                                                    let priceStock = parseFloat(product.priceStock) || 0;
+                                                    product.price = (price * exchange.usd).toFixed(2);
+                                                    product.priceTrade = (priceTrade * exchange.usd).toFixed(2);
+                                                    product.priceStock = (priceStock * exchange.usd).toFixed(2);
+                                                }
+                                            });
+                                            let pageCount = Math.ceil(count / limit);
+                                            let pages = [];
+                                            for (let i = 1; i <= pageCount; i++) {
+                                                if (pageCount === page) {
+                                                    pages.push({
+                                                        selected: true,
+                                                        page: i
+                                                    });
+                                                } else {
+                                                    pages.push({
+                                                        selected: false,
+                                                        page: i
+                                                    });
+                                                }
+                                            }
+                                            categoryService.getCategoriesWithChilds(db).then(
+                                                (data) => {
+                                                    res.render('products/index', {
+                                                        title: 'Products',
+                                                        products: products,
+                                                        parentCategories: data.parentCategories,
+                                                        categories: categories,
+                                                        category: currentCategory,
+                                                        pages: pages
+                                                    });
+                                                }
+                                            ).catch(
+                                                (err) => {
+                                                    console.log(err);
+                                                    res.render('products/index', {
+                                                        title: 'Products',
+                                                        products: [],
+                                                        errors: err
+                                                    });
+                                                }
+                                            );
+                                        });
                                     }
                                 ).catch(
                                     (err) => {
                                         console.log(err);
-                                        res.render('products/index', {
-                                            title: 'Products',
-                                            products: [],
-                                            errors: err
-                                        });
                                     }
                                 );
                             }
