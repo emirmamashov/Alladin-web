@@ -62,23 +62,44 @@ module.exports = (app, db) => {
 
                         let categoryIds = [];
                         categoryIds.push(category.id);
-            
-                        db.Product.find({ categoryId: { $in: categoryIds } }).then(
-                            (products) => {
-                                products.forEach((product) => {
-                                    if (product) {
-                                        product['apiUrl'] = config.API_URL;
-                                    }
-                                });
-                                categoryService.getCategoriesWithChilds(db).then(
-                                    (data) => {
-                                        res.render('products/index', {
-                                            title: 'Products',
-                                            products: products,
-                                            parentCategories: data.parentCategories,
-                                            categories: categories,
-                                            category: currentCategory
+                        db.Exchange.findOne().then(
+                            (exchange) => {
+                                db.Product.find({ categoryId: { $in: categoryIds } }).then(
+                                    (products) => {
+                                        products.forEach((product) => {
+                                            if (product) {
+                                                product['apiUrl'] = config.API_URL;
+                                            }
+
+                                            if (exchange && exchange.usd) {
+                                                let price = parseFloat(product.price) || 0;
+                                                let priceTrade = parseFloat(product.priceTrade) || 0;
+                                                let priceStock = parseFloat(product.priceStock) || 0;
+                                                product.price = (price * exchange.usd).toFixed(2);
+                                                product.priceTrade = (priceTrade * exchange.usd).toFixed(2);
+                                                product.priceStock = (priceStock * exchange.usd).toFixed(2);
+                                            }
                                         });
+                                        categoryService.getCategoriesWithChilds(db).then(
+                                            (data) => {
+                                                res.render('products/index', {
+                                                    title: 'Products',
+                                                    products: products,
+                                                    parentCategories: data.parentCategories,
+                                                    categories: categories,
+                                                    category: currentCategory
+                                                });
+                                            }
+                                        ).catch(
+                                            (err) => {
+                                                console.log(err);
+                                                res.render('products/index', {
+                                                    title: 'Products',
+                                                    products: [],
+                                                    errors: err
+                                                });
+                                            }
+                                        );
                                     }
                                 ).catch(
                                     (err) => {

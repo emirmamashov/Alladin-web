@@ -27,6 +27,14 @@ module.exports = (app, db) => {
                                                 let differencePercent = (hotProducts[i].priceStock / hotProducts[i].price) * 100; // процент от числа
                                                 hotProducts[i]['percent'] = Math.round(100 - differencePercent);
                                             }
+                                            if (exchange && exchange.usd) {
+                                                let price = parseFloat(hotProducts[i].price) || 0;
+                                                let priceTrade = parseFloat(hotProducts[i].priceTrade) || 0;
+                                                let priceStock = parseFloat(hotProducts[i].priceStock) || 0;
+                                                hotProducts[i].price = (price * exchange.usd).toFixed(2);
+                                                hotProducts[i].priceTrade = (priceTrade * exchange.usd).toFixed(2);
+                                                hotProducts[i].priceStock = (priceStock * exchange.usd).toFixed(2);
+                                            }
                                         }
 
                                         db.Banner.find().then(
