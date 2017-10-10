@@ -177,7 +177,6 @@ module.exports = (app, db) => {
     });
 
     router.get('/details/:id', (req, res) => {
-        let id = req.params.id;
         categoryService.getCategoriesWithChilds(db).then(
             (data) => {
                 db.Product.findById(req.params.id).then(
@@ -202,12 +201,37 @@ module.exports = (app, db) => {
                                     if (product.price && product.priceStock) product['economPrice'] = (product.price - product.priceStock).toFixed(2);
                                 }
 
-                                res.render('products/details', { 
-                                    title: 'details', 
-                                    product: product,
-                                    parentCategories: data.parentCategories,
-                                    images: images.filter(x => x.image != product.image)
-                                });
+                                let name = product.name.split(' ')[0];
+                                let regexProductName = new RegExp(name, 'i');
+                                db.Product.find({
+                                    _id: {
+                                        $nin: product.id
+                                    },
+                                    name: regexProductName,
+                                    parentCategory: product.parentCategory
+                                }).limit(30).then(
+                                    (relatedProducts) => {
+                                        relatedProducts.forEach((product) => {
+                                            product['apiUrl'] = config.API_URL;
+                                        });
+
+                                        res.render('products/details', {
+                                            title: 'details',
+                                            product: product,
+                                            parentCategories: data.parentCategories,
+                                            images: images.filter(x => x.image != product.image),
+                                            relatedProducts: relatedProducts
+                                        });
+                                    }
+                                ).catch(
+                                    (err) => {
+                                        console.log(err);
+                                        res.render('products/details', {
+                                            title: 'Products',
+                                            errors: err
+                                        });
+                                    }
+                                );
                             }
                         ).catch(
                             (err) => {

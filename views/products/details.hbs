@@ -101,67 +101,26 @@
                 {{{ product.description }}}
             </div>
         </div>
+        {{#if relatedProducts }}
         <div class="similar-goods">
             <h3>Похожие товары</h3>
             <div class="good-items">
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
-                <div class="good-item">
-                     <div class="img">
-                         <img src="https://www.w3schools.com/css/img_fjords.jpg" alt="">
-                     </div>
-                     <span class="name">Hello its beautiful name of good</span>
-                     <span class="price">125 сом</span>
-                </div>
+                {{#each relatedProducts}}
+                    <div class="good-item">
+                        <div class="img">
+                            {{#if this.image}}
+                                <img src="{{ this.apiUrl }}/{{ this.image }}" alt="" />
+                            {{else}}
+                                <img src="/public/images/no-photo.png" alt="" />
+                            {{/if}}
+                        </div>
+                        <span class="name">{{ this.name }}</span>
+                        <span class="price">{{ this.price }} сом</span>
+                    </div>
+                {{/each}}
             </div>
         </div>
+        {{/if}}
     </div>
 </div>
 
