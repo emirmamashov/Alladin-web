@@ -1001,6 +1001,7 @@ ul li {
   text-align: center;
   width: 100% !important;
   height: 220px !important;
+  min-width: auto !important;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -1094,9 +1095,10 @@ ul li {
 
 .related-recommend .good-item {
   width: 20%;
-  padding: 10px;
+  padding: 0;
   float: left;
   height: 390px;
+  margin-left: 15px;
 }
 
 .waterfall-products-wrap .product-list {
