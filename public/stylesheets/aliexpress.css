@@ -12537,7 +12537,7 @@ body #shopping-history.ru .show-history {
 
 .buy-product-list .sp-product-one .pro-info {
     margin-left: 15px;
-    margin-top: 10px;
+    margin-top: 4px;
     height: 146px;
     padding-left: 0
 }
@@ -12558,7 +12558,7 @@ body #shopping-history.ru .show-history {
 .buy-product-list .sp-product-two {
     border-bottom: 1px #e8e8e8 solid;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 21px;
     white-space: nowrap
 }
 
