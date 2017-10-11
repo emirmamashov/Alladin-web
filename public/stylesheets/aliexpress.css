@@ -12585,7 +12585,8 @@ body #shopping-history.ru .show-history {
 .buy-product-list .sp-product-three {
     border-bottom: 1px #e8e8e8 solid;
     padding: 0;
-    white-space: nowrap
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .buy-product-list .sp-product-three .pro-img-area {
