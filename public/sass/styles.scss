@@ -1244,6 +1244,19 @@ ul li {
   }
 }
 
+// ------------ index page styles ----------------
+
+.pro-img-area {
+  display: flex;
+  align-items: center;
+}
+
+.pro-img-area img {
+  width: 100%;
+}
+
+// ------------ index page styles end ------------
+
 .partners-main {
   padding: 40px 0 0 0
 }
@@ -2646,4 +2659,3 @@ a.jqzoom {
   }
 }
 // ------------------detail good page end------------------
-
