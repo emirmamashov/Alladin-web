@@ -367,22 +367,23 @@
         <div class="hidden-xs hidden-sm col-md-20 col-lg-15">
             <div class="sp-product-one">
                 <a href="/products/details/{{ hotProducts.4.id }}">
-                    <div class="pro-img-area" style="width: 148px; height: 148px;">
-                        <img src="{{hotProducts.4.apiUrl}}/{{hotProducts.4.image}}"></div>
+                    <div class="pro-img-area" style="width: 148px; height: 148px; margin: 76px auto;">
+                        <img src="{{hotProducts.4.apiUrl}}/{{hotProducts.4.image}}">
+                    </div>
                     <div class="pro-info">
-                        <div class="pro-title">{{ hotProducts.4.name }}</div>
-                        <div class="pro-price">
-                            <span class="g-price notranslate">
-                                {{#if hotProducts.4.priceStock}}
-                                    <span class="g-price-n">{{hotProducts.4.priceStock}} сом.</span>
-                                {{else}}
-                                    <span class="g-price-n">{{hotProducts.4.price}} сом.</span>
-                                {{/if}}
-                            </span>
+                    <div class="pro-title">{{ hotProducts.4.name }}</div>
+                    <div class="pro-price">
+                        <span class="g-price notranslate">
                             {{#if hotProducts.4.priceStock}}
-                                <del class="g-del-price">{{hotProducts.4.price}} сом.</del>
+                                <span class="g-price-n">{{hotProducts.4.priceStock}} сом.</span>
+                            {{else}}
+                                <span class="g-price-n">{{hotProducts.4.price}} сом.</span>
                             {{/if}}
-                        </div>
+                        </span>
+                        {{#if hotProducts.4.priceStock}}
+                            <del class="g-del-price">{{hotProducts.4.price}} сом.</del>
+                        {{/if}}
+                    </div>
                         <div class="discount">
                             {{#if hotProducts.4.percent}}
                                 <span class="num">-{{hotProducts.4.percent}}%</span>
