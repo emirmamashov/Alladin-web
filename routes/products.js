@@ -237,6 +237,9 @@ module.exports = (app, db) => {
                                                 });
                                                 db.Product.find({ _id: { $in: productIds } }).then(
                                                     (viewedProducts) => {
+                                                        viewedProducts.forEach((product) => {
+                                                            product['apiUrl'] = config.API_URL;
+                                                        });
                                                         res.render('products/details', {
                                                             title: 'details',
                                                             product: product,
