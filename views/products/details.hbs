@@ -1,6 +1,7 @@
 <div class="good-detail">
     <div class="container">
         <h2>{{ product.name }}</h2>
+        <input id="productId" type="hidden" value="{{ product.id }}"/>
         <div class="good-detail__in">
             <div class="big-image">
                 <div class="item">
@@ -107,14 +108,38 @@
             <div class="good-items">
                 {{#each relatedProducts}}
                     <div class="good-item">
-                        <div class="img">
-                            {{#if this.image}}
-                                <img src="{{ this.apiUrl }}/{{ this.image }}" alt="" />
-                            {{else}}
-                                <img src="/public/images/no-photo.png" alt="" />
-                            {{/if}}
-                        </div>
-                        <span class="name">{{ this.name }}</span>
+                        <a href="/products/details/{{ this.id }}">
+                            <div class="img">
+                                {{#if this.image}}
+                                    <img src="{{ this.apiUrl }}/{{ this.image }}" alt="" />
+                                {{else}}
+                                    <img src="/public/images/no-photo.png" alt="" />
+                                {{/if}}
+                            </div>
+                            <span class="name">{{ this.name }}</span>
+                        </a>
+                        <span class="price">{{ this.price }} сом</span>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+        {{#if viewedProducts }}
+        <div class="similar-goods">
+            <h3>Просмотренные товары</h3>
+            <div class="good-items" id="viewedProducts">
+                {{#each viewedProducts}}
+                    <div class="good-item">
+                        <a href="/products/details/{{ this.id }}">
+                            <div class="img">
+                                {{#if this.image}}
+                                    <img src="{{ this.apiUrl }}/{{ this.image }}" alt="" />
+                                {{else}}
+                                    <img src="/public/images/no-photo.png" alt="" />
+                                {{/if}}
+                            </div>
+                            <span class="name">{{ this.name }}</span>
+                        </a>
                         <span class="price">{{ this.price }} сом</span>
                     </div>
                 {{/each}}
@@ -159,3 +184,5 @@
     });
 
 </script>
+<script src="/javascripts/services/product.service.js"></script>
+<script src="/javascripts/products/details.js"></script>

@@ -203,13 +203,17 @@ module.exports = (app, db) => {
                                     if (product.price && product.priceStock) product['economPrice'] = (product.price - product.priceStock).toFixed(2);
                                 }
 
-                                let name = product.name.split(' ')[0];
-                                let regexProductName = new RegExp(name, 'i');
+                                let names = product.name.split(' ');
+                                let regexProductNames = [];
+                                names.forEach((name) => {
+                                    regexProductNames.push(new RegExp(name, 'i'));
+                                });
+                                //let regexProductName = new RegExp(name, 'i');
                                 db.Product.find({
                                     _id: {
                                         $nin: product.id
                                     },
-                                    name: regexProductName,
+                                    name: { $in: regexProductNames },
                                     parentCategory: product.parentCategory
                                 }).limit(30).then(
                                     (relatedProducts) => {
@@ -217,14 +221,59 @@ module.exports = (app, db) => {
                                             product['apiUrl'] = config.API_URL;
                                         });
 
-                                        res.render('products/details', {
-                                            title: 'details',
-                                            product: product,
-                                            parentCategories: data.parentCategories,
-                                            categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
-                                            images: images.filter(x => x.image != product.image),
-                                            relatedProducts: relatedProducts
-                                        });
+                                        db.ViewedProduct.find().limit(30).then(
+                                            (viewedProductIds) => {
+                                                let findViewedProductId = viewedProductIds.filter(x => x.productId == product.id)[0];
+                                                if (!findViewedProductId) { //если данный продукт еще не был просмотрен
+                                                    let newViewedProduct = new db.ViewedProduct({
+                                                        productId: product.id
+                                                    });
+                                                    newViewedProduct.save(); // то сохраняем его в БД как просмотренный товар
+                                                }
+
+                                                let productIds = [];
+                                                viewedProductIds.forEach((data) => {
+                                                    productIds.push(data.productId);
+                                                });
+                                                db.Product.find({ _id: { $in: productIds } }).then(
+                                                    (viewedProducts) => {
+                                                        res.render('products/details', {
+                                                            title: 'details',
+                                                            product: product,
+                                                            parentCategories: data.parentCategories,
+                                                            categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
+                                                            images: images.filter(x => x.image != product.image),
+                                                            relatedProducts: relatedProducts,
+                                                            viewedProducts: viewedProducts
+                                                        });
+                                                    }
+                                                ).catch(
+                                                    (err) => {
+                                                        console.log(err);
+                                                        res.render('products/details', {
+                                                            title: 'details',
+                                                            product: product,
+                                                            parentCategories: data.parentCategories,
+                                                            categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
+                                                            images: images.filter(x => x.image != product.image),
+                                                            relatedProducts: relatedProducts
+                                                        });
+                                                    }
+                                                );
+                                            }
+                                        ).catch(
+                                            (err) => {
+                                                console.log(err);
+                                                res.render('products/details', {
+                                                    title: 'details',
+                                                    product: product,
+                                                    parentCategories: data.parentCategories,
+                                                    categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
+                                                    images: images.filter(x => x.image != product.image),
+                                                    relatedProducts: relatedProducts
+                                                });
+                                            }
+                                        );
                                     }
                                 ).catch(
                                     (err) => {
@@ -326,6 +375,49 @@ module.exports = (app, db) => {
                 return res.status(200).json({
                     success: false,
                     code: 500
+                });
+            }
+        );
+    });
+
+    router.post('/api/getProductsByIds', (req, res) => {
+        let id = req.body.id;
+        if (!id) {
+            return res.status(200).json({
+                success: false,
+                status: 'yellow',
+                message: 'Что то пошло не так!',
+                data: {
+                    message: 'id is null',
+                    code: 403
+                }
+            });
+        }
+        let ids = id.split(',').filter(x => x);
+        db.Product.find({ _id: { $in: ids} }).limit(50).then(
+            (products) => {
+                res.status(200).json({
+                    success: true,
+                    status: 'green',
+                    message: 'Успешно!',
+                    data: {
+                        message: 'Success!',
+                        code: 200,
+                        data: products
+                    }
+                });
+            }
+        ).catch(
+            (err) => {
+                console.log(err);
+                res.status(200).json({
+                    success: false,
+                    status: 'red',
+                    message: '',
+                    data: {
+                        message: err,
+                        code: 500,
+                    }
                 });
             }
         );
