@@ -10740,8 +10740,12 @@ ul.partners-list:before {
 .related-recommend .item-inner {
     position: relative;
     padding: 0 10px;
-    border: 1px solid transparent;
-    background-color: #fff
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(155, 155, 155, 0.3);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(155, 155, 155, 0.3);
+    box-shadow: 0px 0px 10px 0px rgba(155, 155, 155, 0.2);
 }
 
 .related-recommend .item-inner:hover {
@@ -12537,7 +12541,7 @@ body #shopping-history.ru .show-history {
 
 .buy-product-list .sp-product-one .pro-info {
     margin-left: 15px;
-    margin-top: 10px;
+    margin-top: 4px;
     height: 146px;
     padding-left: 0
 }
@@ -12557,8 +12561,8 @@ body #shopping-history.ru .show-history {
 
 .buy-product-list .sp-product-two {
     border-bottom: 1px #e8e8e8 solid;
-    padding-top: 22px;
-    padding-bottom: 23px;
+    padding-top: 20px;
+    padding-bottom: 21px;
     white-space: nowrap
 }
 
@@ -12585,7 +12589,8 @@ body #shopping-history.ru .show-history {
 .buy-product-list .sp-product-three {
     border-bottom: 1px #e8e8e8 solid;
     padding: 0;
-    white-space: nowrap
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .buy-product-list .sp-product-three .pro-img-area {

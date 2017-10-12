@@ -258,10 +258,8 @@
         <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
             <div class="sp-product-one">
                 <a href="/products/details/{{ hotProducts.0.id }}">
-                    <div class="pro-img-area">
-                        <img height="296"
-                            src="{{hotProducts.0.apiUrl}}/{{hotProducts.0.image}}"
-                            width="296">
+                    <div class="pro-img-area" style="width: 296px; height: 296px;">
+                        <img src="{{hotProducts.0.apiUrl}}/{{hotProducts.0.image}}">
                     </div>
                     <div class="pro-info">
                         <div class="pro-title">{{hotProducts.0.name}}</div>
@@ -290,10 +288,8 @@
         <div class="hidden-xs hidden-sm hidden-md col-md-20 col-lg-15">
             <div class="sp-product-three util-clearfix">
                 <a href="/products/details/{{ hotProducts.1.id }}">
-                    <div class="pro-img-area">
-                        <img height="148"
-                            src="{{hotProducts.1.apiUrl}}/{{hotProducts.1.image}}"
-                            width="148">
+                    <div class="pro-img-area" style="width: 148px; height: 148px;">
+                        <img src="{{hotProducts.1.apiUrl}}/{{hotProducts.1.image}}">
                     </div>
                     <div class="pro-info">
                         <div class="pro-price">
@@ -318,10 +314,8 @@
             </div>
             <div class="sp-product-three util-clearfix">
                 <a href="/products/details/{{ hotProducts.2.id }}">
-                    <div class="pro-img-area">
-                        <img height="148"
-                            src="{{hotProducts.2.apiUrl}}/{{hotProducts.2.image}}"
-                            width="148"></div>
+                    <div class="pro-img-area" style="width: 148px; height: 148px;">
+                        <img src="{{hotProducts.2.apiUrl}}/{{hotProducts.2.image}}"></div>
                     <div class="pro-info">
                         <div class="pro-price">
                             <span class="g-price notranslate">
@@ -345,10 +339,8 @@
             </div>
             <div class="sp-product-three util-clearfix">
                 <a href="/products/details/{{ hotProducts.3.id }}">
-                    <div class="pro-img-area">
-                        <img height="148"
-                            src="{{hotProducts.3.apiUrl}}/{{hotProducts.3.image}}"
-                            width="148"></div>
+                    <div class="pro-img-area" style="width: 148px; height: 148px;">
+                        <img src="{{hotProducts.3.apiUrl}}/{{hotProducts.3.image}}"></div>
                     <div class="pro-info">
                         <div class="pro-price">
                             <span class="g-price notranslate">
@@ -375,24 +367,23 @@
         <div class="hidden-xs hidden-sm col-md-20 col-lg-15">
             <div class="sp-product-one">
                 <a href="/products/details/{{ hotProducts.4.id }}">
-                    <div class="pro-img-area">
-                        <img height="296"
-                            src="{{hotProducts.4.apiUrl}}/{{hotProducts.4.image}}"
-                            width="296"></div>
+                    <div class="pro-img-area" style="width: 148px; height: 148px; margin: 76px auto;">
+                        <img src="{{hotProducts.4.apiUrl}}/{{hotProducts.4.image}}">
+                    </div>
                     <div class="pro-info">
-                        <div class="pro-title">{{ hotProducts.4.name }}</div>
-                        <div class="pro-price">
-                            <span class="g-price notranslate">
-                                {{#if hotProducts.4.priceStock}}
-                                    <span class="g-price-n">{{hotProducts.4.priceStock}} сом.</span>
-                                {{else}}
-                                    <span class="g-price-n">{{hotProducts.4.price}} сом.</span>
-                                {{/if}}
-                            </span>
+                    <div class="pro-title">{{ hotProducts.4.name }}</div>
+                    <div class="pro-price">
+                        <span class="g-price notranslate">
                             {{#if hotProducts.4.priceStock}}
-                                <del class="g-del-price">{{hotProducts.4.price}} сом.</del>
+                                <span class="g-price-n">{{hotProducts.4.priceStock}} сом.</span>
+                            {{else}}
+                                <span class="g-price-n">{{hotProducts.4.price}} сом.</span>
                             {{/if}}
-                        </div>
+                        </span>
+                        {{#if hotProducts.4.priceStock}}
+                            <del class="g-del-price">{{hotProducts.4.price}} сом.</del>
+                        {{/if}}
+                    </div>
                         <div class="discount">
                             {{#if hotProducts.4.percent}}
                                 <span class="num">-{{hotProducts.4.percent}}%</span>
@@ -405,10 +396,8 @@
         <div class="hidden-xs col-sm-30 col-md-20 col-lg-15">
             <div class="sp-product-two util-clearfix">
                 <a href="/products/details/{{ hotProducts.5.id }}">
-                    <div class="pro-img-area">
-                        <img height="180"
-                            src="{{hotProducts.5.apiUrl}}/{{hotProducts.5.image}}"
-                            width="180"></div>
+                    <div class="pro-img-area" style="width: 180px; height: 180px;">
+                        <img src="{{hotProducts.5.apiUrl}}/{{hotProducts.5.image}}"></div>
                     <div class="pro-info">
                         <div class="pro-price">
                             <span class="g-price notranslate">
@@ -432,10 +421,8 @@
             </div>
             <div class="sp-product-two util-clearfix">
                 <a href="/products/details/{{ hotProducts.6.id }}">
-                    <div class="pro-img-area">
-                        <img height="180"
-                            src="//ae01.alicdn.com/kf/HTB1R6kLSFXXXXXJXFXXq6xXFXXXR.jpg_350x350.jpg"
-                            width="180"/>
+                    <div class="pro-img-area" style="width: 180px; height: 180px;">
+                        <img src="//ae01.alicdn.com/kf/HTB1R6kLSFXXXXXJXFXXq6xXFXXXR.jpg_350x350.jpg"/>
                     </div>
                     <div class="pro-info">
                         <div class="pro-price">
