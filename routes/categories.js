@@ -18,6 +18,7 @@ module.exports = (app, db) => {
                     title: 'Categories',
                     parentCategories: data.parentCategories,
                     categories: data.categories,
+                    categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
                     chunkCategories: chunk(data.childCategories, 3)
                 });
             }
@@ -66,6 +67,7 @@ module.exports = (app, db) => {
                                                     title: 'Categories',
                                                     categories: categories,
                                                     parentCategories: data.parentCategories || [],
+                                                    categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
                                                     selectedCategory: selectedCategory,
                                                     chunkCategories: chunk(selectedCategory.childCategories || [], 3),
                                                     parentCategory: parentCategory

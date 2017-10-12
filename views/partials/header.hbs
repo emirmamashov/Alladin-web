@@ -28,30 +28,34 @@
                             {{#if this.childCategories}}
                                 <a href="/categories/{{this.name}}/{{this.id}}/" class="title">{{ this.name }}</a>
                             {{else}}
-                                <a href="/categories/{{this.name}}/{{this.id}}/" class="title">{{ this.name }}</a>
+                                <a href="/products/category/{{this.name}}/{{this.id}}/{{this.parentCategory}}" class="title">{{ this.name }}</a>
                             {{/if}}
                             <ul class="categories-3">
                                 {{#each this.childCategories}}
-                                <li>
-                                    {{#if this.childCategories}}
-                                        <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
-                                    {{else}}
-                                        <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
-                                    {{/if}}
-                                    <ul class="categories-4">
-                                        {{#each this.childCategories}}
-                                            {{#if this.childCategories}}
-                                                <li><a href="/categories/{{ this.name }}/{{ this.id }}/">
-                                                    {{ this.name }}
-                                                </a></li>
-                                            {{else}}
-                                                <li><a href="/products/category/{{this.name}}/{{this.id}}/{{ this.parentCategory }}">
-                                                    {{ this.name }}
-                                                </a></li>
-                                            {{/if}}
-                                        {{/each}}
-                                    </ul>
-                                </li>
+                                    <li>
+                                        {{#if this.childCategories}}
+                                            <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                        {{else}}
+                                            <a href="/products/category/{{this.name}}/{{this.id}}/{{this.parentCategory}}">{{ this.name }}</a>
+                                        {{/if}}
+                                        <ul class="categories-4">
+                                            {{#each this.childCategories}}
+                                                {{#if this.childCategories}}
+                                                    <li>
+                                                        <a href="/categories/{{ this.name }}/{{ this.id }}/">
+                                                            {{ this.name }}
+                                                        </a>
+                                                    </li>
+                                                {{else}}
+                                                    <li>
+                                                        <a href="/products/category/{{this.name}}/{{this.id}}/{{ this.parentCategory }}">
+                                                            {{ this.name }}
+                                                        </a>
+                                                    </li>
+                                                {{/if}}
+                                            {{/each}}
+                                        </ul>
+                                    </li>
                                 {{/each}}
                             </ul>
                         </li>
@@ -72,7 +76,11 @@
         <ul class="menu">
             {{#each categoriesViewInMenu}}
             <li>
-                <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                {{#if this.childCategories}}
+                    <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                {{else}}
+                    <a href="/products/category/{{this.name}}/{{this.id}}/{{this.parentCategory}}">{{ this.name }}</a>
+                {{/if}}
                 <div class="menu-content clearfix">
                     <div class="left clearfix">
                         <div class="col">
@@ -80,7 +88,11 @@
                             <ul>
                                 {{#each this.childCategories}}
                                     <li>
-                                        <a href="/categories/{{this.name}}/{{this.id}}/"> {{ this.name }} </a>
+                                        {{#if this.childCategories}}
+                                            <a href="/categories/{{this.name}}/{{this.id}}/">{{ this.name }}</a>
+                                        {{else}}
+                                            <a href="/products/category/{{this.name}}/{{this.id}}/{{this.parentCategory}}">{{ this.name }}</a>
+                                        {{/if}}
                                     </li>
                                 {{/each}}
                             </ul>

@@ -19,7 +19,8 @@ module.exports = (app, db) => {
                 });
                 res.render('products/index', {
                     title: 'Products',
-                    categories: parentCategories
+                    categories: parentCategories,
+                    categoriesViewInMenu: parentCategories.filter(x => x.viewInMenu)
                 });
             }
         ).catch(
@@ -119,6 +120,7 @@ module.exports = (app, db) => {
                                                         title: 'Products',
                                                         products: products,
                                                         parentCategories: data.parentCategories,
+                                                        categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
                                                         categories: categories,
                                                         category: currentCategory,
                                                         pages: pages
@@ -219,6 +221,7 @@ module.exports = (app, db) => {
                                             title: 'details',
                                             product: product,
                                             parentCategories: data.parentCategories,
+                                            categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
                                             images: images.filter(x => x.image != product.image),
                                             relatedProducts: relatedProducts
                                         });
@@ -274,7 +277,8 @@ module.exports = (app, db) => {
                     res.render('products/index', {
                         title: 'Products',
                         products: products,
-                        parentCategories: data.parentCategories
+                        parentCategories: data.parentCategories,
+                        categoriesViewInMenu: data.parentCategories.filter(x => x.viewInMenu),
                     });
                 }
             ).catch(
