@@ -1,6 +1,7 @@
 window.onload = init();
 function init() {
-    viewedProductDetails();
+    // viewedProductDetails();
+    setTotalPrice();
 }
 
 function viewedProductDetails() {
@@ -15,4 +16,23 @@ function viewedProductDetails() {
             console.log(result);
         }
     );
+}
+
+function setTotalPrice() {
+    let count = $('#total-amount').val();
+    let price = $('#price').val();
+    $('#totalPrice')[0].textContent = parseFloat(price) * parseFloat(count) + ' сом';
+}
+
+function plusProduct(price) {
+    let totalPriceNumber = $('#totalPrice')[0].textContent;
+    let totalPrice = parseFloat(totalPriceNumber) + parseFloat(price);
+    $('#totalPrice')[0].textContent = totalPrice + ' сом';
+}
+function minusProduct(price) {
+    let totalPriceNumber = parseFloat($('#totalPrice')[0].textContent);
+    if (totalPriceNumber > price) {
+        let totalPrice = totalPriceNumber - parseFloat(price);
+        $('#totalPrice')[0].textContent = totalPrice + ' сом';
+    }
 }
